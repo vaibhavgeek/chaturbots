@@ -6,10 +6,58 @@
 	<%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="row-fluid">
+  <div class="span10 offset1">
+  
+<div class="navbar">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+                  <a class="brand" href="#">ChaturBots</a>
+                  <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+                      <li class="active"><a href="#">Chats</a></li>
+                      <li><a href="#">Bot</a></li>
+
+                      <li><a href="#">Archives</a></li>
+                      <li><a href="#">Tickets</a></li>
+                      
+                    </ul>
+                    <form class="navbar-search pull-left" action="">
+                      <input type="text" class="search-query span10" placeholder="Search Chats">
+                    </form>
+                    <ul class="nav pull-right">
+                      <li><a href="#">Helpline</a></li>
+                      <li class="divider-vertical"></li>
+                      <li class="dropdown"> 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b> </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Payment Settings</a></li>
+                          <li><a href="#">Account Settings</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div><!-- /.nav-collapse -->
+                </div>
+              </div><!-- /navbar-inner -->
+            </div>
+
+
+
     <%= yield %>
+
+</div>
+</div>
   </body>
 </html>
