@@ -1,13 +1,13 @@
-redis: &redis
-  adapter: redis
-  url: redis://localhost:6379/1
+#redis: &redis
+#  adapter: redis
+#  url: redis://localhost:6379/1
 
 development:
-  <<: *redis
+  adapter: async
 
 test:
-  <<: *redis
+  adapter: async
 
 production:
-  <<: *redis
-  channel_prefix: chaturbots_production
+  adapter: async
+#channel_prefix: chaturbots_production
