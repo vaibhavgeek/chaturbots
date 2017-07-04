@@ -6,7 +6,6 @@ class MessageBroadcastJob < ApplicationJob
   	if message.content == "Hello"
   		Message.create! content: "Hello Haha hahah "
   	end
-  	puts "\n \n \n"
     # Do something later
   end
  

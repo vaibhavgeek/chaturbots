@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  auth_token: MyString
+  ip: MyString
+  visitingt: 1
+  browser: MyString
+  bot: false
+
+two:
+  user_id: 1
+  auth_token: MyString
+  ip: MyString
+  visitingt: 1
+  browser: MyString
+  bot: false
