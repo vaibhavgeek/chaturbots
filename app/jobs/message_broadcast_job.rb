@@ -3,9 +3,6 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
   	ActionCable.server.broadcast "chatbot" , message: render_message(message)
-  	if message.content == "Hello"
-  		Message.create! content: "Hello Haha hahah "
-  	end
     # Do something later
   end
  

@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+
   def about_us
   end
   def contact_us
   end
   def index
-  	  	Message.create! content: "Welcome to instarem chatbot!"
-
-  	  	@messages = Message.all
+  	@messages = Message.all
 
   end
 end

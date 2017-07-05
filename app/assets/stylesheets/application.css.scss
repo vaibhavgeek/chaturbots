@@ -17,5 +17,18 @@
  */
 body 
 {
-	margin-top: 10px;
+
 }
+.bottom_half 
+{
+	padding-top: 15px;
+	background: linear-gradient(to bottom, #09433e,#1e977c);
+	height:55px;
+}
+.panel 
+{
+	background: white;
+	 border: 1px solid #09433e;
+    border-radius: 4px;
+    padding: 20px;
+ }

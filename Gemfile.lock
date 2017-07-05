@@ -42,6 +42,8 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    api-ai-ruby (2.0.0)
+      http (~> 2.0)
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -97,11 +99,23 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.6.0)
     execjs (2.7.0)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
+    http (2.2.2)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (1.0.3)
+    http_parser.rb (0.6.0)
     i18n (0.8.4)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -210,6 +224,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -227,6 +244,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api-ai-ruby
   byebug
   capistrano
   capistrano-nginx
@@ -239,6 +257,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
+  htmlentities
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

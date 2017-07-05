@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: chaturbots_production
-  username: chaturbots
-  password: <%= ENV['CHATURBOTS_DATABASE_PASSWORD'] %>
+  username: vaibhavm

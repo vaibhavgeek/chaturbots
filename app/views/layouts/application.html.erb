@@ -12,6 +12,7 @@
 
   <body>
   <div class="row-fluid">
+  <div class="bottom_half">
   <div class="span10 offset1">
   
   <% if user_signed_in? %>
@@ -31,7 +32,8 @@
                         <%= link_to "Active Chats" , home_index_path %>
                       </li>
                       <li>
-                      <a href="#">Bot</a></li>
+                     <%= link_to "Bot" , bot_show_user_path(current_user) %>
+                      </li>
                       <li>
                       <%= link_to "Archives" , user_chats_path(current_user) %>
                     </li>
@@ -96,11 +98,12 @@
 
 
  <% end %>
+</div>
+</div>
 
-<div class="panel">
+<div class="span10 offset1 panel">
 <%= params.inspect %>
     <%= yield %>
-</div>
 </div>
 </div>
   </body>
