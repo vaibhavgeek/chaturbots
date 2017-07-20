@@ -1,3 +1,5 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -12,23 +14,86 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
- *= require bootstrap-responsive
  */
-body 
+ html,body 
+ { 
+ 	height: 100%; 
+ 	margin: 0px; 
+ 	padding: 0px; 
+ }
+body
 {
+	overflow-x:hidden;
+}
+ #particles-js
+ {
+	background: #9f2804;
+    background: -webkit-gradient(left top,right bottom,color-stop(0,#9f2804),color-stop(100%,#f59e51));
+    
+    background: linear-gradient(135deg,#2ecc71,#10ba3b);
+        background: linear-gradient(135deg,#9f2804,#f59e51);
+    position: relative;
+    overflow:hidden;
+ }
+ .header
+ {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  margin-right: 20px;
+  color: white;
+  z-index:9999; 
+  width:95%;
+}
+
+.nav li.active a
+{
+	color: #fff;
+	background-color: transparent;
+}
+.nav li.active a:hover
+{
+			background-color: transparent;
+			color:white;
+}
+
+.nav li a
+{
+	font-size: 17px!important;
+    text-transform: uppercase!important;
+    font-family:robotoregular !important;
+    color: #ecf0f1;
+    margin-left:20px;
 
 }
-.bottom_half 
+.nav li a:hover
 {
-	padding-top: 15px;
-	background: linear-gradient(to bottom, #09433e,#1e977c);
-	height:55px;
+	background-color: transparent;
+	color:white;
+
 }
-.panel 
+h1.top
 {
-	background: white;
-	 border: 1px solid #09433e;
-    border-radius: 4px;
-    padding: 20px;
- }
+	position: absolute;
+  	top: 40%;
+  	left: 25%;
+  		color: white;
+  z-index:9999; 
+   font-weight: 900;
+	font-family: "Purisa" !important;
+}
+.icon
+{
+	color:white;
+	font-size: 37px!important;
+}
+.diagonal-effect {
+    width: 120%;
+    height: 200px;
+    background: #fff;
+    position: absolute;
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+    bottom: -166px;
+    left: -44px;
+}

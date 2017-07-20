@@ -3,7 +3,14 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
   	ActionCable.server.broadcast "chatbot" , message: render_message(message)
-    # Do something later
+  	client = ApiAiRuby::Client.new(
+    :client_access_token => '48be2ff037c347e68180ba5ecff61910'
+    )
+    if message.responder == "user"
+    	response = client.text_request message.content.to_s
+    	speech_res = response[:result][:fulfillment][:messages][0][:speech]
+    	Message.create! content: speech_res , responder: "bot"
+    end	
   end
  
   private

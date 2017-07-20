@@ -15,17 +15,17 @@ Rails.application.routes.draw do
   get 'settings/payment'
   get 'settings/account' 
 
-#routes for the instarem chatbot
+#routes for the chaturbots chatbot
   resources :users , only: [:show , :edit] do 
       member do   
-            get 'bot/index' , to: 'bots/instarem#index'
-            post 'bot/login' , to: 'bots/instarem#login'
-            post 'bot/payment_h' ,  to: 'bots/instarem#payment_h'
-            post 'bot/fx_list' ,  to: 'bots/instarem#fx_list'
-            post 'bot/benefeciary' ,  to: 'bots/instarem#benefeciary'
-            post 'bot/destroy' ,  to: 'bots/instarem#destroy'
-            get  'bot/show' ,  to: 'bots/instarem#show'
-            post 'bot/create' , to: 'bots/instarem#create'
+            get 'bot/index' , to: 'bots/chaturbots#index'
+            post 'bot/login' , to: 'bots/chaturbots#login'
+            post 'bot/payment_h' ,  to: 'bots/chaturbots#payment_h'
+            post 'bot/fx_list' ,  to: 'bots/chaturbots#fx_list'
+            post 'bot/benefeciary' ,  to: 'bots/chaturbots#benefeciary'
+            post 'bot/destroy' ,  to: 'bots/chaturbots#destroy'
+            get  'bot/show' ,  to: 'bots/chaturbots#show'
+            post 'bot/create' , to: 'bots/chaturbots#create'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -9,11 +9,16 @@ App.chatbot = App.cable.subscriptions.create "ChatbotChannel",
     $("#messages").append data['message']
     # Called when there's incoming data on the websocket for this channel
 
-  speak: (data) ->
-    @perform 'speak' , message: data
+  speak: (data, responder) ->
+    @perform 'speak' , message: data , responder: responder 
 
 $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
   if event.keyCode is 13
-    App.chatbot.speak event.target.value
+    substring = "index"
+    string = window.location.href 
+    if string.indexOf(substring) != -1
+      App.chatbot.speak event.target.value , responder: "user"
+    else 
+      App.chatbot.speak event.target.value , responder: "agent"     
     event.target.value = ''
     event.preventDefault()

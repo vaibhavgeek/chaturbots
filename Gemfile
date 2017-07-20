@@ -7,7 +7,7 @@ end
 
 gem 'htmlentities'
 gem 'api-ai-ruby'
-
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'jquery-rails'
 gem 'redis'
