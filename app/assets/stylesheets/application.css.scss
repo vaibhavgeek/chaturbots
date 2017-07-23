@@ -25,28 +25,54 @@ body
 {
 	overflow-x:hidden;
 }
+.chevron-wrapper
+{
+  padding:9px;
+  background-color:white;
+  position:absolute;
+  bottom:4%;
+  left:49%;
+  border-color: #000046;
+   border-style: solid;
+    border-width: 2px;
+  border-radius: 55px;
+  z-index:9999;
+      cursor: pointer;
+
+}
+
+.chevron-wrapper i
+{
+  color:#000046 !important;
+}
  #particles-js
  {
 	background: #9f2804;
-    background: -webkit-gradient(left top,right bottom,color-stop(0,#9f2804),color-stop(100%,#f59e51));
+    background: -webkit-gradient(left top,right bottom,color-stop(0,#9f2804),color-stop(100%,#1CB5E0));
     
-    background: linear-gradient(135deg,#2ecc71,#10ba3b);
-        background: linear-gradient(135deg,#9f2804,#f59e51);
+        background: linear-gradient(135deg,#000046,#1CB5E0);
     position: relative;
     overflow:hidden;
+
+ }
+ .jumbotron
+ {
+  padding-top:20px;
+  padding-bottom:40px;
  }
  .header
  {
   position: absolute;
-  top: 5%;
+  top: 1%;
   left: 2%;
   margin-right: 20px;
   color: white;
   z-index:9999; 
   width:95%;
+  height:70px !important;
 }
 
-.nav li.active a
+.nav li.active a , .nav li a:focus
 {
 	color: #fff;
 	background-color: transparent;
@@ -75,17 +101,30 @@ body
 h1.top
 {
 	position: absolute;
-  	top: 40%;
-  	left: 25%;
+  	top: 38%;
+  	left: 33%;
   		color: white;
   z-index:9999; 
    font-weight: 900;
-	font-family: "Purisa" !important;
+	font-family: "Nawabiat" !important;
+  font-size: 53px;
+}
+.btn-demo
+{
+ position: absolute;
+    top: 50%;
+    left: 43%;
+      color: white;
+  z-index:9999; 
+   font-weight: 900;
+  font-family: "purisa" !important; 
+  font-size: 22px;
+  color: black;
 }
 .icon
 {
 	color:white;
-	font-size: 37px!important;
+	font-size: 35px!important;
 }
 .diagonal-effect {
     width: 120%;
@@ -96,4 +135,9 @@ h1.top
     transform: rotate(6deg);
     bottom: -166px;
     left: -44px;
+}
+@font-face {
+  font-family: 'Nawabiat';
+  src:url('Nawabiat.ttf') format('truetype');
+  
 }

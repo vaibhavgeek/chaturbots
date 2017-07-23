@@ -17,4 +17,5 @@
 //= require particles
 //= require check
 //= require bootstrap-sprockets
+//= require jquery.easing
 //= require_tree .

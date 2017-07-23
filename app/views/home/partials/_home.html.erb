@@ -1,0 +1,30 @@
+
+
+<h1 class="top"> Automate Customer Support </h1>
+<button class="btn btn-default btn-demo">Request a Demo </button>
+
+<div class="chevron-wrapper page-scroll" href="#about-us">
+<i class="glyphicon glyphicon-chevron-down"></i>
+</div>
+
+
+<script type="text/javascript">
+     particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function() {
+     console.log('callback - particles.js config loaded');
+     });
+  </script>
+  
+<div class="diagonal-effect"></div>
+
+
+<div id="about-us"> 
+<h1>Welcome to Admin Chatbot panel for customer support</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<div id="messages">
+<%= render @messages %>
+</div>
+</div>
+<div id="how-it-works">
+<input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
+</div>
+

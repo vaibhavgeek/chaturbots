@@ -1,11 +1,7 @@
+<% if user_signed_in? %>
+Hi, welcome to bot
 
+<% else %>
+<%= render ("/home/partials/home") %>
 
-
-<h1>Welcome to Admin Chatbot panel for customer support</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<div id="messages">
-<%= render @messages %>
-</div>
-
-<input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
-  
+<% end %>
