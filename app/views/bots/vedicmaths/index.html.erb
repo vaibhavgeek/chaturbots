@@ -1,9 +1,6 @@
 
 
-<div class="span10 offset1 panel">
-<div id="messages"> 
+<ul class="messages" >
 <%= render :partial => 'messages/message' , collection: @messages %>
-</div>
- <h3> Welcome Education-Tomorrow Chatbot </h3>
+</ul>
 <input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
-</div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/contact_us'
   get 'home/about_us'
-
+  get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
   devise_for :users
   root 'home#index'
@@ -15,17 +15,18 @@ Rails.application.routes.draw do
   get 'settings/payment'
   get 'settings/account' 
 
-#routes for the chaturbots chatbot
+#routes for the vedic-maths chatbot
   resources :users , only: [:show , :edit] do 
       member do   
-            get 'bot/index' , to: 'bots/chaturbots#index'
-            post 'bot/login' , to: 'bots/chaturbots#login'
-            post 'bot/payment_h' ,  to: 'bots/chaturbots#payment_h'
-            post 'bot/fx_list' ,  to: 'bots/chaturbots#fx_list'
-            post 'bot/benefeciary' ,  to: 'bots/chaturbots#benefeciary'
-            post 'bot/destroy' ,  to: 'bots/chaturbots#destroy'
-            get  'bot/show' ,  to: 'bots/chaturbots#show'
-            post 'bot/create' , to: 'bots/chaturbots#create'
+            get 'bot/index' , to: 'bots/vedicmaths#index'
+            post 'bot/login' , to: 'bots/vedicmaths#login'
+            post 'bot/payment_h' ,  to: 'bots/vedicmaths#payment_h'
+            post 'bot/fx_list' ,  to: 'bots/vedicmaths#fx_list'
+            post 'bot/benefeciary' ,  to: 'bots/vedicmaths#benefeciary'
+            post 'bot/destroy' ,  to: 'bots/vedicmaths#destroy'
+            get  'bot/show' ,  to: 'bots/vedicmaths#show'
+            get 'bot/preview' , to: 'bots/vedicmaths#preview'
+            post 'bot/create' , to: 'bots/vedicmaths#create'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

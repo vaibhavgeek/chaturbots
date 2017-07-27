@@ -1,0 +1,2 @@
+module Bots::VedicmathsHelper
+end

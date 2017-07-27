@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -24,6 +25,13 @@
 body
 {
 	overflow-x:hidden;
+    background-color:#f2f2f2;
+
+}
+.embed-responsive
+{
+  z-index:9999;
+  overflow:visible;
 }
 .chevron-wrapper
 {
@@ -101,13 +109,24 @@ body
 h1.top
 {
 	position: absolute;
-  	top: 38%;
+  	top: 33%;
   	left: 33%;
   		color: white;
   z-index:9999; 
    font-weight: 900;
 	font-family: "Nawabiat" !important;
   font-size: 53px;
+}
+p.top
+{
+  position: absolute;
+    top: 44%;
+    left: 23%;
+      color: white;
+  z-index:9999; 
+   font-weight: 900;
+  font-family: "Nawabiat" !important;
+  font-size: 23px;
 }
 .btn-demo
 {
@@ -129,15 +148,40 @@ h1.top
 .diagonal-effect {
     width: 120%;
     height: 200px;
-    background: #fff;
+     background-color:#f2f2f2;
     position: absolute;
     -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
     bottom: -166px;
     left: -44px;
 }
+.h-after-diagonal
+{
+  position:relative;
+  z-index:9999;
+  font-size: 35px;
+  color: #000046;
+}
+.back-color
+{
+  background-color:#f2f2f2;
+}
 @font-face {
   font-family: 'Nawabiat';
   src:url('Nawabiat.ttf') format('truetype');
   
 }
+.feature-icon
+{
+  font-size: 12em;
+  margin-right:30px;
+}
+
+
+
+
+
+
+
+
+

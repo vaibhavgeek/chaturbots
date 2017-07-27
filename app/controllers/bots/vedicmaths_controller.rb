@@ -1,4 +1,4 @@
-class Bots::ChaturbotsController < ApplicationController
+class Bots::VedicmathsController < ApplicationController
 
 	def show
 		@messages = Message.all
@@ -10,10 +10,16 @@ class Bots::ChaturbotsController < ApplicationController
 		@messages = Message.all
 		#MessageBroadcastJob.perform_later @messages.last
 		respond_to do |format|
-  			format.html { render :layout => 'bot' } # your-action.html.erb
-	end
+  			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
+		end
 	end
 
+	def preview
+		respond_to do |format|
+			format.html {render :layout => 'vedicmaths'} 
+		end
+	end
+	
 	def create 
 		@message = Message.new(message_params)
 	     client = ApiAiRuby::Client.new(
@@ -29,5 +35,4 @@ class Bots::ChaturbotsController < ApplicationController
 	def message_params
 		params.require(:message).permit(:content, :user_id , :responder)
 	end
-
 end
