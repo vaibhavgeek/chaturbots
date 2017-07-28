@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.message_send
+{
+  margin-bottom: 00px;
+}
+
 .messages{
   .left{
     .text_wrapper{
@@ -168,14 +173,16 @@ body {
 
 .messages {
   top: 0px;
+  height: 90%;  
   position: relative;
   list-style: none;
   padding: 10px 10px 0 10px;
   margin: 0;
-  overflow: hidden;
+  overflow-x:hidden;
+  overflow-y: scroll;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 .messages .message {
   clear: both;
@@ -234,7 +241,7 @@ body {
   float: right;
 }
 .messages .message.right .text_wrapper {
-    background-color: #52a8dd;
+    background-color: #3e7ce4;
     margin-right: 5px;
     float: right;
     border-radius: 20px;
