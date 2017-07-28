@@ -10,6 +10,12 @@
   <a href="#" class="list-group-item">Vestibulum at eros</a>
 </div>
 </div>
+<div class="col-md-9">
+	<div id="messages">
+	<%= render @messages %>
+	<input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
+</div>
+</div>
 <% else %>
 <%= render ("/home/partials/home") %>
 
