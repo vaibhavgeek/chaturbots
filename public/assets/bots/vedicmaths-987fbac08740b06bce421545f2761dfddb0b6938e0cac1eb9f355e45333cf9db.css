@@ -1,0 +1,886 @@
+/* line 5, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.message_send {
+  margin-bottom: 00px;
+}
+
+/* line 15, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .input-group {
+  width: 100%;
+  padding: 6px 0;
+}
+/* line 19, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .b-search {
+  width: 89%;
+  border: none;
+  box-shadow: none;
+  font-size: 27px;
+  color: #52a8dd;
+}
+/* line 26, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .glyphicon-search {
+  color: #52a8dd;
+  cursor: pointer;
+}
+/* line 34, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul li .show-pass {
+  cursor: pointer;
+  float: right;
+  padding-top: 16px;
+}
+
+@font-face {
+  font-family: 'avenir';
+  src: url("/assets/AvenirLTStd-Book.woff") format("woff"), url("/assets/AvenirLTStd-Book.eot") format("eot"), url("/assets/AvenirLTStd-Book.ttf") format("truetype");
+}
+/* line 56, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.chat_window .intro-box .col-md-10 .gray-text {
+  color: #929292;
+  font-size: 22px;
+}
+
+/* line 66, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#iframe .clear-pass-li .no-border {
+  border: none;
+  background-color: #fff;
+}
+
+/* line 73, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#iframe {
+  height: 100%;
+  margin-bottom: 40px;
+}
+/* line 78, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#iframe .messages .message .text_wrapper {
+  width: 100%;
+}
+
+/* line 84, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 89, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+body {
+  background-color: #edeff2;
+  font-family: "avenir" !important;
+}
+
+/* line 94, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.chat_window {
+  position: absolute;
+  width: 100%;
+  max-width: 749px;
+  border-radius: 10px;
+  background-color: #fff;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #f8f8f8;
+}
+
+/* line 107, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px 0 15px;
+  background-color: #f1f0f0;
+}
+
+/* line 113, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .buttons {
+  margin: 3px 0 0 20px;
+  position: absolute;
+}
+
+/* line 117, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .buttons .button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+/* line 125, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .buttons .button.close {
+  background-color: transparent;
+}
+
+/* line 128, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .buttons .button.minimize {
+  background-color: #fdbf68;
+}
+
+/* line 131, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .buttons .button.maximize {
+  background-color: #a3d063;
+}
+
+/* line 134, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .title {
+  text-align: center;
+  color: black;
+  font-size: 26px;
+}
+
+/* line 139, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .title span {
+  color: gray;
+  font-size: 22px;
+  font-weight: 100;
+}
+
+/* line 144, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .title .Chevron {
+  width: 12px;
+  height: 20.2px;
+  transform: rotate(-180deg);
+  background-color: #939494;
+}
+
+/* line 150, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .recent, .End {
+  color: #52a8dd;
+  font-size: 32px;
+}
+
+/* line 154, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .recent {
+  float: left;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+/* line 159, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .recent img {
+  width: 25px;
+  position: relative;
+  top: -3px;
+}
+
+/* line 164, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.top_menu .End {
+  float: right;
+  padding-top: 26px;
+  padding-right: 18px;
+}
+
+/* line 170, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.title > div {
+  display: inline-block;
+}
+
+/* line 174, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages {
+  top: 0px;
+  height: 90%;
+  position: relative;
+  list-style: none;
+  padding: 10px 10px 0 10px;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 2px;
+}
+
+/* line 187, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message {
+  clear: both;
+  margin-bottom: 20px;
+  transition: all 0.5s linear;
+  padding-left: 5px;
+}
+
+/* line 196, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .avatar img {
+  width: 36px;
+}
+
+/* line 202, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .avatar {
+  background-color: transparent;
+  float: left;
+}
+
+/* line 206, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text_wrapper {
+  background-color: #fff;
+  margin-left: 5px;
+}
+
+/* line 211, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text_wrapper ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* line 216, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text_wrapper ul li {
+  width: 100%;
+  border: 1px solid #f1f0f0;
+  border-top: none;
+  text-align: left;
+  color: #52a8dd;
+  font-size: 16px;
+  padding: 10px 19px;
+}
+
+/* line 225, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text_wrapper .b-list li {
+  text-align: left;
+  color: #595959;
+  font-size: 18px;
+}
+
+/* line 231, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text_wrapper ul li:last-child {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* line 236, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.left .text {
+  color: #c48843;
+}
+
+/* line 239, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.right .avatar {
+  background-color: #fdbf68;
+  float: right;
+}
+
+/* line 243, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.right .text_wrapper {
+  background-color: #3e7ce4;
+  margin-right: 5px;
+  float: right;
+  border-radius: 20px;
+  width: 60%;
+  min-width: 180px;
+  text-align: right;
+}
+
+/* line 253, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.right .avatar {
+  background-color: transparent;
+  float: right;
+  border-radius: 20px;
+  min-width: 180px;
+}
+
+/* line 263, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .right .avatar img {
+  width: 36px;
+}
+
+/* line 271, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.right .text {
+  color: #fff;
+  padding: 9px 25px;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* line 277, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.appeared {
+  opacity: 1;
+}
+
+/* line 280, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message.right {
+  display: inline-block;
+  float: right;
+}
+
+/* line 284, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .avatar {
+  width: 46px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* line 289, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.intro-box .row .col-md-2 .avatar {
+  display: inline-block;
+  float: left;
+  margin: 55px 70px;
+}
+
+/* line 294, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.intro-box {
+  background-color: #fff;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+/* line 299, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.intro-box .row .col-md-10 {
+  padding-left: 154px;
+}
+
+/* line 302, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.intro-box .row .col-md-10 h2 {
+  font-size: 37px;
+  font-weight: 400;
+}
+
+/* line 306, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.intro-box .row .col-md-10 h3 {
+  font-size: 26px;
+  font-weight: 100;
+  margin-top: 9px;
+}
+
+/* line 311, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper {
+  display: inline-block;
+  border-radius: 6px;
+  width: 80%;
+  position: relative;
+}
+/* line 317, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-id {
+  padding-left: 90px;
+}
+
+/* line 321, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .text-header {
+  width: 100%;
+  background: #f1f0f0;
+  font-size: 15px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+/* line 330, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .no-ul {
+  border-radius: 36px;
+}
+
+/* line 333, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-bank, .b-id {
+  display: inline;
+}
+
+/* line 337, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-bank img, .b-id img {
+  padding-right: 1px;
+  width: 13px;
+}
+
+/* line 341, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-bank img {
+  position: relative;
+  top: -3px;
+  width: 16px;
+}
+
+/* line 346, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-id {
+  padding-left: 22px;
+}
+
+/* line 349, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper .b-bank, .b-id span {
+  font-size: 12px;
+  border: none;
+  padding-left: 3px;
+}
+
+/* line 354, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
+  top: 18px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* line 363, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper::after {
+  border-width: 13px;
+  margin-top: 0px;
+}
+
+/* line 367, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .message .text_wrapper::before {
+  border-width: 15px;
+  margin-top: -2px;
+}
+
+/* line 375, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 383, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper .message_input_wrapper {
+  display: inline-block;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #bcbdc0;
+  width: calc(100% - 160px);
+  position: relative;
+  padding: 0 20px;
+}
+
+/* line 392, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper .message_input_wrapper .message_input {
+  border: none;
+  height: 100%;
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  position: absolute;
+  outline-width: 0;
+  color: gray;
+}
+
+/* line 401, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper .send_message {
+  width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #a3d063;
+  border: 2px solid #a3d063;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;
+}
+
+/* line 414, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper .send_message:hover {
+  color: #a3d063;
+  background-color: #fff;
+}
+
+/* line 418, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.bottom_wrapper .send_message .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+
+/* line 425, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.message_template {
+  display: none;
+}
+
+/* line 432, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat {
+  margin: 15px 0;
+  overflow: scroll;
+}
+/* line 435, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .inner-container {
+  width: 900px;
+}
+/* line 438, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .orange {
+  background-color: #f6cc8b;
+}
+/* line 441, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .blue {
+  background-color: #63b8eb;
+}
+/* line 444, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .purple {
+  background-color: #888ed5;
+}
+/* line 447, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .dept-li {
+  border: none;
+  border-radius: 20px;
+  max-width: 98px;
+  display: inline-block;
+  margin: 0 4px;
+  padding: 13px 8px;
+}
+/* line 454, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .dept-li .dept {
+  color: white;
+  padding: 14px 0px;
+  font-size: 12px;
+  text-align: center;
+}
+/* line 460, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .info-cat .dept-li .explore {
+  background-color: #fff;
+  border-radius: 36px;
+  color: black;
+  font-size: 11px;
+  padding: 3px 0;
+  text-align: center;
+}
+/* line 470, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-name {
+  padding: 5px 0;
+}
+/* line 475, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .input-group {
+  width: 100%;
+  padding: 6px 0;
+}
+/* line 479, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .b-search {
+  width: 86%;
+  border: none;
+  box-shadow: none;
+  font-size: 18px;
+  color: #52a8dd;
+}
+/* line 486, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper .b-list li .glyphicon-search {
+  color: #52a8dd;
+  cursor: pointer;
+  top: 7px;
+}
+/* line 495, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul li .date-time {
+  border-top: 1px solid #f1f0f0;
+  border-bottom: 1px solid #f1f0f0;
+  margin: 8px 18px;
+  color: #9b9b9b;
+  font-size: 14px;
+}
+/* line 501, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul li .date-time .time, .messages .left .text_wrapper ul li .date-time .date {
+  display: inline;
+}
+/* line 504, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul li .date-time .time {
+  text-align: right;
+  padding-left: 34%;
+}
+/* line 509, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul li .show-pass {
+  cursor: pointer;
+  float: right;
+  padding-top: 7px;
+  width: 23px;
+}
+/* line 516, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li {
+  text-align: center;
+  padding: 0;
+}
+/* line 517, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag {
+  padding-top: 20px;
+}
+/* line 518, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag .val {
+  font-size: 22px;
+  color: black;
+  margin: 17px 0 29px -30px;
+}
+/* line 522, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag .val span {
+  font-size: 12px;
+}
+/* line 526, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag .flag-row {
+  height: 129px;
+}
+/* line 530, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag img {
+  margin: 11px 19px;
+  margin-bottom: 23px;
+  display: block;
+}
+/* line 535, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li .flag .down-arrow {
+  position: relative;
+  left: 51px;
+}
+/* line 542, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li div.status-div {
+  display: inline-block;
+  padding: 15px 0;
+  text-align: center;
+  width: 32%;
+}
+/* line 547, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li div.status-div .val {
+  color: #595959;
+}
+/* line 550, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #status-li div.status-div .head {
+  color: #9b9b9b;
+  font-size: 14px;
+}
+/* line 556, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #clear-pass-li {
+  text-align: center;
+  padding: 0;
+}
+/* line 559, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #clear-pass-li div {
+  display: inline-block;
+  padding: 9px 0;
+  margin: 0 7px;
+  text-align: center;
+  width: 30%;
+  border-right: 1px solid #f1f0f0;
+  cursor: pointer;
+}
+/* line 568, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+.messages .left .text_wrapper ul #clear-pass-li div:last-child {
+  border: none;
+}
+
+/* line 576, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#center-align {
+  text-align: center !important;
+}
+
+/* line 581, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+body.zipiopen > * {
+  display: none !important;
+}
+
+/* line 584, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+body.zipiopen > #zipi-chatbox {
+  display: block !important;
+}
+
+/* line 587, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox {
+  position: fixed;
+  right: 30px;
+  bottom: 35px !important;
+  overflow: visible;
+  z-index: 2147483647;
+  visibility: visible;
+}
+
+/* line 595, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox #floatbutton .opened {
+  transition: all 0.5s linear;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://zipi.ai/s/images/kristal_chat_icon.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+  position: absolute;
+  opacity: 1;
+  border-radius: 5px;
+}
+
+/* line 611, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox #floatbutton .opened.rotate {
+  -webkit-transform: rotate(45deg) scale(0);
+  -ms-transform: rotate(45deg) scale(0);
+  transform: rotate(45deg) scale(0);
+  opacity: 0;
+}
+
+/* line 617, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox #floatbutton .closed {
+  position: absolute;
+  transition: all 0.5s linear;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOBAMAAADtZjDiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEUAAAD///////////////////////////8AAADr8xjQAAAAB3RSTlMAM7cPx7jIAE21/gAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAABESURBVAjXYxAyYGBgYFZkUHcG0ialDCYlBgzM7slA7MxgUgaUNCkzdgfJMbunlIDUMpiUg7hwGiYOVQfTBzMHZi7UHgCB3RAZ7HszogAAAABJRU5ErkJggg==");
+  background-size: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transform: rotate(30deg) scale(0);
+  -ms-transform: rotate(30deg) scale(0);
+  transform: rotate(30deg) scale(0);
+  opacity: 0;
+  background-color: #2E3749;
+  border-radius: 5px;
+}
+
+/* line 634, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox #floatbutton .closed.rotate {
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* line 641, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox .chatframe .header .cross {
+  float: right;
+  color: #FFF !important;
+  font-size: 18px;
+  padding: 10px;
+  display: none;
+}
+
+/* line 648, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox .chatframe .header .header_title {
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: left;
+  color: #ffffff;
+}
+
+/* line 655, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox .chatframe .header .header_subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: #90ee90;
+  display: inline-block;
+  position: absolute;
+  top: 19px;
+  width: 10px;
+  left: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #90ee90;
+}
+
+/* line 668, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox .chatframe .frameparent {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+}
+
+/* line 676, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox .chatframe .frameparent iframe {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
+  border: none;
+  position: static;
+}
+
+/* line 684, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+#zipi-chatbox #chatflow .frameparent iframe {
+  border: none;
+  position: static;
+}
+
+@media only screen and (min-device-width: 568px) {
+  /* line 690, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox {
+    top: 30px;
+  }
+
+  /* line 694, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox > div {
+    position: relative;
+    height: 100%;
+  }
+
+  /* line 699, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox #floatbutton {
+    position: absolute;
+    bottom: 0px;
+    width: 50px;
+    height: 50px;
+    right: 0px;
+    opacity: 1;
+    z-index: 2147483645;
+  }
+
+  /* line 708, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox #chatflow {
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    bottom: 60px;
+    right: 0px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 10px #333;
+    opacity: 0;
+    overflow: hidden;
+    border-radius: 10px !important;
+  }
+
+  /* line 721, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox .chatframe {
+    max-height: 550px !important;
+    height: 90% !important;
+    min-height: 300px;
+    width: 370px !important;
+    opacity: 1 !important;
+  }
+
+  /* line 728, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox .chatframe .header {
+    border-radius: 10px 10px 0px 0px;
+  }
+}
+@media only screen and (max-device-width: 568px) {
+  /* line 734, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox #floatbutton {
+    position: absolute;
+    bottom: 0px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    right: 0px;
+    opacity: 1;
+    z-index: 2147483645;
+  }
+
+  /* line 744, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox #chatflow {
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: 0px;
+    height: 0px;
+    width: 0px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 10px #333;
+    opacity: 1;
+    overflow: hidden;
+    border-radius: 0px !important;
+    z-index: 2147483646;
+    -webkit-backface-visibility: hidden;
+    /* Chrome, Safari, Opera */
+    backface-visibility: hidden;
+  }
+
+  /* line 761, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox .chatframe {
+    height: 100% !important;
+    width: 100% !important;
+    opacity: 1 !important;
+  }
+
+  /* line 766, /home/vaibhavgeek/projects/chaturbots/app/assets/stylesheets/bots/vedicmaths.css.scss */
+  #zipi-chatbox .chatframe .header .cross {
+    float: right;
+    margin-top: 18px;
+    margin-right: 18px;
+    display: block;
+    background-image: url(http://zipi.ai/s/images/kristal_close_icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+  }
+}
