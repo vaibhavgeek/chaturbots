@@ -1,3 +1,3 @@
 class Chat < ApplicationRecord
-
+	
 end

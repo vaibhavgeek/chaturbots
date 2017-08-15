@@ -6,7 +6,10 @@ class ChatsController < ApplicationController
 
   def show
   end
-
+  def new 
+  	@messages = Message.all
+  	puts @messages.first.as_json 
+  end
   def update
   end
 

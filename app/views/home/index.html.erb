@@ -1,19 +1,20 @@
 <% if user_signed_in? %>
 <div class="col-md-3">
-<div class="list-group">
-  <a href="#" class="list-group-item disabled">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
+<div class="list-group" id="panel-show-active-members">
+<% Visitor.all.each do |visitor| %>
+<% if visitor.online? %>
+ 
+<%= link_to visitor.id , new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :id => visitor.id , :remote => "true" %>
+ 
+     
+
+<% end %>
+<% end %>
 </div>
+
 </div>
-<div class="col-md-9">
-	<ul class="messages" id="messages">
-	<%= render @messages %>
-	<input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
+<div id="display_chats" class="col-md-9">
+	
 </div>
 </div>
 <% else %>

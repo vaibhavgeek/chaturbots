@@ -1,0 +1,38 @@
+
+string = window.location.href 
+substring = "index"
+if string.indexOf(substring) != -1
+  auth_token = string.split("/").pop()
+else 
+  auth_token = "admin" # this is main admin
+
+if auth_token == "admin"
+  App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
+    connected:  ->
+      # Called when the subscription is ready for use on the server
+
+    disconnected: ->
+      # Called when the subscription has been terminated by the server
+
+    received: (data) ->
+      console.log data
+      console.log data['message']
+
+      $('.messages').append data['message']
+      # Called when there's incoming data on the websocket for this channel
+
+    speak: (data, responder) ->
+      @perform 'speak' , message: data , responder: responder 
+
+else 
+  alert "no connection man!"
+
+$(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
+  if event.keyCode is 13
+    if auth_token == "admin" 
+      App.chatbot.speak event.target.value , responder: "agent"    
+    else 
+      App.chatbot.speak event.target.value , responder: "user"  
+    event.target.value = ''
+    event.preventDefault()
+

@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
 #routes for the vedic-maths chatbot
   resources :users , only: [:show , :edit] do 
-      member do   
-            get 'bot/index' , to: 'bots/vedicmaths#index'
+      member do
+            get 'bot/redirect' , to: 'bots/vedicmaths#redirect'   
+            get 'bot/index/:auth_token' , to: 'bots/vedicmaths#index' , as: 'chatbotmain'
             post 'bot/login' , to: 'bots/vedicmaths#login'
             post 'bot/payment_h' ,  to: 'bots/vedicmaths#payment_h'
             post 'bot/fx_list' ,  to: 'bots/vedicmaths#fx_list'
