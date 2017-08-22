@@ -6,8 +6,40 @@ App.appearchannel = App.cable.subscriptions.create "AppearchannelChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    if data["online"].toString() == "true"
-      $("#panel-show-active-members").append data["visitor"]
-    else 
+    console.log "data is there"
+    if $("div[id*="+data["user_id"]+"]").length == 0
+      if data["online"].toString() == "true"
+        $("#panel-show-active-members").append data["visitor"]
+        $('#panel-show-active-members a').click (e) ->
+          console.log "click function"
+          au = $(this).siblings('.hidden').text().trim()
+          console.log App.chatbot
+          if !App.chatbot
+              console.log "connected to " + au
+              createconusmer au
+          else
+            json = JSON.parse App.chatbot.identifier
+            if json.auth_token != au 
+              console.log "connected to " + au
+              createconusmer au
+    else if data["online"].toString() == "false"
       $("#"+data["user_id"]).remove()
+      $("#display_chats").html "hi"
     # Called when there's incoming data on the websocket for this channel
+
+createconusmer = (send_params) ->
+  App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params },
+      connected:  ->
+      # Called when the subscription is ready for use on the server
+
+      disconnected: ->
+      # Called when the subscription has been terminated by the server
+
+      received: (data) ->
+        console.log "from appearchannel"
+        console.log data['message']
+        $('.messages').append data['message']
+      # Called when there's incoming data on the websocket for this channel
+
+      speak: (data, responder) ->
+        @perform 'speak' , message: data , responder: responder  

@@ -1,2 +1,33 @@
-<h1>Chats#index</h1>
+<h1> <center> Chat Archives </center></h1>
 <p>Find me in app/views/chats/index.html.erb</p>
+
+
+
+<% if user_signed_in? %>
+<div class="col-md-3">
+<div class="list-group" id="panel-show-active-members">
+<% Visitor.all.each do |visitor| %>
+	
+		<div id="<%= visitor.id %>">
+			<%= link_to user_chat_path(:user_id => 1 , :id => visitor.id) , :class => "list-group-item" , :remote => "true" do %>
+
+			<%= visitor.id %>
+
+			<% end %>
+
+<span class="hidden"><%= visitor.auth_token %></span>
+</div>
+
+<% end %>
+</div>
+
+</div>
+<div id="display_chats" class="col-md-9">
+	
+</div>
+</div>
+
+<% end %>
+
+
+

@@ -6,26 +6,23 @@ if string.indexOf(substring) != -1
 else 
   auth_token = "admin" # this is main admin
 
-if auth_token == "admin"
+if auth_token != "admin"
   App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
-    connected:  ->
+      connected:  ->
       # Called when the subscription is ready for use on the server
 
-    disconnected: ->
+      disconnected: ->
       # Called when the subscription has been terminated by the server
 
-    received: (data) ->
-      console.log data
-      console.log data['message']
-
-      $('.messages').append data['message']
+      received: (data) ->
+        console.log "from chatbotchannel"
+        console.log data['message']
+        $('.messages').append data['message']
       # Called when there's incoming data on the websocket for this channel
 
-    speak: (data, responder) ->
-      @perform 'speak' , message: data , responder: responder 
-
-else 
-  alert "no connection man!"
+      speak: (data, responder) ->
+        @perform 'speak' , message: data , responder: responder
+  
 
 $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
   if event.keyCode is 13
@@ -35,4 +32,18 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
       App.chatbot.speak event.target.value , responder: "user"  
     event.target.value = ''
     event.preventDefault()
+
+$ ->
+  $(document).on 'click', 'a.bot', (event) ->
+    $anchor = $(this)
+    if auth_token != "admin"
+      message = $anchor.text().trim()
+      App.chatbot.speak message, responder: "user"
+    event.preventDefault()
+    return
+  return
+
+    
+    
+
 

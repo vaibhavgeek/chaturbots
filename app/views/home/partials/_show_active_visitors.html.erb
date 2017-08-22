@@ -1,4 +1,10 @@
- 
-<%= link_to visitor.id , new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :id => visitor.id , :remote => "true" %>
- 
-     
+
+<div id="<%= visitor.id %>">
+<%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true" do %>
+
+<%= visitor.id %>
+
+<% end %>
+
+<span class="hidden"><%= visitor.auth_token %></span>
+</div>

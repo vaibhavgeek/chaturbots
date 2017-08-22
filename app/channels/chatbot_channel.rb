@@ -1,19 +1,13 @@
 class ChatbotChannel < ApplicationCable::Channel
   def subscribed
-    if params[:auth_token] == "admin"
-     params[:auth_token] = Message.last.visitor.auth_token
-     puts params[:auth_token]
-     puts "\n\n\n"
-    end
     stream_from "chatbot#{params[:auth_token]}"
     puts params.inspect
-    if params["auth_token"] != "admin"
-      visitor = Visitor.where(:auth_token => params["auth_token"]).first
-      redis.set("visitor_#{visitor.id}_online", "1")
-      ActionCable.server.broadcast "appearchannel", visitor: render_visitor(visitor),
+    visitor = Visitor.where(:auth_token => params["auth_token"]).first
+    redis.set("visitor_#{visitor.id}_online", "1")
+    ActionCable.server.broadcast "appearchannel", visitor: render_visitor(visitor),
                                  user_id: visitor.id,
                                  online: true
-    end
+    
   end
 
   def unsubscribed
@@ -31,13 +25,12 @@ class ChatbotChannel < ApplicationCable::Channel
   def speak(data) 
     puts data 
     puts "\n\n\n\n"
-  	Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: 210 , user_id: 1
+    puts "from \n speak \n from \n speak \n from \n speak"
+    puts params[:auth_token] 
+    auth = params[:auth_token]
+    visitor = Visitor.where(:auth_token => auth).first
+  	Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1
   	#ActionCable.server.broadcast "chatbot" , message: data["message"]
-  end
-  
-  def appear(data)
-    puts data
-    #ActionCable.server.broadcast "appearchannel" , message: data["user"] , bool: data["bool"]
   end
   private
    def render_visitor(visitor)

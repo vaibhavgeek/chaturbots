@@ -29,10 +29,11 @@ class Bots::VedicmathsController < ApplicationController
 		#loc = Net::HTTP.get(URI.parse('https://ipapi.co/208.67.222.222/json/'))
 		#puts JSON.parse(loc)
 		puts cookies[:auth_token] + "\n\n\n"
-
-		return_random_string 
+		puts request.params 
 	    @message = Message.new
-		@messages = Message.all
+		auth =  params[:auth_token]
+    	visitor = Visitor.where(:auth_token => auth).first
+  		@messages = Message.where(:visitor_id => visitor.id).all
 		#MessageBroadcastJob.perform_later @messages.last
 		respond_to do |format|
   			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
@@ -47,7 +48,7 @@ class Bots::VedicmathsController < ApplicationController
 	
 	def create 
 		@message = Message.new(message_params)
-	     client = ApiAiRuby::Client.new(
+	    client = ApiAiRuby::Client.new(
            :client_access_token => '31f5d2bb49ce4577bb5303f72be6ff75'
            )
         response = client.text_request @message.content.to_s
