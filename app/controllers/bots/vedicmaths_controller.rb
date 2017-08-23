@@ -18,8 +18,7 @@ class Bots::VedicmathsController < ApplicationController
 		}
   		end
   		auth_tok = cookies[:auth_token]
-  		chat = Chat.where(session_var: auth_tok).first_or_create(user_id: 1)
-  		Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip , chat_id: chat.id)
+  		Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip)
 		redirect_to chatbotmain_user_path( params[:id] , :auth_token => auth_tok) 
 		
 		
@@ -59,20 +58,13 @@ class Bots::VedicmathsController < ApplicationController
 	private 
 	
 	def get_set_sessions
-		if cookies.signed["chat"] == nil
-			cookies.signed["chat"] = return_random_string
-		end
+		
 
 		if cookies.signed["visitor"] == nil 
 			cookies.signed["visitor"] = return_random_string
 		end
 
-		verified_chat = find_verified_chat(cookies.signed["chat"])
 		verified_visitor = find_verified_vistor(cookies.signed["visitor"] , verified_chat.id)
-		puts verified_visitor 
-		puts verified_chat
-		puts cookies.signed['chat']
-        puts "\n this is from controller file"
         puts cookies.signed['visitor']
         puts "\n this is from controller file"
 	end
@@ -81,12 +73,7 @@ class Bots::VedicmathsController < ApplicationController
 		params.require(:message).permit(:content, :user_id , :responder)
 	end
 
-	 def find_verified_chat(session_chat)
-         if verified_chat = Chat.where(session_var: session_chat).first_or_create
-           verified_chat
-       	end
-     end
-
+	
      def find_verified_vistor(session_visitor , session_chat_id)
      	
        	if verified_visitor = Visitor.where(auth_token: session_visitor).first_or_create(ipaddr: request.remote_ip , chat_id: session_chat_id)
