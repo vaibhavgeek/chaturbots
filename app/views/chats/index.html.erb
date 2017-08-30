@@ -1,10 +1,10 @@
 <h1> <center> Chat Archives </center></h1>
-<p>Find me in app/views/chats/index.html.erb</p>
 
 
 
 <% if user_signed_in? %>
-<div class="col-md-3">
+<div class="row">
+<div class="col-3">
 <div class="list-group" id="panel-show-active-members">
 <% Visitor.all.each do |visitor| %>
 	
@@ -22,7 +22,7 @@
 </div>
 
 </div>
-<div id="display_chats" class="col-md-9">
+<div id="display_chats" class="col-9">
 	
 </div>
 </div>

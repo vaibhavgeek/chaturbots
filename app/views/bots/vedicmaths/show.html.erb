@@ -1,7 +1,26 @@
-<!--
-We will create a family tree using just CSS(3)
-The markup will be simple nested lists
--->
+<div class="row">
+<div class="col-3">
+<div class="list-group">
+
+			<%= link_to "Bot Flow", bot_show_user_path(1) , :class => "list-group-item"  %>
+
+			<%= link_to "Template Intent Mapping", bot_intent_user_path(:user_id => 1) , :class => "list-group-item"  %>
+
+			<%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "list-group-item"  %>
+
+
+
+</div> <br/>
+<div class="list-group">
+			<%= link_to "Preview Chatbot", bot_preview_user_path(:user_id => 1) , :class => "list-group-item"  %>
+
+			<%= link_to "Contact Support", home_contact_us_path(:user_id => 1) , :class => "list-group-item"  %>
+
+</div>
+</div>
+
+<div class="col-9">
+
 <div class="tree">
 	<ul>
 		<li>
@@ -40,3 +59,6 @@ The markup will be simple nested lists
 		</li>
 	</ul>
 </div>
+</div>
+</div>
+

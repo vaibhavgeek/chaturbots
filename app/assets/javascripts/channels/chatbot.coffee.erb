@@ -15,21 +15,23 @@ if auth_token != "admin"
       # Called when the subscription has been terminated by the server
 
       received: (data) ->
-        console.log "from chatbotchannel"
-        console.log data['message']
         $('.messages').append data['message']
       # Called when there's incoming data on the websocket for this channel
 
-      speak: (data, responder) ->
-        @perform 'speak' , message: data , responder: responder
+      speak: (data, responder, payload) ->
+        @perform 'speak' , message: data , responder: responder , payload: payload
   
 
 $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
   if event.keyCode is 13
     if auth_token == "admin" 
-      App.chatbot.speak event.target.value , responder: "agent"    
+      if event.target.value.startsWith("template")
+        payload = event.target.value
+      else
+        payload = "nil"
+      App.chatbot.speak event.target.value , responder: "agent" , payload: payload
     else 
-      App.chatbot.speak event.target.value , responder: "user"  
+      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" 
     event.target.value = ''
     event.preventDefault()
 

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
             post 'bot/benefeciary' ,  to: 'bots/vedicmaths#benefeciary'
             post 'bot/destroy' ,  to: 'bots/vedicmaths#destroy'
             get  'bot/show' ,  to: 'bots/vedicmaths#show'
+            get 'bot/intent' , to: 'bots/vedicmaths#intent'
+            get 'bot/reports' , to: 'bots/vedicmaths#reports'
             get 'bot/preview' , to: 'bots/vedicmaths#preview'
             post 'bot/create' , to: 'bots/vedicmaths#create'
       end

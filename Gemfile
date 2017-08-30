@@ -8,7 +8,6 @@ gem 'font-awesome-rails'
 gem 'jquery-easing-rails'
 gem 'htmlentities'
 gem 'api-ai-ruby'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'jquery-rails'
 gem 'redis'
@@ -50,6 +49,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails_db'
+
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

@@ -1,7 +1,6 @@
 class ChatbotChannel < ApplicationCable::Channel
   def subscribed
     stream_from "chatbot#{params[:auth_token]}"
-    puts params.inspect
     visitor = Visitor.where(:auth_token => params["auth_token"]).first
     redis.set("visitor_#{visitor.id}_online", "1")
     ActionCable.server.broadcast "appearchannel", visitor: render_visitor(visitor),
@@ -23,13 +22,9 @@ class ChatbotChannel < ApplicationCable::Channel
   end
 
   def speak(data) 
-    puts data 
-    puts "\n\n\n\n"
-    puts "from \n speak \n from \n speak \n from \n speak"
-    puts params[:auth_token] 
     auth = params[:auth_token]
     visitor = Visitor.where(:auth_token => auth).first
-  	Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1
+  	Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"]
   	#ActionCable.server.broadcast "chatbot" , message: data["message"]
   end
   private

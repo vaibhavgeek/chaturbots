@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-<div class="col-md-3">
+<div class="row">
+<div class="col-3">
 <div class="list-group" id="panel-show-active-members">
 <% Visitor.all.each do |visitor| %>
 	<% if visitor.online? %>
@@ -19,7 +20,7 @@
 </div>
 
 </div>
-<div id="display_chats" class="col-md-9">
+<div id="display_chats" class="col-9">
 	
 </div>
 </div>
