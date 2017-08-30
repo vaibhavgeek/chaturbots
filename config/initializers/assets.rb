@@ -6,10 +6,10 @@ Rails.application.config.assets.version = '1.0'
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 # Add Yarn node_modules folder to the asset load path.
-Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts') 
-Rails.application.config.assets.precompile += %w( .js .es6 )
-Rails.application.config.assets.precompile += %w( bots/vedicmaths.js )
-Rails.application.config.assets.precompile += %w( bots/vedicmaths.css.scss )
+#Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts') 
+#Rails.application.config.assets.precompile += %w( .js .es6 )
+#Rails.application.config.assets.precompile += %w( bots/vedicmaths.js )
+#Rails.application.config.assets.precompile += %w( bots/vedicmaths.css.scss )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
