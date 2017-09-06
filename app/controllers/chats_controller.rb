@@ -6,6 +6,7 @@ class ChatsController < ApplicationController
 
   def show
     @messages = Message.where(:visitor_id => params[:id]).all
+
   end
   def new 
     auth =  params[:auth_token]

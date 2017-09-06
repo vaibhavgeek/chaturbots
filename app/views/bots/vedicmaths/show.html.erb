@@ -4,7 +4,6 @@
 
 			<%= link_to "Bot Flow", bot_show_user_path(1) , :class => "list-group-item"  %>
 
-			<%= link_to "Template Intent Mapping", bot_intent_user_path(:user_id => 1) , :class => "list-group-item"  %>
 
 			<%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "list-group-item"  %>
 
@@ -19,44 +18,58 @@
 </div>
 </div>
 
-<div class="col-9">
+<div class="col-9 tree_scroller">
 
 <div class="tree">
 	<ul>
-		<li>
-			<a href="#">My Name is Shree and I love helping visitors with their queries on Vedic Maths!</a>
-			<ul>
-				<li>
-					<a href="#">Child</a>
-					<ul>
-						<li>
-							<a href="#">Grand Child</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Child</a>
-					<ul>
-						<li><a href="#">Grand Child</a></li>
-						<li>
-							<a href="#">Grand Child</a>
-							<ul>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-								<li>
-									<a href="#">Great Grand Child</a>
-								</li>
-							</ul>
-						</li>
-						<li><a href="#">Grand Child</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
+	<% @templates1.each do |t| %>
+	    <li>
+	    	<a href="#"> <%= t.intent %> </a>
+	    		<ul>
+	    				<% @group_results.each do |cat, templates| %>
+
+					  	<% templates.each do |t2| %>
+
+	    				<% if t.id == t2.parent_id %>
+	    					<li> <a href="#"> <%= t2.intent %> </a>
+	    					<ul>
+	    					 		  <% @group_results.each do |cat, templates| %>
+
+					  					<% templates.each do |t3| %>
+	    					 		  	<% if t2.id == t3.parent_id %>
+
+	    					 		  		<li> <a href="#"> <%= t3.intent %> </a> 
+	    					 		  		<ul>
+	    					 		  			 <% @group_results.each do |cat, templ| %>
+
+					  								<% templ.each do |t4| %>			
+					  								<% if t3.id == t4.parent_id %>
+
+	    					 		  				<li> <a href="#"> <%= t4.intent %> </a>  </li>
+
+	    					 		  				<% end %>
+	    					 		  		<% end %>
+	    					 		  <% end %>
+	    					 		  </ul>
+
+
+	    					 		  		</li>
+	    					 		  	<% end %>
+	    					 		  		<% end %>
+	    					 		  <% end %>
+	    					 		  </ul>
+
+	    					 </li>
+	    				<% end %>	   	 
+	   					<% end %>	   				
+	   					<% end %>
+
+	   				 </ul> 
+
+
+	    </li>	
+	  <% end %>
+
 	</ul>
 </div>
 </div>

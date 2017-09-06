@@ -12,7 +12,7 @@ class MessageBroadcastJob < ApplicationJob
     	response = client.text_request message.content.to_s
        if response[:result][:fulfillment][:speech] != ""
          speech_res = response[:result][:fulfillment][:messages][0][:speech]
-    	   Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id:1
+    	   Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id:1 , payload: "nil"
        end
     end 
   end

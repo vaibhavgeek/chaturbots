@@ -201,6 +201,16 @@ p.top
 
   
 * {margin: 0; padding: 0;}
+.tree {
+  width:300%;
+}
+
+.tree_scroller
+{
+    overflow-x:scroll;
+    background-color:white;
+
+}
 
 .tree ul {
   padding-top: 20px; position: relative;

@@ -26,7 +26,7 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
   if event.keyCode is 13
     if auth_token == "admin" 
       if event.target.value.startsWith("template")
-        payload = event.target.value
+        payload = event.target.value.substring(9)
       else
         payload = "nil"
       App.chatbot.speak event.target.value , responder: "agent" , payload: payload
@@ -40,7 +40,8 @@ $ ->
     $anchor = $(this)
     if auth_token != "admin"
       message = $anchor.text().trim()
-      App.chatbot.speak message, responder: "user"
+      payload = $anchor.attr('data-payload')
+      App.chatbot.speak message, responder: "user" , payload: payload
     event.preventDefault()
     return
   return
