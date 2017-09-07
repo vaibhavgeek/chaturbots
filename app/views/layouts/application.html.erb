@@ -13,70 +13,82 @@
 
   <body>
 
-     <div style="background-color: black;" class="jumbotron jumbotron-fluid" id="particles-js">
-
-</div>
-
-<div class="header">
-<div class="pull-left">
-<span class="icon">
-ChaturBots
-<span class="glyphicon glyphicon-comment"></span>
-
-</span>
-
-</div>
-<div class="pull-right">
-<% if user_signed_in? %>
-<ul class="nav nav-pills">
+   <% if user_signed_in? %>
+   <div class="navbar-fixed">
+    <nav role="navigation" class="z-depth-0">
+      <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo">ChaturBots</a>
+      
 
 
-<li role="presentation"> <%= link_to "Active Chats" , root_path %>
-</li>
+        <ul class="right hide-on-med-and-down">
+<li><%= link_to "Active Chats" , root_path %></li>
+<li> <%= link_to "Bot" , bot_show_user_path(current_user) %></li>
+<li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
+<li><%=link_to "Settings" , settings_account_path %></li>
+<li><%= link_to "Helpline" , home_contact_us_path %></li>
+<li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        </ul>
 
-<li role="presentation"> <%= link_to "Bot" , bot_show_user_path(current_user) %>
-</li>
-<li role="presentation">  <%= link_to "Chat-Archives" , user_chats_path(current_user) %>
-</li>
-<li role="presentation"><%=link_to "Settings" , settings_account_path %></li>
-<li role="presentation"><%= link_to "Helpline" , home_contact_us_path %></li>
+        <ul id="nav-mobile" class="side-nav">
+          <li><%= link_to "Active Chats" , root_path %></li>
+<li> <%= link_to "Bot" , bot_show_user_path(current_user) %></li>
+<li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
+<li><%=link_to "Settings" , settings_account_path %></li>
+<li><%= link_to "Helpline" , home_contact_us_path %></li>
+<li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </div>
 
-<li role="presentation">  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   </li>
-</ul>
-<% else %>
-<ul class="nav nav-pills">
-  <li role="presentation" class="active"><%= link_to "Home" , root_path %></li>
+
+       <% else %>
+<div class="navbar-fixed">
+    <nav role="navigation" class="z-depth-0">
+      <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo">ChaturBots</a>
+      
+
+
+        <ul class="right hide-on-med-and-down">
+          <li  class="active"><%= link_to "Home" , root_path %></li>
   <% if request.params["action"] == "index" %>
-  <li role="presentation"><a class="page-scroll" href="#features">Features</a></li>
-  <li role="presentation"><a class="page-scroll" href="#how-it-works">How it works?</a></li>
+  <li ><a class="page-scroll" href="#features">Features</a></li>
+  <li ><a class="page-scroll" href="#how-it-works">How it works?</a></li>
   <% else %>
- <li role="presentation"> <%= link_to "Features" , root_path(:anchor => "how-it-works") , :class => "diff-page-scroll" %>
+ <li > <%= link_to "Features" , root_path(:anchor => "how-it-works") , :class => "diff-page-scroll" %>
   <% end %>
 
-  <li role="presentation"><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
-  <li role="presentation"> 
+  <li ><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
+  <li > 
   <%= link_to "Login" , new_user_session_path %></li>
-</ul>
-<% end %>
-<br/>
-</div>
-</div>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </div>
+
+       <% end %>
+ 
 
 
-  <% if user_signed_in? %> 
-  <div class="container">
-  <div class="row justify-content-center">
-<div class="col">
+
+
+
+  
 
 <%= yield %>
-</div>
-</div>
-</div>
 
-<% else %>
-<%= yield %>
-
-  <% end %>
  
   </body>
 </html>

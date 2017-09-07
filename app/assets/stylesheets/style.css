@@ -1,0 +1,156 @@
+ nav ul a,
+ nav .brand-logo,
+ .button-collapse {
+   color: white;
+ }
+
+ nav {
+   background-color: #00356B;
+   position: absolute;
+   top: 0;
+   z-index: 99;
+ }
+
+ nav>.nav-wrapper {
+   margin: 0 auto;
+   max-width: 90%;
+ }
+
+ nav>.nav-wrapper li {
+   text-transform: uppercase;
+ }
+
+ p {
+   line-height: 2rem;
+ }
+
+ .sub-head {
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 1.75rem;
+   font-weight: bold;
+ }
+
+ .parallax-container {
+   min-height: 380px;
+   line-height: 0;
+   height: auto;
+   color: rgba(255, 255, 255, .9);
+ }
+
+ .parallax-container .section {
+   width: 100%;
+ }
+
+ @media only screen and (max-width: 992px) {
+   .parallax-container .section {
+     position: absolute;
+     top: 40%;
+   }
+   #index-banner .section {
+     top: 10%;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+   #index-banner .section {
+     top: 0;
+   }
+ }
+
+ .icon-block {
+   padding: 0 15px;
+ }
+
+ .icon-block .material-icons {
+   font-size: inherit;
+ }
+
+ footer.page-footer {
+   margin: 0;
+   background-color: #003561;
+ }
+
+ canvas {
+   display: block;
+ }
+
+ .carousel {
+   max-height: 600px;
+ }
+
+ .carousel .carousel-item.blue {
+  background-color: #00356B !important;
+ }
+
+ .padding-vertical-3 {
+   padding-bottom: 3em;
+   padding-top: 3em;
+ }
+
+ .padding-vertical-1 {
+   padding-bottom: 1em;
+   padding-top: 1em;
+ }
+
+ .padding-3 {
+   padding: 3em;
+ }
+
+ #particles-js {
+   width: 100%;
+   height: 560px;
+   background: #00356B;
+ }
+
+ .particles-container {
+   display: block;
+   height: 100%;
+   width: 100%;
+   z-index: 0;
+ }
+
+ .particles-container .container {
+   position: absolute;
+   top: 50%;
+   right: 50%;
+   transform: translate(50%, -50%);
+   color: white;
+ }
+
+ #particles-js {
+   width: 100%;
+   height: 560px;
+   background: #00356B;
+ }
+
+ .particles-container {
+   display: block;
+   height: 100%;
+   width: 100%;
+   z-index: 0;
+ }
+
+ .particles-container .container {
+   position: absolute;
+   top: 50%;
+   right: 50%;
+   transform: translate(50%, -50%);
+   color: white;
+ }
+
+ .diagonal-effect {
+   display: none;
+   width: 120%;
+   height: 100px;
+   background-color: #f2f2f2;
+   position: absolute;
+   -webkit-transform: rotate(6deg);
+   transform: rotate(6deg);
+   bottom: -16px;
+   left: -44px;
+ }
+
+ .carousel-img {
+   max-width: 280px;
+ }
