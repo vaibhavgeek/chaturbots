@@ -17,10 +17,10 @@
   </div>
 
 
-  <div class="container padding-vertical-3">
+  <div  class="container padding-vertical-3 " >
     <div class="section padding-vertical-3">
       <div class="row">
-        <h3 class="sub-head">What we do</h3>
+        <h3 id="features" class="sub-head scrollspy">What we do</h3>
       </div>
       <div class="row">
         <div class="col s12 m4">
@@ -53,8 +53,10 @@
     </div>
   </div>
 
-  <div>
+  <div id="how-it-works" class="scrollspy">
+
     <div class="carousel carousel-slider center" data-indicators="true">
+
       <div class="carousel-fixed-item center">
         <a class="btn waves-effect red">Try It Out</a>
       </div>
@@ -139,6 +141,8 @@ particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function(
   console.log('callback - particles.js config loaded');
 });
 
-
+ $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
 
 </script>

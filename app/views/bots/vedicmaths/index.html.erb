@@ -1,9 +1,15 @@
+<style type="text/css">
+	body {background-image: url('https://openclipart.org/image/2400px/svg_to_png/263304/Checkered.png');
 
+}
+
+</style>
 
 <ul class="messages" >
 <%= render :partial => 'bots/vedicmaths/initial_message' %>
 
 <%= render :partial => 'messages/message' , collection: @messages %>
 </ul>
-<input type="text" id="event" class="form-control message_send" name="chat_box" data-behavior="chatbot_call">
-
+<div class="input_message">
+<input type="text" id="event"  name="chat_box" data-behavior="chatbot_call">
+</div>

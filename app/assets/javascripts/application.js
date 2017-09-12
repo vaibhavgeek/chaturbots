@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require popper
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
+//= require jquery.easing
 //= require particles
 //= require check
-//= require jquery.easing
 //= require_tree .

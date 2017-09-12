@@ -134,181 +134,34 @@ right connector from last child*/
 }
 
 /*Thats all. I hope yo*/
-.message_send
-{
-  margin-bottom: 00px;
-}
-
-.messages{
-  .left{
-    .text_wrapper{
-      .b-list{
-        li{
-          .input-group{
-            width: 100%;
-            padding: 6px 0;
-          }
-          .b-search{
-            width: 89%;
-            border: none;
-            box-shadow: none;
-            font-size: 27px;
-            color: #52a8dd;
-          }
-          .glyphicon-search{
-            color: #52a8dd;
-            cursor: pointer;
-          }
-        }
-      }
-      ul{
-        li{
-          .show-pass{
-            cursor: pointer;
-            float: right;
-            padding-top: 16px;
-          }
-          }
-      }
-    }
-  }
-}
-
-
-
-.chat_window{
-  .intro-box{
-    .col-md-10{
-      .gray-text{
-        color: #929292;
-        font-size: 22px;
-      }
-    }
-  }
-}
-
-#iframe{
- .clear-pass-li{
-  .no-border{
-    border: none;
-    background-color: #fff;
-    }
- }
-}
-
-#iframe{
-  height: 100%;
-  margin-bottom: 40px;
-  .messages{
-    .message{
-      .text_wrapper{
-        width: 100%;
-      }
-    }
-  }
-}
-* {
-  box-sizing: border-box;
-}
-
-
-body {
-  background-color: #edeff2;
-  font-family: "avenir" !important;
-}
-
-.chat_window {
-  position: absolute;
-  width: 100%;
-  max-width: 749px;
-  border-radius: 10px;
-  background-color: #fff;
-  left: 50%;
-  top: 5%;
-  transform: translateX(-50%) translateY(-50%);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  background-color: #f8f8f8;
-}
-
-.top_menu {
-  background-color: #fff;
-  width: 100%;
-  padding: 20px 0 15px;
-  background-color: #f1f0f0;
-}
-.top_menu .buttons {
-  margin: 3px 0 0 20px;
-  position: absolute;
-}
-.top_menu .buttons .button {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 10px;
-  position: relative;
-}
-.top_menu .buttons .button.close {
-  background-color: transparent;
-}
-.top_menu .buttons .button.minimize {
-  background-color: #fdbf68;
-}
-.top_menu .buttons .button.maximize {
-  background-color: #a3d063;
-}
-.top_menu .title {
-  text-align: center;
-  color: black;
-  font-size: 26px;
-}
-.top_menu .title span{
-  color:gray;
-  font-size: 22px;
-  font-weight: 100;
-}
-.top_menu .title .Chevron{
-  width: 12px;
-  height: 20.2px;
-  transform: rotate(-180deg);
-  background-color: #939494;
-}
-.top_menu .recent,.End{
-  color:#52a8dd;
-  font-size: 32px;
-}
-.top_menu .recent{
-  float: left;
-  padding-left: 20px;
-  padding-top: 20px;
-}
-.top_menu .recent img{
-  width: 25px;
-    position: relative;
-    top: -3px;
-}
-.top_menu .End{
-  float: right;
-    padding-top: 26px;
-    padding-right: 18px;
-}
-
-.title > div{
-  display: inline-block;
-}
-
 .messages {
   top: 0px;
-  height: 100%;  
-  position: relative;
+  height: 92% !important;  
+  position: absolute;
   list-style: none;
-  padding: 10px 10px 0 10px;
+  padding: 5px 5px 0 5px;
   margin: 0;
   overflow-x:hidden;
   overflow-y: scroll;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
-  margin-bottom: 2px;
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 25px;
+  width:100%;
+}
+
+.timestamp {
+  color: #fff;
+  width:100%;
+  display: inline-block;
+  font-size:12px;
+}
+.input_message {
+  bottom: 5px;
+  position:fixed;
+  height: 40px;
+  background-color: #fff;
+  width:100%;
+  
 }
 .messages .message {
   clear: both;
@@ -316,22 +169,23 @@ body {
   transition: all 0.5s linear;
   padding-left: 5px;
 }
-.messages{
-  .left{
-    .avatar{
+
+.avatar{
       img{
-        width: 36px;
+        width: 40px;
       }
     }
-  }
-}
+  
 .messages .message.left .avatar {
   background-color: transparent;
   float: left;
 }
 .messages .message.left .text_wrapper {
-    background-color: #fff;
-    margin-left: 5px;
+background: #f1f0f0;
+    margin-left: 45px;
+         border-radius: 10px 40px;
+         padding:8px;
+
 }
 
 .messages .message.left .text_wrapper ul{
@@ -370,7 +224,7 @@ body {
     background-color: #3e7ce4;
     margin-right: 5px;
     float: right;
-    border-radius: 20px;
+    border-radius: 5px 30px;
     width: 60%;
     min-width: 180px;
     text-align: right;
@@ -412,45 +266,12 @@ body {
   border-radius: 50%;
   display: inline-block;
 }
-.intro-box .row .col-md-2 .avatar{
-  display: inline-block;
-  float: left;
-  margin: 55px 70px;
-}
-.intro-box{
-  background-color: #fff;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-}
-.intro-box .row .col-md-10{
-  padding-left: 154px;
-}
-.intro-box .row .col-md-10 h2{
-  font-size: 37px;
-  font-weight: 400;
-}
-.intro-box .row .col-md-10 h3{
-  font-size: 26px;
-  font-weight: 100;
-  margin-top: 9px;
-}
-.messages .message .text_wrapper {
-  display: inline-block;
-  border-radius: 6px;
-  width: 80%;
-  position: relative;
-   
-  .b-id{
-    padding-left: 90px;
-  }
-}
 .messages .message .text_wrapper .text-header{
-    width: 100%;
+    width: 225px !important;
     background: #f1f0f0;
     font-size: 15px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 6px 10px;
+         border-radius: 8px 25px;
+         padding:4px;
     text-align: left;
 }
 .messages .message .text_wrapper .no-ul{
@@ -496,211 +317,6 @@ body {
 }
 .messages .message .text_wrapper .text {
  
-}
-
-.bottom_wrapper {
-  position: relative;
-  width: 100%;
-  background-color: #fff;
-  padding: 20px 20px;
-  position: absolute;
-  bottom: 0;
-}
-.bottom_wrapper .message_input_wrapper {
-  display: inline-block;
-  height: 50px;
-  border-radius: 25px;
-  border: 1px solid #bcbdc0;
-  width: calc(100% - 160px);
-  position: relative;
-  padding: 0 20px;
-}
-.bottom_wrapper .message_input_wrapper .message_input {
-  border: none;
-  height: 100%;
-  box-sizing: border-box;
-  width: calc(100% - 40px);
-  position: absolute;
-  outline-width: 0;
-  color: gray;
-}
-.bottom_wrapper .send_message {
-  width: 140px;
-  height: 50px;
-  display: inline-block;
-  border-radius: 50px;
-  background-color: #a3d063;
-  border: 2px solid #a3d063;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s linear;
-  text-align: center;
-  float: right;
-}
-.bottom_wrapper .send_message:hover {
-  color: #a3d063;
-  background-color: #fff;
-}
-.bottom_wrapper .send_message .text {
-  font-size: 18px;
-  font-weight: 300;
-  display: inline-block;
-  line-height: 48px;
-}
-
-.message_template {
-  display: none;
-}
-
-.messages{
-  .left{
-    .text_wrapper{
-      .info-cat{
-        margin: 15px 0;
-        overflow: scroll;
-        .inner-container{
-          width: 900px;
-        }
-        .orange{
-          background-color: #f6cc8b; 
-        }
-        .blue{
-          background-color: #63b8eb;
-        }
-        .purple{
-          background-color: #888ed5;
-        }
-        .dept-li{
-          border: none;
-          border-radius: 20px;
-          max-width: 98px;
-          display: inline-block;
-          margin: 0 4px;
-          padding: 13px 8px;
-          .dept{
-           color: white;
-          padding: 14px 0px;
-          font-size: 12px;
-          text-align: center;
-          }
-          .explore{
-            background-color: #fff;
-            border-radius: 36px;
-            color: black;
-            font-size: 11px;
-            padding: 3px 0;
-            text-align: center;
-          }
-        }
-      }
-      .b-name{
-        padding: 5px 0;
-      }
-      .b-list{
-        li{
-          .input-group{
-            width: 100%;
-            padding: 6px 0;
-          }
-          .b-search{
-            width: 86%;
-            border: none;
-            box-shadow: none;
-            font-size: 18px;
-            color: #52a8dd;
-          }
-          .glyphicon-search{
-            color: #52a8dd;
-            cursor: pointer;
-            top: 7px;
-          }
-        }
-      }
-      ul{
-        li{
-          .date-time{
-            border-top: 1px solid #f1f0f0;
-            border-bottom: 1px solid #f1f0f0;
-            margin: 8px 18px;
-            color: #9b9b9b;
-            font-size: 14px;
-            .time,.date{
-              display: inline;
-            }
-            .time{
-              text-align: right;
-              padding-left: 34%;
-            }
-          }
-          .show-pass{
-            cursor: pointer;
-            float: right;
-            padding-top: 7px;
-            width: 23px;
-          }
-          }
-          #status-li{
-            .flag{
-              .val{
-                font-size: 22px;
-                color: black;
-                margin: 17px 0 29px -30px;
-                span{
-                  font-size: 12px;
-                }
-              }
-              .flag-row{
-                height: 129px;
-              }
-              padding-top: 20px;
-              img{
-                margin: 11px 19px;
-                margin-bottom: 23px;
-                display: block;
-              }
-              .down-arrow{
-                position: relative;
-                left: 51px;
-              }
-            }
-            text-align: center;
-            padding: 0;
-            div.status-div{
-              display: inline-block;
-              padding: 15px 0;
-              text-align: center;
-              width: 32%;
-              .val{
-                color: #595959;
-              }
-              .head{
-                color: #9b9b9b;
-                font-size: 14px;
-              }
-            }
-          }
-          #clear-pass-li{
-            text-align: center;
-            padding: 0;
-            div{
-              display: inline-block;
-              padding: 9px 0;
-              margin: 0 7px;
-              text-align: center;
-              width: 30%;
-              border-right: 1px solid #f1f0f0;
-              cursor: pointer;
-            }
-            div:last-child{
-              border: none;
-            }
-        }
-      }
-    }
-  }
-}
-#center-align{
-  text-align: center !important;
 }
 
 
@@ -798,6 +414,7 @@ body.zipiopen > #zipi-chatbox{
   right: 0px;
   bottom: 0px;
   overflow: hidden;
+  background:none !important;
 }
 #zipi-chatbox .chatframe .frameparent iframe{
   width: 100%;
