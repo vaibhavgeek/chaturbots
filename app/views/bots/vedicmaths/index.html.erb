@@ -6,6 +6,18 @@
 </style>
 
 <ul class="messages" >
+<% if @messages.first != nil %>
+<span class="timestamp">
+		 	<center><%= @messages.first.created_at.to_time.to_s(:short) %> </center>
+
+		 	</span>
+<% else %> 
+
+<span class="timestamp"> 
+<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
+</span>
+
+<% end %> 
 <%= render :partial => 'bots/vedicmaths/initial_message' %>
 
 <%= render :partial => 'messages/message' , collection: @messages %>
