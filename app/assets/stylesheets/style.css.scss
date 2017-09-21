@@ -9,6 +9,7 @@
    position: absolute;
    top: 0;
    z-index: 99;
+
  }
 
  nav>.nav-wrapper {
@@ -29,6 +30,7 @@
    text-transform: uppercase;
    font-size: 1.75rem;
    font-weight: bold;
+
  }
 
  .parallax-container {
@@ -154,3 +156,77 @@
  .carousel-img {
    max-width: 280px;
  }
+ 
+.top-margin-20 {
+   margin-top: 20px;
+}
+.top-padding-10 {
+   padding: 10px 10px 10px 10px;
+}
+.left-margin-20 {
+   margin-left: 20px;
+}
+img  {
+   margin:10px;
+   border:dashed;
+   opacity:0.75;
+}
+
+img.selected_chat {
+   margin:10px;
+   border:solid;
+   opacity:1.0;
+}
+ .sidepanel li {
+    font-family: Century Gothic, sans-serif;
+   font-size: 18px !important;
+   text-decoration:none;
+   
+   font-weight:300;
+   -moz-transition: all 0.3s ease-in 0s;
+      -webkit-transition: all 0.3s ease-in 0s;
+      transition: all 0.3s ease-in 0s;
+   
+   
+
+margin-bottom:5px !important;
+ height:25px;
+
+display: block;
+
+
+ color: #37496b;
+    background-color: #efeff1;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: #993333;
+
+
+ }
+ .sidepanel li a {
+    display: block;
+    font-family: Century Gothic, sans-serif;
+    color: #37496b;
+    padding-left: 11px;
+
+ }
+
+ .sidepanel li a:hover {
+  color: #efeff1;
+ background-color:#37496b;
+
+padding-left: 11px; 
+color: #fff;
+display: block;
+ }
+ .white {
+   background-color: #fff !important;
+   border-radius: 8px;
+   box-sizing: border-box;
+
+ }
+ body
+{
+    background-image: image-url("background2.jpg");
+     
+}

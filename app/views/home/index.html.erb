@@ -1,6 +1,9 @@
+    <div class="row">
+
 <% if user_signed_in? %>
-<div style="margin:50px;" class="col hide-on-small-only m3 l2">
-      <ul class="section table-of-contents">
+<div class="container top-margin-20">
+<div class="col s3 hide-on-small-only white ">
+      <ul class="sidepanel top-padding-10 ">
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#structure">Structure</a></li>
         <li><a href="#initialization">Intialization</a></li>
@@ -8,8 +11,7 @@
     </div>
 
 
-<div class="row">
-<div class="col-3">
+<div class="col s3">
 <div class="list-group" id="panel-show-active-members">
 <% Visitor.all.each do |visitor| %>
 	<% if visitor.online? %>
@@ -29,8 +31,26 @@
 </div>
 
 </div>
-<div id="display_chats" class="col-9">
-	
+<div id="display_chats" class="col s9 ">
+<div class="left-margin-20">
+<div class="row white ">
+<div class="col s2">
+              <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+
+</div>
+<div class="col s2">
+<img  src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img selected_chat">
+</div>
+<div class="col s2">
+<img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
+</div>
+<div class="col s2">
+<img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
+</div>
+
+</div
+</div>
+	<h1> Hello World </h1>
 </div>
 </div>
 <% else %>
@@ -38,5 +58,4 @@
 
 <% end %>
 
-
-
+</div>
