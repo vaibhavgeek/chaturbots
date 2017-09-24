@@ -25,13 +25,15 @@
   
 * {margin: 0; padding: 0;}
 .tree {
-  width:300%;
+  width:180%;
 }
 
 .tree_scroller
 {
     overflow-x:scroll;
     background-color:white;
+     border-radius: 8px;
+   box-sizing: border-box;
 
 }
 
