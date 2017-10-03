@@ -1,0 +1,13 @@
+<ul class="messages_admin" id="messages">
+	<%= render @messages %>
+	<% if @messages.count == 0 %>
+	
+
+        <div class="alert alert-warning">
+	 <center> There are no messages to display right now. </center>
+ </div>
+
+	<% end %>
+	<input type="text" class="form-control" id="event" name="chat_box" data-behavior="chatbot_call">
+
+	</ul>

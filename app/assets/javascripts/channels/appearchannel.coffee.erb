@@ -1,48 +1,73 @@
+nameclick = (value) ->
+  check_bool = 1
+  $('.hidden').each (i, obj) ->
+   if value == obj.innerText
+    check_bool = i
+  console.log check_bool
+  if check_bool == 0
+    createconusmer value
+  
+
+window["nameclick"] = nameclick
+
+string = window.location.href 
+substring = "/bot/"
+if string.indexOf(substring) != -1
+  auth_token = string.split("/").pop()
+else 
+  auth_token = "admin" # this is main admin
 
 App.appearchannel = App.cable.subscriptions.create "AppearchannelChannel",
-  connected: ->
+  connected: -> 
     # Called when the subscription is ready for use on the server
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    console.log "from appearchannel"
+    console.log data
     if $("div[id*="+data["user_id"]+"]").length == 0
       if data["online"].toString() == "true"
         $("#panel-show-active-members").append data["visitor"]
-        $('#panel-show-active-members a').click (e) ->
-          console.log "click function"
-          au = $(this).siblings('.hidden').text().trim()
-          console.log App.chatbot
-          if !App.chatbot
-              console.log "connected to " + au
-              createconusmer au
-          else
-            json = JSON.parse App.chatbot.identifier
-            if json.auth_token != au 
-              console.log "connected to " + au
-              createconusmer au
     else if data["online"].toString() == "false"
-      $("#"+data["user_id"]).remove()
-      $("#display_chats").html "hi"
+        console.log($("#"+data["user_id"]))
+        $("#"+data["user_id"]).remove()
+        # $("#display_chats").html "hi"
     # Called when there's incoming data on the websocket for this channel
 
-add_to_visitors = (id) -> 
+
 
 
 createconusmer = (send_params) ->
   App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params },
       connected:  ->
-      # Called when the subscription is ready for use on the server
+        # Called when the subscription is ready for use on the server
 
       disconnected: ->
-      # Called when the subscription has been terminated by the server
+        # Called when the subscription has been terminated by the server
 
       received: (data) ->
         console.log "from appearchannel"
         console.log data['message']
-        $('.messages').append data['message']
-      # Called when there's incoming data on the websocket for this channel
+        $('#messages').append data['message']
+        # Called when there's incoming data on the websocket for this channel
 
       speak: (data, responder, payload) ->
-        @perform 'speak' , message: data , responder: responder , payload: payload 
+          @perform 'speak' , message: data , responder: responder , payload: payload 
+
+
+ 
+# $("#panel-show-active-members a").click (e) ->
+#  console.log "click function"
+#  alert "hidden"
+#  au = $(this).siblings('.hidden').text().trim()
+#  console.log App.chatbot
+#  if !App.chatbot
+#    console.log "connected to " + au
+#    createconusmer au
+#  else
+#    json = JSON.parse App.chatbot.identifier
+#    if json.auth_token != au 
+#      console.log "connected to " + au
+#      createconusmer au 

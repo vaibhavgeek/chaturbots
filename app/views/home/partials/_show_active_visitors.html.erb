@@ -1,9 +1,8 @@
 
-<div id="<%= visitor.id %>">
-<%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true" do %>
+<div class="col s3" id="<%= visitor.id %>">
+  <%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
 
-<%= visitor.id %>
-
+    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CGujarat+India&center=Gujarat,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
 <% end %>
 
 <span class="hidden"><%= visitor.auth_token %></span>

@@ -2,55 +2,43 @@
 
 <% if user_signed_in? %>
 <div class="container top-margin-20">
-<div class="col s3 hide-on-small-only white ">
-      <ul class="sidepanel top-padding-10 ">
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#structure">Structure</a></li>
-        <li><a href="#initialization">Intialization</a></li>
-      </ul>
-    </div>
 
 
-<div class="col s3">
-<div class="list-group" id="panel-show-active-members">
+
+
+<div  class="col s12 ">
+<div class="left-margin-20">
+<div class="row white" id="panel-show-active-members">
+
 <% Visitor.all.each do |visitor| %>
-	<% if visitor.online? %>
+  <% if visitor.online? %>
 
-		<div id="<%= visitor.id %>">
-			<%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true" do %>
+  <div class="col s3">
 
-			<%= visitor.id %>
+    <div id="<%= visitor.id %>">
+      <%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
 
-			<% end %>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CGujarat+India&center=Gujarat,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
+
+      <% end %>
 
 <span class="hidden"><%= visitor.auth_token %></span>
 </div>
-
-	<% end %>
+</div>
+  <% end %>
 <% end %> 
-</div>
+
+
 
 </div>
-<div id="display_chats" class="col s9 ">
+</div>
+</div>
+
+<div class="col s12">
 <div class="left-margin-20">
-<div class="row white ">
-<div class="col s2">
-              <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img not_selected"> <!-- notice the "circle" class -->
-
+<div class="white" id="display_chats">
 </div>
-<div class="col s2">
-<img  src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img selected_chat">
 </div>
-<div class="col s2">
-<img src="http://materializecss.com/images/yuna.jpg " alt="" class="circle responsive-img not_selected">
-</div>
-<div class="col s2">
-<img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img not_selected">
-</div>
-
-</div
-</div>
-	<h1> Hello World </h1>
 </div>
 </div>
 <% else %>

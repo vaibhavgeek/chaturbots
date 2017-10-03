@@ -1,3 +1,15 @@
+$ ->
+  $(document).on 'click', 'a.bot', (event) ->
+    $anchor = $(this)
+    if auth_token != "admin"
+      message = $anchor.text().trim()
+      payload = $anchor.attr('data-payload')
+      App.chatbot.speak message, responder: "user" , payload: payload
+    event.preventDefault()
+    return
+  return
+
+
 
 string = window.location.href 
 substring = "index"
@@ -6,20 +18,23 @@ if string.indexOf(substring) != -1
 else 
   auth_token = "admin" # this is main admin
 
-if auth_token != "admin"
-  App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
-      connected:  ->
+App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
+    connected:  ->
       # Called when the subscription is ready for use on the server
 
-      disconnected: ->
+    disconnected: ->
       # Called when the subscription has been terminated by the server
 
-      received: (data) ->
-        $('.messages').append data['message']
+    received: (data) ->
+      messages = $('.messages')
+      console.log data
+      messages.append data['message']
+      messages.animate { scrollTop: messages.prop("scrollHeight") },1000
+      # messages.scrollTop(messages.prop("scrollHeight"))
       # Called when there's incoming data on the websocket for this channel
 
-      speak: (data, responder, payload) ->
-        @perform 'speak' , message: data , responder: responder , payload: payload
+    speak: (data, responder, payload) ->
+      @perform 'speak' , message: data , responder: responder , payload: payload
   
 
 $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
@@ -35,16 +50,6 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
     event.target.value = ''
     event.preventDefault()
 
-$ ->
-  $(document).on 'click', 'a.bot', (event) ->
-    $anchor = $(this)
-    if auth_token != "admin"
-      message = $anchor.text().trim()
-      payload = $anchor.attr('data-payload')
-      App.chatbot.speak message, responder: "user" , payload: payload
-    event.preventDefault()
-    return
-  return
 
     
     
