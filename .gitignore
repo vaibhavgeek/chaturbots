@@ -18,4 +18,5 @@
 
 .byebug_history
 /config/database.production.yml
+/config/database.yml
 /config/secrets.production.yml
