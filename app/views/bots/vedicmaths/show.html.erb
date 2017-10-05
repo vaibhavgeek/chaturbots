@@ -1,85 +1,97 @@
+<!-- /bot/show -->
+
 <div class="row">
-<div class="top-margin-20">
-<div class="col s2 offset-s1 hide-on-small-only white ">
-      <ul class="sidepanel top-padding-10 ">
+	<div class="top-margin-20">
+		<div class="col s2 offset-s1 hide-on-small-only white ">
+			<ul class="sidepanel top-padding-10 ">
+				<li>
+					<%= link_to "Bot Flow", bot_show_user_path(1) , :class => "list-group-item"  %>
+				</li>
+				<li>
+					<%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "list-group-item"  %>
+				</li>
+			</ul>
+			<hr/>
+			<div class="hide-on-small-only white ">
+				<ul class="sidepanel top-padding-10 ">
+					<li>
+						<%= link_to "Preview Chatbot", bot_preview_user_path(:user_id => 1) , :class => "list-group-item"  %>
+					</li>
+					<li>
+						<%= link_to "Contact Support", home_contact_us_path(:user_id => 1) , :class => "list-group-item"  %>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col s9 ">
+		<div class="left-margin-20 tree_scroller">
+			<div class="tree">
+				<ul>
+					<% @templates1.each do |t| %>
+						<li>
+							<a class="node" href="#">
+								<%= t.intent %>
+							</a>
+							<ul>
+								<% @group_results.each do |cat, templates| %>
 
-			<li><%= link_to "Bot Flow", bot_show_user_path(1) , :class => "list-group-item"  %></li>
+									<% templates.each do |t2| %>
+
+										<% if t.id == t2.parent_id %>
+											<li>
+												<a class="node" href="#">
+													<%= t2.intent %>
+												</a>
+												<ul>
+													<% @group_results.each do |cat, templates| %>
+
+														<% templates.each do |t3| %>
+															<% if t2.id == t3.parent_id %>
+
+																<li>
+																	<a class="node" href="#">
+																		<%= t3.intent %>
+																	</a>
+																	<ul>
+																		<% @group_results.each do |cat, templ| %>
+
+																			<% templ.each do |t4| %>
+																				<% if t3.id == t4.parent_id %>
+
+																					<li>
+																						<a class="node" href="#">
+																							<%= t4.intent %>
+																						</a>
+																					</li>
+
+																					<% end %>
+																						<% end %>
+																							<% end %>
+																	</ul>
 
 
-			<li><%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "list-group-item"  %></li>
+																</li>
+																<% end %>
+																	<% end %>
+																		<% end %>
+												</ul>
+
+											</li>
+											<% end %>
+												<% end %>
+													<% end %>
+
+							</ul>
 
 
+						</li>
+						<% end %>
 
-</ul>
-<hr/>
-<div class="hide-on-small-only white ">
-      <ul class="sidepanel top-padding-10 ">
-
-			<li><%= link_to "Preview Chatbot", bot_preview_user_path(:user_id => 1) , :class => "list-group-item"  %></li>
-
-			<li><%= link_to "Contact Support", home_contact_us_path(:user_id => 1) , :class => "list-group-item"  %></li>
-</ul>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
-
-
-</div>
-<div class="col s9 ">
-<div class="left-margin-20 tree_scroller">
-<div class="tree">
-	<ul>
-	<% @templates1.each do |t| %>
-	    <li>
-	    	<a class="node" href="#"> <%= t.intent %> </a>
-	    		<ul>
-	    				<% @group_results.each do |cat, templates| %>
-
-					  	<% templates.each do |t2| %>
-
-	    				<% if t.id == t2.parent_id %>
-	    					<li> <a class="node" href="#"> <%= t2.intent %> </a>
-	    					<ul>
-	    					 		  <% @group_results.each do |cat, templates| %>
-
-					  					<% templates.each do |t3| %>
-	    					 		  	<% if t2.id == t3.parent_id %>
-
-	    					 		  		<li> <a class="node" href="#"> <%= t3.intent %> </a> 
-	    					 		  		<ul>
-	    					 		  			 <% @group_results.each do |cat, templ| %>
-
-					  								<% templ.each do |t4| %>			
-					  								<% if t3.id == t4.parent_id %>
-
-	    					 		  				<li> <a class="node" href="#"> <%= t4.intent %> </a>  </li>
-
-	    					 		  				<% end %>
-	    					 		  		<% end %>
-	    					 		  <% end %>
-	    					 		  </ul>
-
-
-	    					 		  		</li>
-	    					 		  	<% end %>
-	    					 		  		<% end %>
-	    					 		  <% end %>
-	    					 		  </ul>
-
-	    					 </li>
-	    				<% end %>	   	 
-	   					<% end %>	   				
-	   					<% end %>
-
-	   				 </ul> 
-
-
-	    </li>	
-	  <% end %>
-
-	</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-

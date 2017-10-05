@@ -1,59 +1,49 @@
-	
-		
-		
-		
-		 	
+<!-- Individual messages -->		 	
 
 <% if message.payload != "nil" %>
-
-		<% if @temp =  ::Template.all.where(:payload => message.payload).first %>
+	<% if @temp =  ::Template.all.where(:payload => message.payload).first %>
 		<% if !message.content.match(/^template:/) %>
-
-		<span class="timestamp">
-		 	<center><%= message.created_at.to_time.to_s(:short) %> </center>
-
-		 	</span>
-			<li class="message right appeared">
-			
-		 		<div class="text_wrapper">
-
-		 			<div class="text">
-				<%= @temp.intent %> </div>
-			</div>
-			</li>
-		<% end %>
-				<%= puts @temp.partial %>
 			<span class="timestamp">
-		 	<center><%= message.created_at.to_time.to_s(:short) %>  </center>
-
-		 	</span>
-			 	
-		<%= render :partial =>  "bots/" + @temp.partial %>
-		<% end %>
-<% else %>
-		<% if message.responder == "user" %> 
-		<li class="message right appeared">
-		
-		 	<div class="text_wrapper">
-
-		 		<div class="text">
-				<%= message.content %> </div>
-			</div>
+					<center>
+						<%= message.created_at.to_time.to_s(:short) %>
+					</center>
+			</span>
+			
+			<li class="message right appeared">
+				<div class="text_wrapper">
+					<div class="text">
+						<%= @temp.intent %>
+					</div>
+				</div>
 			</li>
-
-		<% else %>
-		<li class="message left appeared">
-
-  			<div class="avatar"> <%= image_tag "shree.png" %> </div>
-
-		<div class="text_wrapper">
-        <div class="text-header">
-		<%= message.content %> </div>
-		</div>
-		</li>
-
 		<% end %>
-
+	
+		<%= puts @temp.partial %>		
+		<span class="timestamp">
+			<center><%= message.created_at.to_time.to_s(:short) %></center>
+		</span>			 	
+		<%= render :partial =>  "bots/" + @temp.partial %>
+	<% end %>
+	
+<% else %>
+	<% if message.responder == "user" %> 
+		<li class="message right appeared">		
+			<div class="text_wrapper">
+				<div class="text">
+					<%= message.content %>
+				</div>
+			</div>
+		</li>
+	<% else %>
+		<li class="message left appeared">
+			<div class="avatar"> <%= image_tag "shree.png" %> </div>
+			<div class="text_wrapper">
+				<div class="text-header">
+					<%= message.content %>
+				</div>
+			</div>
+		</li>
+	<% end %>
 <% end %> 
 
 
