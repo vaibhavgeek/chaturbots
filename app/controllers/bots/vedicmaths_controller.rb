@@ -14,13 +14,11 @@ class Bots::VedicmathsController < ApplicationController
 	
 	def redirect 
   		#render json: nil, status: :ok
-  		
-
   		if cookies[:auth_token]  == nil
   			cookies[:auth_token] = {
-   	 	:value => return_random_string,
-   	 	:expires => 100.years.from_now
-		}
+   	 		:value => return_random_string,
+   	 		:expires => 100.years.from_now
+			}
   		end
   		auth_tok = cookies[:auth_token]
   		if Visitor.where(auth_token: auth_tok).count == 0
@@ -30,12 +28,9 @@ class Bots::VedicmathsController < ApplicationController
   			location = k["region"] + ", " + k["country_name"]
 		end
 		redirect_to chatbotmain_user_path( params[:id] , :auth_token => auth_tok) 
-		
-		
 	end
 
 	def index
-		
 		puts cookies[:auth_token] + "\n\n\n"
 		puts request.params 
 	    @message = Message.new
@@ -67,16 +62,14 @@ class Bots::VedicmathsController < ApplicationController
 	private 
 	
 	def get_set_sessions
-		
-
 		if cookies.signed["visitor"] == nil 
 			cookies.signed["visitor"] = return_random_string
 		end
-
 		verified_visitor = find_verified_vistor(cookies.signed["visitor"] , verified_chat.id)
         puts cookies.signed['visitor']
         puts "\n this is from controller file"
 	end
+
 
 	def message_params
 		params.require(:message).permit(:content, :user_id , :responder)
@@ -84,15 +77,16 @@ class Bots::VedicmathsController < ApplicationController
 
 	
      def find_verified_vistor(session_visitor , session_chat_id)
-     	
        	if verified_visitor = Visitor.where(auth_token: session_visitor).first_or_create(ipaddr: request.remote_ip , chat_id: session_chat_id)
        		verified_visitor
        	end
      end
+
 
      def return_random_string
        	o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
 		string = (0...100).map { o[rand(o.length)] }.join
 		string
      end
+
 end
