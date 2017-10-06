@@ -1,27 +1,19 @@
-<style type="text/css">
-	body {background-image: url('https://openclipart.org/image/2400px/svg_to_png/263304/Checkered.png');
+<!-- chatbox content -->
 
-}
-
-</style>
-
-<ul class="messages" >
-<% if @messages.first != nil %>
-<span class="timestamp">
+<ul class="messages">
+	<% if @messages.first != nil %>
+		<span class="timestamp">
 		 	<center><%= @messages.first.created_at.to_time.to_s(:short) %> </center>
-
-		 	</span>
-<% else %> 
-
-<span class="timestamp"> 
-<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
-</span>
-
-<% end %> 
-<%= render :partial => 'bots/vedicmaths/initial_message' %>
-
-<%= render :partial => 'messages/message' , collection: @messages %>
+		 </span>		 
+	<% else %>
+		<span class="timestamp"> 
+			<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
+		</span>
+	<% end %>	
+	<%= render :partial => 'bots/vedicmaths/initial_message' %>
+	<%= render :partial => 'messages/message' , collection: @messages %>
 </ul>
+
 <div class="input_message">
-<input type="text" id="event"  name="chat_box" data-behavior="chatbot_call">
+	<input type="text" id="event" name="chat_box" data-behavior="chatbot_call">
 </div>
