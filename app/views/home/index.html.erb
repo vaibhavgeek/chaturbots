@@ -1,48 +1,31 @@
-    <div class="row">
 
-<% if user_signed_in? %>
-<div class="container top-margin-20">
+<div class="row container">
 
+  <% if user_signed_in? %>
+    <div class="col s2">
+      <div class="white" id="panel-show-active-members">
+        <% Visitor.all.each do |visitor| %>
+          <% if visitor.online? %>
 
+            <div id="<%= visitor.id %>" class="visitor-container">
+              <%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
+              <% end %>
+              <span class="hidden">
+                 <%= visitor.auth_token %>
+              </span>
+            </div>
 
+            <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<div  class="col s12 ">
-<div class="left-margin-20">
-<div class="row white" id="panel-show-active-members">
+    <div class="col s10 card">
+      <div class="white" id="display_chats"></div>
+    </div>
 
-<% Visitor.all.each do |visitor| %>
-  <% if visitor.online? %>
-
-  <div class="col s3">
-
-    <div id="<%= visitor.id %>">
-      <%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
-
-      <% end %>
-
-<span class="hidden"><%= visitor.auth_token %></span>
-</div>
-</div>
-  <% end %>
-<% end %> 
-
-
-
-</div>
-</div>
-</div>
-
-<div class="col s12">
-<div class="left-margin-20">
-<div class="white" id="display_chats">
-</div>
-</div>
-</div>
-</div>
-<% else %>
-<%= render ("/home/partials/home") %>
-
-<% end %>
-
+    <% else %>
+      <%= render ("/home/partials/home") %>
+        <% end %>
 </div>
