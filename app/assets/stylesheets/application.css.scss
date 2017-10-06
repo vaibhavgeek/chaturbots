@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";
 @import "style";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -16,95 +17,125 @@
  *= require_tree .
  *= require_self
  */
- 
 
-
-
-
-
-  
-* {margin: 0; padding: 0;}
-.tree {
-  width:180%;
+$blue: #2196F3;
+$dingy: #495B6A;
+$white: #ffffff;
+$purple: #673AB7;
+$yellow: #FFEB3B;
+$red: #F44336;
+$orange: #FF5722;
+$black: #333333;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.tree_scroller
-{
-    overflow-x:scroll;
-    background-color:white;
-     border-radius: 8px;
-   box-sizing: border-box;
+.tree {
+  width: 180%;
+}
 
+.tree_scroller {
+  overflow-x: scroll;
+  background-color: white;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .tree ul {
-  padding-top: 20px; position: relative;
-  
+  padding-top: 20px;
+  position: relative;
   -transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
 
 .tree li {
-  float: left; text-align: center;
+  float: left;
+  text-align: center;
   list-style-type: none;
   position: relative;
   padding: 20px 5px 0 5px;
-  
   -transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
 
+
 /*We will use ::before and ::after to draw the connectors*/
 
-.tree li::before, .tree li::after{
+.tree li::before,
+.tree li::after {
   content: '';
-  position: absolute; top: 0; right: 50%;
+  position: absolute;
+  top: 0;
+  right: 50%;
   border-top: 1px solid #ccc;
-  width: 50%; height: 20px;
+  width: 50%;
+  height: 20px;
 }
-.tree li::after{
-  right: auto; left: 50%;
+
+.tree li::after {
+  right: auto;
+  left: 50%;
   border-left: 1px solid #ccc;
 }
 
+
 /*We need to remove left-right connectors from elements without 
 any siblings*/
-.tree li:only-child::after, .tree li:only-child::before {
+
+.tree li:only-child::after,
+.tree li:only-child::before {
   display: none;
 }
 
+
 /*Remove space from the top of single children*/
-.tree li:only-child{ padding-top: 0;}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
 
 /*Remove left connector from first child and 
 right connector from last child*/
-.tree li:first-child::before, .tree li:last-child::after{
+
+.tree li:first-child::before,
+.tree li:last-child::after {
   border: 0 none;
 }
+
+
 /*Adding back the vertical connector to the last nodes*/
-.tree li:last-child::before{
+
+.tree li:last-child::before {
   border-right: 1px solid #ccc;
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
 }
-.tree li:first-child::after{
+
+.tree li:first-child::after {
   border-radius: 5px 0 0 0;
   -webkit-border-radius: 5px 0 0 0;
   -moz-border-radius: 5px 0 0 0;
 }
 
+
 /*Time to add downward connectors from parents*/
-.tree ul ul::before{
+
+.tree ul ul::before {
   content: '';
-  position: absolute; top: 0; left: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
   border-left: 1px solid #ccc;
-  width: 0; height: 20px;
+  width: 0;
+  height: 20px;
 }
 
-.tree li a{
+.tree li a {
   border: 1px solid #ccc;
   padding: 5px 10px;
   text-decoration: none;
@@ -112,59 +143,69 @@ right connector from last child*/
   font-family: arial, verdana, tahoma;
   font-size: 11px;
   display: inline-block;
-  
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  
   -transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
 
+
 /*Time for some hover effects*/
+
+
 /*We will apply the hover effect the the lineage of the element also*/
-.tree li a:hover, .tree li a:hover+ul li a {
-  background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
-}
-/*Connector styles on hover*/
-.tree li a:hover+ul li::after, 
-.tree li a:hover+ul li::before, 
-.tree li a:hover+ul::before, 
-.tree li a:hover+ul ul::before{
-  border-color:  #94a0b4;
+
+.tree li a:hover,
+.tree li a:hover+ul li a {
+  background: #c8e4f8;
+  color: #000;
+  border: 1px solid #94a0b4;
 }
 
-/*Thats all. I hope yo*/
+
+/*Connector styles on hover*/
+
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
+.tree li a:hover+ul ul::before {
+  border-color: #94a0b4;
+}
+
+
+/*Message styles*/
+
 .messages {
   top: 0px;
-  height: 92% !important;  
+  height: 92% !important;
   position: absolute;
   list-style: none;
   padding: 5px 5px 0 5px;
   margin: 0;
-  overflow-x:hidden;
+  overflow-x: hidden;
   overflow-y: scroll;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: white;
   bottom: 25px;
-  width:100%;
+  width: 100%;
 }
 
 .timestamp {
-  color: #fff;
-  width:100%;
+  color: gray;
+  width: 100%;
   display: inline-block;
-  font-size:10px;
+  font-size: 10px;
 }
+
 .input_message {
   bottom: 5px;
-  position:fixed;
+  position: fixed;
   height: 40px;
   background-color: #fff;
-  width:100%;
-  
+  width: 100%;
 }
+
 .messages .message {
   clear: both;
   margin-bottom: 20px;
@@ -172,65 +213,68 @@ right connector from last child*/
   padding-left: 5px;
 }
 
-.avatar{
-      img{
-        width: 40px;
-      }
-    }
-  
+.avatar {
+  img {
+    width: 40px;
+  }
+}
+
 .messages .message.left .avatar {
   background-color: transparent;
   float: left;
 }
-.messages .message.left .text_wrapper {
-background: #f1f0f0;
-    margin-left: 45px;
-         border-radius: 10px 40px;
-         padding:8px;
 
+.messages .message.left .text_wrapper {
+  background: #f1f0f0;
+  margin-left: 45px;
+  padding: 8px;
+  @extend .z-depth-1;
 }
 
-.messages .message.left .text_wrapper ul{
+.messages .message.left .text_wrapper ul {
   list-style-type: none;
   padding: 0;
 }
 
-.messages .message.left .text_wrapper ul li{
-    width: 100%;
-    border: 1px solid #f1f0f0;
-    border-top: none;
-    text-align: left;
-    color: #52a8dd;
-    font-size: 16px;
-    padding: 10px 19px;
+.messages .message.left .text_wrapper ul li {
+  width: 100%;
+  border: 1px solid #f1f0f0;
+  border-top: none;
+  text-align: left;
+  color: #52a8dd;
+  font-size: 16px;
+  padding: 10px 19px;
 }
-.messages .message.left .text_wrapper .b-list li{
+
+.messages .message.left .text_wrapper .b-list li {
   text-align: left;
   color: #595959;
   font-size: 18px;
 }
 
-.messages .message.left .text_wrapper ul li:last-child{
+.messages .message.left .text_wrapper ul li:last-child {
   border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px; 
+  border-bottom-left-radius: 20px;
 }
 
 .messages .message.left .text {
   color: #c48843;
 }
+
 .messages .message.right .avatar {
   background-color: #fdbf68;
   float: right;
 }
+
 .messages .message.right .text_wrapper {
-    background-color: #3e7ce4;
-    margin-right: 2px;
-    float: right;
-    border-radius: 5px 30px;
-    width: 80%;
-    min-width: 160px;
-    text-align: right;
-  }
+  background-color: $blue;
+  margin-right: 2px;
+  float: right;
+  width: 80%;
+  min-width: 160px;
+  text-align: right;
+  @extend .z-depth-1;
+}
 
 .messages .message.right .avatar {
   background-color: transparent;
@@ -239,96 +283,88 @@ background: #f1f0f0;
   min-width: 180px;
 }
 
-.messages{
-  .right{
-    .avatar{
-      img{
+.messages {
+  .right {
+    .avatar {
+      img {
         width: 36px;
       }
     }
   }
 }
 
-
 .messages .message.right .text {
   color: #fff;
-    padding: 9px 25px;
-    font-size: 14px;
-    text-align: right;
+  padding: 9px 25px;
+  font-size: 14px;
+  text-align: right;
 }
+
 .messages .message.appeared {
   opacity: 1;
 }
-.messages .message.right{
- display: inline-block;
- float: right;  
+
+.messages .message.right {
+  display: inline-block;
+  float: right;
 }
+
 .messages .message .avatar {
   width: 46px;
   border-radius: 50%;
   display: inline-block;
 }
-.messages .message .text_wrapper .text-header{
-    width: 225px !important;
-    background: #f1f0f0;
-    font-size: 15px;
-         border-radius: 8px 25px;
-         padding:4px;
-    text-align: left;
+
+.messages .message .text_wrapper .text-header {
+  width: 225px !important;
+  background: #f1f0f0;
+  font-size: 15px;
+  border-radius: 8px 25px;
+  padding: 4px;
+  text-align: left;
 }
-.messages .message .text_wrapper .no-ul{
+
+.messages .message .text_wrapper .no-ul {
   border-radius: 36px;
 }
-.messages .message .text_wrapper .b-bank,.b-id{
-  display:inline;
- 
+
+.messages .message .text_wrapper .b-bank,
+.b-id {
+  display: inline;
 }
-.messages .message .text_wrapper .b-bank img,.b-id img{
+
+.messages .message .text_wrapper .b-bank img,
+.b-id img {
   padding-right: 1px;
   width: 13px;
 }
-.messages .message .text_wrapper .b-bank img{
+
+.messages .message .text_wrapper .b-bank img {
   position: relative;
-  top:-3px;
+  top: -3px;
   width: 16px;
 }
-.messages .message .text_wrapper .b-id{
+
+.messages .message .text_wrapper .b-id {
   padding-left: 22px;
 }
-.messages .message .text_wrapper .b-bank,.b-id span{
+
+.messages .message .text_wrapper .b-bank,
+.b-id span {
   font-size: 12px;
   border: none;
   padding-left: 3px;
 }
-.messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
-  top: 18px;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.messages .message .text_wrapper::after {
-  border-width: 13px;
-  margin-top: 0px;
-}
-.messages .message .text_wrapper::before {
-  border-width: 15px;
-  margin-top: -2px;
-}
-.messages .message .text_wrapper .text {
- 
-}
 
-
-body.zipiopen > *{
+body.zipiopen>* {
   display: none !important;
 }
-body.zipiopen > #zipi-chatbox{
+
+body.zipiopen>#zipi-chatbox {
   display: block !important;
 }
-#zipi-chatbox{
+
+#zipi-chatbox {
   position: fixed;
   right: 30px;
   bottom: 35px !important;
@@ -336,89 +372,97 @@ body.zipiopen > #zipi-chatbox{
   z-index: 2147483647;
   visibility: visible;
 }
-#zipi-chatbox #floatbutton .opened{
+
+#zipi-chatbox #floatbutton .opened {
   transition: all 0.5s linear;
   width: 100%;
   height: 100%;
   background-image: url('https://zipi.ai/s/images/kristal_chat_icon.png');
   background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    -webkit-transform: rotate(0deg) scale(1);
-    -ms-transform: rotate(0deg) scale(1);
-    transform: rotate(0deg) scale(1);
-    position: absolute;
-    opacity: 1;
-    border-radius: 5px;
-}
-#zipi-chatbox #floatbutton .opened.rotate{
-  -webkit-transform: rotate(45deg) scale(0);
-    -ms-transform: rotate(45deg) scale(0);
-    transform: rotate(45deg) scale(0);
-    opacity: 0;
-}
-#zipi-chatbox #floatbutton .closed{
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
   position: absolute;
-    transition: all 0.5s linear;
+  opacity: 1;
+  border-radius: 5px;
+}
+
+#zipi-chatbox #floatbutton .opened.rotate {
+  -webkit-transform: rotate(45deg) scale(0);
+  -ms-transform: rotate(45deg) scale(0);
+  transform: rotate(45deg) scale(0);
+  opacity: 0;
+}
+
+#zipi-chatbox #floatbutton .closed {
+  position: absolute;
+  transition: all 0.5s linear;
   width: 100%;
   height: 100%;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOBAMAAADtZjDiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEUAAAD///////////////////////////8AAADr8xjQAAAAB3RSTlMAM7cPx7jIAE21/gAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAABESURBVAjXYxAyYGBgYFZkUHcG0ialDCYlBgzM7slA7MxgUgaUNCkzdgfJMbunlIDUMpiUg7hwGiYOVQfTBzMHZi7UHgCB3RAZ7HszogAAAABJRU5ErkJggg==');
   background-size: 15px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    -webkit-transform: rotate(30deg) scale(0);
-    -ms-transform: rotate(30deg) scale(0);
-    transform: rotate(30deg) scale(0);
-    opacity: 0;
-    background-color: #2E3749;    
-    border-radius: 5px;
-}
-#zipi-chatbox #floatbutton .closed.rotate{
-  -webkit-transform: rotate(0deg) scale(1);
-    -ms-transform: rotate(0deg) scale(1);
-    transform: rotate(0deg) scale(1);
-    opacity: 1; 
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-transform: rotate(30deg) scale(0);
+  -ms-transform: rotate(30deg) scale(0);
+  transform: rotate(30deg) scale(0);
+  opacity: 0;
+  background-color: #2E3749;
+  border-radius: 5px;
 }
 
-#zipi-chatbox .chatframe .header .cross{
-  float: right;
-    color: #FFF !important;
-    font-size: 18px;
-    padding: 10px;
-    display: none;
+#zipi-chatbox #floatbutton .closed.rotate {
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
 }
-#zipi-chatbox .chatframe .header .header_title{
+
+#zipi-chatbox .chatframe .header .cross {
+  float: right;
+  color: #FFF !important;
+  font-size: 18px;
+  padding: 10px;
+  display: none;
+}
+
+#zipi-chatbox .chatframe .header .header_title {
   font-family: Arial;
   font-size: 24px;
   font-weight: 500;
   text-align: left;
   color: #ffffff;
 }
-#zipi-chatbox .chatframe .header .header_subtitle{
-    font-size: 12px;
-    font-weight: 400;
-    color: #90ee90;
-    display: inline-block;
-    position: absolute;
-    top: 19px;
-    width: 10px;
-    left: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #90ee90;
+
+#zipi-chatbox .chatframe .header .header_subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: #90ee90;
+  display: inline-block;
+  position: absolute;
+  top: 19px;
+  width: 10px;
+  left: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #90ee90;
 }
-#zipi-chatbox .chatframe .frameparent { 
+
+#zipi-chatbox .chatframe .frameparent {
   position: absolute;
   left: 0px;
   top: 0px;
   right: 0px;
   bottom: 0px;
   overflow: hidden;
-  background:none !important;
+  background: none !important;
 }
-#zipi-chatbox .chatframe .frameparent iframe{
+
+#zipi-chatbox .chatframe .frameparent iframe {
   width: 100%;
   height: 100%;
   max-height: 100vh;
@@ -426,31 +470,30 @@ body.zipiopen > #zipi-chatbox{
   border: none;
   position: static;
 }
-#zipi-chatbox #chatflow .frameparent iframe{
+
+#zipi-chatbox #chatflow .frameparent iframe {
   border: none;
   position: static;
 }
 
 @media only screen and (min-device-width: 568px) {
-  #zipi-chatbox{
+  #zipi-chatbox {
     top: 30px;
-    
   }
-  #zipi-chatbox > div{
+  #zipi-chatbox>div {
     position: relative;
     height: 100%;
-    
   }
-  #zipi-chatbox #floatbutton{
-     position: absolute;
-     bottom: 0px;
-     width: 50px;
-     height: 50px;
-     right: 0px;
-     opacity: 1;  
-     z-index:2147483645;
+  #zipi-chatbox #floatbutton {
+    position: absolute;
+    bottom: 0px;
+    width: 50px;
+    height: 50px;
+    right: 0px;
+    opacity: 1;
+    z-index: 2147483645;
   }
-  #zipi-chatbox  #chatflow{
+  #zipi-chatbox #chatflow {
     //transition: all 0.3s ease-in;
     height: 0px;
     width: 0px;
@@ -463,59 +506,80 @@ body.zipiopen > #zipi-chatbox{
     overflow: hidden;
     border-radius: 10px !important;
   }
-  #zipi-chatbox .chatframe { 
+  #zipi-chatbox .chatframe {
     max-height: 550px !important;
     height: 90% !important;
     min-height: 300px;
     width: 370px !important;
     opacity: 1 !important;
   }
-  #zipi-chatbox .chatframe .header{
+  #zipi-chatbox .chatframe .header {
     border-radius: 10px 10px 0px 0px;
   }
 }
-@media only screen and (max-device-width: 568px)
-{
-    #zipi-chatbox #floatbutton {
-      position: absolute;
-      bottom: 0px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      right: 0px;
-      opacity: 1;
-      z-index:2147483645;
+
+@media only screen and (max-device-width: 568px) {
+  #zipi-chatbox #floatbutton {
+    position: absolute;
+    bottom: 0px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    right: 0px;
+    opacity: 1;
+    z-index: 2147483645;
   }
   #zipi-chatbox #chatflow {
-      //transition: all 0.3s linear;
-      position: fixed;
-      top: 0px;
-      height:100%;
-      right: 0px;
-      height: 0px;
-      width: 0px;
-      background-color: #FFF;
-      box-shadow: 0px 0px 10px #333;
-      opacity: 1;
-      overflow: hidden;
-      border-radius: 0px !important;
-      z-index: 2147483646;
-      -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+    //transition: all 0.3s linear;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    right: 0px;
+    height: 0px;
+    width: 0px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 10px #333;
+    opacity: 1;
+    overflow: hidden;
+    border-radius: 0px !important;
+    z-index: 2147483646;
+    -webkit-backface-visibility: hidden;
+    /* Chrome, Safari, Opera */
     backface-visibility: hidden;
   }
   #zipi-chatbox .chatframe {
     height: 100% !important;
     width: 100% !important;
-      opacity: 1 !important;
+    opacity: 1 !important;
   }
-  #zipi-chatbox .chatframe .header .cross{
+  #zipi-chatbox .chatframe .header .cross {
     float: right;
-      margin-top: 18px;
-      margin-right: 18px;
-      display: block;
-      background-image: url(http://zipi.ai/s/images/kristal_close_icon.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 15px;
+    margin-top: 18px;
+    margin-right: 18px;
+    display: block;
+    background-image: url(http://zipi.ai/s/images/kristal_close_icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
   }
+}
+
+#display_chats {
+  height: 80vh;
+  padding: 2em;
+}
+
+.visitor-container {
+  padding: 5px;
+  padding-right: 10px;
+}
+
+
+#display_chats input {
+  border: none;
+  box-shadow: none;
+}
+
+#display_chats .messages {
+  position: static !important;
 }
