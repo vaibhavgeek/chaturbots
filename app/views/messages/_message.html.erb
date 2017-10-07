@@ -1,5 +1,22 @@
 <!-- Individual messages -->		 	
 
+
+<script>	
+		  
+			$('.chips').material_chip();
+
+			// set inital chips data (can be json)
+			$('.chips-initial').material_chip({
+			  data: [{
+				tag: 'Apple',
+			  }, {
+				tag: 'Microsoft',
+			  }, {
+				tag: 'Google',
+			  }],
+			}); 
+	</script>
+
 <% if message.payload != "nil" %>
 	<% if @temp =  ::Template.all.where(:payload => message.payload).first %>
 		<% if !message.content.match(/^template:/) %>
@@ -33,6 +50,7 @@
 					<%= message.content %>
 				</div>
 			</div>
+			
 		</li>
 	<% else %>
 		<li class="message left appeared">
@@ -41,9 +59,12 @@
 				<div class="text-header">
 					<%= message.content %>
 				</div>
+				<div class="chips chips-initial"></div>
 			</div>
 		</li>
 	<% end %>
 <% end %> 
+
+
 
 
