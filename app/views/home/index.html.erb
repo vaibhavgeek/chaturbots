@@ -1,4 +1,5 @@
 
+
 <% if user_signed_in? %>
 <div class="row container">
 
@@ -24,11 +25,20 @@
 
     <div class="col s10 card no-padding">
       
-  <nav class="z-depth-0">
+    <div class="hidden" id="nav_menu">
+       <nav class="z-depth-0">
       <div class="nav-wrapper">
-        <span>header</span>
+        <span> (Mumbai, Maharashtra, India) 115.112.153.68 </span>
           <ul class="right">
             <li>
+                <div class="switch">
+                    <label>
+                      Automate
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+            </li><li>
                 <div class="switch">
                     <label>
                       ML
@@ -37,13 +47,21 @@
                     </label>
                   </div>
             </li>
+
+
           </ul>
            
       </div>
     </nav>
-      <div class="white" id="display_chats"></div>
+
+    </div>
+      <div class="white" id="display_chats">
+       
+
+      </div>
     </div>
 
+    
 </div>
 
 <% else %>

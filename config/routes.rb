@@ -43,6 +43,7 @@ Rails.application.routes.draw do
             get 'bot/reports' , to: 'bots/bank_hacks#reports'
             get 'bot/preview' , to: 'bots/bank_hacks#preview'
             post 'bot/create' , to: 'bots/bank_hacks#create'
+            get 'bot/intent_mapping' , to: 'bots/bank_hacks#intent_mapping'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
