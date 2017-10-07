@@ -1,8 +1,6 @@
 require 'net/http'
 require 'json'
-
-class Bots::VedicmathsController < ApplicationController
-
+class Bots::BankHacksController < ApplicationController
 	def show
 		@messages = Message.all
 		if Template.where(:user_id => 1) != nil
@@ -22,13 +20,10 @@ class Bots::VedicmathsController < ApplicationController
   		end
   		auth_tok = cookies[:auth_token]
   		if Visitor.where(auth_token: auth_tok).count == 0
+  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip , location: location)
 			loc = Net::HTTP.get(URI.parse('https://ipapi.co/49.34.133.24/json'))
 			k = JSON.parse(loc)
   			location = k["region"] + ", " + k["country_name"]
-  			puts location 
-  			puts location
-  			puts "\n \n \n \n \n \n \n \n \n \n"
-  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip , location: location)
 		end
 		redirect_to chatbotmain_user_path( params[:id] , :auth_token => auth_tok) 
 	end

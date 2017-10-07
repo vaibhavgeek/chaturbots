@@ -1,0 +1,31 @@
+<!-- /bot/preview -->
+
+
+<div id="zipi-chatbox">
+
+<div>
+<div id="chatflow" class=" ">
+<div class="header">
+<div class="cross" onclick="zipitoggleChat()">
+	
+</div>
+</div>
+<div class="frameparent" style="overflow: hidden; !important"><iframe allowtransparency="true" src="http://localhost:3000/users/1/bot/redirect" style="overflow: hidden; !important"></iframe>
+</div>
+</div>
+<div id="floatbutton" onclick="zipitoggleChat()">
+<div class="opened  "></div>
+<div class="closed  "></div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	(function ($) {
+		$(function () {
+			iframe = $(".frameparent");
+			iframe.style.backgroundColor = "transparent";
+
+		})
+	});
+</script>

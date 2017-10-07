@@ -1,5 +1,8 @@
 <ul class="messages_admin messages" id="messages">
+		<%= render :partial => 'bots/vedicmaths/initial_message' %>
+
 	<%= render @messages %>
+
 		<% if @messages.count == 0 %>
 			<div class="alert alert-warning">
 				<center> There are no messages to display right now. </center>
