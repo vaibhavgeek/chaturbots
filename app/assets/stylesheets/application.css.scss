@@ -205,6 +205,13 @@ right connector from last child*/
   background-color: #fff;
   width: 100%;
 }
+  
+.input_message input {
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 2em !important;
+  padding-right: 2em !important;
+}
 
 .messages .message {
   clear: both;
@@ -565,8 +572,7 @@ body.zipiopen>#zipi-chatbox {
 }
 
 #display_chats {
-  height: 80vh;
-  padding: 2em;
+  height: 85vh;
 }
 
 .visitor-container {
@@ -578,8 +584,21 @@ body.zipiopen>#zipi-chatbox {
 #display_chats input {
   border: none;
   box-shadow: none;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-top: 0.5px solid lightgrey;
+  width: 91%;
 }
 
 #display_chats .messages {
   position: static !important;
+}
+
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;   
+  border-right:10px solid blue; 
 }
