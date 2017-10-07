@@ -1,7 +1,7 @@
 
+<% if user_signed_in? %>
 <div class="row container">
 
-  <% if user_signed_in? %>
     <div class="col s2">
       <div class="white" id="panel-show-active-members">
         <% Visitor.all.each do |visitor| %>
@@ -25,7 +25,9 @@
       <div class="white" id="display_chats"></div>
     </div>
 
-    <% else %>
-      <%= render ("/home/partials/home") %>
-        <% end %>
+    
 </div>
+
+<% else %>
+<%= render ("/home/partials/home") %>
+  <% end %>
