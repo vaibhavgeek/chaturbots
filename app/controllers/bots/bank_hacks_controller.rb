@@ -56,6 +56,10 @@ class Bots::BankHacksController < ApplicationController
         speech_res = response[:result][:fulfillment][:messages][0][:speech]
       	Message.create! content: speech_res
 	end
+	
+	def intent_mapping
+			
+	end
 
 	private 
 	

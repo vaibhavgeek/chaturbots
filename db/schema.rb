@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829132249) do
+ActiveRecord::Schema.define(version: 20171007142439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20170829132249) do
     t.integer "chat_id"
     t.integer "visitor_id"
     t.string "payload"
+    t.string "tags"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.string "tag_response"
+    t.integer "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "templates", force: :cascade do |t|

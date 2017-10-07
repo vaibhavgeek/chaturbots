@@ -18,6 +18,10 @@
  *= require_self
  */
 
+select {
+  display: block !important;
+}
+
 $blue: #2196F3;
 $dingy: #495B6A;
 $white: #ffffff;
