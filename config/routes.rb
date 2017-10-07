@@ -18,18 +18,31 @@ Rails.application.routes.draw do
 #routes for the vedic-maths chatbot
   resources :users , only: [:show , :edit] do 
       member do
-            get 'bot/redirect' , to: 'bots/vedicmaths#redirect'   
-            get 'bot/index/:auth_token' , to: 'bots/vedicmaths#index' , as: 'chatbotmain'
-            post 'bot/login' , to: 'bots/vedicmaths#login'
-            post 'bot/payment_h' ,  to: 'bots/vedicmaths#payment_h'
-            post 'bot/fx_list' ,  to: 'bots/vedicmaths#fx_list'
-            post 'bot/benefeciary' ,  to: 'bots/vedicmaths#benefeciary'
-            post 'bot/destroy' ,  to: 'bots/vedicmaths#destroy'
-            get  'bot/show' ,  to: 'bots/vedicmaths#show'
-            get 'bot/intent' , to: 'bots/vedicmaths#intent'
-            get 'bot/reports' , to: 'bots/vedicmaths#reports'
-            get 'bot/preview' , to: 'bots/vedicmaths#preview'
-            post 'bot/create' , to: 'bots/vedicmaths#create'
+            #get 'bot/redirect' , to: 'bots/bank_hacks#redirect'   
+            #get 'bot/index/:auth_token' , to: 'bots/bank_hacks#index' , as: 'chatbotmain'
+           # post 'bot/login' , to: 'bots/bank_hacks#login'
+            #post 'bot/payment_h' ,  to: 'bots/bank_hacks#payment_h'
+            #post 'bot/fx_list' ,  to: 'bots/bank_hacks#fx_list'
+           # post 'bot/benefeciary' ,  to: 'bots/bank_hacks#benefeciary'
+            #post 'bot/destroy' ,  to: 'bots/bank_hacks#destroy'
+            #get  'bot/show' ,  to: 'bots/bank_hacks#show'
+            #get 'bot/intent' , to: 'bots/bank_hacks#intent'
+            #get 'bot/reports' , to: 'bots/bank_hacks#reports'
+            #get 'bot/preview' , to: 'bots/bank_hacks#preview'
+           # post 'bot/create' , to: 'bots/bank_hacks#create'
+
+            get 'bot/redirect' , to: 'bots/bank_hacks#redirect'   
+            get 'bot/index/:auth_token' , to: 'bots/bank_hacks#index' , as: 'chatbotmain'
+            post 'bot/login' , to: 'bots/bank_hacks#login'
+            post 'bot/payment_h' ,  to: 'bots/bank_hacks#payment_h'
+            post 'bot/fx_list' ,  to: 'bots/bank_hacks#fx_list'
+            post 'bot/benefeciary' ,  to: 'bots/bank_hacks#benefeciary'
+            post 'bot/destroy' ,  to: 'bots/bank_hacks#destroy'
+            get  'bot/show' ,  to: 'bots/bank_hacks#show'
+            get 'bot/intent' , to: 'bots/bank_hacks#intent'
+            get 'bot/reports' , to: 'bots/bank_hacks#reports'
+            get 'bot/preview' , to: 'bots/bank_hacks#preview'
+            post 'bot/create' , to: 'bots/bank_hacks#create'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
