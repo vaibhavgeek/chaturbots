@@ -191,6 +191,11 @@ right connector from last child*/
   width: 100%;
 }
 
+#display_chats .messages {
+  margin-top: 64px;
+  height: 92% !important;
+}
+
 .timestamp {
   color: gray;
   width: 100%;
@@ -199,11 +204,18 @@ right connector from last child*/
 }
 
 .input_message {
-  bottom: 5px;
+  bottom: 2px;
   position: fixed;
   height: 40px;
   background-color: #fff;
   width: 100%;
+}
+  
+.input_message input {
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 2em !important;
+  padding-right: 2em !important;
 }
 
 .messages .message {
@@ -501,11 +513,12 @@ body.zipiopen>#zipi-chatbox {
     bottom: 60px;
     right: 0px;
     background-color: #FFF;
-    box-shadow: 0px 0px 10px #333;
     opacity: 0;
     overflow: hidden;
-    border-radius: 10px !important;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
+
   #zipi-chatbox .chatframe {
     max-height: 550px !important;
     height: 90% !important;
@@ -565,8 +578,7 @@ body.zipiopen>#zipi-chatbox {
 }
 
 #display_chats {
-  height: 80vh;
-  padding: 2em;
+  height: 85vh;
 }
 
 .visitor-container {
@@ -578,8 +590,21 @@ body.zipiopen>#zipi-chatbox {
 #display_chats input {
   border: none;
   box-shadow: none;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-top: 0.5px solid lightgrey;
+  width: 91%;
 }
 
 #display_chats .messages {
   position: static !important;
+}
+
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;   
+  border-right:10px solid blue; 
 }
