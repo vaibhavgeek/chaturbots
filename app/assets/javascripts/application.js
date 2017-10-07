@@ -17,7 +17,6 @@
 //= require materialize-sprockets
 //= require jquery.easing
 //= require bootstrap-select
-
 //= require particles
 //= require check
 //= require_tree .

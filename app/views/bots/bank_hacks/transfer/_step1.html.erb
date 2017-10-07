@@ -1,0 +1,46 @@
+ <li class="message left appeared">
+  <div class="avatar"> <%= image_tag "shree.png" %> </div>
+                <div class="text_wrapper">
+                    <div class="text-header">Select sending & Receiving countries</div>
+
+                    <ul>
+                        <li>
+
+                            <div class="to_from">From</div>
+                          
+                        <label for="country_1" ></label>
+
+                             <%= select_tag "from_curr" , options_for_select([["Vaibhav Maheshwari", "VM"], ["Ajay NS", "AN"] , ["Dhanush Kamath" , "DK"] , ["Dan Brown" , "DB"]])   %>  
+
+
+                            <div class="to_from">To</div>
+                           <label for="country_2"></label>
+                             
+<%= select_tag "from_curr" , options_for_select([["Ajay NS", "AN"] , ["Dhanush Kamath" , "DK"] , ["Dan Brown" , "DB"]])   %>                            
+<div class="to_from">Amount(USD)</div>
+                           <label for="country_2"></label>
+                             
+<input />                        </li>
+
+
+                        <li> <center>
+                <a  name='btn_login' class='col s12 bot btn btn-large waves-effect'  data-payload="transfer_s2">Transfer</a>
+                
+                 </center>
+                       </li>
+                    </ul>
+                    
+                </div>
+            </li>
+
+
+
+
+
+
+
+
+
+<div id="showrate">
+</div>
+
