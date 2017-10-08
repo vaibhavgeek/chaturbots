@@ -1,29 +1,15 @@
 	<!-- /bot/show -->
 
-<div class="row">
-	<div class="top-margin-20">
-		<div class="col s2 offset-s1 hide-on-small-only white ">
-			<ul class="sidepanel top-padding-10 ">
-				<li>
-				<%= link_to "Intent Mapping" , bot_intent_mapping_user_path(:user_id => 1), :class => "list-group-item" %>
-				</li>
-				<li>
-					<%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "list-group-item"  %>
-				</li>
-			</ul>
-			<hr/>
-			<div class="hide-on-small-only white ">
-				<ul class="sidepanel top-padding-10 ">
-					<li>
-						<%= link_to "Preview Chatbot", bot_preview_user_path(:user_id => 1) , :class => "list-group-item"  %>
-					</li>
-					<li>
-						<%= link_to "Contact Support", home_contact_us_path(:user_id => 1) , :class => "list-group-item"  %>
-					</li>
-				</ul>
+
+	<div class="row container top-margin-20">
+			<div class="col s3 white no-padding top-margin-20">
+					<div class="collection">
+							<%= link_to "Intent Mapping" , bot_intent_mapping_user_path(:user_id => 1), :class => "collection-item" %>
+							<%= link_to "Automation Reports", bot_reports_user_path(:user_id => 1) , :class => "collection-item"  %>
+							<%= link_to "Preview Chatbot", bot_preview_user_path(:user_id => 1) , :class => "collection-item"  %>
+							<%= link_to "Contact Support", home_contact_us_path(:user_id => 1) , :class => "collection-item"  %>
+				  </div>	
 			</div>
 		</div>
-	</div>
-	
-	
-</div>
+		
+		
