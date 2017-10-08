@@ -190,7 +190,7 @@ right connector from last child*/
   margin: 0;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: white;
+  background-color: transparent;
   bottom: 25px;
   width: 100%;
 }
@@ -519,8 +519,8 @@ body.zipiopen>#zipi-chatbox {
     background-color: #FFF;
     opacity: 0;
     overflow: hidden;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   }
 
   #zipi-chatbox .chatframe {
@@ -586,29 +586,34 @@ body.zipiopen>#zipi-chatbox {
 }
 
 .visitor-container {
+  margin-top: 64px;
   padding: 5px;
   padding-right: 10px;
 }
 
+.input_message {
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.12), 0 -3px 1px -2px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+.chatbot_preview {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: $black;
+}
 
 #display_chats input {
   border: none;
   box-shadow: none;
   padding-left: 2em;
   padding-right: 2em;
-  border-top: 0.5px solid lightgrey;
   width: 91%;
-}
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.12), 0 -3px 1px -2px rgba(0, 0, 0, 0.1);
+ }
 
 #display_chats .messages {
   position: static !important;
 }
 
-
-.arrow-left {
-  width: 0; 
-  height: 0; 
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;   
-  border-right:10px solid blue; 
-}
