@@ -3,8 +3,9 @@
 <% if user_signed_in? %>
 <div class="row container">
 
-    <div class="col s2">
-      <div class="white" id="panel-show-active-members">
+    <div class="col s2 blue card" id="panel-visitors">
+      <div id="panel-show-active-members">
+        <h4 class="white-text flow-text right">Visitors</h4>
         <% Visitor.all.each do |visitor| %>
           <% if visitor.online? %>
 

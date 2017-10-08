@@ -17,14 +17,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: vaibhavm
+  username: ajay
+  password: ajay
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: chaturbots_development
+  database: chaturbots_abc
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

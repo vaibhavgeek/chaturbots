@@ -34,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE ar_internal_metadata (
@@ -45,10 +45,10 @@ CREATE TABLE ar_internal_metadata (
 );
 
 
-ALTER TABLE ar_internal_metadata OWNER TO vaibhavm;
+ALTER TABLE ar_internal_metadata OWNER TO ajay;
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: messages; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE messages (
@@ -67,10 +67,10 @@ CREATE TABLE messages (
 );
 
 
-ALTER TABLE messages OWNER TO vaibhavm;
+ALTER TABLE messages OWNER TO ajay;
 
 --
--- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE messages_id_seq
@@ -81,17 +81,17 @@ CREATE SEQUENCE messages_id_seq
     CACHE 1;
 
 
-ALTER TABLE messages_id_seq OWNER TO vaibhavm;
+ALTER TABLE messages_id_seq OWNER TO ajay;
 
 --
--- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE schema_migrations (
@@ -99,10 +99,10 @@ CREATE TABLE schema_migrations (
 );
 
 
-ALTER TABLE schema_migrations OWNER TO vaibhavm;
+ALTER TABLE schema_migrations OWNER TO ajay;
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: tags; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE tags (
@@ -115,10 +115,10 @@ CREATE TABLE tags (
 );
 
 
-ALTER TABLE tags OWNER TO vaibhavm;
+ALTER TABLE tags OWNER TO ajay;
 
 --
--- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE tags_id_seq
@@ -129,17 +129,17 @@ CREATE SEQUENCE tags_id_seq
     CACHE 1;
 
 
-ALTER TABLE tags_id_seq OWNER TO vaibhavm;
+ALTER TABLE tags_id_seq OWNER TO ajay;
 
 --
--- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 
 --
--- Name: templates; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: templates; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE templates (
@@ -154,10 +154,10 @@ CREATE TABLE templates (
 );
 
 
-ALTER TABLE templates OWNER TO vaibhavm;
+ALTER TABLE templates OWNER TO ajay;
 
 --
--- Name: templates_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: templates_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE templates_id_seq
@@ -168,17 +168,17 @@ CREATE SEQUENCE templates_id_seq
     CACHE 1;
 
 
-ALTER TABLE templates_id_seq OWNER TO vaibhavm;
+ALTER TABLE templates_id_seq OWNER TO ajay;
 
 --
--- Name: templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE templates_id_seq OWNED BY templates.id;
 
 
 --
--- Name: urls; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: urls; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE urls (
@@ -190,10 +190,10 @@ CREATE TABLE urls (
 );
 
 
-ALTER TABLE urls OWNER TO vaibhavm;
+ALTER TABLE urls OWNER TO ajay;
 
 --
--- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE urls_id_seq
@@ -204,17 +204,17 @@ CREATE SEQUENCE urls_id_seq
     CACHE 1;
 
 
-ALTER TABLE urls_id_seq OWNER TO vaibhavm;
+ALTER TABLE urls_id_seq OWNER TO ajay;
 
 --
--- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE urls_id_seq OWNED BY urls.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: users; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE users (
@@ -234,10 +234,10 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO vaibhavm;
+ALTER TABLE users OWNER TO ajay;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE users_id_seq
@@ -248,17 +248,17 @@ CREATE SEQUENCE users_id_seq
     CACHE 1;
 
 
-ALTER TABLE users_id_seq OWNER TO vaibhavm;
+ALTER TABLE users_id_seq OWNER TO ajay;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: visitors; Type: TABLE; Schema: public; Owner: vaibhavm
+-- Name: visitors; Type: TABLE; Schema: public; Owner: ajay
 --
 
 CREATE TABLE visitors (
@@ -276,10 +276,10 @@ CREATE TABLE visitors (
 );
 
 
-ALTER TABLE visitors OWNER TO vaibhavm;
+ALTER TABLE visitors OWNER TO ajay;
 
 --
--- Name: visitors_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+-- Name: visitors_id_seq; Type: SEQUENCE; Schema: public; Owner: ajay
 --
 
 CREATE SEQUENCE visitors_id_seq
@@ -290,59 +290,59 @@ CREATE SEQUENCE visitors_id_seq
     CACHE 1;
 
 
-ALTER TABLE visitors_id_seq OWNER TO vaibhavm;
+ALTER TABLE visitors_id_seq OWNER TO ajay;
 
 --
--- Name: visitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+-- Name: visitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ajay
 --
 
 ALTER SEQUENCE visitors_id_seq OWNED BY visitors.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY templates ALTER COLUMN id SET DEFAULT nextval('templates_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY urls ALTER COLUMN id SET DEFAULT nextval('urls_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY visitors ALTER COLUMN id SET DEFAULT nextval('visitors_id_seq'::regclass);
 
 
 --
--- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
@@ -351,7 +351,7 @@ environment	development	2017-07-03 09:42:07.838114	2017-07-03 09:42:07.838114
 
 
 --
--- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY messages (id, content, user_id, template, responder, template_id, created_at, updated_at, chat_id, visitor_id, payload, tags) FROM stdin;
@@ -392,14 +392,14 @@ COPY messages (id, content, user_id, template, responder, template_id, created_a
 
 
 --
--- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('messages_id_seq', 1985, true);
 
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY schema_migrations (version) FROM stdin;
@@ -420,7 +420,7 @@ COPY schema_migrations (version) FROM stdin;
 
 
 --
--- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY tags (id, tag_name, tag_response, template_id, created_at, updated_at) FROM stdin;
@@ -428,14 +428,14 @@ COPY tags (id, tag_name, tag_response, template_id, created_at, updated_at) FROM
 
 
 --
--- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('tags_id_seq', 1, false);
 
 
 --
--- Data for Name: templates; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: templates; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY templates (id, payload, partial, intent, user_id, parent_id, created_at, updated_at) FROM stdin;
@@ -471,14 +471,14 @@ COPY templates (id, payload, partial, intent, user_id, parent_id, created_at, up
 
 
 --
--- Name: templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('templates_id_seq', 29, true);
 
 
 --
--- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY urls (id, visitor_id, url, created_at, updated_at) FROM stdin;
@@ -486,14 +486,14 @@ COPY urls (id, visitor_id, url, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('urls_id_seq', 1, false);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
@@ -502,14 +502,14 @@ COPY users (id, email, encrypted_password, reset_password_token, reset_password_
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('users_id_seq', 1, true);
 
 
 --
--- Data for Name: visitors; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+-- Data for Name: visitors; Type: TABLE DATA; Schema: public; Owner: ajay
 --
 
 COPY visitors (id, ipaddr, location, v_count, url_id, name, email, auth_token, created_at, updated_at, chat_id) FROM stdin;
@@ -518,14 +518,14 @@ COPY visitors (id, ipaddr, location, v_count, url_id, name, email, auth_token, c
 
 
 --
--- Name: visitors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+-- Name: visitors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ajay
 --
 
 SELECT pg_catalog.setval('visitors_id_seq', 263, true);
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -533,7 +533,7 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY messages
@@ -541,7 +541,7 @@ ALTER TABLE ONLY messages
 
 
 --
--- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY schema_migrations
@@ -549,7 +549,7 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY tags
@@ -557,7 +557,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: templates_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: templates_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY templates
@@ -565,7 +565,7 @@ ALTER TABLE ONLY templates
 
 
 --
--- Name: urls_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: urls_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY urls
@@ -573,7 +573,7 @@ ALTER TABLE ONLY urls
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY users
@@ -581,7 +581,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+-- Name: visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: ajay
 --
 
 ALTER TABLE ONLY visitors
@@ -589,14 +589,14 @@ ALTER TABLE ONLY visitors
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: vaibhavm
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ajay
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: vaibhavm
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ajay
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);

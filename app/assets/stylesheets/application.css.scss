@@ -22,6 +22,10 @@ select {
   display: block !important;
 }
 
+body {
+  background: lightgrey;
+}
+
 $blue: #00356B;
 $dingy: #495B6A;
 $white: #ffffff;
@@ -614,8 +618,11 @@ body.zipiopen>#zipi-chatbox {
   height: 85vh;
 }
 
+#panel-visitors {
+  border-radius: 2px 0px 0px 2px !important;
+}
+
 .visitor-container {
-  margin-top: 64px;
   padding: 5px;
   padding-right: 10px;
 }
@@ -634,7 +641,7 @@ body.zipiopen>#zipi-chatbox {
   background-color: $black;
 }
 
-#display_chats input {
+#display_chats .input {
   border: none;
   box-shadow: none;
   padding-left: 2em;
@@ -645,6 +652,10 @@ body.zipiopen>#zipi-chatbox {
 
 #display_chats .messages {
   position: static !important;
+}
+
+#display_chats .text_wrapper {
+  display: grid;
 }
 
 .chips input {
@@ -669,4 +680,30 @@ body.zipiopen>#zipi-chatbox {
   }
 }
 
+.message{
+  .text_wrapper {
+    .btn {
+      background-color: $blue;
+    }
+    .input-field label {
+      color: $blue;
+    }
 
+    .input-field input:focus + label {
+      color: $blue !important;
+    }
+
+    .input-field input:focus {
+      border-bottom: 1px solid $blue !important;
+      box-shadow: 0 1px 0 0 $blue !important;
+    }
+
+    .input-field .prefix.active {
+      color: $blue !important;
+    }
+  }
+}
+
+.blue {
+  background-color: $blue !important;
+}
