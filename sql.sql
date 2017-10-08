@@ -62,7 +62,8 @@ CREATE TABLE messages (
     updated_at timestamp without time zone NOT NULL,
     chat_id integer,
     visitor_id integer,
-    payload character varying
+    payload character varying,
+    tags character varying
 );
 
 
@@ -99,6 +100,43 @@ CREATE TABLE schema_migrations (
 
 
 ALTER TABLE schema_migrations OWNER TO vaibhavm;
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: vaibhavm
+--
+
+CREATE TABLE tags (
+    id bigint NOT NULL,
+    tag_name character varying,
+    tag_response character varying,
+    template_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE tags OWNER TO vaibhavm;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: vaibhavm
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tags_id_seq OWNER TO vaibhavm;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vaibhavm
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
 
 --
 -- Name: templates; Type: TABLE; Schema: public; Owner: vaibhavm
@@ -272,6 +310,13 @@ ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
 --
 
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: vaibhavm
+--
+
 ALTER TABLE ONLY templates ALTER COLUMN id SET DEFAULT nextval('templates_id_seq'::regclass);
 
 
@@ -309,32 +354,40 @@ environment	development	2017-07-03 09:42:07.838114	2017-07-03 09:42:07.838114
 -- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: vaibhavm
 --
 
-COPY messages (id, content, user_id, template, responder, template_id, created_at, updated_at, chat_id, visitor_id, payload) FROM stdin;
-1776	What is Vedic Maths?	1	\N	user	\N	2017-10-03 10:37:12.11182	2017-10-03 10:37:12.11182	\N	250	wivm
-1777	Father of Vedic Maths	1	\N	user	\N	2017-10-03 10:37:15.335742	2017-10-03 10:37:15.335742	\N	250	fovm
-1778	About Vedic Maths Forum India	1	\N	user	\N	2017-10-03 10:37:17.766978	2017-10-03 10:37:17.766978	\N	250	avmfi
-1779	I help you work smarter instead of harder.	1	\N	bot	\N	2017-10-03 10:37:18.715403	2017-10-03 10:37:18.715403	\N	250	nil
-1780	History of Vedic Maths	1	\N	user	\N	2017-10-03 10:37:22.323754	2017-10-03 10:37:22.323754	\N	250	hovm
-1781	Franchise	1	\N	user	\N	2017-10-03 10:37:26.513328	2017-10-03 10:37:26.513328	\N	250	franchise
-1782	TED Video on Vedic Maths	1	\N	user	\N	2017-10-03 10:59:36.070017	2017-10-03 10:59:36.070017	\N	250	tvovm
-1783	Vedic Maths India Blog	1	\N	user	\N	2017-10-03 11:00:57.962558	2017-10-03 11:00:57.962558	\N	250	vmib
-1784	Learn Vedic Maths	1	\N	user	\N	2017-10-03 11:02:34.635731	2017-10-03 11:02:34.635731	\N	250	lvm
-1785	DVDs	1	\N	user	\N	2017-10-03 11:04:11.898503	2017-10-03 11:04:11.898503	\N	250	dvd
-1786	Live Online Courses	1	\N	user	\N	2017-10-03 11:06:59.032969	2017-10-03 11:06:59.032969	\N	250	loc
-1787	Right here in your device. Whenever you need me.	1	\N	bot	\N	2017-10-03 11:07:00.022743	2017-10-03 11:07:00.022743	\N	250	nil
-1788	Vedic Maths for Students	1	\N	user	\N	2017-10-03 11:07:47.890691	2017-10-03 11:07:47.890691	\N	250	vmfs
-1789	Vedic Maths for Teachers	1	\N	user	\N	2017-10-03 11:07:52.228416	2017-10-03 11:07:52.228416	\N	250	vmft
-1790	Vedic Maths for Parents	1	\N	user	\N	2017-10-03 11:07:55.060581	2017-10-03 11:07:55.060581	\N	250	vmfp
-1791	Vedic Maths for Students in Grade 3rd-10th	1	\N	user	\N	2017-10-03 11:25:31.285179	2017-10-03 11:25:31.285179	\N	250	vmfsg
-1792	hi	1	\N	user	\N	2017-10-03 12:26:46.181796	2017-10-03 12:26:46.181796	\N	250	nil
-1793	Hi there, friend!	1	\N	bot	\N	2017-10-03 12:26:47.040141	2017-10-03 12:26:47.040141	\N	250	nil
-1794	Cool	1	\N	agent	\N	2017-10-03 12:26:56.221994	2017-10-03 12:26:56.221994	\N	250	nil
-1795	Nice	1	\N	user	\N	2017-10-03 12:27:06.829614	2017-10-03 12:27:06.829614	\N	250	nil
-1796	Terrific!	1	\N	bot	\N	2017-10-03 12:27:07.84293	2017-10-03 12:27:07.84293	\N	250	nil
-1797	Hi	1	\N	user	\N	2017-10-03 12:27:12.625855	2017-10-03 12:27:12.625855	\N	250	nil
-1798	Howdy.	1	\N	bot	\N	2017-10-03 12:27:13.281796	2017-10-03 12:27:13.281796	\N	250	nil
-1799	Something the bot cannot respond to. 	1	\N	user	\N	2017-10-03 12:27:21.086833	2017-10-03 12:27:21.086833	\N	250	nil
-1800	fsdfdsfsfdsf	1	\N	agent	\N	2017-10-03 12:27:27.818421	2017-10-03 12:27:27.818421	\N	250	nil
+COPY messages (id, content, user_id, template, responder, template_id, created_at, updated_at, chat_id, visitor_id, payload, tags) FROM stdin;
+1953	Exisiting Customer - Login	1	\N	user	\N	2017-10-07 15:11:53.922047	2017-10-07 15:11:53.922047	\N	263	ecl	\N
+1954	Login	1	\N	user	\N	2017-10-07 15:11:55.476788	2017-10-07 15:11:55.476788	\N	263	greeting_after_login	\N
+1955	Select from options	1	\N	user	\N	2017-10-07 15:11:57.900411	2017-10-07 15:11:57.900411	\N	263	greeting_show_options	\N
+1956	Exisiting Customer - Login	1	\N	user	\N	2017-10-07 15:13:59.087255	2017-10-07 15:13:59.087255	\N	263	ecl	\N
+1957	Login	1	\N	user	\N	2017-10-07 15:14:00.653402	2017-10-07 15:14:00.653402	\N	263	greeting_after_login	\N
+1958	Select from options	1	\N	user	\N	2017-10-07 15:14:01.908931	2017-10-07 15:14:01.908931	\N	263	greeting_show_options	\N
+1959	Login	1	\N	user	\N	2017-10-07 15:18:58.95835	2017-10-07 15:18:58.95835	\N	263	greeting_after_login	\N
+1960	Select from options	1	\N	user	\N	2017-10-07 15:19:02.746646	2017-10-07 15:19:02.746646	\N	263	greeting_show_options	\N
+1961	Check Balance	1	\N	user	\N	2017-10-07 16:58:26.354921	2017-10-07 16:58:26.354921	\N	263	balance	\N
+1962	Remittance	1	\N	user	\N	2017-10-07 16:58:27.938295	2017-10-07 16:58:27.938295	\N	263	remittence	\N
+1963	Transfer Money Locally	1	\N	user	\N	2017-10-07 16:58:30.289034	2017-10-07 16:58:30.289034	\N	263	transfer_s1	\N
+1964	Check Balance	1	\N	user	\N	2017-10-07 17:48:46.802402	2017-10-07 17:48:46.802402	\N	263	balance	\N
+1965	Remittance	1	\N	user	\N	2017-10-07 17:48:53.383678	2017-10-07 17:48:53.383678	\N	263	remittence	\N
+1966	Exisiting Customer - Login	1	\N	user	\N	2017-10-07 17:49:03.824406	2017-10-07 17:49:03.824406	\N	263	ecl	\N
+1967	Login	1	\N	user	\N	2017-10-07 17:49:05.585794	2017-10-07 17:49:05.585794	\N	263	greeting_after_login	\N
+1968	Select from options	1	\N	user	\N	2017-10-07 17:49:07.518419	2017-10-07 17:49:07.518419	\N	263	greeting_show_options	\N
+1969	Check Balance	1	\N	user	\N	2017-10-07 17:49:09.171372	2017-10-07 17:49:09.171372	\N	263	balance	\N
+1970	Remittance	1	\N	user	\N	2017-10-07 17:49:11.093774	2017-10-07 17:49:11.093774	\N	263	remittence	\N
+1971	Rate	1	\N	user	\N	2017-10-07 17:57:27.256946	2017-10-07 17:57:27.256946	\N	263	\N	\N
+1972	Rate	1	\N	user	\N	2017-10-07 18:08:46.463288	2017-10-07 18:08:46.463288	\N	263	\N	\N
+1973	Rate	1	\N	user	\N	2017-10-07 18:10:37.285954	2017-10-07 18:10:37.285954	\N	263	\N	\N
+1974	Rate	1	\N	user	\N	2017-10-07 18:11:33.84074	2017-10-07 18:11:33.84074	\N	263	rate_after	\N
+1975	Rate	1	\N	user	\N	2017-10-07 18:11:43.058732	2017-10-07 18:11:43.058732	\N	263	rate_after	\N
+1976	Transfer Money Locally	1	\N	user	\N	2017-10-07 18:12:03.666603	2017-10-07 18:12:03.666603	\N	263	transfer_s1	\N
+1977	Transfer Money Locally	1	\N	user	\N	2017-10-07 18:14:10.91644	2017-10-07 18:14:10.91644	\N	263	transfer_s1	\N
+1978	Transfer	1	\N	user	\N	2017-10-07 18:18:14.009331	2017-10-07 18:18:14.009331	\N	263	transfer_s2	\N
+1979	Know more about DCB services	1	\N	user	\N	2017-10-07 18:32:01.749726	2017-10-07 18:32:01.749726	\N	263	kmadp	\N
+1980	Exisiting Customer - Login	1	\N	user	\N	2017-10-07 18:32:09.005627	2017-10-07 18:32:09.005627	\N	263	ecl	\N
+1981	Login	1	\N	user	\N	2017-10-07 18:32:11.672341	2017-10-07 18:32:11.672341	\N	263	greeting_after_login	\N
+1982	Select from options	1	\N	user	\N	2017-10-07 18:32:13.196077	2017-10-07 18:32:13.196077	\N	263	greeting_show_options	\N
+1983	Remittance	1	\N	user	\N	2017-10-07 18:32:14.385001	2017-10-07 18:32:14.385001	\N	263	remittence	\N
+1984	Rate	1	\N	user	\N	2017-10-07 18:32:16.144779	2017-10-07 18:32:16.144779	\N	263	rate_after	\N
+1985	hi	1	\N	agent	\N	2017-10-07 18:52:52.927836	2017-10-07 18:52:52.927836	\N	263	nil	\N
 \.
 
 
@@ -342,7 +395,7 @@ COPY messages (id, content, user_id, template, responder, template_id, created_a
 -- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
 --
 
-SELECT pg_catalog.setval('messages_id_seq', 1800, true);
+SELECT pg_catalog.setval('messages_id_seq', 1985, true);
 
 
 --
@@ -361,7 +414,24 @@ COPY schema_migrations (version) FROM stdin;
 20170829125910
 20170829131905
 20170829132249
+20171007141452
+20171007142439
 \.
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: vaibhavm
+--
+
+COPY tags (id, tag_name, tag_response, template_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
+--
+
+SELECT pg_catalog.setval('tags_id_seq', 1, false);
 
 
 --
@@ -388,6 +458,15 @@ COPY templates (id, payload, partial, intent, user_id, parent_id, created_at, up
 20	vmfce	vedicmaths/lvm/loc/vmfs/vmfce	Vedic Maths for Competitive Exams	1	16	2017-09-04 10:54:00	2017-09-04 10:54:00
 15	vmft	vedicmaths/lvm/loc/vmft	Vedic Maths for Teachers	1	11	2017-09-03 03:56:00	2017-09-04 13:46:27.899423
 12	vmfp	vedicmaths/lvm/parents	Vedic Maths for Parents	1	11	2017-08-30 13:20:00	2017-08-30 13:20:00
+21	ecl	bank_hacks/ecl	Existing Customer Login 	2	\N	2017-10-07 10:49:02.712444	2017-10-07 10:49:02.712444
+22	balance	bank_hacks/balance	What is my Account Balance?	2	\N	2017-10-07 14:33:25.601438	2017-10-07 14:33:25.601438
+23	remittence	bank_hacks/remittence	What are the foreign exchange rates? 	1	\N	2017-10-07 14:34:30.305896	2017-10-07 14:34:30.305896
+25	transfer_s2	bank_hacks/transfer/step2	Transfer Money to friend: Confirmation	1	\N	2017-10-07 14:36:03.664078	2017-10-07 14:36:03.664078
+24	transfer_s1	bank_hacks/transfer/step1	Transfer Money to Friend : Ask Details	2	\N	2017-10-07 14:35:00	2017-10-07 14:35:00
+27	greeting_basic	bank_hacks/greeting/basic	Basic Greeting for the customer	2	\N	2017-10-07 15:00:29.898845	2017-10-07 15:00:29.898845
+26	greeting_after_login	bank_hacks/greeting/after_login	Login	2	\N	2017-10-07 14:59:00	2017-10-07 15:09:00
+28	greeting_show_options	bank_hacks/greeting/all_options	Select From Options	2	\N	2017-10-07 15:01:00	2017-10-07 15:01:00
+29	rate_after	bank_hacks/fx_final	Rate Conversion	2	\N	2017-10-07 17:58:58.204833	2017-10-07 17:58:58.204833
 \.
 
 
@@ -395,7 +474,7 @@ COPY templates (id, payload, partial, intent, user_id, parent_id, created_at, up
 -- Name: templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
 --
 
-SELECT pg_catalog.setval('templates_id_seq', 20, true);
+SELECT pg_catalog.setval('templates_id_seq', 29, true);
 
 
 --
@@ -418,7 +497,7 @@ SELECT pg_catalog.setval('urls_id_seq', 1, false);
 --
 
 COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
-1	vaibhav.dkm@gmail.com	$2a$11$9lwajXWO2fd6aM3rSMfpAu/Z4mmK0mFc6VnybzmSSVRf29cyCpEfO	\N	\N	\N	245	2017-10-03 12:43:42.531886	2017-10-03 12:14:49.631482	127.0.0.1	127.0.0.1	2017-07-04 10:56:57.616728	2017-10-03 12:43:42.532919
+1	vaibhav.dkm@gmail.com	$2a$11$9lwajXWO2fd6aM3rSMfpAu/Z4mmK0mFc6VnybzmSSVRf29cyCpEfO	\N	\N	\N	255	2017-10-07 18:31:34.087705	2017-10-07 11:25:30.540989	127.0.0.1	127.0.0.1	2017-07-04 10:56:57.616728	2017-10-07 18:31:34.088561
 \.
 
 
@@ -434,8 +513,7 @@ SELECT pg_catalog.setval('users_id_seq', 1, true);
 --
 
 COPY visitors (id, ipaddr, location, v_count, url_id, name, email, auth_token, created_at, updated_at, chat_id) FROM stdin;
-250	127.0.0.1	Gujarat, India	\N	\N	\N	\N	MvYNhcVxVIELEiRQxUSclHyrMyeRmuWHxGimzsJeRTuOdPzNOXibHmfFbUrTxoXjEVPWGHUteVqoZsuFARflKDbXxEAQZUsKjHpR	2017-10-02 14:02:21.847583	2017-10-02 14:02:21.847583	\N
-251	127.0.0.1	\N	\N	\N	\N	\N	OuObzehTtexsrUcnpDevqVKfiTQOJLAWaozzSDBjbyVwbRebLBEMrVoUzZDIhTckyogXlIWxLeavLodjpokTYbBBMpCJXEzKMZdv	2017-10-02 14:17:06.09373	2017-10-02 14:17:06.09373	\N
+263	127.0.0.1	\N	\N	\N	\N	\N	MvYNhcVxVIELEiRQxUSclHyrMyeRmuWHxGimzsJeRTuOdPzNOXibHmfFbUrTxoXjEVPWGHUteVqoZsuFARflKDbXxEAQZUsKjHpR	2017-10-07 11:45:29.090771	2017-10-07 11:45:29.090771	\N
 \.
 
 
@@ -443,7 +521,7 @@ COPY visitors (id, ipaddr, location, v_count, url_id, name, email, auth_token, c
 -- Name: visitors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vaibhavm
 --
 
-SELECT pg_catalog.setval('visitors_id_seq', 251, true);
+SELECT pg_catalog.setval('visitors_id_seq', 263, true);
 
 
 --
@@ -468,6 +546,14 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: vaibhavm
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
 
 
 --
