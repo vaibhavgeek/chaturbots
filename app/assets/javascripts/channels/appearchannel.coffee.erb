@@ -12,7 +12,10 @@ nameclick = (value) ->
     createconusmer value
 $ -> 
   $("#ml_check").change ->
-    $(".chips").hide()
+    if ml_check.checked.toString() == "true"
+      $(".chips").show()
+    else 
+      $(".chips").hide()
     console.log ml_check.checked
 
 window["nameclick"] = nameclick
@@ -58,9 +61,9 @@ createconusmer = (send_params) ->
         console.log "from appearchannel"
         console.log data['message']
         messages = $('.messages')
-        console.log data
+        #console.log data
         messages.append data['message']
-        messages.animate { scrollTop: messages.prop("scrollHeight") },1000
+        #messages.animate { scrollTop: messages.prop("scrollHeight") },1000
         # Called when there's incoming data on the websocket for this channel
 
       speak: (data, responder, payload) ->

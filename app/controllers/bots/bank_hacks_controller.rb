@@ -3,10 +3,10 @@ require 'json'
 class Bots::BankHacksController < ApplicationController
 	def show
 		@messages = Message.all
-		if Template.where(:user_id => 1) != nil
-			@templates1 = Template.where(:user_id => 1).group_by { |t| t.parent_id }.to_a[0][1]
-			@group_results = Template.where(:user_id => 1).group_by { |t| t.parent_id }
-		end
+		#if Template.where(:user_id => 1) != nil
+		#	@templates1 = Template.where(:user_id => 1).group_by { |t| t.parent_id }.to_a[0][1]
+		#	@group_results = Template.where(:user_id => 1).group_by { |t| t.parent_id }
+		#end
 			
 	end
 	
