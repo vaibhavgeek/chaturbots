@@ -1,8 +1,7 @@
 <!-- Individual messages -->		 	
 
 
-<script>	
-		  
+<script>			  
 			$('.chips').material_chip();
 
 			// set inital chips data (can be json)
@@ -15,6 +14,10 @@
 				tag: 'Google',
 			  }],
 			}); 
+
+			$('.chips>input').attr("placeholder", "Add tags").placeholder();
+
+			var chip_selected = $('#intent_tags').material_chip('data');
 	</script>
 
 <% if message.payload != "nil" %>
@@ -51,8 +54,7 @@
 				<div class="text">
 					<%= message.content %>
 				</div>
-					<div class="chips chips-initial"></div>
-
+        <div class="chips chips-initial" id="intent_tags"></div>
 			</div>
 			
 		</li>
@@ -62,7 +64,7 @@
 			<div class="text_wrapper">
 				<div class="text-header">
 					<%= message.content %>
-				</div>
+        </div>				
 			</div>
 		</li>
 	<% end %>
