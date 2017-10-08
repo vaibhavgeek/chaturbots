@@ -646,3 +646,20 @@ body.zipiopen>#zipi-chatbox {
 #display_chats .messages {
   position: static !important;
 }
+
+.chips input {
+  box-shadow: none !important;
+}
+
+// .chips.focus, .chips {
+//   border-bottom: 1px solid #00356B !important;
+//   box-shadow: 0 1px 0 0 #00356B !important;
+// }
+
+.chips.focus, .chips {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  .input::placeholder {
+    color: black;
+  }
+}

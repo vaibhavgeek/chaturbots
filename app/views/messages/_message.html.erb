@@ -1,8 +1,7 @@
 <!-- Individual messages -->		 	
 
 
-<script>	
-		  
+<script>			  
 			$('.chips').material_chip();
 
 			// set inital chips data (can be json)
@@ -15,6 +14,8 @@
 				tag: 'Google',
 			  }],
 			}); 
+
+			$('.chips>input').attr("placeholder", "Add tags").placeholder();
 	</script>
 
 <% if message.payload != "nil" %>
