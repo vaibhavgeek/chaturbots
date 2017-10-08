@@ -9,6 +9,17 @@ $ ->
     return
   return
 
+$ ->
+  $(document).on 'click', 'a.spell_check', (event) ->
+    $anchor = $(this)
+    if auth_token != "admin"
+      message = $anchor.text().trim()
+      payload = $anchor.attr('data-payload')
+      # alert $anchor.text().trim()
+      App.chatbot.speak message, responder: "user" , payload: "spell_check"
+    event.preventDefault()
+    return
+  return
 
 
 string = window.location.href 

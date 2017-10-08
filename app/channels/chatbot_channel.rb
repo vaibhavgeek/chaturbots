@@ -24,7 +24,9 @@ class ChatbotChannel < ApplicationCable::Channel
   def speak(data) 
     auth = params[:auth_token]
     visitor = Visitor.where(:auth_token => auth).first
-  	Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"]
+    puts data 
+    puts "\n \n \n  \n \n \n"
+    Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"]
   	#ActionCable.server.broadcast "chatbot" , message: data["message"]
   end
   private

@@ -1,10 +1,6 @@
 nameclick = (value) ->
   check_bool = 1
   $('.hidden').each (i, obj) ->
-   #alert i
-   #alert check_bool
-   #alert obj.innerText.trim()
-   #alert value
    if value == obj.innerText.trim()
     check_bool = i
   console.log check_bool
