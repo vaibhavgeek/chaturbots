@@ -10,7 +10,9 @@ nameclick = (value) ->
   console.log check_bool
   if check_bool == 0
     createconusmer value
-  
+$ -> 
+  $("#ml_check").change ->
+    console.log ml_check.checked
 
 window["nameclick"] = nameclick
 
