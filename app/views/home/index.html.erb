@@ -34,7 +34,7 @@
                 <div class="switch">
                     <label>
                       Automate
-                      <input type="checkbox">
+                      <input type="checkbox" id="automate_check">
                       <span class="lever"></span>
                     </label>
                   </div>
@@ -67,9 +67,3 @@
 <% else %>
 <%= render ("/home/partials/home") %>
   <% end %>
-
-<script>
-  $("#ml_check").change(function(){
-    console.log(ml_check.checked);
-  });
-</script>
