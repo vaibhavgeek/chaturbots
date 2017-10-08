@@ -712,3 +712,33 @@ body.zipiopen>#zipi-chatbox {
 .collection .collection-item{
   color: $blue !important;
 }
+
+
+.login-form {
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 480px;
+  padding: 2em;
+  @extend .card;
+
+  .input-field label {
+    color: $blue;
+  }
+
+  .input-field input:focus + label {
+    color: $blue !important;
+  }
+
+  .input-field input:focus {
+    border-bottom: 1px solid $blue !important;
+    box-shadow: 0 1px 0 0 $blue !important;
+  }
+
+  .input-field .prefix.active {
+    color: $blue !important;
+  }
+}
+
+.btn.btn-primary {
+  background-color: $blue !important;
+}
