@@ -22,7 +22,7 @@ select {
   display: block !important;
 }
 
-$blue: #2196F3;
+$blue: #00356B;
 $dingy: #495B6A;
 $white: #ffffff;
 $purple: #673AB7;
@@ -657,9 +657,16 @@ body.zipiopen>#zipi-chatbox {
 // }
 
 .chips.focus, .chips {
-  border-bottom: none !important;
-  box-shadow: none !important;
+  .focus{
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }  
   .input::placeholder {
     color: black;
   }
+  .selected {
+    background-color: $blue !important;
+  }
 }
+
+
