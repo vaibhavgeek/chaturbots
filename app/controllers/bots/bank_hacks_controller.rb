@@ -20,10 +20,10 @@ class Bots::BankHacksController < ApplicationController
   		end
   		auth_tok = cookies[:auth_token]
   		if Visitor.where(auth_token: auth_tok).count == 0
-  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip , location: location)
-			loc = Net::HTTP.get(URI.parse('https://ipapi.co/49.34.133.24/json'))
-			k = JSON.parse(loc)
-  			location = k["region"] + ", " + k["country_name"]
+  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: request.remote_ip)
+			#loc = Net::HTTP.get(URI.parse('https://ipapi.co/49.34.133.24/json'))
+			#k = JSON.parse(loc)
+  			#location = k["region"] + ", " + k["country_name"]
 		end
 		redirect_to chatbotmain_user_path( params[:id] , :auth_token => auth_tok) 
 	end
