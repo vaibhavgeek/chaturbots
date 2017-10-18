@@ -1,32 +1,12 @@
 <!-- Individual messages -->		 	
 
 
-<script>			  
-			$('.chips').material_chip();
-
-			// set inital chips data (can be json)
-			$('.chips-initial').material_chip({
-			  data: [{
-				tag: 'transfer',
-			  }, {
-				tag: 'remittence',
-			  }, {
-				tag: 'greeting',
-			  }],
-			}); 
-
-			
-
-			var chip_selected = $('#intent_tags').material_chip('data');
-	</script>
-
 <% if message.payload == "spell_check" %> 
 	<li class="message right appeared">
 				<div class="text_wrapper">
 					<div class="text">
 						<%= message.content %>
 					</div>
-				<div class="chips hidden chips-initial"></div>
 
 				</div>
 			</li>
@@ -46,7 +26,6 @@
 					<div class="text">
 						<%= @temp.intent %>
 					</div>
-				<div class="chips hidden chips-initial"></div>
 
 				</div>
 			</li>
@@ -60,13 +39,13 @@
 	<% end %>
 	
 <% else %>
+	<div class="full_width">
 	<% if message.responder == "user" %> 
 		<li class="message right appeared">		
 			<div class="text_wrapper">
 				<div class="text">
 					<%= message.content %>
 				</div>
-        <div class="chips hidden chips-initial" id="intent_tags"></div>
 			</div>
 			
 		</li>
@@ -76,10 +55,10 @@
 			<div class="text_wrapper">
 				<div class="text-header">
 					<%= message.content %>
-        </div>				
-			</div>
+        </div>	</div>	
 		</li>
 	<% end %>
+	</div>
 <% end %> 
 
 

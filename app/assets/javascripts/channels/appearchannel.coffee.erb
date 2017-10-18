@@ -1,18 +1,36 @@
+connections = []
+
+addConnection = (id) ->
+  connections.push(id)
+
+removeConnection = (id) ->
+  index = connections.indexOf(id)
+  connections.splice(index, 1) if index > -1
+
+connectedTo = (id) ->
+  connections.indexOf(id) > -1
+
 nameclick = (value) ->
-  check_bool = 1
-  $('.hidden').each (i, obj) ->
-   if value == obj.innerText.trim()
-    check_bool = i
-  console.log check_bool
-  if check_bool == 0
+  if connectedTo(value) == false
+    addConnection(value)
     createconusmer value
-$ -> 
-  $("#ml_check").change ->
-    if ml_check.checked.toString() == "true"
-      $(".chips").show()
-    else 
-      $(".chips").hide()
-    console.log ml_check.checked
+
+  # check_bool = 0
+  # $('.hidden').each (i, obj) ->
+  #  if value == obj.innerText.trim()
+  #   check_bool = check_bool + 1
+  #   alert check_bool
+  # if check_bool == 1
+  #  check_bool = 2
+    
+
+# $ -> 
+#  $("#ml_check").change ->
+#    if ml_check.checked.toString() == "true"
+#      $(".chips").show()
+#    else 
+#      $(".chips").hide()
+#    console.log ml_check.checked
 
 window["nameclick"] = nameclick
 
@@ -48,18 +66,19 @@ App.appearchannel = App.cable.subscriptions.create "AppearchannelChannel",
 createconusmer = (send_params) ->
   App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params },
       connected:  ->
+        addConnection(auth_token)
         # Called when the subscription is ready for use on the server
 
       disconnected: ->
+        removeConnection(auth_token)
         # Called when the subscription has been terminated by the server
 
       received: (data) ->
         console.log "from appearchannel"
-        console.log data['message']
-        messages = $('.messages')
-        #console.log data
+        id = '#messages' +  data['auth_token'].trim()
+        messages = $(id)
         messages.append data['message']
-        #messages.animate { scrollTop: messages.prop("scrollHeight") },1000
+        messages.animate { scrollTop: messages.prop("scrollHeight") },1000
         # Called when there's incoming data on the websocket for this channel
 
       speak: (data, responder, payload) ->

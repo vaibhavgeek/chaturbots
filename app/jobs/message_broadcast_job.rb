@@ -5,8 +5,7 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
     auth_token = message.visitor.auth_token
-    ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message)
-
+    ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
   end
 
   private

@@ -10,8 +10,8 @@ class ChatsController < ApplicationController
   end
   def new 
     auth =  params[:auth_token]
-    visitor = Visitor.where(:auth_token => auth).first
-  	@messages = Message.where(:visitor_id => visitor.id).all
+    @visitor = Visitor.where(:auth_token => auth).first
+  	@messages = Message.where(:visitor_id => @visitor.id).all
   	puts @messages.first.as_json 
   end
   def update

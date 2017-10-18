@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007142439) do
+ActiveRecord::Schema.define(version: 20171011141356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20171007142439) do
     t.integer "visitor_id"
     t.string "payload"
     t.string "tags"
+    t.boolean "ml"
+    t.boolean "online"
   end
 
   create_table "tags", force: :cascade do |t|

@@ -1,4 +1,4 @@
-<ul class="messages_admin messages" id="messages">
+<ul class="messages_admin messages" id="messages<%= @visitor.auth_token %>">
 		<%= render :partial => 'bots/vedicmaths/initial_message' %>
 
 	<%= render @messages %>

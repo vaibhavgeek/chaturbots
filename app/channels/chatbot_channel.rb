@@ -11,7 +11,7 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def unsubscribed
     visitor = Visitor.where(:auth_token => params["auth_token"]).first
-    if visitor != nil && params["auth_token"] != "admin"
+    if params["auth_token"] != "admin"
     redis.del("visitor_#{visitor.id}_online")
     ActionCable.server.broadcast "appearchannel", 
                                  user_id: visitor.id, visitor: render_visitor(visitor),
@@ -22,10 +22,10 @@ class ChatbotChannel < ApplicationCable::Channel
   end
 
   def speak(data) 
-    auth = params[:auth_token]
+    auth = data["responder"]["auth_token"].strip
+    puts "\n \n \n \n \n \n"
+    puts auth
     visitor = Visitor.where(:auth_token => auth).first
-    puts data 
-    puts "\n \n \n  \n \n \n"
     Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"]
   	#ActionCable.server.broadcast "chatbot" , message: data["message"]
   end

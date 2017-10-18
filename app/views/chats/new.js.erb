@@ -1,2 +1,5 @@
 $("#nav_menu").show();
+
 $("#display_chats").html("<%= j render ('/home/partials/active_chat_admin')   %>");
+$("#event").attr('data-auth' , " <%= @visitor.auth_token %>")
+console.log("<%= @visitor.id %>");

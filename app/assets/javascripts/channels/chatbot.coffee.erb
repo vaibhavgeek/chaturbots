@@ -4,7 +4,7 @@ $ ->
     if auth_token != "admin"
       message = $anchor.text().trim()
       payload = $anchor.attr('data-payload')
-      App.chatbot.speak message, responder: "user" , payload: payload
+      App.chatbot.speak message, responder: "user" , payload: payload , auth_token: auth_token.trim()
     event.preventDefault()
     return
   return
@@ -16,7 +16,7 @@ $ ->
       message = $anchor.text().trim()
       payload = $anchor.attr('data-payload')
       # alert $anchor.text().trim()
-      App.chatbot.speak message, responder: "user" , payload: "spell_check"
+      App.chatbot.speak message, responder: "user" , payload: "spell_check" , auth_token: auth_token.trim()
     event.preventDefault()
     return
   return
@@ -31,9 +31,11 @@ else
 
 App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
     connected:  ->
+      addConnection(auth_token)
       # Called when the subscription is ready for use on the server
 
     disconnected: ->
+      removeConnection(auth_token)
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
@@ -55,9 +57,9 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
         payload = event.target.value.substring(9)
       else
         payload = "nil"
-      App.chatbot.speak event.target.value , responder: "agent" , payload: payload
+      App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim()
     else 
-      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" 
+      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim()
     event.target.value = ''
     event.preventDefault()
 
