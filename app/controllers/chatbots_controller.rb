@@ -1,6 +1,14 @@
 require 'net/http'
 require 'json'
-class Bots::BankHacksController < ApplicationController
+class ChatbotsController < ApplicationController
+	
+
+
+	def intent_chat
+		@messages = Message.where(:visitor_id => request.params["visitor"]["id"]).all
+
+	end
+
 	def show
 		@messages = Message.all
 		#if Template.where(:user_id => 1) != nil
@@ -58,7 +66,7 @@ class Bots::BankHacksController < ApplicationController
 	end
 	
 	def intent_mapping
-			
+
 	end
 
 	private 
@@ -90,5 +98,4 @@ class Bots::BankHacksController < ApplicationController
 		string = (0...100).map { o[rand(o.length)] }.join
 		string
      end
-
 end

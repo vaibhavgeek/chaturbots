@@ -7,12 +7,9 @@ end
 gem 'font-awesome-rails'
 gem 'jquery-easing-rails'
 gem 'htmlentities'
-gem 'api-ai-ruby'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'jquery-rails'
 gem 'popper_js'
-gem 'bootstrap-select-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'

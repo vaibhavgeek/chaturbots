@@ -23,11 +23,13 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def speak(data) 
     auth = data["responder"]["auth_token"].strip
-    puts "\n \n \n \n \n \n"
-    puts auth
     visitor = Visitor.where(:auth_token => auth).first
     Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"]
   	#ActionCable.server.broadcast "chatbot" , message: data["message"]
+  end
+
+  def ml(data)
+  #  Intent.create! 
   end
   private
    def render_visitor(visitor)

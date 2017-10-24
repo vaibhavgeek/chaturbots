@@ -1,0 +1,39 @@
+
+<div class="row">
+<div class="col s6 m6">
+          <div class="card white darken-1">
+            <div style="min-height: 400px;" class="card-content">
+              
+             <ul class="messages">
+		<% if @messages.first != nil %>
+			<span class="timestamp">
+				<center><%= @messages.first.created_at.to_time.to_s(:short) %> </center>
+			</span>		 
+		<% else %>
+			<span class="timestamp"> 
+				<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
+			</span>
+		<% end %>	
+		<%= render :partial => 'bots/vedicmaths/initial_message' %>
+		<%= render :partial => 'messages/message' , collection: @messages %>
+	</ul>
+            </div>
+            
+          </div>
+        </div>
+<div class="col s6 m6">
+          <div class="card darken-1">
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            
+          </div>
+        </div>
+</div>
+
+        <div class="right-align">
+              <a href="#" class="btn">Mark chat automated</a>
+              <a href="#" class="btn">save changes</a>
+            </div>
+

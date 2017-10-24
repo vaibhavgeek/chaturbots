@@ -1,0 +1,70 @@
+
+
+<div class="row container top-margin-20">
+		<div class="col s2 white no-padding">
+				<div class="collection">
+						<%= link_to "Intent Mapping" , bot_intent_mapping_user_path(:user_id => 1), :class => "collection-item" %>
+						<%= link_to "Reports", bot_reports_user_path(:user_id => 1) , :class => "collection-item"  %>
+						<%= link_to "Preview Bot", bot_preview_user_path(:user_id => 1) , :class => "collection-item"  %>
+						<%= link_to "Contact Us", home_contact_us_path(:user_id => 1) , :class => "collection-item"  %>
+			  </div>	
+		</div>
+		<div class="col s10 white">
+		
+     
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a href="#test1">Pending Chats</a></li>
+        <li class="tab col s4"><a class="active" href="#test2">Completed Chats</a></li>
+        <li class="tab col s4"><a href="#test4">All Chats	</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+		<div class="input-field col s6 offset-s3">
+    <%= form_tag bot_intent_chat_user_path, :method => :get , :id => 'intent_map_chat' , :remote => "true" do %>
+
+<%= collection_select :visitor, :id, Visitor.all, :id,  :location, { prompt: "Please Select Chat" } , { :onchange => '$("#click").click();'  }  %>
+    <label>Please select chat</label>
+<button style="display: none" type="submit" id="click"  value="Submit">Submit</button>
+
+<% end %>
+
+    
+  </div>
+    </div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="test4" class="col s12">Test 4</div>
+    
+
+
+  <div id="load_chat_dynamic"> 
+  </div>
+
+  
+
+  
+
+
+
+
+
+
+
+
+		
+		</div>
+
+		
+	</div>
+	
+
+ <script>
+     $(document).ready(function() {
+        $('select').material_select();
+    });
+
+$(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+
+  </script>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BankHacksControllerTest < ActionDispatch::IntegrationTest
+class ChatbotsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

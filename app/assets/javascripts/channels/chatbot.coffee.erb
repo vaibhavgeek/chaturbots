@@ -41,6 +41,7 @@ App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_
     received: (data) ->
       messages = $('.messages')
       console.log data
+      console.log "from chatbot channel"
       messages.append data['message']
       messages.animate { scrollTop: messages.prop("scrollHeight") },1000
       # messages.scrollTop(messages.prop("scrollHeight"))

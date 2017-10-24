@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011141356) do
+ActiveRecord::Schema.define(version: 20171023081625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "intents", force: :cascade do |t|
+    t.string "tags"
+    t.string "patterns"
+    t.string "responses"
+    t.integer "visitor_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
@@ -84,6 +94,7 @@ ActiveRecord::Schema.define(version: 20171011141356) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "chat_id"
+    t.boolean "ml_done"
   end
 
 end

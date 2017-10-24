@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :users , only: [:show , :edit] do 
   	resources :chats
+    resources :intents
   end 
   get 'settings/payment'
   get 'settings/account' 
@@ -18,32 +19,12 @@ Rails.application.routes.draw do
 #routes for the vedic-maths chatbot
   resources :users , only: [:show , :edit] do 
       member do
-            #get 'bot/redirect' , to: 'bots/bank_hacks#redirect'   
-            #get 'bot/index/:auth_token' , to: 'bots/bank_hacks#index' , as: 'chatbotmain'
-           # post 'bot/login' , to: 'bots/bank_hacks#login'
-            #post 'bot/payment_h' ,  to: 'bots/bank_hacks#payment_h'
-            #post 'bot/fx_list' ,  to: 'bots/bank_hacks#fx_list'
-           # post 'bot/benefeciary' ,  to: 'bots/bank_hacks#benefeciary'
-            #post 'bot/destroy' ,  to: 'bots/bank_hacks#destroy'
-            #get  'bot/show' ,  to: 'bots/bank_hacks#show'
-            #get 'bot/intent' , to: 'bots/bank_hacks#intent'
-            #get 'bot/reports' , to: 'bots/bank_hacks#reports'
-            #get 'bot/preview' , to: 'bots/bank_hacks#preview'
-           # post 'bot/create' , to: 'bots/bank_hacks#create'
-
-            get 'bot/redirect' , to: 'bots/bank_hacks#redirect'   
-            get 'bot/index/:auth_token' , to: 'bots/bank_hacks#index' , as: 'chatbotmain'
-            post 'bot/login' , to: 'bots/bank_hacks#login'
-            post 'bot/payment_h' ,  to: 'bots/bank_hacks#payment_h'
-            post 'bot/fx_list' ,  to: 'bots/bank_hacks#fx_list'
-            post 'bot/benefeciary' ,  to: 'bots/bank_hacks#benefeciary'
-            post 'bot/destroy' ,  to: 'bots/bank_hacks#destroy'
-            get  'bot/show' ,  to: 'bots/bank_hacks#show'
-            get 'bot/intent' , to: 'bots/bank_hacks#intent'
-            get 'bot/reports' , to: 'bots/bank_hacks#reports'
-            get 'bot/preview' , to: 'bots/bank_hacks#preview'
-            post 'bot/create' , to: 'bots/bank_hacks#create'
-            get 'bot/intent_mapping' , to: 'bots/bank_hacks#intent_mapping'
+            get 'bot/redirect' , to: 'chatbots#redirect'   
+            get 'bot/index/:auth_token' , to: 'chatbots#index' , as: 'chatbotmain'
+            get 'bot/reports' , to: 'chatbots#reports'
+            get 'bot/preview' , to: 'chatbots#preview'
+            get 'bot/intent_mapping' , to: 'chatbots#intent_mapping'
+            get 'bot/intent_chat' , to: 'chatbots#intent_chat'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

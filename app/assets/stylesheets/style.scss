@@ -1,5 +1,10 @@
 /*  Homepage styles */
-
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #00356B;
+}
+.card .card-content, .login-form .card-content {
+   padding:6px;
+}
  nav ul a,
  nav .brand-logo,
  .button-collapse {

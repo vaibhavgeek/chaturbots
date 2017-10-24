@@ -35,7 +35,7 @@
 		<span class="timestamp">
 			<center><%= message.created_at.to_time.to_s(:short) %></center>
 		</span>			 	
-		<%= render :partial =>  "bots/" + @temp.partial %>
+		<%= render :partial =>  "bots/" + @temp.partial , :locals => { message: message } %>
 	<% end %>
 	
 <% else %>
