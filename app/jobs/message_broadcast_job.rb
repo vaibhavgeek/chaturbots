@@ -20,6 +20,7 @@ class MessageBroadcastJob < ApplicationJob
     response = http.request(request)
     return response.read_body.to_s
   end
+  
   private
 
   def render_text_message(message)

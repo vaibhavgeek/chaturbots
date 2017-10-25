@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   end 
   get 'settings/payment'
   get 'settings/account' 
-
+  patch 'bot/vedic-maths/update_visitor' , to: 'bots/vedicmaths#update_visitor'
+  patch 'bot/vedic-maths/payment_done' , to: 'bots/vedicmaths#payment_done'
 #routes for the vedic-maths chatbot
   resources :users , only: [:show , :edit] do 
       member do

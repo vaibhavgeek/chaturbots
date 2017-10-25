@@ -73,14 +73,17 @@ $black: #333333;
   bottom: 2px;
   position: fixed;
   height: 40px;
-  width: 100%;
 }
   
 .input_message input {
   border: none !important;
-  box-shadow: none !important;
-  padding-left: 2em !important;
-  padding-right: 2em !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  width: 70% !important;
+}
+.input_message i {
+top: 8px;
+position:relative;
 }
 
 .messages .message {

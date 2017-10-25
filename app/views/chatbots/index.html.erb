@@ -13,7 +13,11 @@
 		<%= render :partial => 'messages/message' , collection: @messages %>
 	</ul>
 
-	<div class="input_message">
-		<input type="text" id="event" name="chat_box" data-behavior="chatbot_call" placeholder="Type your message here">
+	<div class="input_message"> 
+	      <a href="#" class="bot" data-payload="initial_message"><i class="material-icons prefix left-align">refresh</i></a>
+          <input id="icon_prefix"  type="text" class="validate" id="event" name="chat_box" data-behavior="chatbot_call">
+                    <label for="icon_prefix">Message</label>
+
+
 	</div>
 	</div>

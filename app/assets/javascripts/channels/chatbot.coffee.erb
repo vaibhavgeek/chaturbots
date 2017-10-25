@@ -4,8 +4,10 @@ $ ->
     if auth_token != "admin"
       message = $anchor.text().trim()
       payload = $anchor.attr('data-payload')
-      App.chatbot.speak message, responder: "user" , payload: payload , auth_token: auth_token.trim()
-    event.preventDefault()
+      if payload
+        App.chatbot.speak message, responder: "user" , payload: payload , auth_token: auth_token.trim() 
+      event.preventDefault() 
+      return
     return
   return
 
