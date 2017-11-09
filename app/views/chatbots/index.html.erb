@@ -9,7 +9,9 @@
 				<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
 			</span>
 		<% end %>	
-		<%= render :partial => 'bots/vedicmaths/initial_message' %>
+	
+	<%= render :partial =>  "bots/" + @initial_message  %>
+
 		<%= render :partial => 'messages/message' , collection: @messages %>
 	</ul>
 

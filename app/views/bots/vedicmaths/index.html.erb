@@ -12,7 +12,7 @@
 			<center> <%= Time.now.utc.to_time.to_s(:short) %> </center>
 		</span>
 	<% end %>	
-	<%= render :partial => 'bots/vedicmaths/initial_message' %>
+	<%= render :partial =>  "bots/" + Template.where(:user_id => current_user.id , :payload => "initial_message").first.partial  %>
 	<%= render :partial => 'messages/message' , collection: @messages %>
 </ul>
 

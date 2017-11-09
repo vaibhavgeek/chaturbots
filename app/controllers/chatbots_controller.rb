@@ -43,6 +43,12 @@ class ChatbotsController < ApplicationController
 		auth =  params[:auth_token]
     	visitor = Visitor.where(:auth_token => auth).first
   		@messages = Message.where(:visitor_id => visitor.id).all
+  		temp = ::Template.where(:user_id => request.params[:id] , :payload => "initial_message").first
+  		if temp.nil? 
+  			@initial_message = "default_initial"
+  		else
+  			@initial_message = temp.partial
+  		end
 		#MessageBroadcastJob.perform_later @messages.last
 		respond_to do |format|
   			format.html { render :layout => 'vedicmaths' } # your-action.html.erb

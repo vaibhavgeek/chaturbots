@@ -1,7 +1,7 @@
-
+  
 <div class="row">
 <div disabled class="col s6 m6">
-          <div class="card white darken-1">
+          <div id="someid" class="card disablediv darken-1 ">
             <div style="min-height: 400px;" class="card-content">
               
              <ul class="messages">
@@ -15,7 +15,8 @@
 			</span>
 		<% end %>	
 		<%= render :partial => 'bots/vedicmaths/initial_message' %>
-		<%= render :partial => 'messages/message' , collection: @messages %>
+    <%= render :partial => 'messages/message_intent_map' , 
+    collection: @messages , :as => :message %>
 	</ul>
             </div>
             
@@ -24,8 +25,20 @@
 <div class="col s6 m6">
           <div class="card darken-1">
             <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <%= form_for Intent.new , :url => user_intents_path(User.find(request.params[:id]))  do |f| %>
+
+
+              <%= f.label "Select User Patterns" , :for => "patterns" %>
+<%= f.text_area :patterns , :placeholder => 'User responses to be automated' , :onfocus => "allowuserreponses($(this))" , :id => "patterns" %> 
+
+ <%= f.label "Select Responses for User Patterns" , :for => "responses" %>
+<%= f.text_area :responses , :placeholder => 'Response to the queries' , :onclick => "bots_response($(this))" , :id => "responses" %> 
+<%= f.label "Select Tags" , :for => "tags" %>
+     <%= f.text_field :tags , :placeholder => 'Tags Associated' , :id => "tags" , :"data-role" => "materialtags" , :class => "browser-default" %>
+
+
+<%= f.submit "Save" ,  :class => "btn right-align" %>
+              <% end %> 
             </div>
             
           </div>
@@ -34,6 +47,108 @@
 
         <div class="right-align">
               <a href="#" class="btn">Mark chat automated</a>
-              <a href="#" class="btn">save changes</a>
             </div>
 
+<script type="text/javascript">
+  function allowuserreponses(object)
+  {
+    // console.log(object.val());
+    $("#someid").removeClass("disablediv");
+    $('.left').each(function(i, obj) {
+        $(this).addClass("disablediv");
+    });
+    $('.right_by_user').each(function(i, obj) {
+       $(this).removeClass("disablediv");
+       $(this).addClass("clickable");
+    });
+    $('.full_width').each(function(i, obj) {
+        console.log($(obj).text().trim());
+        $(obj).addClass("clickable");
+        // console.log($(this).text().trim());
+        $(obj).unbind( "click");
+        $(obj).on("click", function(){ into_tb_user($(obj) , object); });
+        // $(obj).click(into_tb($(obj) , object));
+    });
+  };
+
+  
+  function bots_response(object){
+     $("#someid").removeClass("disablediv");
+     $('.left').each(function(i, obj) {
+        $(this).removeClass("disablediv");
+        $(this).addClass("clickable");
+    });
+    $('.right_by_user').each(function(i, obj) {
+       $(this).removeClass("clickable");
+       $(this).addClass("disablediv");
+    });
+
+     $('.left').each(function(i, obj) {
+        console.log($(obj).text().trim());
+        //$(obj).addClass("clickable");
+        // console.log($(this).text().trim());
+        console.log($(obj).next(".bot_template"));  
+        $(obj).unbind( "click");
+
+        $(obj).on("click", function(){  into_tb_bot(  $(obj).next(".bot_template") , object); });
+        // $(obj).click(into_tb($(obj) , object));
+    });
+  };
+
+  function into_tb_user(k , obj)
+  {
+    initial_val = obj.val();
+    console.log(initial_val.trim());
+    if (initial_val.trim())
+    {
+    final_val = initial_val +  " , " + k.text().trim();
+    }
+    else {
+      final_val = k.text().trim();
+    }
+    obj.val(final_val);
+    k.removeClass("clickable");
+    k.addClass("disablediv");
+    k.prop('onclick',null).off('click');
+  };
+  function into_tb_bot(k , obj)
+  {
+    initial_val = obj.val();
+    console.log(initial_val.trim());
+    if (initial_val.trim())
+    {
+    final_val = initial_val +  " , " + k.text().trim();
+    }
+    else {
+      final_val = k.text().trim();
+    }
+    obj.val(final_val);
+    k.prev(".left").removeClass("clickable");
+    k.prev(".left").addClass("disablediv");
+    k.prev(".left").prop('onclick',null).off('click');
+  };
+  
+ var citynames = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '/assets/citynames.json',
+                filter: function(list) {
+                    return $.map(list, function(cityname) {
+                        return { name: cityname };
+                    });
+                }
+            }
+        });
+
+        citynames.initialize();
+
+        $('#tags').materialtags({
+            typeaheadjs: {
+                name: 'citynames',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: citynames.ttAdapter()
+            }
+        });
+</script>

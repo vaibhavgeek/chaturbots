@@ -1,5 +1,40 @@
 /*  Homepage styles */
 
+.bot_template {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+   
+}
+.bot_cover {
+   overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.disablediv {
+   background-color: lightgrey !important;
+   opacity: 0.7;
+    width: 100%;
+    z-index:20;
+    overflow:auto;
+
+}
+
+.clickable {
+   cursor: pointer;
+   width: 100%;
+   background-color:#F48024;
+}
+.disablediv .text_wrapper {
+   background-color: lightgrey !important;
+   opacity: 0.4;
+    pointer-events: none;
+    
+   
+}
+
 .tabs .tab a {
     color: #00356B;
 

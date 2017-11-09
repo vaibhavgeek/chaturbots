@@ -14,6 +14,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require materialize-sprockets
+//= require_tree ./material-tags
 //= require jquery.easing
 //= require particles
 //= require check
