@@ -12,20 +12,21 @@ class IntentsController < ApplicationController
 	end
 
 	def index
-		@tag_search = Intent.select(:tags).pluck(:id)
-		@all_tags = nil
-		t_search = Intent.select(:tags).pluck(:tags)
-		t_search.each do |tag| 
-			puts tag.split(",")
-			puts "\n \n \n \n"		
+		raw_list = [] 
+		tags_raw = Intent.select(:tags).pluck(:tags)
+		tags_raw.each do |tags| 
+			tags.split(",").each do |ta| 
+				raw_list.push(ta.strip)
+			end
 		end
+		raw_list.uniq!
 		#if params[:query]
 		#	str = params[:query]
 		#	@tag_search = Intent.select(:tags)
 		#else
 		#	@tag_search = Intent.select(:tags)
 		#end 
-		render json: @tag_search
+		render json: raw_list
 	end
 	private 
 	def intent_params
