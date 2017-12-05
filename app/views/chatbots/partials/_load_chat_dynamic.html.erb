@@ -25,7 +25,11 @@
 <div class="col s6 m6">
           <div class="card darken-1">
             <div class="card-content">
-              <%= form_for Intent.new , :url => user_intents_path(User.find(request.params[:id]))  do |f| %>
+            <div id="intents_notice">
+
+            </div>
+            
+              <%= form_for Intent.new , :url => user_intents_path(User.find(request.params[:id])) , :remote => "true"  do |f| %>
 
 
               <%= f.label "Select User Patterns" , :for => "patterns" %>
@@ -34,10 +38,10 @@
  <%= f.label "Select Responses for User Patterns" , :for => "responses" %>
 <%= f.text_area :responses , :placeholder => 'Response to the queries' , :onclick => "bots_response($(this))" , :id => "responses" %> 
 <%= f.label "Select Tags" , :for => "tags" %>
-     <%= f.text_field :tags , :placeholder => 'Tags Associated' , :id => "tags" , :"data-role" => "materialtags" , :class => "browser-default" %>
+     <%= f.text_field :tag , :placeholder => 'Tags Associated' , :id => "tags" , :"data-role" => "materialtags" , :class => "browser-default" %>
 
 
-<%= f.submit "Save" ,  :class => "btn right-align" %>
+<%= f.submit "Save" ,  :class => "btn btn-primary right-align" %>
               <% end %> 
             </div>
             
@@ -45,8 +49,9 @@
         </div>
 </div>
 
-        <div class="right-align">
-              <a href="#" class="btn">Mark chat automated</a>
+        <div class="right-align" style="margin:15px">
+             <%= link_to "Mark chat automated" , user_chat_path(:user_id => 1 , :id =>  1) , :class => "btn btn-primary" %>
+              
             </div>
 
 <script type="text/javascript">

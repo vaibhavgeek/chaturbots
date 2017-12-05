@@ -39,6 +39,11 @@
     color: #00356B;
 
 }
+
+.tabs .indicator {
+    background-color: #00356B;
+}
+
 .tabs .tab a:hover, .tabs .tab a.active {
     color: #00356B;
 }
@@ -199,7 +204,8 @@
  }
 
  .carousel-img {
-   max-width: 280px;
+   max-width: 880px;
+  
  }
 
  .top-margin-20 {

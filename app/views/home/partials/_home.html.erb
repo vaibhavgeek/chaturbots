@@ -86,23 +86,48 @@
         <a class="btn waves-effect red">Try It Out</a>
       </div>
       <div class="carousel-item blue white-text" href="#one!">
-        <h2>First Panel</h2>
-        <p class="white-text">This is your first panel</p>
-        <%= image_tag "body_bg.png" , :class => "carousel-img" %>
+        <h2>Live Chat</h2>
+        <p class="white-text"> We provide live chat functionality, so in case you do not want automation, <br/> you can easily switch over and provide us with some training data for future automation </p>
+        <%= image_tag "caro_1.png" , :class => "carousel-img" %>
       </div>
       <div class="carousel-item blue white-text" href="#two!">
-        <h2>Second Panel</h2>
-        <p class="white-text">This is your second panel</p>
-        <%= image_tag "body_bg.png" , :class => "carousel-img" %>
+        <h2>Intent Mapping</h2>
+        <p class="white-text">You can map the previous chat intent </p>
+        <%= image_tag "caro_2.png" , :class => "carousel-img" %>
       </div>
-      <div class="carousel-item blue white-text" href="#three!">
-        <h2>Third Panel</h2>
-        <p class="white-text">This is your third panel</p>
-        <%= image_tag "body_bg.png" , :class => "carousel-img" %>
+      
+    </div>
+  </div>
+
+<div class="grey lighten-3 padding-vertical-3">
+    <div class="container">
+      <div class="section padding-vertical-3">
+        <div class="row">
+          <h3 class="sub-head">
+           SOME OF OUR CLIENTS
+          </h3>
+        </div>
+        <div class="row padding-vertical-1">
+          <div class="col s12 m3">
+            <%= image_tag "edunova.png" , :class => "circle responsive" %>
+          
+          </div>
+          <div class="col s12 m3 offset-m1">
+                        <%= image_tag "mathbottutor.jpg" , :class => "circle responsive" %>
+                        
+
+          </div>
+          <div class="col s12 m3 offset-m1">
+                        <%= image_tag "miniframes.png" , :class => "circle responsive" %>
+                        
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+<!--
   <div class="grey lighten-3 padding-vertical-3">
     <div class="container">
       <div class="section padding-vertical-3">
@@ -122,22 +147,21 @@
       </div>
     </div>
   </div>
-
+-->
 
   <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col l9 s12">
-          <h5 class="white-text">Company</h5>
-          <p class="grey-text text-lighten-4">We provide interative tools and chat bot services to automate the contact and support of your service. We're just
+          <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">We provide interactive tools and chatbot services to automate the customer support of your business. We're just
             a bunch of college students working overtime to make this project happen, any support will be appreciated.</p>
         </div>
         <div class="col l2 s12 offset-l1">
           <h5 class="white-text">Connect</h5>
           <ul>
-            <li><a class="white-text" href="#!">Twitter</a></li>
-            <li><a class="white-text" href="#!">Facebook</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="https://twitter.com/vaibhavgeek">Twitter</a></li>
+            <li><a class="white-text" href="https://www.facebook.com/chaturbots/">Facebook</a></li>
           </ul>
         </div>
       </div>
@@ -171,3 +195,22 @@ particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function(
   });
 
 </script>
+
+<!-- /bot/preview -->
+
+
+<div id="zipi-chatbox">
+
+<div id="chatflow">
+<div class="frameparent">
+<iframe  name="about" frameborder=0 ALLOWTRANSPARENCY="true" src="http://localhost:3000/users/1/bot/redirect"></iframe>
+
+</div>
+</div>
+
+
+<div id="floatbutton" onclick="zipitoggleChat()">
+<div class="opened"></div>
+<div class="closed"></div>
+</div>
+</div>

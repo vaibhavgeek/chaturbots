@@ -6,7 +6,7 @@ class ChatbotsController < ApplicationController
 
 	def intent_chat
 		@messages = Message.where(:visitor_id => request.params["visitor"]["id"]).all
-
+		@visitor_id = request.params["visitor"]["id"]
 	end
 
 	def show

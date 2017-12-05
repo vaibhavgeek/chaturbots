@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023081625) do
+ActiveRecord::Schema.define(version: 20171114072151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "intents", force: :cascade do |t|
-    t.string "tags"
+    t.string "tag"
     t.string "patterns"
     t.string "responses"
     t.integer "visitor_id"

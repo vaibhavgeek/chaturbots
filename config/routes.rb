@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :users , only: [:show , :edit] do 
   	resources :chats
-    resources :intents
+    resources :intents 
+    get 'show_all' , to: 'intents#show_all'
   end 
   get 'settings/payment'
   get 'settings/account' 

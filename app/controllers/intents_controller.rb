@@ -1,7 +1,12 @@
 class IntentsController < ApplicationController
 	def create 
 		@intent = Intent.new(intent_params)
-		@intent.save
+		if @intent.save
+			flash[:notice_error] = "Created Sucessfully. Edit Intent"
+		else 
+			flash[:notice_error] = "Some error ocurred, please try again"
+		end	
+
 	end 
 
 	def show
@@ -13,7 +18,7 @@ class IntentsController < ApplicationController
 
 	def index
 		raw_list = [] 
-		tags_raw = Intent.select(:tags).pluck(:tags)
+		tags_raw = Intent.select(:tag).pluck(:tag)
 		tags_raw.each do |tags| 
 			tags.split(",").each do |ta| 
 				raw_list.push(ta.strip)
@@ -28,8 +33,20 @@ class IntentsController < ApplicationController
 		#end 
 		render json: raw_list
 	end
+
+
+	def show_all
+	 json_hash = Intent.select(:tag, :patterns, :responses).as_json(:except => :id)
+	 json_hash.each do |i|
+	 	i["patterns"] = i["patterns"].split(",").collect{|x| x.strip || x }
+	 	i["responses"] = i["responses"].split(",").collect{|x| x.strip || x }
+	 	puts i
+	 end
+	 output_json = { "intents" => json_hash}
+	 render json: JSON.pretty_generate(output_json)
+	end
 	private 
 	def intent_params
-		params.require(:intent).permit(:tags, :patterns ,:responses , :visitor_id , :user_id ) 
+		params.require(:intent).permit(:tag, :patterns ,:responses , :visitor_id , :user_id ) 
 	end
 end

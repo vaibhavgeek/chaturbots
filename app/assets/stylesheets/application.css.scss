@@ -382,7 +382,6 @@ body.zipiopen>#zipi-chatbox {
   right: 0px;
   bottom: 0px;
   overflow: hidden;
-  background: none !important;
 }
 
 #zipi-chatbox .chatframe .frameparent iframe {
@@ -423,8 +422,7 @@ body.zipiopen>#zipi-chatbox {
     position: absolute;
     bottom: 60px;
     right: 0px;
-    background-color: #FFF;
-    opacity: 0;
+    background: rgba(0, 0, 0, .65);
     overflow: hidden;
     -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
@@ -512,7 +510,7 @@ body.zipiopen>#zipi-chatbox {
   width: 100%;
   position: absolute;
   top: 0;
-  background-color: $black;
+ 
 }
 
 #display_chats .input {
