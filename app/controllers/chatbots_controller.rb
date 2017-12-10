@@ -72,7 +72,7 @@ class ChatbotsController < ApplicationController
 	end
 	
 	def intent_mapping
-
+		
 	end
 
 	private 

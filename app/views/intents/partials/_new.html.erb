@@ -1,0 +1,37 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+<li>
+<div class="row">
+ 
+ <div class="col s11 m11">
+ <%= render '/intents/partials/form' , intent: @intent , uri: user_intents_path %>
+              </div>
+              <div class="right-align col s1 m1"> <%= link_to "#" do %> <i class="material-icons circle">cancel</i> <% end %>
+</div>
+              </div>
+              </li>
+              </ul>
+              <script type="text/javascript">
+              	var citynames = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '/users/1/intents',
+                filter: function(list) {
+                    return $.map(list, function(cityname) {
+                        return { name: cityname };
+                    });
+                }
+            }
+        });
+
+        citynames.initialize();
+
+        $('#tags').materialtags({
+            typeaheadjs: {
+                name: 'citynames',
+                displayKey: 'name',
+                valueKey: 'name',
+                source: citynames.ttAdapter()
+            }
+        });
+              </script>

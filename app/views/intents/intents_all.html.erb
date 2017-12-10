@@ -1,0 +1,40 @@
+
+
+<div class="row container top-margin-20">
+		<div class="col s2 white no-padding">
+				<div class="collection">
+        <%= link_to "Intents" , user_intents_all_path(:user_id => 1) , :class => "collection-item" %>
+				<%= link_to "Intent Mapping" , bot_intent_mapping_user_path(:id => 1), :class => "collection-item" %>
+						<%= link_to "Reports", bot_reports_user_path(:id => 1) , :class => "collection-item"  %>
+						<%= link_to "Preview Bot", bot_preview_user_path(:id => 1) , :class => "collection-item"  %>
+						<%= link_to "Contact Us", home_contact_us_path(:id => 1) , :class => "collection-item"  %>
+			  </div>	
+		</div>
+		<div class="col s10 white">
+		<div class="right-align">
+<br/>
+     <%= link_to new_user_intent_path(:user_id => 1) , :class => "waves-effect waves-light btn btn-primary" , :remote => "true" do  %>
+     Create Intent 
+<i class="material-icons left">add</i>
+     <% end %>
+ </div>  
+ <div id="intents_notice"> </div>
+ 
+
+
+<%= render ('/intents/partials/all' )%>
+
+
+
+		
+		</div>
+
+		
+	</div>
+	
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+     
+</script>

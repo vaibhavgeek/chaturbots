@@ -1,0 +1,43 @@
+ <%= form_with(model: intent , url:   uri, local: true , :remote => "true" ) do |f| %>
+
+<% if intent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intent.errors.count, "error") %> prohibited this intent from being saved:</h2>
+
+      <ul>
+      <% intent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="bordered form_table">
+      
+
+        <tbody>
+          <tr>
+            <td style="width: 20%">User Patterns: </td>
+            <td><%= f.text_field :patterns , :placeholder => 'User responses to be automated'   %> 
+</td>
+          </tr>
+          <tr>
+            <td style="width: 20%">Responses: </td>
+            <td><%= f.text_field :responses , :placeholder => 'Response to the queries'   %> 
+</td>
+          </tr>
+          <tr>
+            <td style="width: 20%">Tags:</td>
+            <td>     <%= f.text_field :tag , :placeholder => 'Tags Associated' , :id => "tags" , :"data-role" => "materialtags" , :class => "browser-default" %>
+</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+<br/>
+<div class="right-align">
+<%= f.submit "Save" ,  :class => "btn btn-primary" %>
+ </div>             <% end %> 
+              

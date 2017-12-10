@@ -27,7 +27,7 @@
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , bot_intent_mapping_user_path(current_user) %></li>
 <li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
-<li><%=link_to "Settings" , settings_account_path %></li>
+<li><%=link_to "Settings" , user_settings_account_path(current_user) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
 
@@ -35,7 +35,7 @@
           <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , bot_intent_mapping_user_path(current_user) %></li>
 <li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
-<li><%=link_to "Settings" , settings_account_path %></li>
+<li><%=link_to "Settings" , user_settings_account_path(current_user) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

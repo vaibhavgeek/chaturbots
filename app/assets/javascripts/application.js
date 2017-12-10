@@ -13,12 +13,15 @@
 //= require jquery
 //= require rails-ujs
 //= require turbolinks
-//= require materialize-sprockets
 //= require_tree ./material-tags
+//= require materialize
+//= require Chart.bundle
+//= require chartkick
 //= require jquery.easing
 //= require particles
 //= require check
 //= require_tree .
  $(document).ready(function() {
     $('select').material_select();
+
   });

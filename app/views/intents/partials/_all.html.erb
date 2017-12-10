@@ -1,0 +1,47 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+   
+
+   
+ <% @intents_paged.each do |int| %> 
+    <li>
+      <div class="collapsible-header"><%= truncate(int.patterns, length: 100) %></div> 
+      <div class="collapsible-body"><div id="edit_form<%= int.id %>" class="row">
+         <div class="col s11 m11">
+         <table class="bordered">
+      
+
+        <tbody>
+          <tr>
+            <td style="width: 20%"> User Patterns: </td>
+            <td><%= int.patterns %></td>
+          </tr>
+          <tr>
+            <td style="width: 20%">Responses: </td>
+            <td><%= int.responses %></td>
+          </tr>
+          <tr>
+            <td style="width: 20%">Tags:</td>
+            <td><%= int.tag %></td>
+          </tr>
+        </tbody>
+      </table>
+         </div>
+         <div class="col s1 m1">
+          <%= link_to edit_user_intent_path(:user_id => 1 , :id => int.id) , :class => "btn-floating waves-effect waves-light btn-primary" , :remote => "true" do %>
+    <i class='material-icons'>edit</i>
+    <% end %>
+    <br/> <br/>
+    <%= link_to user_intent_path(:user_id => 1 , :id => int.id) , :class => "btn-floating waves-light waves-light red" , method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="material-icons">delete</i>
+    <% end %>
+         </div> 
+      
+         
+        
+      </div></div>
+    </li>
+ <% end %>
+
+
+  </ul>
+

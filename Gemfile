@@ -10,6 +10,8 @@ gem 'htmlentities'
 gem 'devise'
 gem 'jquery-rails'
 gem 'popper_js'
+gem "chartkick"
+gem 'groupdate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
