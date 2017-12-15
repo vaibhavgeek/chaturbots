@@ -32,6 +32,7 @@ Rails.application.routes.draw do
             get 'bot/preview' , to: 'chatbots#preview'
             get 'bot/intent_mapping' , to: 'chatbots#intent_mapping'
             get 'bot/intent_chat' , to: 'chatbots#intent_chat'
+            get 'bot/spell_checker' , to: 'chatbots#spell_checker'
       end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
