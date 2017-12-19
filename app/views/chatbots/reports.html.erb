@@ -8,7 +8,7 @@
 		<div class="col s10 white">
 		
 
-<%= pie_chart({'bot'=>4, 'user'=>5}) %>
+<%= pie_chart Message.group(:responder).count %>
 <%= line_chart Message.group_by_day(:created_at).count %>
 
 	</div>

@@ -1,0 +1,53 @@
+
+
+<div class="row container top-margin-20">
+		<div class="col s2 white no-padding">
+				<div class="collection">
+        <%= link_to "Account " , user_settings_account_path(:user_id => 1) , :class => "collection-item" %>
+				<%= link_to "Payment" , user_settings_payment_path(:user_id => 1), :class => "collection-item" %>
+						<%= link_to "Messenger", user_settings_messenger_path(:user_id => 1) , :class => "collection-item"  %>
+						<%= link_to "NLP Algorithm", user_settings_nlp_path(:user_id => 1) , :class => "collection-item"  %>
+			  </div>	
+		</div>
+		<div class="col s10 white">
+		<div class="switch">
+    <label>
+      Live Chat
+      <input type="checkbox">
+      <span class="lever"></span>
+      
+    </label>
+  </div>
+  <br/>
+  <div class="switch">
+    <label>
+      Intents 
+      <input type="checkbox">
+      <span class="lever"></span>
+      
+    </label>
+  </div>
+  <br/>
+  <div class="switch">
+    <label>
+     	Previous Chat Data
+      <input type="checkbox">
+      <span class="lever"></span>
+      
+    </label>
+  </div>
+  <br/>
+  <div class="switch">
+    <label>
+      Comprehension based Understanding
+      <input type="checkbox">
+      <span class="lever"></span>
+      
+    </label>
+  </div>
+  <br/>
+
+		
+	</div>
+</div>
+

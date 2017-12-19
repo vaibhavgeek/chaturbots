@@ -12,7 +12,7 @@ gem 'jquery-rails'
 gem 'popper_js'
 gem "chartkick"
 gem 'groupdate'
-
+gem "url_link"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
