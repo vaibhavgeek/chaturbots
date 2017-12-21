@@ -1,12 +1,34 @@
-<h2>Sign up</h2>
+<div class="col-md-4 col-md-offset-2 login-form">
 
+
+<h5 class="center">Sign up </h5> 
+
+<h3 class="center">
+<i class="material-icons medium">looks_one</i>
+<i class="material-icons medium prime-color">looks_two</i>
+<i class="material-icons medium">looks_3</i>
+
+</h3>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
 
+  <div class="field">
+    <%= f.label :designation %> <br/> 
+    <%= f.text_field :organisation_admin %> 
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+  <div class="field">
+    <%= f.label :organisation_id %><br />
+    <%= f.text_field :organisation_id, autofocus: true %>
+  </div>
+
 
   <div class="field">
     <%= f.label :password %>
@@ -21,9 +43,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions top-margin-20 center">
+    <%= f.submit "proceed to step 3" , :class => "btn btn-primary " %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

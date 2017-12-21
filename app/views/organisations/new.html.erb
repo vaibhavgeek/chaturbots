@@ -1,0 +1,45 @@
+<div class="col-md-4 col-md-offset-2 login-form">
+
+<h5 class="center">Sign up </h5> 
+
+<h3 class="center">
+<i class="material-icons medium prime-color">looks_one</i>
+<i class="material-icons medium">looks_two</i>
+<i class="material-icons medium">looks_3</i>
+
+</h3>
+<%= form_for (@organisation)  do |f| %>
+  <% if @organisation.errors.any? %>
+    <div id="error_explanation" class="white red darken-4 damp-color center" >
+      
+       <%=  pluralize(@organisation.errors.count, "error")  %> has been incurred
+        
+      <ul>
+        <% @organisation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+   Organisation Name: <br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    Website: <br/> 
+    <%= f.text_field :website, autofocus:true %> 
+  </div>
+
+  <div class="field">
+   Email : <br />
+    <%= f.text_field :admin_email, autofocus: true %>
+  </div>
+ 
+  <div class="actions top-margin-20 center">
+    <%= submit_tag "proceed to step 2" , :class => "btn btn-primary " %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>

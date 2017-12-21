@@ -12,11 +12,13 @@ gem 'jquery-rails'
 gem 'popper_js'
 gem "chartkick"
 gem 'groupdate'
-gem "url_link"
+gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+gem 'hashids'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'geocoder'
