@@ -13,14 +13,15 @@ Rails.application.routes.draw do
     get 'home/about_us'
  # get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
-  devise_for :users , :controllers => { :registrations => 'users/registrations' , :sessions => 'users/sessions'}
+  devise_for :users , :controllers => { :registrations => 'users/registrations' , :sessions => 'users/sessions' }
 
   root 'home#index'
 
   resources :organisations do 
     member do
       resources :chats
-      resources :intents 
+      resources :intents
+      get 'messages_all' , to: 'chats#show_all' 
       get 'show_all' , to: 'intents#show_all'
       get 'intents_all', to: 'intents#intents_all'
       get 'settings_account', to: 'settings#account'

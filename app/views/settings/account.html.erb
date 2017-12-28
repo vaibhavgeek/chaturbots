@@ -3,10 +3,10 @@
 <div class="row container top-margin-20">
 		<div class="col s2 white no-padding">
 				<div class="collection">
-        <%= link_to "Account " , user_settings_account_path(:user_id => 1) , :class => "collection-item" %>
-				<%= link_to "Payment" , user_settings_payment_path(:user_id => 1), :class => "collection-item" %>
-						<%= link_to "Messenger", user_settings_messenger_path(:user_id => 1) , :class => "collection-item"  %>
-						<%= link_to "NLP Algorithm", user_settings_nlp_path(:user_id => 1) , :class => "collection-item"  %>
+        <%= link_to "Account " , settings_account_organisation_path(:id => request.params[:id]) , :class => "collection-item" %>
+				<%= link_to "Payment" , settings_payment_organisation_path(:id => request.params[:id]), :class => "collection-item" %>
+						<%= link_to "Messenger", settings_messenger_organisation_path(:id => request.params[:id]) , :class => "collection-item"  %>
+						<%= link_to "NLP Algorithm", settings_nlp_organisation_path(:id => request.params[:id]) , :class => "collection-item"  %>
 			  </div>	
 		</div>
 		<div class="col s10 white">

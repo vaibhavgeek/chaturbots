@@ -15,7 +15,7 @@
     </div>
     <div id="test1" class="col s12">
 		<div class="input-field col s6 offset-s3">
-    <%= form_tag bot_intent_chat_user_path, :method => :get , :id => 'intent_map_chat' , :remote => "true" do %>
+    <%= form_tag bot_intent_chat_organisation_path, :method => :get , :id => 'intent_map_chat' , :remote => "true" do %>
 
 <%= collection_select :visitor, :id, Visitor.all, :id,  :location, { prompt: "Please Select Chat" } , { :onchange => '$("#click").click();'  }  %>
     <label>Please select chat</label>

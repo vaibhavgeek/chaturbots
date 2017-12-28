@@ -29,7 +29,7 @@
 
             </div>
             
-              <%= form_for Intent.new , :url => user_intents_path(User.find(request.params[:id])) , :remote => "true"  do |f| %>
+              <%= form_for Intent.new , :url => intents_path(Organisation.find(request.params[:id])) , :remote => "true"  do |f| %>
 
 
               <%= f.label "Select User Patterns" , :for => "patterns" %>

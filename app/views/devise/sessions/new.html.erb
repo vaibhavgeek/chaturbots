@@ -3,6 +3,18 @@
   <h3 class="center">Login</h3>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   <% if resource.errors.any? %>
+    <div id="error_explanation" class="white red darken-4 damp-color center" >
+      
+       <%=  pluralize(resource.errors.count, "error")  %> has been incurred
+        
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div class="input-field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>

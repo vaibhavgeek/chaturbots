@@ -18,24 +18,27 @@
    <div class="navbar-fixed">
     <nav role="navigation" class="z-depth-0">
       <div class="nav-wrapper">
+          <%= image_tag "logo_nav.png" , :style => "width:45px; margin-top:10px; margin-right: 10px;" %>
 
-        <a id="logo-container" href="#" class="brand-logo">ChaturBots</a>
+             
+        <%= link_to "ChaturBots" , root_path , :class => "brand-logo" %>
       
 
 
         <ul class="right hide-on-med-and-down">
 <li><%= link_to "Active Chats" , root_path %></li>
-<li> <%= link_to "Bot" , bot_intent_mapping_user_path(current_user) %></li>
-<li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
-<li><%=link_to "Settings" , user_settings_account_path(current_user) %></li>
+<li> <%= link_to "Bot" , bot_intent_mapping_organisation_path(:id => session[:orga_id]) %></li>
+<li>  <%= link_to "Chat-Archives" , chats_path(:id => session[:orga_id]) %></li>
+<li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-          <li><%= link_to "Active Chats" , root_path %></li>
-<li> <%= link_to "Bot" , bot_intent_mapping_user_path(current_user) %></li>
-<li>  <%= link_to "Chat-Archives" , user_chats_path(current_user) %></li>
-<li><%=link_to "Settings" , user_settings_account_path(current_user) %></li>
+          
+<li><%= link_to "Active Chats" , root_path %></li>
+<li> <%= link_to "Bot" , bot_intent_mapping_organisation_path(:id => session[:orga_id]) %></li>
+<li>  <%= link_to "Chat-Archives" , chats_path(:id => session[:orga_id]) %></li>
+<li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -51,9 +54,8 @@
 
         <%= image_tag "logo_nav.png" , :style => "width:45px; margin-top:10px; margin-right: 10px;" %>
 
-       <a id="logo-container" href="#" class="brand-logo">
+               <%= link_to "ChaturBots" , root_path , :class => "brand-logo" %>
 
-        ChaturBots</a>
       
 
 

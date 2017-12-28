@@ -6,7 +6,7 @@
        <% Visitor.all.each do |visitor| %>
 	
 		<div id="<%= visitor.id %>">
-			<%= link_to user_chat_path(:user_id => 1 , :id => visitor.id) , :class => "collection-item" , :remote => "true" do %>
+			<%= link_to chat_path(:id => request.params[:id] , :id => visitor.id) , :class => "collection-item" , :remote => "true" do %>
 
 			<%= visitor.id %>
 

@@ -7,7 +7,7 @@ class IntentsController < ApplicationController
 		@intent.user_id = user_id
 	    respond_to do |format|
 			if @intent.save
-				format.html { redirect_to user_intents_all_url(:id => @intent.id ) , notice_error: "Created Sucessfully." }
+				format.html { redirect_to intents_all_organisation_url(:id => @intent.id ) , notice_error: "Created Sucessfully." }
 				format.json { render :show , status: :created , location: @intent}
 			else 
 				format.html { render :new , notice_error: "Some error ocurred, please try again" }
@@ -22,7 +22,7 @@ class IntentsController < ApplicationController
 	def update 
 		respond_to do |format|
 			if @intent.update(intent_params)
-				format.html { redirect_to user_intents_all_url , notice_error: "Update Intent Sucessfully"}
+				format.html { redirect_to intents_all_organisation_url , notice_error: "Update Intent Sucessfully"}
 				format.json { render :show, status: :ok , location: @intent}
 			else
 				format.html { render :edit }
@@ -43,11 +43,11 @@ class IntentsController < ApplicationController
 	end
 	
 	def intents_all
-		@intents_paged = Intent.where(:user_id => 1)
+		@intents_paged = Intent.all
 	end
 
 	def show
-		@user = Intent.where(:user_id => params[:user_id])
+		@user = Intent.where(:user_id => params[:id])
 		respond_to do |format|
 			format.json { render json: @user}
 		end
@@ -71,20 +71,31 @@ class IntentsController < ApplicationController
 		render json: raw_list
 	end
 
-
 	def show_all
-	 json_hash = Intent.select(:tag, :patterns, :responses).as_json(:except => :id)
-	 json_hash.each do |i|
-	 	i["patterns"] = i["patterns"].split(",").collect{|x| x.strip || x }
-	 	i["responses"] = i["responses"].split(",").collect{|x| x.strip || x }
-	 	puts i
-	 end
-	 output_json = { "intents" => json_hash}
-	 render json: JSON.pretty_generate(output_json)
+	    json_hash = Intent.select(:patterns, :responses).as_json(:except => :id)
+	    json_hash.each do |i|
+	    	i["messages"] = i["patterns"]
+	    	i.delete("patterns")
+	    end
+
+		render json: JSON.pretty_generate(json_hash)
 	end
+
+	#def show_all
+	# json_hash = Intent.select(:patterns, :responses).as_json(:except => :id)
+	# hash_result = []
+	# json_hash.each do |i|
+	# 	hash_result["messages"] = i["patterns"].split(",").collect{|x| x.strip || x }
+	# 	hash_result["responses"] = i["responses"].split(",").collect{|x| x.strip || x }
+	# 	puts i
+	# end
+	# render json: JSON.pretty_generate(json_hash)
+	#end
+	
+
 	private 
 	def intent_params
-		params.require(:intent).permit(:tag, :patterns ,:responses , :visitor_id , :user_id ) 
+		params.require(:intent).permit(:tag, :patterns ,:responses , :visitor_id , :user_id , :organisation_id ) 
 	end
 	def set_intent
       @intent = Intent.find(params[:id])

@@ -10,7 +10,7 @@
           <% if visitor.online? %>
 
             <div id="<%= visitor.id %>" class="visitor-container">
-              <%= link_to new_user_chat_path(:user_id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
+              <%= link_to new_chat_path(:id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
     <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CMumbai+India&center=Mumbai,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
               <% end %>
               <span class="hidden">
