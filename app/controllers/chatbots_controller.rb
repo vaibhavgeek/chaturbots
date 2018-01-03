@@ -44,12 +44,13 @@ class ChatbotsController < ApplicationController
 	end
 
 	def index
+ 
 		puts cookies[:auth_token] + "\n\n\n"
 		puts request.params 
 	    @message = Message.new
 		auth =  params[:auth_token]
     	visitor = Visitor.where(:auth_token => auth).first
-  		@messages = Message.where(:visitor_id => visitor.id).all
+  		@messages = Message.where(:visitor_id => visitor.id).order("created_at ASC").all
   		temp = ::Template.where(:user_id => request.params[:id] , :payload => "initial_message").first
   		if temp.nil? 
   			@initial_message = "default_initial"

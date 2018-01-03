@@ -1,3 +1,52 @@
+string = window.location.href 
+substring = "index"
+if string.indexOf(substring) != -1
+  auth_token = string.split("/").pop()
+else 
+  auth_token = "admin" # this is main admin
+
+org_string = "organisations/"
+if string.indexOf(org_string) != -1
+  orga_id = string.split(org_string)[1][0]
+
+App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
+    connected:  ->
+      addConnection(auth_token)
+      # Called when the subscription is ready for use on the server
+
+    disconnected: ->
+      removeConnection(auth_token)
+      # Called when the subscription has been terminated by the server
+
+    received: (data) ->
+      messages = $('.messages')
+      console.log data
+      console.log "from chatbot channel"
+      messages.append data['message']
+      messages.animate { scrollTop: messages.prop("scrollHeight") },1000
+      # messages.scrollTop(messages.prop("scrollHeight"))
+      # Called when there's incoming data on the websocket for this channel
+
+    speak: (data, responder, payload) ->
+      @perform 'speak' , message: data , responder: responder , payload: payload
+  
+
+
+$(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
+  if event.keyCode is 13
+    if auth_token == "admin" 
+      if event.target.value.startsWith("template")
+        payload = event.target.value.substring(9)
+      else
+        payload = "nil"
+      App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim()
+    else 
+      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim()
+    event.target.value = ''
+    event.preventDefault()
+
+
+
 $ ->
   $(document).on 'click', 'a.bot', (event) ->
     $anchor = $(this)
@@ -23,51 +72,6 @@ $ ->
     return
   return
 
-
-string = window.location.href 
-substring = "index"
-if string.indexOf(substring) != -1
-  auth_token = string.split("/").pop()
-else 
-  auth_token = "admin" # this is main admin
-
-App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
-    connected:  ->
-      addConnection(auth_token)
-      # Called when the subscription is ready for use on the server
-
-    disconnected: ->
-      removeConnection(auth_token)
-      # Called when the subscription has been terminated by the server
-
-    received: (data) ->
-      messages = $('.messages')
-      console.log data
-      console.log "from chatbot channel"
-      messages.append data['message']
-      messages.animate { scrollTop: messages.prop("scrollHeight") },1000
-      # messages.scrollTop(messages.prop("scrollHeight"))
-      # Called when there's incoming data on the websocket for this channel
-
-    speak: (data, responder, payload) ->
-      @perform 'speak' , message: data , responder: responder , payload: payload
-  
-
-$(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
-  if event.keyCode is 13
-    if auth_token == "admin" 
-      if event.target.value.startsWith("template")
-        payload = event.target.value.substring(9)
-      else
-        payload = "nil"
-      App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim()
-    else 
-      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim()
-    event.target.value = ''
-    event.preventDefault()
-
-
     
     
-
 

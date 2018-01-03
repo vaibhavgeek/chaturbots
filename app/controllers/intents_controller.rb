@@ -74,8 +74,10 @@ class IntentsController < ApplicationController
 	def show_all
 	    json_hash = Intent.select(:patterns, :responses).as_json(:except => :id)
 	    json_hash.each do |i|
-	    	i["messages"] = i["patterns"]
+	    	i["message"] = i["patterns"]
 	    	i.delete("patterns")
+	    	i["response"] = i["responses"]
+	    	i.delete("responses")
 	    end
 
 		render json: JSON.pretty_generate(json_hash)

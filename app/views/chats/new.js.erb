@@ -3,3 +3,14 @@ $("#nav_menu").show();
 $("#display_chats").html("<%= j render ('/home/partials/active_chat_admin')   %>");
 $("#event").attr('data-auth' , " <%= @visitor.auth_token %>")
 console.log("<%= @visitor.id %>");
+value = "<%= @visitor.auth_token %>"
+
+var id, messages;
+
+id = '#messages' + value.trim();
+
+messages = $(id);
+
+messages.animate({
+  scrollTop: messages.prop("scrollHeight")
+}, 1000);

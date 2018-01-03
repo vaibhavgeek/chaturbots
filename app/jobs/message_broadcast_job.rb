@@ -9,7 +9,7 @@ class MessageBroadcastJob < ApplicationJob
     ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
     if message.responder == "user" && message.payload == "nil"
      # speech_res = api_response(message.content)
-      Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id:1 , payload: "nil"
+     # Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id:1 , payload: "nil"
     end
   end
 

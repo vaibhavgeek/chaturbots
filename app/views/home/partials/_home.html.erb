@@ -5,7 +5,7 @@
       <br><br>
       <h1 class="header center">Automate Customer Support</h1>
       <div class="row center">
-        <h5 class="header col s12 light">We create automated chat support along with interactive tools for live chat using AI</h5>
+        <h5 class="header col s12 light">We create automated chat support for live chat using AI on multiple platforms</h5>
       </div>
       <div class="row center">
        <%= link_to "Request a Demo", new_organisation_path , :class => "btn-large waves-effect waves-light red" %>
@@ -202,18 +202,31 @@ particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function(
 <!-- /bot/preview -->
 
 
+
+<!-- /bot/preview -->
+
 <div id="zipi-chatbox">
 
-<div id="chatflow">
-<div class="frameparent">
-<iframe  name="about" frameborder=0 ALLOWTRANSPARENCY="true" src="/organisations/19/bot/redirect"></iframe>
+<div>
+<div id="chatflow" class=" ">
 
+<div class="frameparent" style="overflow: hidden; !important"><iframe allowtransparency="true" src="/organisations/19/bot/redirect" style="overflow: hidden; !important"></iframe>
 </div>
 </div>
-
 
 <div id="floatbutton" onclick="zipitoggleChat()">
-<div class="opened"></div>
-<div class="closed"></div>
+
+<div class="opened  ">
+    <div class="popup_visitor" id="popup_visitor">
+     
+
+  <i id="number" class="btn-floating btn-small waves-effect waves-light red"><center>1</center></i>
+    </div>
+</div>
+<div class="closed  ">
+  
+
+</div>
+</div>
 </div>
 </div>
