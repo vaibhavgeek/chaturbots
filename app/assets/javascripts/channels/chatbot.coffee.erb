@@ -5,11 +5,13 @@ if string.indexOf(substring) != -1
 else 
   auth_token = "admin" # this is main admin
 
-org_string = "organisations/"
+org_string = "/"
 if string.indexOf(org_string) != -1
-  orga_id = string.split(org_string)[1][0]
+  orga_id = string.split(org_string)[4]
+else
+  orga_id = "not_admin" 
 
-App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token },
+App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token , oid: orga_id },
     connected:  ->
       addConnection(auth_token)
       # Called when the subscription is ready for use on the server
@@ -27,8 +29,8 @@ App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_
       # messages.scrollTop(messages.prop("scrollHeight"))
       # Called when there's incoming data on the websocket for this channel
 
-    speak: (data, responder, payload) ->
-      @perform 'speak' , message: data , responder: responder , payload: payload
+    speak: (data, responder, payload , organisation_id) ->
+      @perform 'speak' , message: data , responder: responder , payload: payload , oid: organisation_id
   
 
 
@@ -39,9 +41,9 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
         payload = event.target.value.substring(9)
       else
         payload = "nil"
-      App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim()
+      App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim() , oid: orga_id
     else 
-      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim()
+      App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim() , oid: orga_id
     event.target.value = ''
     event.preventDefault()
 

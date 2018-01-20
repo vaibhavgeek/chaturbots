@@ -19,15 +19,18 @@ class ChatbotsController < ApplicationController
 	end
 	
 	def redirect 
-  		#render json: nil, status: :ok
-  		if cookies[:auth_token]  == nil
+
+		if cookies[:auth_token]  == nil
   			cookies[:auth_token] = {
    	 		:value => return_random_string,
    	 		:expires => 100.years.from_now
 			}
   		end
   		auth_tok = cookies[:auth_token]
-  		if Visitor.where(auth_token: auth_tok).count == 0
+
+
+		organisation_id =  params["id"]
+		if Visitor.where(auth_token: auth_tok).count == 0
   			if request.remote_ip.to_s != "127.0.0.1"
   				ip_addr = request.remote_ip
 			else
@@ -35,12 +38,23 @@ class ChatbotsController < ApplicationController
 			end
 			loc = Net::HTTP.get(URI.parse('http://freegeoip.net/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
-  			puts k 
   			location = k["city"] + "," + k["region_name"] + ", " + k["country_name"]
-  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location)
+  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id )
 
 		end
-		redirect_to chatbotmain_organisation_path( request.params[:id] , :auth_token => auth_tok) 
+		puts params
+		if params["popup"]
+			check_popup = params["popup"]
+  			redirect_to chatbotpopup_organisation_path( request.params[:id] , :auth_token => auth_tok) 
+
+  		else 
+    		redirect_to chatbotmain_organisation_path( request.params[:id] , :auth_token => auth_tok) 
+
+
+  		end
+  		#render json: nil, status: :ok
+  		
+  		
 	end
 
 	def index
@@ -58,6 +72,12 @@ class ChatbotsController < ApplicationController
   			@initial_message = temp.partial
   		end
 		#MessageBroadcastJob.perform_later @messages.last
+		respond_to do |format|
+  			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
+		end
+	end
+
+	def popup
 		respond_to do |format|
   			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
 		end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'home/index'
     get 'home/contact_us'
     get 'home/about_us'
+    get 'organisations/:id/home' , to: 'home#main' , as: 'organisation_home'
  # get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
   devise_for :users , :controllers => { :registrations => 'users/registrations' , :sessions => 'users/sessions' }
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
       get 'settings_nlp', to: 'settings#nlp'  
       get 'bot/redirect' , to: 'chatbots#redirect'
       get 'bot/index/:auth_token' , to: 'chatbots#index' , as: 'chatbotmain'
+      get 'bot/popup/:auth_token' , to: 'chatbots#popup', as: 'chatbotpopup'
       get 'bot/reports' , to: 'chatbots#reports'
       get 'bot/preview' , to: 'chatbots#preview'
       get 'bot/intent_mapping' , to: 'chatbots#intent_mapping'

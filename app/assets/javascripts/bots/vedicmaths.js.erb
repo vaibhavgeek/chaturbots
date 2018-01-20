@@ -3,10 +3,13 @@ function zipitoggleChat()
   var closed = document.querySelector('#zipi-chatbox #floatbutton .closed');
   var open = document.querySelector('#zipi-chatbox #floatbutton .opened');
   var chat = document.querySelector('#zipi-chatbox #chatflow');
-
+  var popup = document.querySelector("#zipi-chatbox #popup_wrapper");
+  
+ 
   checkClass(closed,'rotate');
   checkClass(open,'rotate');
   checkClass(chat,'chatframe');
+  
   if(mobilecheck())
   {
     /*if(document.body.style.display != 'none')

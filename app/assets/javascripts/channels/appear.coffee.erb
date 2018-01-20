@@ -15,6 +15,19 @@ nameclick = (value) ->
     addConnection(value)
     createconusmer value
 
+
+visitors = [] 
+
+addvisitor = (id) -> 
+  visitors.push(id)
+
+removevisitor = (id) -> 
+  index = visitors.indexOf(id)
+  visitors.splice(index, 1) if index > -1
+
+visitorpresent = (id) -> 
+  visitors.indexOf(id) > -1
+
 window["nameclick"] = nameclick
 
 string = window.location.href 
@@ -24,7 +37,14 @@ if string.indexOf(substring) != -1
 else 
   auth_token = "admin" # this is main admin
 
-App.appearchannel = App.cable.subscriptions.create "AppearChannel",
+
+org_string = "/"
+if string.indexOf(org_string) != -1
+  orga_id = string.split(org_string)[4]
+if not orga_id?
+  orga_id = "3" 
+
+App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , organisation_id: orga_id } ,
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -34,13 +54,13 @@ App.appearchannel = App.cable.subscriptions.create "AppearChannel",
   received: (data) ->
     console.log "from appearchannel"
     console.log data
-    if $("div[id*="+data["visitor_id"]+"]").length == 0
-      if data["online"].toString() == "true"
-        $("#panel-show-active-members").append data["visitor"]
-    else if data["online"].toString() == "false"
-        console.log($("#"+data["visitor_id"]))
-        $("#"+data["visitor_id"]).remove()
-        $("#display_chats").html "hi"
+    if data["online"].toString() == "true"
+      if visitorpresent(data["visitor_id"]) == false 
+        alert "add visitor"
+    else
+      removevisitor(data["visitor_id"])    
+    panel_active = $('.3')
+    panel_active.append "helllllo <br/>"
     # Called when there's incoming data on the websocket for this channel
 
 

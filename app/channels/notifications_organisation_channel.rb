@@ -1,6 +1,7 @@
 class NotificationsOrganisationChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+  	 organisation_id = params[:organisation]
+     stream_from "notifications_org#{organisation_id}"
   end
 
   def unsubscribed

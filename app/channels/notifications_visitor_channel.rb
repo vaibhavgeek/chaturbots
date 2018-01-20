@@ -1,6 +1,7 @@
 class NotificationsVisitorChannel < ApplicationCable::Channel
   def subscribed
-     stream_from "notifications_visitor"
+     auth = params[:auth_t]
+     stream_from "notifications_visitor#{auth}"
   end
 
   def unsubscribed

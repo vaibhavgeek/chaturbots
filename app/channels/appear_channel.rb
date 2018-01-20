@@ -1,6 +1,6 @@
 class AppearChannel < ApplicationCable::Channel
   def subscribed
-     stream_from "appearchannel"
+     stream_from "appearchannel#{params[:organisation_id]}"
   end
 
   def unsubscribed
