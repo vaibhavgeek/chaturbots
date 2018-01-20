@@ -80,10 +80,10 @@
 
         <ul id="nav-mobile" class="side-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">How It Works</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+  <li><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
+  <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
