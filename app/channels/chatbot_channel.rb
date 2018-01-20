@@ -34,30 +34,31 @@ class ChatbotChannel < ApplicationCable::Channel
       counter_v = get_counter_visitor(visitor.id)
       ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
     else
-      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: "user message bro"
+      counter_o = get_counter_organisation(visitor.organisation_id)
+      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: data["message"] , counter: counter_o
     end
     # ActionCable.server.broadcast "chatbot" , message: data["message"]
   end
 
   def get_counter_visitor(vid)
-    counter = redis.get("unread_#{vid}")
+    counter = redis.get("unreadv_#{vid}")
     if counter
       counter = counter.to_i + 1
     else
       counter = 1
     end
-    redis.set("unread_#{vid}" , counter)
+    redis.set("unreadv_#{vid}" , counter)
     return counter
   end
 
   def get_counter_organisation(oid)
-    counter = redis.get("unread_#{oid}")
+    counter = redis.get("unreado_#{oid}")
     if counter 
       counter = counter.to_i + 1
     else
       counter = 1
     end
-    redis.set("unread_#{oid}" , 1)
+    redis.set("unreado_#{oid}" , counter)
     return counter
   end
 

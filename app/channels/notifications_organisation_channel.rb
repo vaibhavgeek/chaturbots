@@ -7,4 +7,13 @@ class NotificationsOrganisationChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def reset_counter_unread(data)
+    redis.del('unreado_#{data["id"]}')
+  end
+  private
+
+  def redis
+  	Redis.new
+  end
 end

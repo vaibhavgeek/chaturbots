@@ -13,11 +13,9 @@ else
 
 App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token , oid: orga_id },
     connected:  ->
-      addConnection(auth_token)
       # Called when the subscription is ready for use on the server
 
     disconnected: ->
-      removeConnection(auth_token)
       # Called when the subscription has been terminated by the server
 
     received: (data) ->

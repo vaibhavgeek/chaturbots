@@ -28,7 +28,7 @@
         <ul class="right hide-on-med-and-down">
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , intents_all_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to "Chat-Archives" , chats_path(:id => session[:orga_id]) %></li>
+<li>  <%= link_to "Analytics" , chats_path(:id => session[:orga_id]) %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -46,6 +46,15 @@
     </nav>
   </div>
 
+  <div class="dialogue-controller"></div>
+
+<div class="dialogue template">
+  <div class="message"></div>
+  <div class="close <%=session[:orga_id]%>">✕</div>
+  <div style="clear:both"></div>
+</div>
+
+
 
        <% else %>
 <div class="navbar-fixed">
@@ -60,17 +69,13 @@
 
 
         <ul class="right hide-on-med-and-down page-scroll">
-          <li  class="active"><%= link_to "Home" , root_path %></li>
+  <li  class="active"><%= link_to "Home" , root_path %></li>
   <% if request.params["action"] == "index" %>
-  <li ><a class="page-scroll" href="#features">Features</a></li>
-  <li ><a class="page-scroll" href="#how-it-works">How it works?</a></li>
-  <% else %>
- <li > <%= link_to "Features" , root_path(:anchor => "how-it-works") , :class => "diff-page-scroll" %>
+  <li><a class="page-scroll" href="#features">Features</a></li>
+  <li><a class="page-scroll" href="#how-it-works">How it works?</a></li>
   <% end %>
-
-  <li ><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
-  <li > 
-  <%= link_to "Login" , new_user_session_path %></li>
+  <li><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
+  <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">

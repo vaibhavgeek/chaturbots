@@ -56,11 +56,11 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
     console.log data
     if data["online"].toString() == "true"
       if visitorpresent(data["visitor_id"]) == false 
-        alert "add visitor"
+        $("#panel-show-active-members").append data["visitor"]
     else
+      $("#"+data["visitor_id"]).remove()
       removevisitor(data["visitor_id"])    
-    panel_active = $('.3')
-    panel_active.append "helllllo <br/>"
+    
     # Called when there's incoming data on the websocket for this channel
 
 

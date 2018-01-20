@@ -8,8 +8,8 @@ class NotificationsVisitorChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def reset_counter_unread
-  	redis.del('unread_309')
+  def reset_counter_unread(data)
+    redis.del('unreadv_#{data["id"]}')
   end
   private
 

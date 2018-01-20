@@ -1,4 +1,6 @@
 /*  Homepage styles */
+$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+
 
 .form_table input {
   margin: 0px !important;
@@ -292,3 +294,83 @@
  .hidden {
    display: none;
  }
+
+
+ .dialogue-controller {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.dialogue {
+  background-color: #333;
+  color: #EEE;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  border-radius: 1px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  overflow: hidden;
+  min-width: 300px;
+  user-select: none;
+  opacity: 0.7;
+  
+
+  
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.dialogue.fresh {
+  transform: translateX(-600px);
+  animation:
+    itemEnter 0.15s 0.15s $easeOutQuad forwards,
+    itemHighlight 0.75s 0.1s $easeOutQuad forwards;
+}
+
+.dialogue.stale {
+  opacity: 0.7;
+  animation: itemExit 0.1s 0.15s $easeOutQuad backwards;
+}
+
+.dialogue > .message {
+  float: left;
+  margin-right: 20px;
+  padding: 12px 16px;
+  user-select: text;
+}
+
+.dialogue > .close {
+  float: right;
+  padding: 12px 16px;
+  opacity: 0.7;
+  
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.dialogue.template {
+  display: none;
+}
+
+@keyframes itemHighlight {
+  5%, 60% { background: #e67e22; }
+  100% { background:#333; }
+}
+
+@keyframes itemEnter {
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes itemExit {
+  to {
+    transform: translateX(-600px);
+  }
+}
