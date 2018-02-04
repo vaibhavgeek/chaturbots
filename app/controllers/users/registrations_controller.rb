@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    	 if request.params[:id]	
      	hashids = Hashids.new("i love this life")
       @main_id = hashids.decode(request.params[:id])
+      @email_id = request.params[:email]
       super
    	 else
    	 	redirect_to new_organisation_path

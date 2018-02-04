@@ -1,0 +1,9 @@
+<ul class="messages_admin messages" id="messages<%= params[:auth] %>">
+		<%= render :partial => 'bots/vedicmaths/initial_message' %>
+
+	<%= render @messages %>
+
+			
+</ul>
+
+	<input type="text" class="form-control input" id="event" name="chat_box" data-behavior="chatbot_call" placeholder="Type your input here">	

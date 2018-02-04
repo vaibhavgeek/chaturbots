@@ -19,113 +19,15 @@
  *= require_self
  */
 
-$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
 
 
 
-.add {
-  font-family: 'Fredoka One', cursive;
-  border-radius: 1px;
-  width: 200px;
-  font-size: 2rem;
-  margin: 20% auto;
-  text-align: center;
-  padding: 20px 10px;
-  background: #e67e22;
-  color: white;
-  user-select: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  
-  &:hover {  
-    background-color: #E66522;
-  }
-  
-  &:focus, &:active {
-    background-color: #d35400;
-  }
+
+
+.no-spacing {
+  margin: 0px;
+  padding: 0px !important;
 }
-
-.dialogue-controller {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 100;
-}
-
-.dialogue {
-  background-color: #333;
-  color: #EEE;
-  margin-bottom: 8px;
-  font-size: 0.85rem;
-  border-radius: 1px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  overflow: hidden;
-  min-width: 300px;
-  user-select: none;
-  opacity: 0.7;
-  
-
-  
-  &:last-child {
-    margin-bottom: 0px;
-  }
-}
-
-.dialogue.fresh {
-  transform: translateX(-600px);
-  animation:
-    itemEnter 0.15s 0.15s $easeOutQuad forwards,
-    itemHighlight 0.75s 0.1s $easeOutQuad forwards;
-}
-
-.dialogue.stale {
-  opacity: 0.7;
-  animation: itemExit 0.1s 0.15s $easeOutQuad backwards;
-}
-
-.dialogue > .message {
-  float: left;
-  margin-right: 20px;
-  padding: 12px 16px;
-  user-select: text;
-}
-
-.dialogue > .close {
-  float: right;
-  padding: 12px 16px;
-  opacity: 0.7;
-  
-  cursor: pointer;
-  
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.dialogue.template {
-  display: none;
-}
-
-@keyframes itemHighlight {
-  5%, 60% { background: #e67e22; }
-  100% { background:#333; }
-}
-
-@keyframes itemEnter {
-  to { 
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes itemExit {
-  to {
-    transform: translateX(-600px);
-  }
-}
-
 
 body {
   background: lightgrey;
@@ -813,10 +715,37 @@ width: 30px;
 }
 
 
+
+.collection-item.active {
+  color: #fff !important;
+  background-color: $blue !important; 
+}
+.login-parent {
+   display: grid;
+    place-items: center center;
+}
+.login-main-form {  
+ position:fixed;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 200px);
+  width: 400px;
+  height:400px;
+  padding: 2em;
+  @extend .card;
+
+  .input-field label {
+    color: $blue;
+  }
+
+
+
+}
+
 .login-form {
-  margin: 0 auto;
-  margin-top: 40px;
-  max-width: 540px;
+  position:fixed;
+  top: calc(50vh - 290px);
+  left: calc(50vw - 230px);
+  width: 450px;
   padding: 2em;
   @extend .card;
 

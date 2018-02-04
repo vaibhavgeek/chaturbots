@@ -1,0 +1,83 @@
+    <script type="text/javascript">
+       $(document).ready(function() {
+
+      $(".switch").find("#ai_check").on("change",function() {
+        if($(this).is(":checked").toString() == "true")
+        {
+          data = { "checked" : true }
+         
+        }
+        else {
+          data = { "checked" : false}
+
+        }
+         $.ajax({
+        url: "<%= notifications_automate_organisation_path(session['orga_id'],auth) %>",
+        data: data , 
+        cache: false,
+        type: "post",
+        success: function(html){
+       console.log(html);
+         }});
+      });
+
+       $(".switch").find("#ml_check").on("change",function() {
+        if($(this).is(":checked").toString() == "true")
+        {
+          data = { "checked" : true }
+         
+        }
+        else {
+          data = { "checked" : false}
+
+        }
+         $.ajax({
+        url: "<%= notifications_machinel_organisation_path(session['orga_id'],auth) %>",
+        data: data , 
+        cache: false,
+        type: "post",
+        success: function(html){
+       console.log(html);
+         }});
+      });
+});
+
+    </script>
+                     
+
+
+<div id="nav_menu">
+       <nav class="z-depth-0">
+      <div class="nav-wrapper">
+        <span> (Mumbai, Maharashtra, India) 115.112.153.68 </span>
+          <ul class="right">
+           
+
+            <li>
+                <div class="switch">
+                    <label>
+                      Automation
+                      <input type="checkbox" id="ai_check" <%= @checked_auto %>>
+                    <span class="lever"></span>
+
+                      
+                    </label>
+                  </div>
+                  </li>
+                  <li>
+                  <div class="switch">
+                    <label>
+                      ML
+                      <input type="checkbox" id="ml_check" <%= @checked_ml %> >
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+            </li>
+
+
+          </ul>
+           
+      </div>
+    </nav>
+
+    </div>

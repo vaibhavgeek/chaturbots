@@ -1,3 +1,45 @@
+.btn-primary-inverse {
+  background-color: #fff;
+  color: #00356B;
+  font-weight: bold;
+  font-size:15px;
+}
+.primary-text {
+  color: #00356B !important;
+}
+.btn-primary-inverse i {
+    color: #00356B;
+
+}
+
+.btn-primary-inverse:hover {
+  background-color:#00356B;
+  color:white;
+}
+
+.no-link {
+    color:inherit;
+    pointer-events:cursor;
+    float: left;
+  margin-right: 20px;
+  padding: 12px 16px;
+  user-select: text;
+  width:250px;
+  opacity:0.7;
+  background-codialor: rgba(51, 51, 51, 0.7);
+
+}
+
+.no-link:hover {
+  opacity:2.0;
+  background-color: rgba(51, 51, 51, 2.0);
+
+}
+
+body 
+{
+        overflow-x: hidden;
+}
 /*  Homepage styles */
 $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940); 
 
@@ -61,7 +103,7 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 .tabs .tab a:hover, .tabs .tab a.active {
     color: #00356B;
 }
-.card .card-content, .login-form .card-content {
+.card .card-content, .card-content {
    padding:6px;
 }
  nav ul a,
@@ -206,15 +248,25 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
  }
 
  .diagonal-effect {
-   display: none;
-   width: 120%;
-   height: 100px;
-   background-color: #f2f2f2;
+   display: absolute;
+   width: 118%;
+   height: 110px;
+   background-color: lightgrey;
    position: absolute;
-   -webkit-transform: rotate(6deg);
-   transform: rotate(6deg);
-   bottom: -16px;
-   left: -44px;
+   -webkit-transform: rotate(5deg);
+   transform: rotate(5deg);
+   bottom: -32px;
+   left: -58px;
+ }
+ .sub-head.features 
+ {
+    padding-top:3px;
+
+ }
+ .diagonal-effect .button-bottom {
+  position:relative;
+  top: -25px;
+  right: 40px;
  }
 
  .carousel-img {
@@ -304,7 +356,7 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 }
 
 .dialogue {
-  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.7);
   color: #EEE;
   margin-bottom: 8px;
   font-size: 0.85rem;
@@ -336,8 +388,7 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 
 .dialogue > .message {
   float: left;
-  margin-right: 20px;
-  padding: 12px 16px;
+  
   user-select: text;
 }
 

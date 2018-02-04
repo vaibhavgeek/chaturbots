@@ -7,23 +7,34 @@ class MessageBroadcastJob < ApplicationJob
   def perform(message)
     auth_token = message.visitor.auth_token
     ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
-    if message.responder == "user" && message.payload == "nil"
-     # speech_res = api_response(message.content)
-     # Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id:1 , payload: "nil"
+    redis_key = message.visitor.id.to_s + "automate"
+    #redis_ml = message.visitor.id.to_s + "ml"
+    #ml_true = true if redis.get(redis_ml).to_s == "1"
+    if message.responder == "user" &&  redis.get(redis_key).to_s == "1"
+      speech_res = api_response(message.content , message.organisation_id)
+      if speech_res != "live_chat"
+        Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false
+      end
     end
   end
 
-  def api_response(query)
-    url = URI("http://0.0.0.0:1995/query?q="+query)
+  def api_response(query,oid)
+    url = URI("http://0.0.0.0:33507/respond?q="+query+"&id="+oid.to_s)
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
     object = JSON.parse(response.read_body.to_s)
-    string_return = object["result"]["answer"] + "<br/> <br/>" + object["result"]["url"]
+    puts object
+    string_return = object["response"]
+    puts string_return 
+    puts "\n\n\n\n\n\n"
     return string_return
   end
   
   private
+  def redis
+    Redis.new
+  end
 
   def render_text_message(message)
   	ApplicationController.renderer.render(partial: 'messages/message' , locals: { message: message })

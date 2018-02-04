@@ -8,8 +8,7 @@
 		<div class="col s10 white">
 		
 
-<%= pie_chart Message.group(:responder).count %>
-<%= line_chart Message.group_by_day(:created_at).count %>
-
+<%= pie_chart Message.where(responder: "agent" , :organisation_id => session[:orga_id]).or(Message.where(responder: "bot" , :organisation_id => session[:orga_id])).group(:responder).count %>
+<h5> <center> Messages automated = <%= @bot_r %> / <%= @bot_r + @agent_r %> => <%= @percent_a %> % </center> </h5>
 	</div>
 </div>

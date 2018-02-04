@@ -8,12 +8,14 @@ class ChatsController < ApplicationController
     final_json = []
     #final_json = JSON.parse(final_json)
     visitor_all.each do |v|
-      hash_v = Message.where(:visitor_id => v).order("created_at ASC")
+      hash_v = Message.where(:visitor_id => v , :ml => true).order("created_at ASC")
       puts JSON.pretty_generate(hash_v.as_json)
       puts "\n\n"
       hash_v.each_with_index do |mblock , i| 
         if mblock["responder"] == "agent"
-         final_json << {"message": hash_v[i-1]["content"] , "response": mblock["content"]  }
+         if hash_v[i-1]["responder"] != "agent"
+            final_json << { "message": hash_v[i-1]["content"] , "response": mblock["content"]  }
+         end
         end
       end
     end
@@ -38,11 +40,20 @@ class ChatsController < ApplicationController
     auth =  params[:auth_token]
     @visitor = Visitor.where(:auth_token => auth).first
   	@messages = Message.where(:visitor_id => @visitor.id).order("created_at ASC").all
-  	puts @messages.first.as_json 
+  	ml_on = redis.get(@visitor.id.to_s + "ml")
+    automate_on = redis.get(@visitor.id.to_s + "automate")
+
+    @checked_ml = "checked" if ml_on.to_s == "1"
+    @checked_auto = "checked" if automate_on.to_s == "1"
   end
   def update
   end
 
   def destroy
+  end
+
+  private
+  def redis
+    Redis.new
   end
 end

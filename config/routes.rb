@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'home/index'
     get 'home/contact_us'
     get 'home/about_us'
+    get 'home/pricing'
     get 'organisations/:id/home' , to: 'home#main' , as: 'organisation_home'
  # get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
@@ -19,9 +20,12 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :organisations do 
+    resources :intents
+    resources :chats
     member do
-      resources :chats
-      resources :intents
+      post 'notifications_ml/:auth' , to: 'notifications#ml' , as: "notifications_machinel" , defaults: { format: 'js' }
+      post 'notifications_automate/:auth' , to: 'notifications#automate' , as: "notifications_automate" , defaults: { format: 'js' }
+      get 'notifications_main/:auth' , to: 'notifications#main' ,  as: "notifications_main_organisation"
       get 'messages_all' , to: 'chats#show_all' 
       get 'show_all' , to: 'intents#show_all'
       get 'intents_all', to: 'intents#intents_all'

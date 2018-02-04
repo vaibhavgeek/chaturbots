@@ -5,13 +5,14 @@
 
     <div class="col s2 blue card" id="panel-visitors">
       <div id="panel-show-active-members">
+
         <h4 class="white-text flow-text right">Visitors</h4>
         <div class="<%= session[:orga_id] %>"> 
-        <% Visitor.where(:organisation_id => session[:orga_id]).all.each do |visitor| %>
+        <% @organisation_vistors.each do |visitor| %>
           <% if visitor.online? %>
-
+          <% @bool = 1 %>
             <div id="<%= visitor.id %>" class="visitor-container">
-              <%= link_to new_chat_path(:id => 1 , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
+              <%= link_to new_organisation_chat_path(:organisation_id => session[:orga_id] , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
     <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CMumbai+India&center=Mumbai,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
               <% end %>
               <span class="hidden">
@@ -27,43 +28,40 @@
 
 
     <div class="col s10 card no-padding">
-      
-    <div class="hidden" id="nav_menu">
-       <nav class="z-depth-0">
-      <div class="nav-wrapper">
-        <span> (Mumbai, Maharashtra, India) 115.112.153.68 </span>
-          <ul class="right">
-           
 
-            <li>
-                <div class="switch">
-                    <label>
-                      Automation
-                      <input type="checkbox" id="ml_check">
-                      <span class="lever"></span>
-                    </label>
-                  </div>
-                  </li>
-                  <li>
-                  <div class="switch">
-                    <label>
-                      ML
-                      <input type="checkbox" id="ml_check">
-                      <span class="lever"></span>
-                    </label>
-                  </div>
-            </li>
-
-
-          </ul>
-           
+      <div id="appendnav" > 
       </div>
-    </nav>
-
-    </div>
+    
       <div class="white" id="display_chats">
        
+<% if @bool == 0 %>
+<div class="col s12 m8 offset-m2">
+    <h2 class="header">No Visitors Online</h2>
+    <div class="card horizontal">
+      
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Embed Motherfucking Code to copy paste on your motherfucking website assholes!</p>
+        </div>
+        <div class="card-action right-align">
+          <a href="#" class="primary-text">Copy Embed Code</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="card horizontal">
+      
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>This is blog post that you need to work on asshole, I do not know when this site gets fucking completed, probably would take you years at this rate!</p>
+        </div>
+        <div class="card-action right-align">
+          <a href="#" class="primary-text">Increase views on your website!</a>
+        </div>
+      </div>
+    </div>
+
+  </div>        <% end %>
       </div>
     </div>
 

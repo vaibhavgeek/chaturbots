@@ -52,14 +52,14 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log "from appearchannel"
-    console.log data
     if data["online"].toString() == "true"
       if visitorpresent(data["visitor_id"]) == false 
         $("#panel-show-active-members").append data["visitor"]
     else
       $("#"+data["visitor_id"]).remove()
-      removevisitor(data["visitor_id"])    
+
+      removevisitor(data["visitor_id"])  
+
     
     # Called when there's incoming data on the websocket for this channel
 
@@ -77,50 +77,13 @@ createconusmer = (send_params) ->
         # Called when the subscription has been terminated by the server
 
       received: (data) ->
-        console.log "from appearchannel"
-        console.log data
         id = '#messages' +  data['auth_token'].trim()
         messages = $(id)
         messages.append data['message']
         messages.animate { scrollTop: messages.prop("scrollHeight") },1000
-        
-        #  $(".full_width").last().css('background-color' , '#e67e22')
-
-        # Called when there's incoming data on the websocket for this channel
-
+ 
       speak: (data, responder, payload) ->
           @perform 'speak' , message: data , responder: responder , payload: payload 
 
 
  
-# $("#panel-show-active-members a").click (e) ->
-#  console.log "click function"
-#  alert "hidden"
-#  au = $(this).siblings('.hidden').text().trim()
-#  console.log App.chatbot
-#  if !App.chatbot
-#    console.log "connected to " + au
-#    createconusmer au
-#  else
-#    json = JSON.parse App.chatbot.identifier
-#    if json.auth_token != au 
-#      console.log "connected to " + au
-#      createconusmer au 
-
-
-  # check_bool = 0
-  # $('.hidden').each (i, obj) ->
-  #  if value == obj.innerText.trim()
-  #   check_bool = check_bool + 1
-  #   alert check_bool
-  # if check_bool == 1
-  #  check_bool = 2
-    
-
-# $ -> 
-#  $("#ml_check").change ->
-#    if ml_check.checked.toString() == "true"
-#      $(".chips").show()
-#    else 
-#      $(".chips").hide()
-#    console.log ml_check.checked

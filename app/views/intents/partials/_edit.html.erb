@@ -1,5 +1,5 @@
 <div class="col s11 m11">
- <%= render '/intents/partials/form' , intent: @intent , uri: user_intent_path %>
+ <%= render '/intents/partials/form' , intent: @intent , uri: organisation_intent_path(:organisation_id => session[:orga_id]) %>
               </div>
                <script type="text/javascript">
               	var citynames = new Bloodhound({

@@ -3,7 +3,7 @@
 <div class="row">
  
  <div class="col s11 m11">
- <%= render '/intents/partials/form' , intent: @intent , uri: intents_path %>
+ <%= render '/intents/partials/form' , intent: @intent , uri: organisation_intents_path(:organisation_id => session[:orga_id]) %>
               </div>
               <div class="right-align col s1 m1"> <%= link_to "#" do %> <i class="material-icons circle">cancel</i> <% end %>
 </div>

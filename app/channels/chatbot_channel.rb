@@ -28,16 +28,27 @@ class ChatbotChannel < ApplicationCable::Channel
   def speak(data)
     auth = data["responder"]["auth_token"].strip
     visitor = Visitor.where(:auth_token => auth).first
-    Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"] , organisation_id: visitor.organisation_id
+    ml_s = get_ml_status(visitor.id)
+    me = Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"] , organisation_id: visitor.organisation_id , ml: ml_s
+
     if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
-      puts "get_visitor"
       counter_v = get_counter_visitor(visitor.id)
       ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
     else
       counter_o = get_counter_organisation(visitor.organisation_id)
-      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: data["message"] , counter: counter_o
+      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: organisation_notification(data["message"] , auth) , counter: counter_o 
     end
     # ActionCable.server.broadcast "chatbot" , message: data["message"]
+  end
+
+  def get_ml_status(id)
+    redis_ml = id.to_s + "ml"
+    if redis.get(redis_ml).to_s == "1"
+      ml_true = true
+    else
+      ml_true = false
+    end
+    return ml_true
   end
 
   def get_counter_visitor(vid)
@@ -50,6 +61,8 @@ class ChatbotChannel < ApplicationCable::Channel
     redis.set("unreadv_#{vid}" , counter)
     return counter
   end
+
+
 
   def get_counter_organisation(oid)
     counter = redis.get("unreado_#{oid}")
@@ -67,10 +80,13 @@ class ChatbotChannel < ApplicationCable::Channel
     ApplicationController.renderer.render(partial: 'home/partials/show_active_visitors' , locals: { visitor: visitor })
   end
 
-  def visitor_notification(number)
-    ApplicationController.renderer.render(partial: 'home/partials/visitor_popup' , locals: { number: number })
+  def visitor_notification(message , number)
+    ApplicationController.renderer.render(partial: 'home/partials/visitor_popup' , locals: { message: message , number: number })
   end
 
+  def organisation_notification(message , auth)
+    ApplicationController.renderer.render(partial: 'notifications/organisation' , locals: { message: message  , auth: auth})
+  end
   def redis
     Redis.new
   end

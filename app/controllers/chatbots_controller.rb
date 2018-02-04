@@ -17,6 +17,13 @@ class ChatbotsController < ApplicationController
 		#end
 			
 	end
+
+	def reports 
+		@bot_r = Message.where(responder: "bot" , :organisation_id => request.params[:id]).count
+		@agent_r = Message.where(responder: "agent" , :organisation_id => request.params[:id]).count
+		p_a = ( @bot_r.to_f / (@bot_r.to_f + @agent_r.to_f)) * 100 
+		@percent_a = p_a.round(2)
+	end
 	
 	def redirect 
 
@@ -39,8 +46,9 @@ class ChatbotsController < ApplicationController
 			loc = Net::HTTP.get(URI.parse('http://freegeoip.net/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
   			location = k["city"] + "," + k["region_name"] + ", " + k["country_name"]
-  			Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id )
-
+  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id )
+  			redis.set(@vis.id.to_s + "ml" , 1)
+  			redis.set(@vis.id.to_s + "automate" , 1)
 		end
 		puts params
 		if params["popup"]
@@ -131,5 +139,10 @@ class ChatbotsController < ApplicationController
        	o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
 		string = (0...100).map { o[rand(o.length)] }.join
 		string
+     end
+
+     private
+     def redis
+     	Redis.new
      end
 end

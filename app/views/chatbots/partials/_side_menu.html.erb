@@ -1,9 +1,11 @@
 <div class="collection">
-        <%= link_to "Intents" , intents_all_organisation_path(:id => session[:orga_id]) , :class => "collection-item" %>
 
-						<%= link_to "Spell Checker" , bot_spell_checker_organisation_path(:id => 1), :class => "collection-item" %>
+<% #helper code %> 
 
-						<%= link_to "Reports", bot_reports_organisation_path(:id => 1) , :class => "collection-item"  %>
-						<%= link_to "Preview Bot", bot_preview_organisation_path(:id => session[:orga_id]) , :class => "collection-item" , :target => "blank" %>
-						<%= link_to "Contact Us", home_contact_us_path(:id => 1) , :class => "collection-item"  %>
+        <%= link_to "Intents" , intents_all_organisation_path(:id => session[:orga_id]) , :class => active_helper(intents_all_organisation_path)   %>
+
+						<%= link_to "Spell Checker" , bot_spell_checker_organisation_path(:id => session[:orga_id]), :class => active_helper(bot_spell_checker_organisation_path) %>
+
+						<%= link_to "Reports", bot_reports_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_reports_organisation_path)  %>
+						<%= link_to  bot_preview_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_preview_organisation_path) , :target => "blank" do %>  Preview Bot <% end %>
 			  </div>	

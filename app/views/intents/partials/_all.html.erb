@@ -27,11 +27,11 @@
       </table>
          </div>
          <div class="col s1 m1">
-          <%= link_to edit_intent_path(:user_id => 1 , :id => int.id) , :class => "btn-floating waves-effect waves-light btn-primary" , :remote => "true" do %>
+          <%= link_to edit_organisation_intent_path(session[:orga_id] , int.id) , :class => "btn-floating waves-effect waves-light btn-primary" , :remote => "true" do %>
     <i class='material-icons'>edit</i>
     <% end %>
     <br/> <br/>
-    <%= link_to intent_path(:user_id => 1 , :id => int.id) , :class => "btn-floating waves-light waves-light red" , method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= link_to organisation_intent_path(session[:orga_id] , int.id) , :class => "btn-floating waves-light waves-light red" , method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="material-icons">delete</i>
     <% end %>
          </div> 

@@ -1,0 +1,15 @@
+$("#nav_menu").show();
+
+$("#display_chats").html("<%= j render ('/home/partials/active_chat_admin_notif')   %>");
+$("#event").attr('data-auth' , " <%= params[:auth] %>")
+value = "<%= params[:auth] %>"
+
+var id, messages;
+
+id = '#messages' + value.trim();
+
+messages = $(id);
+
+messages.animate({
+  scrollTop: messages.prop("scrollHeight")
+}, 1000);

@@ -14,14 +14,15 @@ App.notifications_organisation = App.cable.subscriptions.create { channel: "Noti
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    popup_show "A visitor has left a message: " + data["message"].slice(0,10) , data["counter"]
+    popup_show data["counter"] , data["message"]
     console.log data
     # Called when there's incoming data on the websocket for this channel
 
-popup_show = (content , uid) -> 
+popup_show = (uid , linker) -> 
   addDialogue = (opts) ->
     $dialogue = $('.dialogue.template').clone(true)
-    $dialogue.find('.message').text opts.text
+    $dialogue.find('.message').html linker
+     
     $dialogue.attr('data-id', uid).removeClass('template').addClass('fresh').prependTo '.dialogue-controller'
     return
 
@@ -39,9 +40,9 @@ popup_show = (content , uid) ->
     console.log id
     closeDialogue id
     return
-  addDialogue text: content
+  addDialogue text: "content"
 
 
-
-
+$ -> 
+  # popup_show "asd" , "<a href='#' class='no-link'> hello </a>"
 

@@ -12,7 +12,7 @@
 
   </head>
 
-  <body>
+  <body class="<%= controller.controller_name + controller.action_name %>">
 
    <% if user_signed_in? && session[:orga_id] %>
    <div class="navbar-fixed">
@@ -28,7 +28,7 @@
         <ul class="right hide-on-med-and-down">
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , intents_all_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to "Analytics" , chats_path(:id => session[:orga_id]) %></li>
+<li>  <%= link_to "Analytics" , organisation_chats_path(:organisation_id => session[:orga_id]) %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -37,7 +37,7 @@
           
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , bot_intent_mapping_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to "Chat-Archives" , chats_path(:id => session[:orga_id]) %></li>
+<li>  <%= link_to "Analytics" , organisation_chats_path(:organisation_id => session[:orga_id]) %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -49,7 +49,7 @@
   <div class="dialogue-controller"></div>
 
 <div class="dialogue template">
-  <div class="message"></div>
+ <div class="message"></div>
   <div class="close <%=session[:orga_id]%>">✕</div>
   <div style="clear:both"></div>
 </div>
@@ -73,6 +73,9 @@
   <% if request.params["action"] == "index" %>
   <li><a class="page-scroll" href="#features">Features</a></li>
   <li><a class="page-scroll" href="#how-it-works">How it works?</a></li>
+  <li><%= link_to "Pricing" , home_pricing_path %></li>
+
+
   <% end %>
   <li><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
   <li><%= link_to "Login" , new_user_session_path %></li>

@@ -1,6 +1,11 @@
-<div class="col-md-2 col-md-offset-5 login-form">
+<div class="particles-container no-spacing">
+<div id="particles-js" style="height: 700px;"></div>
+</div>
 
-  <h3 class="center">Login</h3>
+<div class="login-parent">
+<div class="login-main-form">
+
+  <h5 class="center">Login</h5>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
    <% if resource.errors.any? %>
@@ -37,3 +42,11 @@
     </div>
   <% end %>
 </div>
+</div>
+
+<script type="text/javascript">
+  particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function() {
+  console.log('callback - particles.js config loaded');
+});
+
+</script>

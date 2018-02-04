@@ -1,0 +1,3 @@
+<%= link_to notifications_main_organisation_organisation_path(session[:orga_id].to_i , auth) , :class => "no-link" , :onclick => 'nameclick("'+auth+'")' , :remote => true do %> 
+New message: <%= message %>
+<% end %>

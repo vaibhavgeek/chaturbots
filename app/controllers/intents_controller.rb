@@ -7,7 +7,7 @@ class IntentsController < ApplicationController
 		@intent.user_id = user_id
 	    respond_to do |format|
 			if @intent.save
-				format.html { redirect_to intents_all_organisation_url(:id => @intent.id ) , notice_error: "Created Sucessfully." }
+				format.html { redirect_to intents_all_organisation_url(:id => session[:orga_id] ) , notice_error: "Created Sucessfully." }
 				format.json { render :show , status: :created , location: @intent}
 			else 
 				format.html { render :new , notice_error: "Some error ocurred, please try again" }
@@ -37,7 +37,7 @@ class IntentsController < ApplicationController
 	def destroy
 		@intent.destroy 
 		respond_to do |format|
-      		format.html { redirect_to user_intents_all_url, notice: 'Intent was successfully deleted.' }
+      		format.html { redirect_to intents_all_organisation_url(:id => session[:orga_id]), notice: 'Intent was successfully deleted.' }
       		format.json { head :no_content }
     	end
 	end

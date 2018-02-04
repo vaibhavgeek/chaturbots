@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   end
   def contact_us
   end
+  def pricing 
+  end
   def index
     if session[:orga_id]
   	redirect_to organisation_home_path(:id => session[:orga_id])
@@ -15,7 +17,8 @@ class HomeController < ApplicationController
   end
 
   def main
-  	  	@messages = Message.all  	
-
+    @organisation_vistors = Visitor.where(:organisation_id => session[:orga_id]).all
+  	@messages = Message.all  	
+    @bool = 0
   end
 end

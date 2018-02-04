@@ -1,6 +1,14 @@
 module ApplicationHelper
 	
 
+  def active_helper(url)
+    if current_page?(url)
+      return "collection-item active" 
+    else
+      return "collection-item"
+    end
+  end
+ 
 
   def proper_url_link(url_link)
   unless url_link.blank?
