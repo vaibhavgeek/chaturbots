@@ -42,7 +42,7 @@ org_string = "/"
 if string.indexOf(org_string) != -1
   orga_id = string.split(org_string)[4]
 if not orga_id?
-  orga_id = "3" 
+  orga_id = "1" 
 
 App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , organisation_id: orga_id } ,
   connected: ->
@@ -56,9 +56,10 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
       if visitorpresent(data["visitor_id"]) == false 
         $("#panel-show-active-members").append data["visitor"]
     else
-      $("#"+data["visitor_id"]).remove()
-
       removevisitor(data["visitor_id"])  
+      $("#"+data["visitor_id"]).remove()
+      $("#display_chats" + data["organisation_id"]).html data["left_template"]
+      $("#appendnav" + data["organisation_id"]).hide()
 
     
     # Called when there's incoming data on the websocket for this channel

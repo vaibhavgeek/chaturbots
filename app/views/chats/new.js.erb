@@ -1,12 +1,9 @@
 $("#nav_menu").show();
-$("#appendnav").html("<%= j render :partial => '/home/partials/top_menu' , :locals => { auth: @visitor.auth_token }  %>");
-$("#display_chats").html("<%= j render ('/home/partials/active_chat_admin')   %>");
-$("#event").attr('data-auth' , " <%= @visitor.auth_token %>")
-console.log("<%= @visitor.id %>");
+$("#appendnav<%= session[:orga_id] %>").show();
+$("#appendnav<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/top_menu' , :locals => { auth: @visitor.auth_token }  %>");
+$("#display_chats<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/active_chat_admin' , :locals => { auth: @visitor.auth_token }  %>");
 value = "<%= @visitor.auth_token %>";
-
 var id, messages;
-
 id = '#messages' + value.trim();
 
 messages = $(id);

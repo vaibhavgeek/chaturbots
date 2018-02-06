@@ -3,24 +3,29 @@ class ChatbotChannel < ApplicationCable::Channel
     if params[:auth_token] != "admin"
       stream_from "chatbot#{params[:auth_token]}"
       visitor = Visitor.where(:auth_token => params["auth_token"]).first
-      redis.set("visitor_#{visitor.id}_online", "1")
-      ActionCable.server.broadcast "appearchannel#{params[:oid]}", visitor: render_visitor(visitor),
+      if !redis.get("visitor_#{visitor.id}_online")
+        redis.set("visitor_#{visitor.id}_online", "1")
+        ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+                                visitor: render_visitor(visitor),
                                  visitor_id: visitor.id,
                                  organisation_id: params[:oid],
                                  online: true
+      end
     end
   end
 
   def unsubscribed
     visitor = Visitor.where(:auth_token => params["auth_token"]).first
-    if params["auth_token"] != "admin"
-    redis.del("visitor_#{visitor.id}_online")
-    ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+    if redis.get("visitor_#{visitor.id}_online") == "1"
+      redis.del("visitor_#{visitor.id}_online")
+      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  visitor: render_visitor(visitor),
-                                 online: false
+                                 online: false, 
+                                 left_template: left_conversation(visitor)
     end
+    
     
     # Any cleanup needed when channel is unsubscribed
   end
@@ -86,6 +91,10 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def organisation_notification(message , auth)
     ApplicationController.renderer.render(partial: 'notifications/organisation' , locals: { message: message  , auth: auth})
+  end
+
+  def left_conversation(visitor)
+    ApplicationController.renderer.render(partial: 'home/partials/left' , locals: { visitor: visitor })
   end
   def redis
     Redis.new

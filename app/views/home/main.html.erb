@@ -4,9 +4,12 @@
 <div class="row container">
 
     <div class="col s2 blue card" id="panel-visitors">
-      <div id="panel-show-active-members">
 
-        <h4 class="white-text flow-text right">Visitors</h4>
+
+      <div id="panel-show-active-members">
+        
+                <h4 class="white-text flow-text right">Visitors</h4>
+
         <div class="<%= session[:orga_id] %>"> 
         <% @organisation_vistors.each do |visitor| %>
           <% if visitor.online? %>
@@ -26,13 +29,12 @@
       </div>
     </div>
 
-
     <div class="col s10 card no-padding">
 
-      <div id="appendnav" > 
+      <div id="appendnav<%= session[:orga_id] %>" > 
       </div>
     
-      <div class="white" id="display_chats">
+      <div class="white display_chats" id="display_chats<%= session[:orga_id] %>">
        
 <% if @bool == 0 %>
 <div class="col s12 m8 offset-m2">

@@ -21,6 +21,21 @@
          }});
       });
 
+
+    $("#train_the_chats").click(function(){
+        $.ajax({
+        url: "http://0.0.0.0:33507/train_prev?id="+"<%= session[:orga_id]%>",
+        cache: false,
+        type: "get",
+        success: function(html){
+            console.log(html)
+         },
+         error: function(html){
+          console.log(html);
+         }});
+    }); 
+
+
        $(".switch").find("#ml_check").on("change",function() {
         if($(this).is(":checked").toString() == "true")
         {
@@ -49,13 +64,13 @@
 <div id="nav_menu">
        <nav class="z-depth-0">
       <div class="nav-wrapper">
-        <span> (Mumbai, Maharashtra, India) 115.112.153.68 </span>
+        <span class="font-13"> (Mumbai, Maharashtra, India) 115.112.153.68 </span>
           <ul class="right">
            
 
             <li>
                 <div class="switch">
-                    <label>
+                    <label class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Bot Responses On/Off">
                       Automation
                       <input type="checkbox" id="ai_check" <%= @checked_auto %>>
                     <span class="lever"></span>
@@ -66,7 +81,7 @@
                   </li>
                   <li>
                   <div class="switch">
-                    <label>
+                    <label class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Machine Learning mode">
                       ML
                       <input type="checkbox" id="ml_check" <%= @checked_ml %> >
                       <span class="lever"></span>
@@ -74,10 +89,19 @@
                   </div>
             </li>
 
+<li> 
+             <a class="btn-floating btn-small waves-effect waves-light tooltipped" data-position="bottom" id="train_the_chats" data-delay="50" data-tooltip="Click to Train recent chats"><i class="material-icons">refresh</i></a>
 
+           </li>
           </ul>
            
       </div>
     </nav>
 
     </div>
+<script type="text/javascript">
+   $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+       
+</script>

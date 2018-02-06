@@ -1,4 +1,4 @@
-<ul class="messages_admin messages" id="messages<%= @visitor.auth_token %>">
+<ul class="messages_admin messages" id="messages<%= auth %>">
 		<%= render :partial => 'bots/vedicmaths/initial_message' %>
 
 	<%= render @messages %>
@@ -6,4 +6,4 @@
 			
 </ul>
 
-	<input type="text" class="form-control input" id="event" name="chat_box" data-behavior="chatbot_call" placeholder="Type your input here">	
+	<input type="text" class="form-control input" id="event" name="chat_box" data-behavior="chatbot_call" data-auth="<%= auth %>" placeholder="Type your input here">	
