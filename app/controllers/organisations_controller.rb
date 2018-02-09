@@ -6,6 +6,14 @@ class OrganisationsController < ApplicationController
   	@organisation = Organisation.new
   end
 
+  def all_organisation_id
+    final_json = Organisation.all.pluck(:id)
+    end_json = JSON.parse(final_json.to_json.to_s)
+    respond_to do |format|
+          format.json { render :json =>  JSON.pretty_generate(end_json) }
+      end
+  end
+
   def create 
   	@organisation = Organisation.new(organisation_params)
   	respond_to do |format|	

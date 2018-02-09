@@ -17,6 +17,7 @@
 //= require materialize
 //= require Chart.bundle
 //= require chartkick
+//= require jquery.dataTables.min.js
 //= require jquery.easing
 //= require particles
 //= require check

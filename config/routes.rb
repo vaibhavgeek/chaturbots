@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
  
 
+  
+
   get 'organisations/new'
 
   get 'organisations/edit'
 
   get 'organisations/show'
+  get 'organisations/all_organisation_id'
 
 # general show time routes
     get 'home/index'
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   resources :organisations do 
     resources :intents
     resources :chats
+    resources :previous_chats , :except => [ :create , :show , :index ]
     member do
       post 'notifications_ml/:auth' , to: 'notifications#ml' , as: "notifications_machinel" , defaults: { format: 'js' }
       post 'notifications_automate/:auth' , to: 'notifications#automate' , as: "notifications_automate" , defaults: { format: 'js' }
