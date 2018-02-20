@@ -3,7 +3,7 @@
 <div class="row container top-margin-20">
 		<div class="col s2 white no-padding">
 				<div class="collection">
-       <% Visitor.all.each do |visitor| %>
+       <% @vis.each do |visitor| %>
 	
 		<div id="<%= visitor.id %>">
 			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => "collection-item" , :remote => "true" do %>
@@ -21,7 +21,7 @@
 		<div class="col s10 white">
 		<h4> <center> Chat Archives </center></h4>
 
-		<div id="display_chats">
+		<div id="display_chats" class="display_chats">
 	
 </div>
 

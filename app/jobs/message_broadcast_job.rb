@@ -14,7 +14,16 @@ class MessageBroadcastJob < ApplicationJob
       speech_res = api_response(message.content , message.organisation_id)
       if speech_res != "live_chat"
         Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false
+      else 
+        check_user_online(message,auth_token)
       end
+    end
+  end
+
+  def check_user_online(message, auth_token)
+    user = User.where(:id => message.organisation_id).first
+    if user.logged_in == false
+      ActionCable.server.broadcast "chatbot#{auth_token}" , message: organisation_online(message) , auth_token: auth_token
     end
   end
 
@@ -38,6 +47,10 @@ class MessageBroadcastJob < ApplicationJob
 
   def render_text_message(message)
   	ApplicationController.renderer.render(partial: 'messages/message' , locals: { message: message })
+  end
+
+  def organisation_online(visitor)
+    ApplicationController.renderer.render(partial: 'messages/offline' , locals: { visitor: visitor})
   end
 
   def spell_checker_message(message,correct)

@@ -1,6 +1,12 @@
 class ChatsController < ApplicationController
 
   def index
+    @vis = Visitor.where(:organisation_id => request.params[:organisation_id])
+    @vis.each_with_index do |v,i|
+      if Message.where(:visitor_id => v.id).count == 0
+        @vis = @vis.delete(v)
+      end
+    end
   end
 
   def show_all
@@ -14,7 +20,9 @@ class ChatsController < ApplicationController
       hash_v.each_with_index do |mblock , i| 
         if mblock["responder"] == "agent"
          if hash_v[i-1]["responder"] != "agent"
-            final_json << { "message": hash_v[i-1]["content"] , "response": mblock["content"]  }
+            if hash_v[i-1]["message_c"] != ""
+              final_json << { "message": hash_v[i-1]["message_c"] , "response": mblock["message_c"]  }
+            end
          end
         end
       end

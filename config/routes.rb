@@ -25,8 +25,10 @@ Rails.application.routes.draw do
   resources :organisations do 
     resources :intents
     resources :chats
-    resources :previous_chats , :except => [ :create , :show , :index ]
+    resources :previous_chats , :except => [ :create , :show , :index , :update , :destroy ]
     member do
+      post 'previous_chats_d/:id1/:id2' , to: 'previous_chats#destroy' , as: "previous_chats_destroy"
+      post 'previous_chats/:id1/:id2' , to: 'previous_chats#update' , as: "previous_chats_update"
       post 'notifications_ml/:auth' , to: 'notifications#ml' , as: "notifications_machinel" , defaults: { format: 'js' }
       post 'notifications_automate/:auth' , to: 'notifications#automate' , as: "notifications_automate" , defaults: { format: 'js' }
       get 'notifications_main/:auth' , to: 'notifications#main' ,  as: "notifications_main_organisation"
