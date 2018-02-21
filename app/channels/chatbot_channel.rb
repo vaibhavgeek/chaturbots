@@ -16,16 +16,17 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def unsubscribed
     visitor = Visitor.where(:auth_token => params["auth_token"]).first
-    if redis.get("visitor_#{visitor.id}_online") == "1"
-      redis.del("visitor_#{visitor.id}_online")
-      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+    if visitor
+      if redis.get("visitor_#{visitor.id}_online") == "1"
+        redis.del("visitor_#{visitor.id}_online")
+        ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  visitor: render_visitor(visitor),
                                  online: false, 
                                  left_template: left_conversation(visitor)
+      end
     end
-    
     
     # Any cleanup needed when channel is unsubscribed
   end
