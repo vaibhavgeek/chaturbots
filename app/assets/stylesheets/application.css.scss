@@ -456,7 +456,6 @@ position:relative;
   background: #f1f0f0;
   margin-left: 48px;
   padding: 8px;
-  @extend .z-depth-1;
 }
 
 .messages .message.left .text_wrapper ul {
@@ -795,7 +794,7 @@ width: 30px;
   top: 0px;
   right: 0px;
   bottom: 0px;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .main_chat {

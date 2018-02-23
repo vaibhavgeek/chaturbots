@@ -116,39 +116,22 @@
                     
 
                 <!-- FEATURED PLAN ( USE EXTRA CLASS z-depth-4 TO RAISE FEATURED PLAN )-->
-                <div class="col s12 m4 offset-m2">
+                <div class="col s12 m4 offset-m4">
                     
                     <!-- START PRICING PLAN -->
                     <div class="card blue pricing style-3 z-depth-4">
                         
                         <!-- START PLAN TITLE DIV. -->
-                        <div class="plan-title waves-effect waves-block waves-light blue">
-                            <h5 class="white-text">
-                                <span class="plan">POPULAR</span>
-                            </h5>
-                        </div>
+                        
                         <!-- END PLAN TITLE DIV. -->
                         
-                        <div class="card-content">
-                            
-                            <!-- START FEATURE LIST -->
-                            <ul class="collection">
-                                <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top" class="collection-item tooltipped"><b>24/7</b> Support <i class="mdi-action-info-outline right"></i></li>
-                                <li class="collection-item"><b>3TB</b> Bandwidth</li>
-                                <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top" class="collection-item tooltipped"><b>50GB</b> Hosting Space <i class="mdi-action-info-outline right"></i></li>
-                                <li class="collection-item"><b>8GB</b> Memory</li>
-                                <li class="collection-item"><b>50</b> Free Domain</li>
-                                <li class="collection-item">User Analytics</li>
-                            </ul>
-                            <!-- END FEATURE LIST -->
-                            
-                        </div>
+                       
                         
                         <!-- START PRICE INFO DIV. -->
                         <div class="price waves-effect waves-block waves-light blue">
                             <h4 class="white-text">
                                 <span class="currency">$</span>
-                                <span class="amount">99</span>
+                                <span class="amount">45 </span>
                                 <span class="period">/mo</span>
                             </h4>
                         </div>
@@ -167,88 +150,12 @@
                     <!-- END PRICING PLAN -->
                     
                 </div>
-                <div class="col s12 m4">
-                    
-                    <!-- START PRICING PLAN -->
-                    <div class="card pricing style-3">
-                        
-                        <!-- START PLAN TITLE DIV. -->
-                        <div class="plan-title waves-effect waves-block waves-light teal">
-                            <h5 class="white-text">
-                                <span class="plan">PREMIUM</span>
-                            </h5>
-                        </div>
-                        <!-- END PLAN TITLE DIV. -->
-                        
-                        <div class="card-content">
-                            
-                            <!-- START FEATURE LIST -->
-                            <ul class="collection">
-                                <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top" class="collection-item tooltipped"><b>24/7</b> Support<i class="mdi-action-info-outline right"></i></li>
-                                <li class="collection-item"> <b>5TB</b> Bandwidth</li>
-                                <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top" class="collection-item tooltipped"><b>100GB</b> Hosting Space <i class="mdi-action-info-outline right"></i></li>
-                                <li class="collection-item"><b>16GB</b> Memory</li>
-                                <li class="collection-item"><b>100</b> Free Domain</li>
-                                <li class="collection-item">User Analytics</li>
-                            </ul>
-                            <!-- END FEATURE LIST -->
-                            
-                        </div>
-                        
-                        <!-- START PRICE INFO DIV. -->
-                        <div class="price waves-effect waves-block waves-light teal lighten-1">
-                            <h4 class="white-text">
-                                <span class="currency">$</span>
-                                <span class="amount">199</span>
-                                <span class="period">/mo</span>
-                            </h4>
-                        </div>    
-                        <!-- END PRICE INFO DIV. -->
-                        
-                        <!-- START FLOATING SIGN UP BUTTON WITH ICON SUPPORT -->
-                        <div class="plan-signup-btn">
-                            <a class="btn-floating btn-large waves-effect waves-light teal z-depth-2" href="#">
-                                <i class="material-icons">shopping_basket</i>
-                            </a>
-                        </div>                        
-                        <!-- END FLOATING SIGN UP BUTTON WITH ICON SUPPORT -->
-                        
-                    </div>
-                    <!-- END PRICING PLAN -->
-                    
-                </div>
+              
             </div>
             </div>
             </div>
             </div>
 
-<div class="padding-vertical-3">
-    <div class="container">
-      <div class="section padding-vertical-3">
-        <div class="row">
-          <h3 class="sub-head">
-           SOME OF OUR CLIENTS
-          </h3>
-        </div>
-        <div class="row padding-vertical-1">
-          <div class="col s6 offset-s3 m3">
-            <%= image_tag "edunova.png" , :class => "circle responsive" %>
-          
-          </div>
-          <div class="col s6 offset-s3 m3 offset-m1">
-                        <%= image_tag "mathbottutor.jpg" , :class => "circle responsive" %>
-                        
-
-          </div>
-          <div class="col s6 offset-s3 m3 offset-m1">
-                        <%= image_tag "miniframes.png" , :class => "circle responsive" %>
-                        
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <!--
   <div class="grey lighten-3 padding-vertical-3">
@@ -323,23 +230,8 @@ particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function(
 </script>
 
 <!-- /bot/preview -->
-
-
-
+<script type="text/javascript" id="chaturscap" data-organisation="3" src="http://localhost:3000/chatbot_append.js"> </script>
+<script type="text/javascript" data-organisation="3" src="http://localhost:3000/chatbot_initial.js"> </script> 
+<link href="http://localhost:3000/chatbot_initial.css" type="text/css" rel="stylesheet" /> 
 <!-- /bot/preview -->
 
-<div id="zipi-chatbox">
-
-<div  id="chatflow" class=" ">
-    <div class="frameparent" style="overflow: hidden; !important">
-        <iframe allowtransparency="true" class="main_chat" src="/organisations/3/bot/redirect" style="overflow: hidden; !important"></iframe>
-    </div>
-</div>
-<div class="popup_wrapper" id="popup_wrapper">
-       <iframe class="iframe_popups" allowtransparency="true" src="/organisations/3/bot/redirect?popup=true"></iframe>
-</div>
-<div id="floatbutton" onclick="zipitoggleChat();">
-    <div class="opened  "></div>
-    <div class="closed  "></div>
-</div>
-</div>

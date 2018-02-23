@@ -1,33 +1,6 @@
+
 <!-- /bot/preview -->
-
-<%= link_to "hi" ,  root_path %> 
-
-<div id="zipi-chatbox">
-
-<div>
-<div  id="chatflow" class=" ">
-
-<div class="frameparent" style="overflow: hidden; !important"><iframe allowtransparency="true" class="main_chat" src="/organisations/<%= params[:id] %>/bot/redirect" style="overflow: hidden; !important"></iframe>
-</div>
-</div>
-
-<div class="popup_wrapper" id="popup_wrapper">
-       <iframe class="iframe_popups" allowtransparency="true" src="/organisations/<%= params[:id] %>/bot/redirect?popup=true"></iframe>
-</div>
-<div id="floatbutton" onclick="zipitoggleChat();">
-
-
-<div class="opened  ">
-   <!-- <div class="popup_visitor" id="popup_visitor">
-     
-
-  <i id="number" class="btn-floating btn-small waves-effect waves-light red"><center>1</center></i>
-    </div> -->
-</div>
-<div class="closed  ">
-  
-
-</div>
-</div>
-</div>
-</div>
+<link href="http://localhost:3000/chatbot_initial.css" type="text/css" rel="stylesheet" /> 
+<script type="text/javascript" id="chaturscap" data-organisation="3" src="http://localhost:3000/chatbot_append.js"> </script>
+<script type="text/javascript" data-organisation="3" src="http://localhost:3000/chatbot_initial.js"> </script> 
+<link href="http://localhost:3000/chatbot_initial.css" type="text/css" rel="stylesheet" /> 
