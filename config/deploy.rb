@@ -1,6 +1,5 @@
 # config valid only for current version of Capistrano
 lock '3.10.0'
-load 'lib/deploy/seed'
 
 set :user, 'deployer'
 set :application, 'chaturbots'
@@ -53,7 +52,12 @@ namespace :deploy do
   before 'check:linked_files', 'puma:nginx_config'
   before 'deploy:migrate', 'deploy:db:create'
   after 'puma:smart_restart', 'nginx:restart'
+   desc "reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
 end
+
 
       # Here we can do anything such as:
       # within release_path do
