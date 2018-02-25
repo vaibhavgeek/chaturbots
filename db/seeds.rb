@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do |x|
-  Organisation.create({email: "vaibhav-#{x}@gmail.com", name: "Org #{x} " , website: "www.#{x}.com"})
+  Organisation.create({admin_email: "vaibhav-#{x}@gmail.com", admin_name: "Org #{x} " , website: "www.#{x}.com"})
 end
