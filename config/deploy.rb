@@ -1,6 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.10.0'
-load 'lib/deploy/seed'
+load 'lib/deploy/seed.rb'
 
 set :user, 'deployer'
 set :application, 'chaturbots'
