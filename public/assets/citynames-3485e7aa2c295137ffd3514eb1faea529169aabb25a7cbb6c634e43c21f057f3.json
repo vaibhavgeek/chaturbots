@@ -1,0 +1,13 @@
+{"intents": [
+        {"tag": [],
+         "patterns": [ ],
+         "responses": [],
+         "context_set": ""
+        },
+        {"tag": "goodbye",
+         "patterns": ["Hi"],
+         "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+        }
+   ]
+}
+
