@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :organisations do 
     resources :intents
     resources :chats
+    resources :messages 
     resources :previous_chats , :except => [ :create , :show , :index , :update , :destroy ]
     member do
       post 'previous_chats_d/:id1/:id2' , to: 'previous_chats#destroy' , as: "previous_chats_destroy"

@@ -6,7 +6,7 @@
        <% @vis.each do |visitor| %>
 	
 		<div id="<%= visitor.id %>">
-			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => "collection-item" , :remote => "true" do %>
+			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
 
 			<%= visitor.id %>
 

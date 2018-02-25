@@ -18,11 +18,15 @@ class ChatbotsController < ApplicationController
 			
 	end
 
+
 	def reports 
 		@bot_r = Message.where(responder: "bot" , :organisation_id => request.params[:id]).count
 		@agent_r = Message.where(responder: "agent" , :organisation_id => request.params[:id]).count
 		p_a = ( @bot_r.to_f / (@bot_r.to_f + @agent_r.to_f)) * 100 
 		@percent_a = p_a.round(2)
+		respond_to do |format|
+  			format.html { render :layout => 'application' } # your-action.html.erb
+		end
 	end
 	
 	def redirect 
@@ -50,7 +54,18 @@ class ChatbotsController < ApplicationController
   			redis.set(@vis.id.to_s + "ml" , 1)
   			redis.set(@vis.id.to_s + "automate" , 1)
 		end
-		puts params
+		@vis = Visitor.where(auth_token: auth_tok).first
+
+ 		url = params["url"]
+ 		if Url.where(:url => url ,:visitor_id => @vis.id).count > 0 && !params["popup"]
+ 			url_up = Url.where(:url => url ,:visitor_id => @vis.id).first 
+ 			url_up.update(:v_count => url_up.v_count.to_i + 1) 
+ 		elsif Url.where(:url => url , :visitor_id => @vis.id).count == 0 && !params["popup"]
+ 			Url.create! url: url , visitor_id: @vis.id , v_count: 1
+ 		end
+
+		puts request.params
+		puts "\n \n \n \n \n \n \n \n \n"
 		if params["popup"]
 			check_popup = params["popup"]
   			redirect_to chatbotpopup_organisation_path( request.params[:id] , :auth_token => auth_tok) 
@@ -65,6 +80,15 @@ class ChatbotsController < ApplicationController
   		
 	end
 
+	def spell_checker
+		respond_to do |format|
+  			format.html { render :layout => 'application' } # your-action.html.erb
+		end
+	end
+
+
+	
+		
 	def index
  
 		puts cookies[:auth_token] + "\n\n\n"
@@ -81,13 +105,13 @@ class ChatbotsController < ApplicationController
   		end
 		#MessageBroadcastJob.perform_later @messages.last
 		respond_to do |format|
-  			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
+  			format.html { render :layout => 'chatbots' } # your-action.html.erb
 		end
 	end
 
 	def popup
 		respond_to do |format|
-  			format.html { render :layout => 'vedicmaths' } # your-action.html.erb
+  			format.html { render :layout => 'chatbots' } # your-action.html.erb
 		end
 	end
 

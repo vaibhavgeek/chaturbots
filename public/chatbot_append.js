@@ -1,7 +1,5 @@
 script_tag = document.getElementById("chaturscap");
 var search_term = script_tag.getAttribute("data-organisation");
-console.log(search_term);
-alert(search_term);
 function creatediv(append_to , classo , id )
 {
 	var idiv = document.createElement("div");
@@ -18,17 +16,16 @@ function prepareFrame( append_to ,src , classo) {
 		document.querySelector(append_to).appendChild(ifrm);
  }
 function preparehtml(){
-
+	current_link = window.location.href;
 	creatediv("body" , null , "zipi-chatbox");
 	creatediv("#zipi-chatbox" , " " , "chatflow");
 	creatediv("#chatflow" , "frameparent" , "frameparent");
-	prepareFrame("#frameparent" , "/organisations/3/bot/redirect" , "main_chat");
+	prepareFrame("#frameparent" , "/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
 	creatediv("#zipi-chatbox" , "popup_wrapper" , "popup_wrapper");
-	prepareFrame("#popup_wrapper" , "/organisations/3/bot/redirect?popup=true" , "iframe_popups");
+	prepareFrame("#popup_wrapper" , "/organisations/"+ search_term +"/bot/redirect?popup=true" , "iframe_popups");
 	divf = creatediv("#zipi-chatbox" , null , "floatbutton");
 	divf.setAttribute("onclick" , "zipitoggleChat();");
 	creatediv("#floatbutton" , "opened  " , "open");
 	creatediv("#floatbutton", "closed  " , "close");
 }
- 
 preparehtml();
