@@ -24,7 +24,7 @@
 
     $("#train_the_chats").click(function(){
         $.ajax({
-        url: "http://0.0.0.0:33507/train_prev?id="+"<%= session[:orga_id]%>",
+        url: "<%= ENV['LINK_PYTHON'] %>/train_prev?id="+"<%= session[:orga_id]%>",
         cache: false,
         type: "get",
         success: function(html){
@@ -64,7 +64,7 @@
 <div id="nav_menu">
        <nav class="z-depth-0">
       <div class="nav-wrapper">
-        <span class="font-13"> (Surat, Gujarat, India) 115.112.153.68 </span>
+        <span class="font-13"> (<%= visitor.location %>) <%= visitor.ipaddr %> </span>
           <ul class="right">
            
 

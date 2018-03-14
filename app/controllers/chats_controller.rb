@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
     @vis = Visitor.where(:organisation_id => request.params[:organisation_id])
     @vis.each_with_index do |v,i|
       if Message.where(:visitor_id => v.id).count == 0
-        @vis = @vis.delete(v)
+        #@vis = @vis.delete(v)
       end
     end
   end

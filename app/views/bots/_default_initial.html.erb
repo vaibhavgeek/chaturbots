@@ -1,27 +1,62 @@
+<script type="text/javascript">
+    function clickpay(object) {
+        mails = $("#mail1").val()
+        if(isValidEmailAddress(mails) == false)
+        {
+            $(object).removeAttr("data-payload");
+            alert("Please enter valid Email Address");       
+        }
+        else
+        {
+                test = $.ajax({
+                     type: "PATCH",
+                     url:    "/bot/vedic-maths/update_visitor",
+                     data: {id: "1" , email: mails },
+                     datatype:"html",
+                    async: true
+                });
+             $(object).attr("data-payload" , "gateway");
+        }
 
-		<li class="message left appeared">
-  					
-	<div class="avatar"> <%= image_tag "shree.png" %> </div>
-			<div class="text_wrapper">
-        		<div class="text-header">
-						Welcome to the chaturbots. 	You can type in your query or chose from following options.</div>  
-				<ul>
-					<li>
-					<a href="#" class="bot" data-payload="wic">
-						<center> What is ChaturBots? </center>
+    };
+    function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    return pattern.test(emailAddress);
+};
+</script><li class="message left appeared">
+  			<div class="avatar"> <%= image_tag "shree.png" %> </div>
 
-					</a>
- 						
-					</li>
-					<li>
-						<a href="#" class="bot" data-payload="ttoa">
-						<center> Talk to a person </center>
+		<div class="text_wrapper">
+		        <div class="text-header">
+<b> Contact Information </b> <br/>
+					In case we have to reach out to you, do you mind filling the your contact information?  
+<div class="input-field">
+          <input placeholder="Email Address" id="mail" type="text" class="validate">
+          <label for="mail">Name </label>
+        </div>
+<div class="input-field">
+          <input placeholder="Email Address" id="mail" type="text" class="validate">
+          <label for="mail">Email </label>
+        </div>			
 
-					</a>
-					</li>  
-					
-				
 
-				</ul>
+<center> <a class="btn bot" href="#" onclick="clickpay(this)" data-payload="gateway"> Submit </a> </center>
+
+
+        </div>
 			</div>
-		</li>
+
+			</li>
+
+
+<li class="message left appeared">
+  			<div class="avatar"> <%= image_tag "shree.png" %> </div>
+
+		<div class="text_wrapper">
+		        <div class="text-header">
+
+					You can ask the bot some questions as you like..
+
+ </div>
+			</div>
+			</li>

@@ -30,6 +30,7 @@ class ChatbotsController < ApplicationController
 	end
 	
 	def redirect 
+		browser = Browser.new("ChaturBots Agent", accept_language: "en-us")
 
 		if cookies[:auth_token]  == nil
   			cookies[:auth_token] = {
@@ -50,9 +51,14 @@ class ChatbotsController < ApplicationController
 			loc = Net::HTTP.get(URI.parse('http://freegeoip.net/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
   			location = k["city"] + "," + k["region_name"] + ", " + k["country_name"]
-  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id )
+  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: browser.name  , v_count: 1 )
   			redis.set(@vis.id.to_s + "ml" , 1)
   			redis.set(@vis.id.to_s + "automate" , 1)
+		
+  		else
+  			@vis = Visitor.where(auth_token: auth_tok).first
+  			@vis.update(:v_count => @vis.v_count + 1  )
+  				
 		end
 		@vis = Visitor.where(auth_token: auth_tok).first
 

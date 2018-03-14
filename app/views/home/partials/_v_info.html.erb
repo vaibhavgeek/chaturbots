@@ -1,0 +1,19 @@
+Visitor Information <hr/>
+
+
+Name : 
+<% if visitor.name != nil %>
+<%= visitor.name  %>
+<% else %>
+Not entered yet. 
+<% end %>
+ <br/>
+Email: <% if visitor.email != nil %>
+<%= visitor.email  %>
+<% else %>
+Not entered yet. 
+<% end %> <br/>
+Browser : <%= visitor.browser_d %> <br/>
+Location : <%= visitor.location %> <br/>
+IP : <%= visitor.ipaddr %> <br/>
+Visitor Count : <%= visitor.v_count %> <br/>
