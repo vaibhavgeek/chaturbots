@@ -1,6 +1,5 @@
     <script type="text/javascript">
        $(document).ready(function() {
-
       $(".switch").find("#ai_check").on("change",function() {
         if($(this).is(":checked").toString() == "true")
         {
@@ -23,6 +22,8 @@
 
 
     $("#train_the_chats").click(function(){
+        console.log("<%= ENV['LINK_PYTHON'] %>");
+        console.log("ffg");
         $.ajax({
         url: "<%= ENV['LINK_PYTHON'] %>/train_prev?id="+"<%= session[:orga_id]%>",
         cache: false,

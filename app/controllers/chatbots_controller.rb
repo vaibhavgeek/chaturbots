@@ -3,12 +3,18 @@ require 'json'
 class ChatbotsController < ApplicationController
 	
 
+ skip_before_action :verify_authenticity_token
 
 	def intent_chat
 		@messages = Message.where(:visitor_id => request.params["visitor"]["id"]).all
 		@visitor_id = request.params["visitor"]["id"]
 	end
 
+	def update_visitor
+		puts params
+		Visitor.where(:auth_token => params[:auth_token]).first.update(:name => params[:name] , :email => params[:email])
+		puts request.body.read
+	end
 	def show
 		@messages = Message.all
 		#if Template.where(:user_id => 1) != nil

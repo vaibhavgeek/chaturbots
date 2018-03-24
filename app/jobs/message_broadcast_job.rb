@@ -21,7 +21,7 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   def check_user_online(message, auth_token)
-    user = User.where(:id => message.organisation_id).first
+    user = User.where(:organisation_id => message.organisation_id).first
     if user.logged_in == false
       ActionCable.server.broadcast "chatbot#{auth_token}" , message: organisation_online(message) , auth_token: auth_token
     end

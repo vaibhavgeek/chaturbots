@@ -44,10 +44,12 @@ Rails.application.routes.draw do
       get 'bot/index/:auth_token' , to: 'chatbots#index' , as: 'chatbotmain'
       get 'bot/popup/:auth_token' , to: 'chatbots#popup', as: 'chatbotpopup'
       get 'bot/reports' , to: 'chatbots#reports'
+      post 'bot/update_visitor' , to: 'chatbots#update_visitor'
       get 'bot/preview' , to: 'chatbots#preview'
       get 'bot/intent_mapping' , to: 'chatbots#intent_mapping'
       get 'bot/intent_chat' , to: 'chatbots#intent_chat'
       get 'bot/spell_checker' , to: 'chatbots#spell_checker'
+      get 'bot/web_scraping' , to: 'chatbots#scraper'
     end 
   end
 
