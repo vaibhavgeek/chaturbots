@@ -28,7 +28,7 @@
         <ul class="right hide-on-med-and-down">
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , intents_all_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to "Analytics" , organisation_chats_path(:organisation_id => session[:orga_id]) %></li>
+<li>   <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="new badge" data-badge-caption="unread">1</span><% end %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -37,7 +37,7 @@
           
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , bot_intent_mapping_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to "Analytics" , organisation_chats_path(:organisation_id => session[:orga_id]) %></li>
+<li>  <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="badge">1</span><% end %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -72,20 +72,18 @@
   <li  class="active"><%= link_to "Home" , root_path %></li>
   <% if request.params["action"] == "index" %>
   <li><a class="page-scroll" href="#features">Features</a></li>
-  <li><a class="page-scroll" href="#how-it-works">How it works?</a></li>
   <li><%= link_to "Pricing" , home_pricing_path %></li>
 
 
   <% end %>
-  <li><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
+  <li><%= link_to "Blog" , "https://medium.com/chaturbots" , :target => "_blank" %></li>
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-  <li><%= link_to "Blog" , "https://chaturbots.blogspot.in/" , :target => "_blank" %></li>
+  <li><%= link_to "Blog" , "https://medium.com/chaturbots" , :target => "_blank" %></li>
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

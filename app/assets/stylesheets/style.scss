@@ -1,3 +1,11 @@
+span.badge.new {
+    color: #00356B;
+    background-color: #fff;
+}
+.blue-text 
+{
+  color:#00356B !important;
+}
 .font-13 {
   font-size: 13px;
 }
@@ -180,7 +188,7 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 
  footer.page-footer {
    margin: 0;
-   background-color: #003561;
+   background-color: #00356B;
  }
 
  canvas {

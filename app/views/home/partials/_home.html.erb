@@ -38,7 +38,7 @@
  <div class="col s12 m4">
           <div class="icon-block">
             <h1 class="center indigo-text"><i class="material-icons">question_answer</i></h1>
-            <h5 class="center">Automated Q/A</h5>
+            <h5 class="center">Machine Comprehension</h5>
             <p class="light center"> We use tagged live chat to automate conversations. As we get more training data, higher percentage of automation would occur. </p>
           </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="col s12 m6">
           <div class="icon-block">
             <h1 class="center indigo-text"><i class="material-icons">build</i></h1>
-            <h5 class="center">Machine Learning</h5>
+            <h5 class="center">Previous Chats Automation</h5>
             <p class="light center"> We use machine learning alogrithms to make our chatbot intelligent. The machine learning is applied to highly tagged data, thus increasing our productivity. 
             </p>
           </div>
@@ -67,8 +67,8 @@
           <div class="icon-block">
             <h1 class="center indigo-text"><i class="material-icons">web
 </i></h1>
-            <h5 class="center">Custom Templates</h5>
-            <p class="light center">We allow videos, files, images and custom integration with an API to build the chatbot. This high level customization allows you to make a great experience for your users. </p>
+            <h5 class="center">Reports</h5>
+            <p class="light center">We provide you with automation reports and insights into what your customers are looking for.</p>
           </div>
         </div>
 
@@ -81,25 +81,8 @@
     </div>
   </div>
 
-  <div>
-
-    <div class="carousel carousel-slider center" data-indicators="true">
-
-      
-      <div class="carousel-item blue white-text" href="#one!">
-        <h2>Live Chat</h2>
-        <p class="white-text"> We provide live chat functionality, so in case you do not want automation, <br/> you can easily switch over and provide us with some training data for future automation </p>
-        <%= image_tag "caro_1.png" , :id => "how-it-works" , :class => "carousel-img scrollspy" %>
-      </div>
-      <div class="carousel-item blue white-text" href="#two!">
-        <h2>Intent Mapping</h2>
-        <p class="white-text">You can map the previous chat intent </p>
-        <%= image_tag "caro_2.png" , :class => "carousel-img" %>
-      </div>
-      
-    </div>
-  </div>
-  <div class="padding-vertical-3">
+  
+  <div class="padding-vertical-3 grey lighten-2 black-text">
     <div class="container">
       <div class="section padding-vertical-3">
         <div class="row">
@@ -119,7 +102,7 @@
                 <div class="col s12 m4 offset-m4">
                     
                     <!-- START PRICING PLAN -->
-                    <div class="card blue pricing style-3 z-depth-4">
+                    <div class="card white blue-text pricing style-3 z-depth-4">
                         
                         <!-- START PLAN TITLE DIV. -->
                         
@@ -131,19 +114,14 @@
                         <div class="price waves-effect waves-block waves-light blue">
                             <h4 class="white-text">
                                 <span class="currency">$</span>
-                                <span class="amount">45 </span>
+                                <span class="amount">65 </span>
                                 <span class="period">/mo</span>
                             </h4>
                         </div>
                         <!-- END PRICE INFO DIV. -->
                         
                         <!-- START FLOATING SIGN UP BUTTON WITH ICON SUPPORT -->
-                        <div class="plan-signup-btn">
-                            <a class="btn-floating btn-large waves-effect waves-light blue z-depth-2" href="#">
-                            Start Trial
-                                <i class="material-icons">shopping_basket</i>
-                            </a>
-                        </div>    
+                      
                         <!-- END FLOATING SIGN UP BUTTON -->
                         
                     </div>
@@ -184,8 +162,7 @@
       <div class="row">
         <div class="col l9 s12">
           <h5 class="white-text">About Us</h5>
-          <p class="grey-text text-lighten-4">We provide interactive tools and chatbot services to automate the customer support of your business. We're just
-            a bunch of college students working overtime to make this project happen, any support will be appreciated.</p>
+          <p class="white-text text-lighten-3">We provide interactive tools and chatbot services to automate the customer support of your business. <%= link_to "About Us" , home_about_us_path %> </p>
         </div>
         <div class="col l2 s12 offset-l1">
           <h5 class="white-text">Connect</h5>
