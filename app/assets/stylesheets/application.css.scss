@@ -19,7 +19,9 @@
  *= require_self
  */
 
-
+.display_visitor_info {
+  font-size: 15px;
+}
 .container {
     width: 90%;
 }
@@ -1009,6 +1011,20 @@ width: 30px;
   color: #fff !important;
   background-color: $blue !important; 
 }
+
+
+
+collection-item:hover:before {
+  content: '';
+  border-color: transparent #EEE transparent transparent ;
+  right: 0;
+  border-width:10px;
+  position: absolute;
+  border-style: solid;
+  top: 5px;
+}
+
+
 .login-parent {
    display: grid;
     place-items: center center;

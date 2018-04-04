@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def active_helper(url)
     if current_page?(url)
-      return "collection-item active" 
+      return "active" 
     else
-      return "collection-item"
+      return nil
     end
   end
  

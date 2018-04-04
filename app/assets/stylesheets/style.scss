@@ -1,3 +1,30 @@
+div.col.s10 {
+  margin-left: 20px;  
+}
+
+@media only screen and (min-width: 992px) and (max-width: 993px) {
+.diagonal-effect {
+   display: absolute;
+   width: 118%;
+   height: 110px;
+   background-color: lightgrey;
+   position: absolute;
+   -webkit-transform: rotate(5deg);
+   transform: rotate(5deg);
+   bottom: -32px;
+   left: -58px;
+ }
+ .diagonal-effect .button-bottom {
+  position:relative;
+  top: -35px;
+  right: 40px;
+ }
+}
+.diagonal-effect .button-bottom {
+  position:relative;
+  top: -30px;
+  right: 40px;
+  }
 span.badge.new {
     color: #00356B;
     background-color: #fff;
@@ -259,27 +286,13 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
    color: white;
  }
 
- .diagonal-effect {
-   display: absolute;
-   width: 118%;
-   height: 110px;
-   background-color: lightgrey;
-   position: absolute;
-   -webkit-transform: rotate(5deg);
-   transform: rotate(5deg);
-   bottom: -32px;
-   left: -58px;
- }
+ 
  .sub-head.features 
  {
     padding-top:3px;
 
  }
- .diagonal-effect .button-bottom {
-  position:relative;
-  top: -25px;
-  right: 40px;
- }
+ 
 
  .carousel-img {
    max-width: 880px;
@@ -436,4 +449,78 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
   to {
     transform: translateX(-600px);
   }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+* {
+  box-sizing:border-box;
+  outline:0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size:13px;
+}
+.nav a, .nav li {  
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.nav a {color:#333; text-decoration:none;}
+li {list-style-type: none;}
+.nav nav {
+  width: 190px !important;
+  height: auto;
+  float:left;
+  position:relative;
+  background:#fff;
+  margin:0 auto;
+  padding: 10px 0;
+  color: #333;
+  margin-bottom:20px;
+  line-height:45px;
+  border-radius:5px;
+  box-shadow: -2px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.nav nav ul li {
+  position:relative;
+  padding: 0 20px;
+    width: 195px !important;
+}
+.nav nav ul li:hover {
+  background: #grey;
+  color: black !important;
+  border-left: 10px solid grey;
+}
+
+.nav nav ul li:hover a {
+  color: black !important;
+}
+
+.nav nav ul li.active {
+   background: #00356B;
+  color: white !important;
+  border-left: 10px solid grey;
+
+}
+
+.nav nav ul li.active a{
+   
+  color: white !important;
+  
+}
+
+
+.nav nav ul li.active:before {
+  content: '';
+  border-color: transparent #fff transparent transparent ;
+  right: 0;
+  border-width:20px;
+  position: absolute;
+  border-style: solid;
+  top: 5px;
+}
+h5 {
+  font-size:18px;
+  text-align:center;
 }

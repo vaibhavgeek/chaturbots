@@ -1,6 +1,22 @@
-<script type="text/javascript">
-  console.log("<%= request.params %>");
+<% mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email %>
+<% namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name %>
 
+<% if defined?(admin) %>
+<li class="message left appeared">
+        <div class="avatar"> <%= image_tag "shree.png" %> </div>
+
+    <div class="text_wrapper">
+            <div class="text-header">
+<b> Visitor Information </b>  <br/>
+email: <br/><%= mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email %><br/>
+ name: <br/> 
+<%= namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name %>
+</div>
+</div>
+</li>
+
+<% else %>
+<script type="text/javascript">
     function clickpay(object) {
         mails = $("#mail").val();
         auth_t = "<%= request.params[:auth_token] %>";
@@ -45,11 +61,11 @@
 <b> Contact Information </b> <br/>
           In case we have to reach out to you, do you mind filling the your contact information?  
 <div class="input-field">
-          <input placeholder="Email Address" id="name" type="text" class="validate">
+          <input placeholder="Email Address" id="name" type="text" value="<%= namev %>" class="validate">
           <label for="mail">Name </label>
         </div>
 <div class="input-field">
-          <input placeholder="Email Address" id="mail" type="text" class="validate">
+          <input placeholder="Email Address" id="mail" type="text" value="<%= mail_id %>" class="validate">
           <label for="mail">Email </label>
         </div>      
 
@@ -62,3 +78,5 @@
 
       </li>
 
+
+<% end %>

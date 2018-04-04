@@ -17,3 +17,4 @@ class NotificationsVisitorChannel < ApplicationCable::Channel
   	Redis.new
   end
 end
+

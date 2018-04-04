@@ -463,8 +463,7 @@ body.zipiopen > #zipi-chatbox {
   }
 
   #zipi-chatbox > div {
-    position: relative;
-    height: 100%;
+    
   }
 
   #zipi-chatbox #floatbutton {

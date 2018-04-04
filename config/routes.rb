@@ -44,6 +44,8 @@ Rails.application.routes.draw do
       get 'bot/index/:auth_token' , to: 'chatbots#index' , as: 'chatbotmain'
       get 'bot/popup/:auth_token' , to: 'chatbots#popup', as: 'chatbotpopup'
       get 'bot/reports' , to: 'chatbots#reports'
+      get 'bot/vdata' , to: 'chatbots#vdata'
+      get 'bot/web_scraping', to: 'chatbots#web_scraping'
       post 'bot/update_visitor' , to: 'chatbots#update_visitor'
       get 'bot/preview' , to: 'chatbots#preview'
       get 'bot/intent_mapping' , to: 'chatbots#intent_mapping'

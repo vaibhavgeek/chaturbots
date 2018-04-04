@@ -17,3 +17,4 @@ class NotificationsOrganisationChannel < ApplicationCable::Channel
   	Redis.new
   end
 end
+

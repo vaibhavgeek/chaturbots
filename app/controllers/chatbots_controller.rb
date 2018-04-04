@@ -24,7 +24,17 @@ class ChatbotsController < ApplicationController
 			
 	end
 
+	def vdata
+		respond_to do |format|
+  			format.html { render :layout => 'application' } # your-action.html.erb
+		end
+	end
 
+	def web_scraping
+		respond_to do |format|
+  			format.html { render :layout => 'application' } # your-action.html.erb
+		end
+	end
 	def reports 
 		@bot_r = Message.where(responder: "bot" , :organisation_id => request.params[:id]).count
 		@agent_r = Message.where(responder: "agent" , :organisation_id => request.params[:id]).count

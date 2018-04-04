@@ -8,3 +8,4 @@ class AppearChannel < ApplicationCable::Channel
   end
   
 end
+
