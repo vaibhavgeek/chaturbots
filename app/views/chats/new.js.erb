@@ -3,6 +3,8 @@ $("#appendnav<%= session[:orga_id] %>").show();
 $("#appendnav<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/top_menu' , :locals => { auth: @visitor.auth_token , visitor: @visitor }  %>");
 $("#display_chats<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/active_chat_admin' , :locals => { auth: @visitor.auth_token }  %>");
 $("#display_vinfo<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/v_info', :locals => {visitor: @visitor } %>");
+$("img").removeClass("selected_chat");
+$("#img<%= @visitor.id %>").addClass("selected_chat");
 value = "<%= @visitor.auth_token %>";
 var id, messages;
 id = '#messages' + value.trim();

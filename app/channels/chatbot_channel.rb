@@ -3,6 +3,7 @@ class ChatbotChannel < ApplicationCable::Channel
     if params[:auth_token] != "admin"
       stream_from "chatbot#{params[:auth_token]}"
       visitor = Visitor.where(:auth_token => params["auth_token"]).first
+      redis.set("visitor_redirect_#{visitor.id}", "1")
       if !redis.get("visitor_#{visitor.id}_online")
         redis.set("visitor_#{visitor.id}_online", "1")
         ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
@@ -15,20 +16,31 @@ class ChatbotChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    visitor = Visitor.where(:auth_token => params["auth_token"]).first
-    if visitor
-      if redis.get("visitor_#{visitor.id}_online") == "1"
-        redis.del("visitor_#{visitor.id}_online")
-        ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+    auth_token =  params["auth_token"]
+    visitor = Visitor.where(:auth_token => auth_token).first
+    if params["url"]
+      current_uri = params["url"].to_s
+      if visitor || auth_token != "admin" || current_uri != "http://localhost:3000/organisations/16/home"
+      redis.del("visitor_redirect_#{visitor.id}")
+      sleep(5)
+      if redis.get("visitor_redirect_#{visitor.id}") == "1"
+        ActionCable.server.broadcast "chatbot#{auth_token}" ,
+       message: left_page(visitor , current_uri) , auth_token: auth_token
+      else
+      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  visitor: render_visitor(visitor),
                                  online: false, 
                                  left_template: left_conversation(visitor)
+      redis.del("visitor_#{visitor.id}_online")
+      redis.del("#{visitor.id}automate")
+      redis.del("#{visitor.id}ml")                           
+
       end
     end
+  end
     
-    # Any cleanup needed when channel is unsubscribed
   end
 
   def speak(data)
@@ -37,13 +49,13 @@ class ChatbotChannel < ApplicationCable::Channel
     ml_s = get_ml_status(visitor.id)
     me = Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"] , organisation_id: visitor.organisation_id , ml: ml_s
 
-    if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
-      counter_v = get_counter_visitor(visitor.id)
-      ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
-    else
-      counter_o = get_counter_organisation(visitor.organisation_id)
-      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: organisation_notification(data["message"] , auth) , counter: counter_o 
-    end
+    #if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
+    #  counter_v = get_counter_visitor(visitor.id)
+    #  ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
+    # else
+    #  counter_o = get_counter_organisation(visitor.organisation_id)
+    #  ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: organisation_notification(data["message"] , auth) , counter: counter_o 
+    # end
     # ActionCable.server.broadcast "chatbot" , message: data["message"]
   end
 
@@ -57,6 +69,8 @@ class ChatbotChannel < ApplicationCable::Channel
     return ml_true
   end
 
+
+=begin
   def get_counter_visitor(vid)
     counter = redis.get("unreadv_#{vid}")
     if counter
@@ -80,7 +94,7 @@ class ChatbotChannel < ApplicationCable::Channel
     redis.set("unreado_#{oid}" , counter)
     return counter
   end
-
+=end
   private
    def render_visitor(visitor)
     ApplicationController.renderer.render(partial: 'home/partials/show_active_visitors' , locals: { visitor: visitor })
@@ -89,13 +103,17 @@ class ChatbotChannel < ApplicationCable::Channel
   def visitor_notification(message , number)
     ApplicationController.renderer.render(partial: 'home/partials/visitor_popup' , locals: { message: message , number: number })
   end
-
+=begin
   def organisation_notification(message , auth)
     ApplicationController.renderer.render(partial: 'notifications/organisation' , locals: { message: message  , auth: auth})
   end
-
+=end
   def left_conversation(visitor)
     ApplicationController.renderer.render(partial: 'home/partials/left' , locals: { visitor: visitor })
+  end
+
+  def left_page(visitor , url)
+    ApplicationController.renderer.render(partial: 'home/partials/diff_page' , locals: { visitor: visitor , url: url })
   end
   def redis
     Redis.new

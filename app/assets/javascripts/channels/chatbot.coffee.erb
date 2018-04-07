@@ -11,7 +11,7 @@ if string.indexOf(org_string) != -1
 else
   orga_id = "not_admin" 
 
-App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token , oid: orga_id },
+App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: auth_token , oid: orga_id , url: string },
     connected:  ->
       # Called when the subscription is ready for use on the server
 

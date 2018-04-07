@@ -16,18 +16,6 @@ nameclick = (value) ->
     createconusmer value
 
 
-visitors = [] 
-
-addvisitor = (id) -> 
-  visitors.push(id)
-
-removevisitor = (id) -> 
-  index = visitors.indexOf(id)
-  visitors.splice(index, 1) if index > -1
-
-visitorpresent = (id) -> 
-  visitors.indexOf(id) > -1
-
 window["nameclick"] = nameclick
 
 string = window.location.href 
@@ -44,7 +32,7 @@ if string.indexOf(org_string) != -1
 if not orga_id?
   orga_id = "1" 
 
-App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , organisation_id: orga_id } ,
+App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , organisation_id: orga_id , url: string } ,
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -52,11 +40,10 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    console.log connections
     if data["online"].toString() == "true"
-      if visitorpresent(data["visitor_id"]) == false 
-        $("#panel-show-active-members").append data["visitor"]
+      $("#panel-show-active-members").append data["visitor"]
     else
-      removevisitor(data["visitor_id"])  
       $("#"+data["visitor_id"]).remove()
       $("#display_chats" + data["organisation_id"]).html data["left_template"]
       $("#appendnav" + data["organisation_id"]).hide()
@@ -68,7 +55,7 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
 
 
 createconusmer = (send_params) ->
-  App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params },
+  App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params , url: string },
       connected:  ->
         addConnection(auth_token)
         # Called when the subscription is ready for use on the server

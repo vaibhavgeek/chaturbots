@@ -8,7 +8,7 @@
 
       <div id="panel-show-active-members">
         
-                <h4 class="white-text flow-text right">Visitors</h4>
+                <h4 class="white-text flow-text right">Online Visitors</h4>
 
         <div class="<%= session[:orga_id] %>"> 
         <% @organisation_vistors.each do |visitor| %>
@@ -16,7 +16,7 @@
           <% @bool = 1 %>
             <div id="<%= visitor.id %>" class="visitor-container">
               <%= link_to new_organisation_chat_path(:organisation_id => session[:orga_id] , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CMumbai+India&center=Mumbai,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" alt="" class="circle responsive-img not_selected"> 
+    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7CMumbai+India&center=Mumbai,India&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> 
               <% end %>
               <span class="hidden">
                  <%= visitor.auth_token %>
