@@ -73,7 +73,8 @@ class ChatbotsController < ApplicationController
 		
   		else
   			@vis = Visitor.where(auth_token: auth_tok).first
-  			@vis.update(:v_count => @vis.v_count + 1  )
+  			@vis? v_c = @vis.v_count + 1 : v_c = 1
+  			@vis.update(:v_count => v_c )
   				
 		end
 		@vis = Visitor.where(auth_token: auth_tok).first
