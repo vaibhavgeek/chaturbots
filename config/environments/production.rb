@@ -4,7 +4,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
-
+  config.action_cable.disable_request_forgery_protection = true
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -42,7 +42,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.url = 'ws://139.59.63.120/cable'
+  config.action_cable.url = 'ws://chaturbots.com/cable'
   config.action_cable.allowed_request_origins = [ 'http://139.59.63.120' , 'http://www.chaturbots.com' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.

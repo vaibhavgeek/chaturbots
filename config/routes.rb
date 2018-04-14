@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     end 
   end
 
+mount ActionCable.server => '/cable'
 
  # get 'settings/payment'
  # get 'settings/account' 
