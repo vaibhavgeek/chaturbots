@@ -1,6 +1,7 @@
 
 <div class="chatbot_preview"><!-- chatbox content -->
 	<ul class="messages">
+
 		<% if @messages.first != nil %>
 			<span class="timestamp">
 				<center><%= @messages.first.created_at.to_time.to_s(:short) %> </center>
@@ -16,11 +17,29 @@
 		<%= render :partial => 'messages/message' , collection: @messages %>
 	</ul>
 	
-	<div class="input_message"> 
-	      <a href="#" class="bot" data-payload="initial_message"><i class="material-icons prefix left-align">refresh</i></a>
-          <input id="icon_prefix"  type="text" class="validate" id="event" name="chat_box" data-behavior="chatbot_call">
-                    <label for="icon_prefix">Message</label>
 
 
+
+
+	<%= form_for Message.new, :url => organisation_messages_path(request.params[:id] , :auth_token => request.params[:auth_token]) , :method => "post" , :id => "submitit" , :remote => "true" do |f| %>
+				<div class="input_message">
+
+					<%= f.text_field :content , :name => "chat_box" , :size => "40" , :"data-behavior" => "chatbot_call" , :id => "icon_prefix" , :onkeyup => "onkeyup_colfield_check(this)" %>
+  				</div>
+			<% end %>
+
 	</div>
-	</div>
+
+	<script type="text/javascript">
+
+ function onkeyup_colfield_check(e){
+    var enterKey = 13;
+    var charCode = (typeof e.which === "number") ? e.which : e.keyCode;
+        if (charCode == enterKey){
+            $("#submitit").submit();
+
+        }
+}
+
+
+	</script>

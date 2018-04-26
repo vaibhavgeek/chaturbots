@@ -2,10 +2,13 @@
 
 <div class="row container top-margin-20">
 		<div class="col s2 white no-padding">
-				<div class="collection">
+				<div class="nav">
+				<nav role="navigation">
+<ul>
        <% @vis.each do |visitor| %>
 	
 		<div id="<%= visitor.id %>">
+		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
 			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
 
 			<%= visitor.id %>
@@ -13,9 +16,11 @@
 			<% end %>
 
 <span class="hidden"><%= visitor.auth_token %></span>
+</li>
 </div>
 
-<% end %>
+<% end %> </ul> </nav>
+
 			  </div>	
 		</div>
 		<div class="col s10 white">

@@ -22,7 +22,6 @@ class ChatbotChannel < ApplicationCable::Channel
       current_uri = params["url"].to_s
       if visitor || auth_token != "admin" || current_uri != "http://localhost:3000/organisations/16/home"
       redis.del("visitor_redirect_#{visitor.id}")
-      sleep(5)
       if redis.get("visitor_redirect_#{visitor.id}") == "1"
         ActionCable.server.broadcast "chatbot#{auth_token}" ,
        message: left_page(visitor , current_uri) , auth_token: auth_token

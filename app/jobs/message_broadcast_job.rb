@@ -5,18 +5,20 @@ class MessageBroadcastJob < ApplicationJob
   queue_as :high_priority
 
   def perform(message)
-    auth_token = message.visitor.auth_token
-    ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
-    redis_key = message.visitor.id.to_s + "automate"
-    #redis_ml = message.visitor.id.to_s + "ml"
-    #ml_true = true if redis.get(redis_ml).to_s == "1"
-    if message.responder == "user" &&  redis.get(redis_key).to_s == "1"
-      speech_res = api_response(message.content , message.organisation_id)
-      if speech_res != "live_chat"
-        Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false
-      else 
-        check_user_online(message,auth_token)
-      end
+    if message.cable != false
+            auth_token = message.visitor.auth_token
+            ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
+            redis_key = message.visitor.id.to_s + "automate"
+            #redis_ml = message.visitor.id.to_s + "ml"
+            #ml_true = true if redis.get(redis_ml).to_s == "1"
+            if message.responder == "user" &&  redis.get(redis_key).to_s == "1"
+              speech_res = api_response(message.content , message.organisation_id)
+              if speech_res != "live_chat"
+                Message.create! content: speech_res , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false
+              else 
+                check_user_online(message,auth_token)
+              end
+            end
     end
   end
 

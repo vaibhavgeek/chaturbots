@@ -1,0 +1,1 @@
+var configuration_map = {"notificationRuleList":[],"config":{"enableNotification":true}};

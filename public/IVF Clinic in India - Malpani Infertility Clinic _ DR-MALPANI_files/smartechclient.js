@@ -1,0 +1,1 @@
+(function(w,d,s,f,o,a,m){w['SmartechObject']=o;w[o]=w[o]||function(a,c,n){(w[o].q=w[o].q||[]).push(arguments);},w[o].l=1*new Date();a=d.createElement(s),m=d.getElementsByTagName(s)[0];a.async=1;a.src=f;a.id='smartech_v3';var smt=document.getElementById(a.id);if(!smt){m.parentNode.insertBefore(a,m);}})(window,document,'script','//tw.netcore.co.in/smartech_v3.0.js','smartech');

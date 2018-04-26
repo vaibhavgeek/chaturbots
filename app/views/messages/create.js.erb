@@ -1,0 +1,8 @@
+var messages = $('.messages');
+messages.append("<%= j render 'messages/message' , :message => @me  %>");
+messages.append("<%= j render 'messages/message' , :message => @k %>");
+
+messages.animate({
+  scrollTop: messages.prop("scrollHeight")
+}, 1000);
+$("#icon_prefix").val("");

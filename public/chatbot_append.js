@@ -21,8 +21,8 @@ function preparehtml(){
 	creatediv("#zipi-chatbox" , " " , "chatflow");
 	creatediv("#chatflow" , "frameparent" , "frameparent");
 	prepareFrame("#frameparent" , "/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
-	creatediv("#zipi-chatbox" , "popup_wrapper" , "popup_wrapper");
-	prepareFrame("#popup_wrapper" , "/organisations/"+ search_term +"/bot/redirect?popup=true" , "iframe_popups");
+//	creatediv("#zipi-chatbox" , "popup_wrapper" , "popup_wrapper");
+//	prepareFrame("#popup_wrapper" , "/organisations/"+ search_term +"/bot/redirect?popup=true" , "iframe_popups");
 	divf = creatediv("#zipi-chatbox" , null , "floatbutton");
 	divf.setAttribute("onclick" , "zipitoggleChat();");
 	creatediv("#floatbutton" , "opened  " , "open");
