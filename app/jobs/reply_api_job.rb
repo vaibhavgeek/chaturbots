@@ -10,17 +10,11 @@ class ReplyApiJob < ApplicationJob
     object = api_response(message.content , message.organisation_id)
     object = JSON.parse(object.to_s)
     parse_uri = object["url"]
-    puts parse_uri 
-    puts "\n"
     biga = object["biga"]
-    puts biga
-    puts "\n"
     tit = object["title"]
-    puts tit
-    puts "\n"
     score = object["score"]
     answer = object["answer"]
-    @reply = Message.create! content: biga , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false , cable: false , url: parse_uri , title: tit , shorta: answer
+    @reply = Message.create! content: biga , responder: "bot" , visitor_id: message.visitor.id, user_id: message.user_id , payload: "nil" , organisation_id: message.organisation_id , ml: false , cable: false , url: parse_uri , title: tit , shorta: answer , score: score
   	return @reply
   	#end
   end

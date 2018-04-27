@@ -49,6 +49,18 @@
 			</div>
 			
 		</li>
+		<% elsif message.responder == "bot" %>
+		<li class="message left appeared">
+			<div class="avatar"> <%= image_tag "shree.png" %> </div>
+			<div class="text_wrapper">
+				<div class="text-header">
+
+					<%= proper_html(proper_url_link(message.content)) %>
+
+					<b> <%= message.title %> </b> Read more at: <b> <%= message.url %> </b>
+        </div>	</div>	
+		</li>
+	<% end %>
 	<% else %>
 		<li class="message left appeared">
 			<div class="avatar"> <%= image_tag "shree.png" %> </div>
