@@ -1,0 +1,66 @@
+<!-- Individual messages -->		 	
+
+
+<% if message.payload == "spell_check" %> 
+	<li class="message right appeared">
+				<div class="text_wrapper">
+					<div class="text">
+						<%= message.content %>
+					</div>
+
+				</div>
+			</li>
+<% end %>
+
+<% if message.payload != "nil" %>
+	<% if @temp =  ::Template.all.where(:payload => message.payload).first %>
+		<% if !message.content.match(/^template:/) %>
+			<span class="timestamp">
+					<center>
+						<%= message.created_at.to_time.to_s(:short) %>
+					</center>
+			</span>
+			
+			<li class="message right appeared">
+				<div class="text_wrapper">
+					<div class="text">
+						<%= @temp.intent %>
+					</div>
+
+				</div>
+			</li>
+		<% end %>
+	
+		<%= puts @temp.partial %>		
+		<span class="timestamp">
+			<center><%= message.created_at.to_time.to_s(:short) %></center>
+		</span>			 	
+		<%= render :partial =>  "bots/" + @temp.partial , :locals => { message: message } %>
+	<% end %>
+	
+<% else %>
+	<div class="full_width">
+	<% if message.responder == "user" %> 
+		<li class="message right appeared">		
+			<div class="text_wrapper">
+				<div class="text">
+					<%= proper_html(proper_url_link(message.content)) %>
+				</div>
+			</div>
+			
+		</li>
+	<% else %>
+		<li class="message left appeared">
+			<div class="avatar"> <%= image_tag "shree.png" %> </div>
+			<div class="text_wrapper">
+				<div class="text-header">
+					<%= proper_html(proper_url_link(message.content)) %>
+        </div>	</div>	
+		</li>
+	<% end %>
+	</div>
+<% end %> 
+
+
+
+
