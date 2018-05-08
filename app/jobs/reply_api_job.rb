@@ -20,7 +20,7 @@ class ReplyApiJob < ApplicationJob
   end
 
    def api_response(query,oid)
-    url = URI("http://35.196.230.214/")
+    url = URI(ENV["LINK_PYTHON"])
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'text/plain'

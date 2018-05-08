@@ -2,10 +2,9 @@ class ChatbotChannel < ApplicationCable::Channel
   def subscribed
     if params[:auth_token] != "admin"
       stream_from "chatbot#{params[:auth_token]}"
-      visitor = Visitor.where(:auth_token => params["auth_token"]).first
-      redis.set("visitor_redirect_#{visitor.id}", "1")
-      if !redis.get("visitor_#{visitor.id}_online")
-        redis.set("visitor_#{visitor.id}_online", "1")
+      redis.set("visitor_redirect_#{params[:auth_token]}", "1")
+      if !redis.get("visitor_#{params[:auth_token]}_online")
+        redis.set("visitor_#{params[:auth_token]}_online", "1")
         ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                 visitor: render_visitor(visitor),
                                  visitor_id: visitor.id,
@@ -32,9 +31,9 @@ class ChatbotChannel < ApplicationCable::Channel
                                  visitor: render_visitor(visitor),
                                  online: false, 
                                  left_template: left_conversation(visitor)
-      redis.del("visitor_#{visitor.id}_online")
-      redis.del("#{visitor.id}automate")
-      redis.del("#{visitor.id}ml")                           
+      redis.del("visitor_#{auth_token}_online")
+      redis.del("#{auth_token}automate")
+      redis.del("#{auth_token}ml")                           
 
       end
     end

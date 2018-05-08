@@ -114,8 +114,7 @@ class ChatbotsController < ApplicationController
 		
 	def index
  
-		puts cookies[:auth_token] + "\n\n\n"
-		puts request.params 
+		
 	    @message = Message.new
 		auth =  params[:auth_token]
     	visitor = Visitor.where(:auth_token => auth).first

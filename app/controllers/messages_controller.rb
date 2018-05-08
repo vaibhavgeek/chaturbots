@@ -6,9 +6,6 @@ class MessagesController < ApplicationController
 		visitor = Visitor.where(:auth_token => request.params[:auth_token]).first
 		@me = Message.create! content: request.params["chat_box"] , responder: "user" , visitor_id: visitor.id , user_id: 1 , payload: nil , organisation_id: visitor.organisation_id , ml: false , cable: false , payload: "nil"
     	@k = ReplyApiJob.perform_now(@me)
-    	puts "\n \n \n \n \n \n \n \n \n \n "
-
-		
 	end
 
 	private 
