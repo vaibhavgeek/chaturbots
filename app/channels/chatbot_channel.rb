@@ -7,7 +7,6 @@ class ChatbotChannel < ApplicationCable::Channel
                                  organisation_id: params[:oid],
                                  online: true
       end
-    end
   end
 
   def unsubscribed
@@ -18,8 +17,6 @@ class ChatbotChannel < ApplicationCable::Channel
                                  organisation_id: params[:oid] ,
                                  online: false, 
                                  left_template: left_conversation(visitor)
-  end
-    
   end
 
   def speak(data)
