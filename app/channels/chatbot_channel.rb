@@ -6,8 +6,7 @@ class ChatbotChannel < ApplicationCable::Channel
       if !redis.get("visitor_#{params[:auth_token]}_online")
         redis.set("visitor_#{params[:auth_token]}_online", "1")
         ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
-                                visitor: render_visitor(visitor),
-                                 visitor_id: visitor.id,
+                                visitor: render_visitor(params[:auth_token]),
                                  organisation_id: params[:oid],
                                  online: true
       end
@@ -28,7 +27,6 @@ class ChatbotChannel < ApplicationCable::Channel
       ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
-                                 visitor: render_visitor(visitor),
                                  online: false, 
                                  left_template: left_conversation(visitor)
       redis.del("visitor_#{auth_token}_online")
@@ -94,8 +92,8 @@ class ChatbotChannel < ApplicationCable::Channel
   end
 =end
   private
-   def render_visitor(visitor)
-    ApplicationController.renderer.render(partial: 'home/partials/show_active_visitors' , locals: { visitor: visitor })
+   def render_visitor(auth)
+    ApplicationController.renderer.render(partial: 'home/partials/show_active_visitors' , locals: { auth_token: auth })
   end
 
   def visitor_notification(message , number)
