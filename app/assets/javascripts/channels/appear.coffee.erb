@@ -40,7 +40,6 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log connections
     if data["online"].toString() == "true"
       $("#panel-show-active-members").append data["visitor"]
     else
@@ -57,11 +56,9 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
 createconusmer = (send_params) ->
   App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_token: send_params , url: string },
       connected:  ->
-        addConnection(auth_token)
         # Called when the subscription is ready for use on the server
 
       disconnected: ->
-        removeConnection(auth_token)
         # Called when the subscription has been terminated by the server
 
       received: (data) ->
@@ -74,4 +71,6 @@ createconusmer = (send_params) ->
           @perform 'speak' , message: data , responder: responder , payload: payload 
 
 
- 
+$ ->
+  $("#f"+auth_token).removeAttr("action")
+  $("#f"+auth_token).removeAttr("method")

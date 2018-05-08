@@ -6,14 +6,15 @@ class ChatbotChannel < ApplicationCable::Channel
                                 visitor: render_visitor(params[:auth_token]),
                                  organisation_id: params[:oid],
                                  online: true
+      redis.set("#{params[:auth_token]}" , "1")
       end
   end
 
   def unsubscribed
     auth_token =  params["auth_token"]
     if auth_token != "admin"
-    visitor = Visitor.where(:auth_token => auth_token).first 
-    ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+      visitor = Visitor.where(:auth_token => auth_token).first 
+      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  online: false, 

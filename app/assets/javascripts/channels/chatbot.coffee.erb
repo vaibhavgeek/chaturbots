@@ -43,8 +43,6 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
 
 
 $ ->
-  $("#f"+auth_token).removeAttr("action")
-  $("#f"+auth_token).removeAttr("method")
   $(document).on 'click', 'a.bot', (event) ->
     $anchor = $(this)
     if auth_token != "admin"
