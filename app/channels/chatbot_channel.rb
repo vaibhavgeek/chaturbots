@@ -2,10 +2,7 @@ class ChatbotChannel < ApplicationCable::Channel
   def subscribed
     if params[:auth_token] != "admin"
       stream_from "chatbot#{params[:auth_token]}"
-      redis.set("visitor_redirect_#{params[:auth_token]}", "1")
-      if !redis.get("visitor_#{params[:auth_token]}_online")
-        redis.set("visitor_#{params[:auth_token]}_online", "1")
-        ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                 visitor: render_visitor(params[:auth_token]),
                                  organisation_id: params[:oid],
                                  online: true
@@ -15,26 +12,12 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def unsubscribed
     auth_token =  params["auth_token"]
-    visitor = Visitor.where(:auth_token => auth_token).first
-    if params["url"]
-      current_uri = params["url"].to_s
-      if visitor || auth_token != "admin" || current_uri != "http://localhost:3000/organisations/16/home"
-      redis.del("visitor_redirect_#{visitor.id}")
-      if redis.get("visitor_redirect_#{visitor.id}") == "1"
-        ActionCable.server.broadcast "chatbot#{auth_token}" ,
-       message: left_page(visitor , current_uri) , auth_token: auth_token
-      else
-      ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
+    visitor = Visitor.where(:auth_token => auth_token).first 
+    ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  online: false, 
                                  left_template: left_conversation(visitor)
-      redis.del("visitor_#{auth_token}_online")
-      redis.del("#{auth_token}automate")
-      redis.del("#{auth_token}ml")                           
-
-      end
-    end
   end
     
   end
