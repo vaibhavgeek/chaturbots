@@ -11,12 +11,14 @@ class ChatbotChannel < ApplicationCable::Channel
 
   def unsubscribed
     auth_token =  params["auth_token"]
+    if auth_token != "admin"
     visitor = Visitor.where(:auth_token => auth_token).first 
     ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  online: false, 
                                  left_template: left_conversation(visitor)
+    end
   end
 
   def speak(data)
@@ -25,6 +27,7 @@ class ChatbotChannel < ApplicationCable::Channel
     ml_s = get_ml_status(visitor.id)
     me = Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"] , organisation_id: visitor.organisation_id , ml: ml_s
 
+# THIS HELPS KEEP COUNT OF NUMBER OF MESSAGES RECIEVED BY THE USER
     #if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
     #  counter_v = get_counter_visitor(visitor.id)
     #  ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
