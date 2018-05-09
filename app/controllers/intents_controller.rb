@@ -5,6 +5,7 @@ class IntentsController < ApplicationController
 		@intent = Intent.new(intent_params)
 		user_id = request.params[:user_id]
 		@intent.user_id = user_id
+		@intent.organisation_id = request.params[:organisation_id]
 	    respond_to do |format|
 			if @intent.save
 				format.html { redirect_to intents_all_organisation_url(:id => session[:orga_id] ) , notice_error: "Created Sucessfully." }
@@ -43,7 +44,7 @@ class IntentsController < ApplicationController
 	end
 	
 	def intents_all
-		@intents_paged = Intent.all
+		@intents_paged = Intent.where(:organisation_id => request.params[:id])
 	end
 
 	def show

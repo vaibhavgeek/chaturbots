@@ -10,6 +10,11 @@ class ChatbotsController < ApplicationController
 		@visitor_id = request.params["visitor"]["id"]
 	end
 
+	def widgets
+		respond_to do |format|
+  			format.html { render :layout => 'application' } # your-action.html.erb
+		end
+	end
 	def update_visitor
 		puts params
 		Visitor.where(:auth_token => params[:auth_token]).first.update(:name => params[:name] , :email => params[:email])
