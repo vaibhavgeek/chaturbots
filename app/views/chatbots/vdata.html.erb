@@ -6,9 +6,20 @@
 				<%= render ("/chatbots/partials/side_menu") %>
 		</div>
 		<div class="col s10 white">
+		<h5> Visitor's Information </h5>
+		<table>
+		<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+		</tr>
+		</table>
 		
 
-<%= pie_chart Message.where(responder: "agent" , :organisation_id => session[:orga_id]).or(Message.where(responder: "bot" , :organisation_id => session[:orga_id])).group(:responder).count %>
-<h5> <center> Messages automated =  % </center> </h5>
+
+
 	</div>
 </div>

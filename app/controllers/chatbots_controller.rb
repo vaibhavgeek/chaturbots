@@ -25,6 +25,7 @@ class ChatbotsController < ApplicationController
 	end
 
 	def vdata
+		@visitors = Visitor.where(:organisation_id => session[:orga_id])
 		respond_to do |format|
   			format.html { render :layout => 'application' } # your-action.html.erb
 		end

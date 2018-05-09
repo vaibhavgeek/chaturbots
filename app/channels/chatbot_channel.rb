@@ -19,6 +19,7 @@ class ChatbotChannel < ApplicationCable::Channel
                                  organisation_id: params[:oid] ,
                                  online: false, 
                                  left_template: left_conversation(visitor)
+      redis.del("#{auth_token}")
     end
   end
 
