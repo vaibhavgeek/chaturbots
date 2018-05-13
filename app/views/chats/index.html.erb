@@ -1,17 +1,55 @@
 
 
 <div class="row container top-margin-20">
-		<div class="col s2 white no-padding">
+		<div class="col s2 white card">
+			
+<h5> Unread Messages </h5>
+	<div class="nav">
+				<nav role="navigation">
+<ul>
+       <% @vis.each do |visitor| %>
+	
+	<% if  visitor.name %>
+	<% disp = visitor.name %>
+	<% elsif visitor.email %>
+	<% disp = visitor.email %>
+	<% else %>
+	<% disp = visitor.location %>
+<% end %>
+		<div id="<%= visitor.id %>">
+		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
+			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
+
+			<%= truncate(disp, :length => 15) %>
+
+			<% end %>
+
+<span class="hidden"><%= visitor.auth_token %></span>
+</li>
+</div>
+
+<% end %> </ul> </nav>
+
+			  </div>
+
+<h5> Previous Messages </h5>
 				<div class="nav">
 				<nav role="navigation">
 <ul>
        <% @vis.each do |visitor| %>
 	
+	<% if  visitor.name %>
+	<% disp = visitor.name %>
+	<% elsif visitor.email %>
+	<% disp = visitor.email %>
+	<% else %>
+	<% disp = visitor.location %>
+<% end %>
 		<div id="<%= visitor.id %>">
 		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
 			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
 
-			<%= visitor.id %>
+			<%= disp %>
 
 			<% end %>
 
@@ -23,7 +61,7 @@
 
 			  </div>	
 		</div>
-		<div class="col s10 white">
+		<div class="col s8 card no-paading">
 		<h4> <center> Chat Archives </center></h4>
 
 		<div id="display_chats" class="display_chats">
