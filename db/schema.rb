@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426204108) do
+ActiveRecord::Schema.define(version: 20180510091359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,10 @@ ActiveRecord::Schema.define(version: 20180426204108) do
     t.string "website"
     t.string "admin_name"
     t.string "admin_email"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -121,6 +125,7 @@ ActiveRecord::Schema.define(version: 20180426204108) do
     t.boolean "ml_done"
     t.integer "organisation_id"
     t.string "browser_d"
+    t.string "unread"
   end
 
 end
