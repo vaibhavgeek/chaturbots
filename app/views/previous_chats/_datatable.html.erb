@@ -32,7 +32,7 @@
     			<% end %>
 
 
-              <%= link_to previous_chats_destroy_organisation_path(:id => @oid, :id1 => e["idq"] , :id2 => e["idr"] ) ,  :class => "btn-floating waves-effect waves-light red" , :method => "post" , :remote => "true" ,  data: { confirm: 'Are you sure?' } do %>
+              <%= link_to previous_chats_destroy_organisation_path(:id => @oid, :id1 => e["idq"] , :id2 => e["idr"] ) ,  :class => "btn-floating waves-effect waves-light red" , :method => "post" , :remote => "true" do %>
     		<i class="tiny material-icons white-text">delete</i>
     			<% end %>
             </td>
@@ -52,9 +52,7 @@
 		
 <script>
 
-window.alert = function(e) { 
-  console.log(e);
- };
+window.alert = function() { console.log("alert aaya")};
 
 
      (function(window, document, undefined) {

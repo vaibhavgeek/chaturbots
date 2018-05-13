@@ -1,5 +1,5 @@
 class IntentsController < ApplicationController
-	  before_action :set_intent, only: [:show, :edit, :destroy]
+	  before_action :set_intent, only: [:show, :edit, :update, :destroy]
 
 	def create 
 		@intent = Intent.new(intent_params)
@@ -21,10 +21,9 @@ class IntentsController < ApplicationController
 	end
 	
 	def update 
-		@intent = Intent.find(params[:id])
 		respond_to do |format|
 			if @intent.update(intent_params)
-				format.html { redirect_to intents_all_organisation_url(@intent.organisation_id) , notice_error: "Update Intent Sucessfully"}
+				format.html { redirect_to intents_all_organisation_url , notice_error: "Update Intent Sucessfully"}
 				format.json { render :show, status: :ok , location: @intent}
 			else
 				format.html { render :edit }

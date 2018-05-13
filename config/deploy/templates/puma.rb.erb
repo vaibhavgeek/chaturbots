@@ -19,12 +19,14 @@ threads <%=fetch(:puma_threads).join(',')%>
 <% if fetch(:puma_control_app) %>
 activate_control_app "<%= fetch(:puma_default_control_app) %>"
 <% end %>
-workers 2
+workers <%= puma_workers %>
 <% if fetch(:puma_worker_timeout) %>
 worker_timeout <%= fetch(:puma_worker_timeout).to_i %>
 <% end %>
 
-daemonize true
+<% if puma_daemonize? %>
+daemonize
+<% end %>
 
 <% if puma_preload_app? %>
 preload_app!

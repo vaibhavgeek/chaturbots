@@ -5,11 +5,5 @@ class SettingsController < ApplicationController
   end
 
   def account
-
-  end
-
-  private 
-  def organisation_params
-  	params.require(:organisation).permit(:avatar)
   end
 end

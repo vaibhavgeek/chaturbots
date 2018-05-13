@@ -49,9 +49,7 @@ $ ->
       message = $anchor.text().trim()
       payload = $anchor.attr('data-payload')
       if payload
-        App.chatbot.speak message, responder: "user" , payload: payload , auth_token: auth_token.trim()
-      else
-        App.chatbot.speak message, responder: "user" , payload: "nil" , auth_token: auth_token.trim()
+        App.chatbot.speak message, responder: "user" , payload: payload , auth_token: auth_token.trim() 
       event.preventDefault() 
       return
     return
