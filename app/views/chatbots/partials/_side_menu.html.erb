@@ -6,21 +6,23 @@
 <nav role="navigation">
   <ul>
   
-
+<li class="<%= active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) %>">
+               <%= link_to  bot_widgets_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) do %> Widgets <% end %>
+                </li>
+                
   <li class="<%= active_helper(intents_all_organisation_path(:id => session[:orga_id])) %>">
     <%= link_to "Intents" , intents_all_organisation_path(:id => session[:orga_id])   %> 
     </li>
+
+    
+
      <li class="<%= active_helper(new_organisation_previous_chat_path(:organisation_id => session[:orga_id])) %>">
                 <%= link_to "Previous Chats" , new_organisation_previous_chat_path(:organisation_id => session[:orga_id])   %>
                 </li>
-  <li class="<%= active_helper(bot_web_scraping_organisation_path(:id => session[:orga_id])) %>">
-               <%= link_to  bot_web_scraping_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_preview_organisation_path(:id => session[:orga_id])) do %>  Web Scraping <% end %>
-                </li>
+  
 
 
-                <li class="<%= active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) %>">
-               <%= link_to  bot_widgets_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) do %> Widgets <% end %>
-                </li>
+                
 
                 </ul>
                 </nav>

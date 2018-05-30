@@ -12,11 +12,8 @@ class ChatsController < ApplicationController
   def show_all
     visitor_all = Message.where(:organisation_id => request.params[:id]).pluck(:visitor_id).uniq
     final_json = []
-    #final_json = JSON.parse(final_json)
     visitor_all.each do |v|
       hash_v = Message.where(:visitor_id => v , :ml => true).order("created_at ASC")
-      puts JSON.pretty_generate(hash_v.as_json)
-      puts "\n\n"
       hash_v.each_with_index do |mblock , i| 
         if mblock["responder"] == "agent"
          if hash_v[i-1]["responder"] != "agent"
@@ -31,13 +28,6 @@ class ChatsController < ApplicationController
      respond_to do |format|
           format.json { render :json =>  JSON.pretty_generate(end_json) }
       end
-    #json_hash = Message.where(:visitor_id => 10).select(:content , :responder).as_json(:except => :id)
-    #json_hash.each_with_index do |hash, i|
-    #  json_hash[i]["responder"] == "agent"
-
-    #end   
-   # 
-   # render json: JSON.pretty_generate(end_json)
   end
 
   def show

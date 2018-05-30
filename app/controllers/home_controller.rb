@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   end
 
   def main
-    @organisation_vistors = Visitor.where(:organisation_id => session[:orga_id]).all
+    @organisation_vistors_online = Visitor.where(:organisation_id => session[:orga_id]).select(&:online?)
   	@messages = Message.all  	
     @bool = 0
   end
