@@ -12,10 +12,11 @@ gem 'jquery-rails'
 gem 'popper_js'
 gem "chartkick"
 gem 'groupdate'
-gem 'paperclip'
+gem 'mini_magick'
 gem "browser", require: "browser/browser"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.1'
+gem 'rails'
+gem 'razorpay'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 gem 'hashids'

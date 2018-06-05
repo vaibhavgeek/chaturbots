@@ -31,6 +31,8 @@ class ChatsController < ApplicationController
   end
 
   def show
+        @organisation = Organisation.find(request.params[:organisation_id])
+
     @messages = Message.where(:visitor_id => params[:id]).order("created_at ASC").all
 
   end

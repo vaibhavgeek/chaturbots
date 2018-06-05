@@ -3,7 +3,7 @@
 
 <% if defined?(admin) %>
 <li class="message left appeared">
-        <div class="avatar"> <%= image_tag "shree.png" %> </div>
+        <div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
 
     <div class="text_wrapper">
             <div class="text-header">
@@ -54,7 +54,7 @@ email: <br/><%= mail_id = Visitor.where(:auth_token => request.params[:auth_toke
     return pattern.test(emailAddress);
 };
 </script><li class="message left appeared">
-        <div class="avatar"> <%= image_tag "shree.png" %> </div>
+        <div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
 
     <div class="text_wrapper">
             <div class="text-header">

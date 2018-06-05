@@ -1,7 +1,7 @@
 
 
 <div class="row container top-margin-20">
-		<div class="col s2 white card">
+		<div class="col s2 white card no-padding">
 			
 <h5> Unread Messages </h5>
 	<div class="nav">
@@ -49,7 +49,7 @@
 		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
 			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
 
-			<%= disp %>
+			<%= truncate(disp, :length => 15) %>
 
 			<% end %>
 

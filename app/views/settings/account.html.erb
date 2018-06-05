@@ -2,19 +2,67 @@
 
 <div class="row container top-margin-20">
 		<div class="col s2 white no-padding">
-				<div class="collection">
-        <%= link_to "Account " , settings_account_organisation_path(:id => request.params[:id]) , :class => "collection-item" %>
-				<%= link_to "Payment" , settings_payment_organisation_path(:id => request.params[:id]), :class => "collection-item" %>
-						<%= link_to "Messenger", settings_messenger_organisation_path(:id => request.params[:id]) , :class => "collection-item"  %>
-						<%= link_to "NLP Algorithm", settings_nlp_organisation_path(:id => request.params[:id]) , :class => "collection-item"  %>
-			  </div>	
+				<%= render 'sidebar' %>
 		</div>
 		<div class="col s10 white">
-		
-<%= form_for @organisation, url: users_path, html: { multipart: true } do |form| %>
+<div class="row">
+		<div class="col s6 offset-s3 ">
+		<h4> Edit Organisation: </h4>
+		    
+		    <div class="card red darken-1 white">
+		    <%= flash[:notice_error] %>
+</div>
+
+		<hr/>
+<%= form_for @organisation, url: organisation_path, html: { multipart: true } do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :"Update Bot Icon" %>
+<br/>
+<%= image_tag @organisation.avatar.variant(resize: "50x50") %> <br/>
   <%= form.file_field :avatar %>
-  <%= form.submit %>
+  <br/>
+  <p class="right-align">
+  <%= form.submit "update details", :class => "btn btn-primary" %></p>
 <% end %>
+		</div>
 		
+
+		<div class="col s6 offset-s3">
+		<br/>
+		<h4> Account Details: </h4>
+		<hr/>
+		<label>Change Password</label>
+		<%= form_for(@user, :url => {:controller => "settings" , :id => current_user.id , :action => "update_password" } ) do |f| %>
+  
+<div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "Password" %><br />
+    <%= f.password_field :password, :autocomplete => "off"  %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="action_container right-align">
+    <%= f.submit "change password", :class => "btn btn-primary" %>
+  </div>
+<% end %>
+		</div>
+
+
+		<div class="col s6 offset-s3">
+		<br/><br/>
+		<p class="center">
+		<button class="btn btn-danger btn-large red"> Delete My Account </button>
+		</p>
+		</div>
+
+		</div>
 	</div>
 </div>

@@ -74,7 +74,7 @@ class IntentsController < ApplicationController
 	end
 
 	def show_all
-	    json_hash = Intent.select(:patterns, :responses).as_json(:except => :id)
+	    json_hash = Intent.where(:organisation_id => request.params[:id]).select(:patterns, :responses).as_json(:except => :id)
 	    json_hash.each do |i|
 	    	i["message"] = i["patterns"]
 	    	i.delete("patterns")

@@ -126,6 +126,8 @@ class ChatbotsController < ApplicationController
     	visitor = Visitor.where(:auth_token => auth).first
   		@messages = Message.where(:visitor_id => visitor.id).order("created_at ASC").all
   		temp = ::Template.where(:user_id => request.params[:id] , :payload => "initial_message").first
+  		@organisation = Organisation.find(request.params[:id]) 
+
   		if temp.nil? 
   			@initial_message = "default_initial"
   		else

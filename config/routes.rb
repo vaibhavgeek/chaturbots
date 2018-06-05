@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get 'organisations/show'
   get 'organisations/all_organisation_id'
 
+resource :user, only: [:edit] do
+  collection do
+    patch 'update_password' , to: 'settings#update_password'
+  end
+end
 # general show time routes
     get 'home/index'
     get 'home/contact_us'
@@ -19,7 +24,7 @@ Rails.application.routes.draw do
  # get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
   devise_for :users , :controllers => { :registrations => 'users/registrations' , :sessions => 'users/sessions' }
-
+  
   root 'home#index'
 
   resources :organisations do 
@@ -39,7 +44,7 @@ Rails.application.routes.draw do
       get 'settings_account', to: 'settings#account'
       get 'settings_payment', to: 'settings#payment'
       get 'settings_messenger', to: 'settings#messenger'
-      get 'settings_nlp', to: 'settings#nlp'  
+      get 'settings_theme', to: 'settings#theme'  
       get 'bot/redirect' , to: 'chatbots#redirect'
       get 'bot/index/:auth_token' , to: 'chatbots#index' , as: 'chatbotmain'
       get 'bot/popup/:auth_token' , to: 'chatbots#popup', as: 'chatbotpopup'

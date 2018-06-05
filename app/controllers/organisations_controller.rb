@@ -1,6 +1,6 @@
 class OrganisationsController < ApplicationController
   
-  before_action :set_organisation, only: [:show, :edit, :update, :destroy]
+  before_action :set_organisation, only: [:show, :edit, :destroy]
 
   def new
   	@organisation = Organisation.new
@@ -34,6 +34,19 @@ class OrganisationsController < ApplicationController
   def show
   end
 
+  def update
+    @organisation = Organisation.find(params[:id])
+    respond_to do |format|
+      if @organisation.update(update_org_params)
+        format.html { redirect_to settings_account_organisation_url(@organisation) , notice_error: "Update Organisation Sucessfully"}
+        format.json { render :show, status: :ok , location: @organisation}
+      else
+        format.html { redirect_to settings_account_organisation_url(@organisation) , notice_error: "Some Errors Occured in Updating Organisation" }
+        format.json { render json: @organisation.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
   def crypted_id(string)
     hashids = Hashids.new("i love this life")
     return hashids.encode(string)
@@ -45,10 +58,17 @@ class OrganisationsController < ApplicationController
   end
 
   private 
+
 	def organisation_params
 		params.require(:organisation).permit(:name, :website ,:admin_email) 
 	end
+
+  def update_org_params
+    params.require(:organisation).permit(:name, :avatar)
+  end
+
 	def set_organisation
-      @intent = Intent.find(params[:id])
-    end
+    @intent = Intent.find(params[:id])
+  end
+
 end
