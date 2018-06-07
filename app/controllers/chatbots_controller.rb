@@ -1,7 +1,8 @@
 require 'net/http'
 require 'json'
 class ChatbotsController < ApplicationController
-	
+	  before_action :allow_iframe, only: [:redirect, :index]
+
 
  skip_before_action :verify_authenticity_token
 
@@ -52,7 +53,7 @@ class ChatbotsController < ApplicationController
 	end
 	
 	def redirect 
-		browser = Browser.new("ChaturBots Agent", accept_language: "en-us")
+		# browser = Browser.new("ChaturBots Agent", accept_language: "en-us")
 
 		if cookies[:auth_token]  == nil
   			cookies[:auth_token] = {
@@ -62,9 +63,10 @@ class ChatbotsController < ApplicationController
   		end
   		auth_tok = cookies[:auth_token]
 
+		@vis = Visitor.where(auth_token: auth_tok).first
 
 		organisation_id =  params["id"]
-		if Visitor.where(auth_token: auth_tok).count == 0
+		if !@vis
   			if request.remote_ip.to_s != "127.0.0.1"
   				ip_addr = request.remote_ip
 			else
@@ -73,18 +75,16 @@ class ChatbotsController < ApplicationController
 			loc = Net::HTTP.get(URI.parse('http://freegeoip.net/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
   			location = k["city"] + "," + k["region_name"] + ", " + k["country_name"]
-  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: browser.name  , v_count: 1 )
+  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: "Generic Browser"  , v_count: 1 )
   			redis.set(@vis.id.to_s + "ml" , 1)
   			redis.set(@vis.id.to_s + "automate" , 1)
 		
   		else
-  			@vis = Visitor.where(auth_token: auth_tok).first
   			@vis.v_count ? v_c = @vis.v_count + 1 : v_c = 1
   			@vis.update(:v_count => v_c )
   				
 		end
-		@vis = Visitor.where(auth_token: auth_tok).first
-
+=begin
  		url = params["url"]
  		if Url.where(:url => url ,:visitor_id => @vis.id).count > 0 && !params["popup"]
  			url_up = Url.where(:url => url ,:visitor_id => @vis.id).first 
@@ -92,20 +92,22 @@ class ChatbotsController < ApplicationController
  		elsif Url.where(:url => url , :visitor_id => @vis.id).count == 0 && !params["popup"]
  			Url.create! url: url , visitor_id: @vis.id , v_count: 1
  		end
-
+=end
 		puts request.params
 		puts "\n \n \n \n \n \n \n \n \n"
+		 redirect_to chatbotmain_organisation_path( request.params[:id] , :auth_token => auth_tok) 
+
+=begin		
 		if params["popup"]
 			check_popup = params["popup"]
   			redirect_to chatbotpopup_organisation_path( request.params[:id] , :auth_token => auth_tok) 
 
   		else 
-    		redirect_to chatbotmain_organisation_path( request.params[:id] , :auth_token => auth_tok) 
 
 
   		end
   		#render json: nil, status: :ok
-  		
+=end
   		
 	end
 
@@ -199,4 +201,8 @@ class ChatbotsController < ApplicationController
      def redis
      	Redis.new
      end
+
+  def allow_iframe
+    response.headers.delete "X-Frame-Options"
+  end
 end

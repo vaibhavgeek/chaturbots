@@ -7,7 +7,8 @@ class MessageBroadcastJob < ApplicationJob
   def perform(message)
     if message.cable != false
             auth_token = message.visitor.auth_token
-            ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message) , auth_token: auth_token
+            organisation = Organisation.find(message.visitor.organisation_id)
+            ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message , organisation) , auth_token: auth_token
             redis_key = message.visitor.id.to_s + "automate"
             #redis_ml = message.visitor.id.to_s + "ml"
             #ml_true = true if redis.get(redis_ml).to_s == "1"
@@ -47,8 +48,8 @@ class MessageBroadcastJob < ApplicationJob
     Redis.new
   end
 
-  def render_text_message(message)
-  	ApplicationController.renderer.render(partial: 'messages/message' , locals: { message: message })
+  def render_text_message(message, organisation)
+  	ApplicationController.renderer.render(partial: 'messages/message' , locals: { message: message , :@organisation =>  organisation})
   end
 
   def organisation_online(visitor)

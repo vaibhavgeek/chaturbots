@@ -7,7 +7,18 @@
 		<div class="col s6 white">
 	<h4> Create Theme</h4>
 	<hr/>
+<%= form_for @organisation, url: organisation_path, html: { multipart: true } do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
 
+<%= form.label :"Update Bot Icon" %>
+<br/>
+<%= image_tag @organisation.avatar.variant(resize: "50x50") %> <br/>
+  <%= form.file_field :avatar %>
+  <br/>
+  <p class="right-align">
+  <%= form.submit "update details", :class => "btn btn-primary" %></p>
+<% end %>
 		
 	</div>
 

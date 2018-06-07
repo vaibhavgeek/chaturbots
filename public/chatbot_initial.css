@@ -34,7 +34,7 @@
 .input_message input {
   border: none !important;
   padding-left: 0.5em !important;
-  padding-right: 0.5em !important;
+  padding-right: 0.2em !important;
   width: 100% !important;
 }
 

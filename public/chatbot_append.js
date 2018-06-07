@@ -1,4 +1,5 @@
 script_tag = document.getElementById("chaturscap");
+
 var search_term = script_tag.getAttribute("data-organisation");
 function creatediv(append_to , classo , id )
 {
@@ -20,7 +21,7 @@ function preparehtml(){
 	creatediv("body" , null , "zipi-chatbox");
 	creatediv("#zipi-chatbox" , " " , "chatflow");
 	creatediv("#chatflow" , "frameparent" , "frameparent");
-	prepareFrame("#frameparent" , "/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
+	prepareFrame("#frameparent" , "http://localhost:3000/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
 //	creatediv("#zipi-chatbox" , "popup_wrapper" , "popup_wrapper");
 //	prepareFrame("#popup_wrapper" , "/organisations/"+ search_term +"/bot/redirect?popup=true" , "iframe_popups");
 	divf = creatediv("#zipi-chatbox" , null , "floatbutton");

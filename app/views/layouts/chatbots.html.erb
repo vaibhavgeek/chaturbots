@@ -9,16 +9,17 @@
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<style type="text/css">
-   body
-    {
-        background:none transparent;
-    }
-    
- </style>
+
   </head>
 
   <body>
+  <style type="text/css">
+    
+    iframe {
+      background: none transparent !important;
+    }
+
+  </style>
       <%= yield %>
 
   </body>
