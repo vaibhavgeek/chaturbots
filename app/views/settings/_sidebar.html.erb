@@ -3,8 +3,6 @@
 <nav role="navigation">
   <ul>
           <li class="<%= active_helper(settings_account_organisation_path(:id => request.params[:id])) %>"><%= link_to "Account " , settings_account_organisation_path(:id => request.params[:id]) %></li>
-				<li class="<%= active_helper(settings_payment_organisation_path(:id => request.params[:id])) %>"><%= link_to "Payment" , settings_payment_organisation_path(:id => request.params[:id]), :class => "collection-item" %>
-				</li>
 				
 						<li class="<%= active_helper(settings_theme_organisation_path(:id => request.params[:id])) %>">
 						<%= link_to "Theme", settings_theme_organisation_path(:id => request.params[:id]) , :class => "collection-item"  %></li>	

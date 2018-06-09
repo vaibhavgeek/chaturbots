@@ -4,6 +4,7 @@
 	<li class="message right appeared">
 				<div class="text_wrapper">
 					<div class="text">
+
 						<%= message.content %>
 					</div>
 
@@ -49,12 +50,11 @@
 			
 		</li>
 	<% elsif message.responder == "bot" %>
-
 	<li class="message left appeared">
-			<div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
+			<div class="avatar"> <%= image_tag rails_blob_path(organisation.avatar, only_path: true , disposition: "inline") %> </div>
 			<div class="text_wrapper">
 				<div class="text-header">
-
+				
 					<%= proper_html(proper_url_link(message.content)) %>
 					
 
@@ -63,7 +63,7 @@
 		</li>
 	<% else %>
 		<li class="message left appeared">
-			<div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
+			<div class="avatar"> <%= image_tag rails_blob_path(organisation.avatar, only_path: true , disposition: "inline") %> </div>
 			<div class="text_wrapper">
 				<div class="text-header">
 					<%= proper_html(proper_url_link(message.content)) %>

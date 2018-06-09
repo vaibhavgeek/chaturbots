@@ -6,9 +6,7 @@
 <nav role="navigation">
   <ul>
   
-<li class="<%= active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) %>">
-               <%= link_to  bot_widgets_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_widgets_organisation_path(:id => session[:orga_id])) do %> Widgets <% end %>
-                </li>
+
                 
   <li class="<%= active_helper(intents_all_organisation_path(:id => session[:orga_id])) %>">
     <%= link_to "Intents" , intents_all_organisation_path(:id => session[:orga_id])   %> 

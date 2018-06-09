@@ -1,6 +1,7 @@
 script_tag = document.getElementById("chaturscap");
 
 var search_term = script_tag.getAttribute("data-organisation");
+var icon_color_code = script_tag.getAttribute("icon-color");
 function creatediv(append_to , classo , id )
 {
 	var idiv = document.createElement("div");
@@ -28,5 +29,10 @@ function preparehtml(){
 	divf.setAttribute("onclick" , "zipitoggleChat();");
 	creatediv("#floatbutton" , "opened  " , "open");
 	creatediv("#floatbutton", "closed  " , "close");
+	icon_color_div_o = document.getElementById("open");
+	icon_color_div_c = document.getElementById("close");
+	icon_color_div_o.setAttribute("style", "background-color:" + icon_color_code);
+	icon_color_div_c.setAttribute("style", "background-color:" + icon_color_code);
+
 }
 preparehtml();

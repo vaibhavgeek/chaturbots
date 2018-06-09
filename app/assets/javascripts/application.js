@@ -20,6 +20,7 @@
 //= require jquery.dataTables.min.js
 //= require jquery.easing
 //= require particles
+//= require spectrum
 //= require check
 //= require_tree .
  $(document).ready(function() {
