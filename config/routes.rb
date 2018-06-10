@@ -20,6 +20,7 @@ end
     get 'home/contact_us'
     get 'home/about_us'
     get 'home/pricing'
+    get 'home/request'
     get 'organisations/:id/home' , to: 'home#main' , as: 'organisation_home'
  # get 'home/blog'
 # routes for admin panel and customer support of client, enables them to see chats
@@ -33,6 +34,7 @@ end
     resources :messages 
     resources :previous_chats , :except => [ :create , :show , :index , :update , :destroy ]
     member do
+      patch 'update_theme' , to: 'settings#update_theme'
       post 'previous_chats_d/:id1/:id2' , to: 'previous_chats#destroy' , as: "previous_chats_destroy"
       post 'previous_chats/:id1/:id2' , to: 'previous_chats#update' , as: "previous_chats_update"
       post 'notifications_ml/:auth' , to: 'notifications#ml' , as: "notifications_machinel" , defaults: { format: 'js' }

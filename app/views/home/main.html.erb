@@ -12,14 +12,13 @@
           <% if @organisation_vistors_online.count == 0 %>
         <% end %>
 
-        <div class="<%= session[:orga_id] %>"> 
-
+        <div class="<%= request.params[:id] %>"> 
 
 
         <% @organisation_vistors_online.each do |visitor| %>
         
             <div id="<%= visitor.id %>" class="visitor-container">
-              <%= link_to new_organisation_chat_path(:organisation_id => session[:orga_id] , :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
+              <%= link_to new_organisation_chat_path(:organisation_id =>  request.params[:id], :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
     <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> 
               <% end %>
               <span class="hidden">
@@ -34,10 +33,10 @@
 
     <div class="col s8 card no-padding">
 
-      <div id="appendnav<%= session[:orga_id] %>" > 
+      <div id="appendnav<%= request.params[:id] %>" > 
       </div>
     
-      <div class="white display_chats" id="display_chats<%= session[:orga_id] %>">
+      <div class="white display_chats" id="display_chats<%= request.params[:id] %>">
        
 <% if @bool == 0 %>
 <div class="col s12 m8 offset-m2">
@@ -48,8 +47,8 @@
         <div style="font-size: 12px; height: 100px; overflow-y: scroll;" class="card-content">
           <code id="code">
            &lt;link href="http://www.chaturbots.com/chatbot_initial.css" type="text/css" rel="stylesheet" /&gt; 
-            &lt;script type="text/javascript" data-organisation="<%= session[:orga_id] %>" src="http://www.chaturbots.com/chatbot_initial.js" /&gt;
-            &lt;script type="text/javascript" data-organisation="<%= session[:orga_id] %>" src="http://www.chaturbots.com/chatbot_append.js.js" /&gt;
+            &lt;script type="text/javascript" data-organisation="<%= request.params[:id] %>" src="http://www.chaturbots.com/chatbot_initial.js" /&gt;
+            &lt;script type="text/javascript" data-organisation="<%= request.params[:id] %>" src="http://www.chaturbots.com/chatbot_append.js.js" /&gt;
          </code>
         </div>
         <div class="card-action right-align">

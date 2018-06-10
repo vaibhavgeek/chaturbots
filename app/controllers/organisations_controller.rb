@@ -64,7 +64,7 @@ class OrganisationsController < ApplicationController
 	end
 
   def update_org_params
-    params.require(:organisation).permit(:name, :avatar)
+    params.require(:organisation).permit(:name, :avatar_icon)
   end
 
 	def set_organisation

@@ -17,6 +17,7 @@ gem "browser", require: "browser/browser"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 gem 'razorpay'
+gem 'paperclip'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 gem 'hashids'

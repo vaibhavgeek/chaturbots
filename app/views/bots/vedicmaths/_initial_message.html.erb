@@ -39,7 +39,7 @@
     return pattern.test(emailAddress);
 };
 </script><li class="message left appeared">
-        <div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
+        <div class="avatar"> <%= image_tag @organisation.avatar_icon.url(:small) %> </div>
 
     <div class="text_wrapper">
             <div class="text-header">
@@ -104,7 +104,7 @@
     return pattern.test(emailAddress);
 };
 </script><li class="message left appeared">
-        <div class="avatar"> <%= image_tag @organisation.avatar.variant(resize: "40x40") %> </div>
+        <div class="avatar"> <%= image_tag @organisation.avatar_icon.url(:small) %> </div>
 
     <div class="text_wrapper">
             <div class="text-header">

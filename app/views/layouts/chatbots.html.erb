@@ -13,13 +13,34 @@
   </head>
 
   <body>
+
+<%= @organisation.p_color %>
   <style type="text/css">
+.messages .message.right .text_wrapper
+{
+  background-color: <%= @organisation.s_color %>;
+}
+.messages .message.right .text_wrapper::before {
+    border-color:  <%= @organisation.s_color %> transparent transparent transparent;
+}
+    
+.messages .message .text_wrapper .text-header
+{
+  background-color: <%= @organisation.p_color %>;
+}
+.messages .message.left .text_wrapper::before {
+    border-color: transparent  <%= @organisation.p_color %> transparent transparent;
 
-    #zipi-chatbox #floatbutton .opened
-    {
-      background-color:red !important;
-    }
+}
 
+.messages .message.left .text_wrapper {
+      background-color: <%= @organisation.p_color %>;
+
+}
+.messages .message.left .text_wrapper ul li {
+      background-color: <%= @organisation.p_color %>;
+
+  }
 
   </style>
       <%= yield %>

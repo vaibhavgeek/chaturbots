@@ -12,7 +12,7 @@
 
   </head>
 
-  <body class="<%= controller.controller_name + controller.action_name %>">
+  <body class="<%= controller.controller_name %>">
 
    <% if user_signed_in? && session[:orga_id] %>
    <div class="navbar-fixed">
@@ -73,18 +73,19 @@
   <li  class="active"><%= link_to "Home" , root_path %></li>
   <% if request.params["action"] == "index" %>
   <li><a class="page-scroll" href="#features">Features</a></li>
+    <% end %>
+
   <li><%= link_to "Pricing" , home_pricing_path %></li>
 
 
-  <% end %>
-  <li><%= link_to "Blog" , "https://medium.com/chaturbots" , :target => "_blank" %></li>
+  <li><%= link_to "About" , home_about_us_path %></li>
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#features">Features</a></li>
-  <li><%= link_to "Blog" , "https://medium.com/chaturbots" , :target => "_blank" %></li>
+  <li><%= link_to "About" , home_about_us_path %></li>
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

@@ -20,11 +20,11 @@ class SettingsController < ApplicationController
     @organisation = Organisation.find(params[:id])
     respond_to do |format|
       if @organisation.update(organisation_params)
-        format.html { redirect_to intents_all_organisation_url(@intent.organisation_id) , notice_error: "Update Intent Sucessfully"}
-        format.json { render :show, status: :ok , location: @intent}
+        format.html { redirect_to settings_theme_organisation_url(@organisation.id) , notice_error: "Updated Theme Sucessfully"}
+        format.json { render :show, status: :ok , location: @organisation}
       else
         format.html { render :edit }
-        format.json { render json: @intent.errors, status: unprocessable_entity}
+        format.json { render json: @organisation.errors, status: unprocessable_entity}
       end
     end
    end
@@ -47,6 +47,6 @@ def update_password
   end
 
   def organisation_params
-  	params.require(:organisation).permit(:bg_color , :p_color , :s_color , :icon_color, :bg_image)
+  	params.require(:organisation).permit(:bg_color , :p_color , :s_color , :icon_color, :bg_img)
   end
 end

@@ -20,8 +20,7 @@
 
 <%= form.label :"Update Bot Icon" %>
 <br/>
-<%= image_tag @organisation.avatar.variant(resize: "50x50") %> <br/>
-  <%= form.file_field :avatar %>
+  <%= form.file_field :avatar_icon %>
   <br/>
   <p class="right-align">
   <%= form.submit "update details", :class => "btn btn-primary" %></p>

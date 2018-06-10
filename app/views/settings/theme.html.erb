@@ -7,32 +7,70 @@
 		<div class="col s6 white">
 	<h4> Create Theme</h4>
 	<hr/>
-<%= form_for @organisation, url: organisation_path, html: { multipart: true } do |form| %>
-<%= form.label :"icon_color" %>
+
+
+
+
+<%= form_for @organisation, url: update_theme_organisation_path, html: { multipart: true } do |form| %>
+<table>
+    <tr>
+    <td>
+<%= form.label :"icon_color" %> : 
+
+    </td>
+    <td>
 <%= form.text_field :icon_color , :class => "full" %>
 
-<br/>
+    
+    </td>
+    </tr>
+ <tr>
+    <td>
 <%= form.label :"Primary Color" %>
+
+    </td>
+    <td>
 <%= form.text_field :p_color , :class => "full" %>
 
-<br/>
+    
+    </td>
+    </tr> <tr>
+    <td>
 <%= form.label :"Secondary Color" %>
+
+    </td>
+    <td>
 <%= form.text_field :s_color  , :class => "full" %>
 
-
-<br/>
+    
+    </td>
+    </tr> <tr>
+    <td>
   <%= form.label :"Background Image" %>
-  <br/>
 
-<center>
-  <%= form.file_field :bg_image  %>
+    </td>
+    <td>
+  <%= form.file_field :bg_img  %>
 
-</center>
-  <br/>
-    <%= form.label :"Background Color" %>
-<br/>
-<h5><center> OR  </center> </h5>
+    
+    </td>
+    </tr>
+
+
+<tr>
+    <td>
+  <%= form.label :"Background Color" %>
+
+    </td>
+    <td>
 <%= form.text_field :bg_color , :class => "full" %>
+
+    
+    </td>
+    </tr>
+
+    </table>
+
 
   <p class="right-align">
   <%= form.submit "update details", :class => "btn btn-primary" %></p>
@@ -43,14 +81,13 @@
 	<div class="col s4 white">
 	<h4> Visualize Guide </h4>
 	<hr/>
-	<input type='text' id="full"/>
+    
 	</div>
 
 </div>
 
 <script type="text/javascript">
 	$(".full").spectrum({
-    color: "#ECC",
     showInput: true,
     className: "full-spectrum",
     showInitial: true,
