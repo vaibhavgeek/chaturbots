@@ -14,7 +14,6 @@
 
   <body>
 
-<%= @organisation.p_color %>
   <style type="text/css">
 .messages .message.right .text_wrapper
 {
@@ -42,6 +41,29 @@
 
   }
 
+.messages .message.right .text 
+{
+  color: <%= @organisation.s_f_color %>;
+}
+
+.messages .message.left  
+{
+  color: <%= @organisation.p_f_color %> !important;
+}
+.messages .message.left label
+{
+  color: <%= @organisation.s_color %>;
+  font-size: 15px;
+}
+.message .text_wrapper .btn 
+{
+  background-color:  <%= @organisation.s_color %>;
+  color:<%= @organisation.s_f_color %> ;
+}
+.messages 
+{
+  background: url('<%= @organisation.bg_img.url %>') !important;
+}
   </style>
       <%= yield %>
 

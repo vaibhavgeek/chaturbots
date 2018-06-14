@@ -11,7 +11,14 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
   config.serve_static_assets = true
-
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'vaibhavblogger@gmail.com',
+    password:             'F1inindia',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

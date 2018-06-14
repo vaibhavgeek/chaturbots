@@ -16,6 +16,11 @@ class HomeController < ApplicationController
     end
   end
 
+  def send_email
+      ContactusMailer.sample_email(request.params).deliver_later
+      redirect_to home_request_path , :notice => "You have Successfully filled the form"
+  end
+
   def main
     @organisation_vistors_online = Visitor.where(:organisation_id => session[:orga_id]).select(&:online?)
   	@messages = Message.all  	

@@ -17,9 +17,11 @@ resource :user, only: [:edit] do
 end
 # general show time routes
     get 'home/index'
+    post 'home/send_email'
     get 'home/contact_us'
     get 'home/about_us'
     get 'home/pricing'
+    get 'home/features'
     get 'home/request'
     get 'organisations/:id/home' , to: 'home#main' , as: 'organisation_home'
  # get 'home/blog'

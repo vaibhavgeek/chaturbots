@@ -70,25 +70,32 @@
 
 
         <ul class="right hide-on-med-and-down page-scroll">
-  <li  class="active"><%= link_to "Home" , root_path %></li>
+  <li  class="<%= active_helper(root_path) %>"><%= link_to "Home" , root_path %></li>
+ <!--  
+
   <% if request.params["action"] == "index" %>
   <li><a class="page-scroll" href="#features">Features</a></li>
     <% end %>
+ -->
+<li class="<%= active_helper(home_request_path) %>"> <%= link_to "Request" , home_request_path ,  data: { turbolinks: false } %> </li>
 
-  <li><%= link_to "Pricing" , home_pricing_path %></li>
+<li class="<%= active_helper(home_features_path) %>"> <%= link_to "Features" , home_features_path %> </li>
+  <li class="<%= active_helper(home_pricing_path) %>"><%= link_to "Pricing" , home_pricing_path %></li>
 
 
-  <li><%= link_to "About" , home_about_us_path %></li>
-  <li><%= link_to "Login" , new_user_session_path %></li>
+  <li class="<%= active_helper(new_user_session_path) %>"><%= link_to "Login" , new_user_session_path %></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#features">Features</a></li>
-  <li><%= link_to "About" , home_about_us_path %></li>
+          <li class="<%= active_helper(root_path) %>"><%= link_to "Home" , root_path %></a></li>
+          <li class="<%= active_helper(root_path) %>">
+            <li> <%= link_to "Features" , home_features_path %> </li>
+
+
+          </li>
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="nav-mobile" class="sidenav-trigger button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
   </div>
@@ -100,7 +107,14 @@
 
 
 
-  
+  <script type="text/javascript">
+ $( document ).ready(function(){
+$('.button-collapse').sideNav({
+      closeOnClick: true
+    }
+  );
+});
+</script>
 
 <%= yield %>
 

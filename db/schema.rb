@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_130642) do
+ActiveRecord::Schema.define(version: 2018_06_12_185658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 2018_06_10_130642) do
     t.string "bg_img_content_type"
     t.integer "bg_img_file_size"
     t.datetime "bg_img_updated_at"
+    t.string "p_f_color"
+    t.string "s_f_color"
   end
 
   create_table "tags", force: :cascade do |t|

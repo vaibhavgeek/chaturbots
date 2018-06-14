@@ -47,6 +47,6 @@ def update_password
   end
 
   def organisation_params
-  	params.require(:organisation).permit(:bg_color , :p_color , :s_color , :icon_color, :bg_img)
+  	params.require(:organisation).permit(:bg_color , :p_color , :s_color , :icon_color, :bg_img , :p_f_color , :s_f_color)
   end
 end
