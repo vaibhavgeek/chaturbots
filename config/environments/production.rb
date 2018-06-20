@@ -2,6 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+  config.force_ssl = true
+
   config.cache_classes = true
   config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
   config.action_cable.disable_request_forgery_protection = true

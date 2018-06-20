@@ -62,7 +62,11 @@
 }
 .messages 
 {
+  <% if @organisation.delete_logo != 1 %>
   background: url('<%= @organisation.bg_img.url %>') !important;
+  <% else %>
+  background-color: <%= organisation.bg_color %>
+  <% end %>
 }
   </style>
       <%= yield %>
