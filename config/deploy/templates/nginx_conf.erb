@@ -10,24 +10,20 @@ end
 %><% @backends.each do |server| %>
   <%= server %><% end %>
 }
-<% if fetch(:nginx_use_ssl) -%>
 server {
   listen 80;
   server_name <%= fetch(:nginx_server_name) %>;
-  rewrite ^(.*) https://$host$1 permanent;
+  return https://$host$redirect_uri;
 }
-<% end -%>
 
 server {
-<% if fetch(:nginx_use_ssl) -%>
   listen 443;
-  ssl on;
-  ssl_certificate /etc/ssl/certs/<%= fetch(:nginx_config_name) %>.crt;
-  ssl_certificate_key /etc/ssl/private/<%= fetch(:nginx_config_name) %>.key;
-<% else -%>
-  listen 80;
-<% end -%>
   server_name <%= fetch(:nginx_server_name) %>;
+  ssl on;
+  ssl_certificate /etc/letsencrypt/live/chaturbots.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/chaturbots.com/privkey.pem;
+
+
   root <%= current_path %>/public;
   try_files $uri/index.html $uri @puma_<%= fetch(:nginx_config_name) %>;
 
