@@ -12,13 +12,13 @@ end
 }
 server {
   listen 80;
-  server_name <%= fetch(:nginx_server_name) %>;
-  return https://$host$redirect_uri;
+  server_name chaturbots.com;
+  return https://$host$request_uri;
 }
 
 server {
-  listen 443;
-  server_name <%= fetch(:nginx_server_name) %>;
+  listen 443 ssl;
+  server_name chaturbots.com;
   ssl on;
   ssl_certificate /etc/letsencrypt/live/chaturbots.com/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/chaturbots.com/privkey.pem;
