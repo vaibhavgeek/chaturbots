@@ -13,13 +13,12 @@ end
 server {
   listen 80;
   server_name chaturbots.com;
-  return https://$host$request_uri;
+  return 301 https://$host$request_uri;
 }
 
 server {
   listen 443 ssl;
   server_name chaturbots.com;
-  ssl on;
   ssl_certificate /etc/letsencrypt/live/chaturbots.com/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/chaturbots.com/privkey.pem;
 
@@ -37,9 +36,7 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_redirect off;
-<% if fetch(:nginx_use_ssl) -%>
     proxy_set_header X-Forwarded-Proto https;
-<% end -%>
     proxy_pass http://puma_<%= fetch(:nginx_config_name) %>;
     # limit_req zone=one;
     access_log <%= shared_path %>/log/nginx.access.log;

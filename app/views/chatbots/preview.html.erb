@@ -3,6 +3,9 @@
 <!-- /bot/preview -->
 <%= ENV['LINK_MAIN'] %>
 
-<script type="text/javascript" id="chaturscap" data-organisation="<%= request.params[:id] %>" icon-color="#00356B" src="<%= ENV['LINK_MAIN'] %>/chatbot_append.js"> </script>
+<!-- <script type="text/javascript" id="chaturscap" data-organisation="<%= request.params[:id] %>" icon-color="#00356B" src="<%= ENV['LINK_MAIN'] %>/chatbot_append.js"> </script>
 <script type="text/javascript" data-organisation="<%= request.params[:organisation_id] %>" src="<%= ENV['LINK_MAIN'] %>/chatbot_initial.js"> </script> 
 <link href="<%= ENV['LINK_MAIN'] %>/chatbot_initial.css" type="text/css" rel="stylesheet" /> 
+ -->
+<link href='https://chaturbots.com/chatbot_initial.css' rel='stylesheet' type='text/css'/>            
+ <script data-organisation='15' src='https://chaturbots.com/chatbot_initial.js' type='text/javascript'> </script>            <script data-organisation='15' id="chaturscap" src='https://chaturbots.com/chatbot_append.js' type='text/javascript'> </script> 
