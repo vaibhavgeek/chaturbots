@@ -30,6 +30,6 @@ class NotificationsController < ApplicationController
 
 	private
 	def redis 
-		Redis.new
+		REDIS
 	end
 end

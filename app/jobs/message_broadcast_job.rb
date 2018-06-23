@@ -45,7 +45,7 @@ class MessageBroadcastJob < ApplicationJob
   
   private
   def redis
-    Redis.new
+    REDIS
   end
 
   def render_text_message(message, organisation)

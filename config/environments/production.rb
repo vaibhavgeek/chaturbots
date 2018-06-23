@@ -11,13 +11,15 @@ Rails.application.configure do
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
+    config.action_mailer.default_url_options = { :host => 'https://chaturbots.com' }
+
   config.eager_load = true
   config.serve_static_assets = true
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'vaibhavblogger@gmail.com',
+    user_name:            'vaibhav@chaturbots.com',
     password:             'F1inindia',
     authentication:       'plain',
     enable_starttls_auto: true  }

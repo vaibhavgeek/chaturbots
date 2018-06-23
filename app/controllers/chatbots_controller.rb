@@ -199,7 +199,7 @@ class ChatbotsController < ApplicationController
 
      private
      def redis
-     	Redis.new
+     	REDIS
      end
 
   def allow_iframe

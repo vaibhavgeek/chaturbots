@@ -97,7 +97,7 @@ class ChatbotChannel < ApplicationCable::Channel
     ApplicationController.renderer.render(partial: 'home/partials/diff_page' , locals: { visitor: visitor , url: url })
   end
   def redis
-    Redis.new
+    REDIS
   end
 end
 

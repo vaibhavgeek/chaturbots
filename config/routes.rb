@@ -41,6 +41,8 @@ end
       post 'previous_chats/:id1/:id2' , to: 'previous_chats#update' , as: "previous_chats_update"
       post 'notifications_ml/:auth' , to: 'notifications#ml' , as: "notifications_machinel" , defaults: { format: 'js' }
       post 'notifications_automate/:auth' , to: 'notifications#automate' , as: "notifications_automate" , defaults: { format: 'js' }
+      post 'notifications_train' , to: 'notifications#train' , as: 'notifications_train' , defaults: { format: 'js'}
+
       get 'notifications_main/:auth' , to: 'notifications#main' ,  as: "notifications_main_organisation"
       get 'messages_all' , to: 'chats#show_all' 
       get 'show_all' , to: 'intents#show_all'

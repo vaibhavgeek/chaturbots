@@ -2,7 +2,7 @@ class Visitor < ApplicationRecord
 has_many :messages
 
 def online?
-  !Redis.new.get("#{self.auth_token}").nil?
+    REDIS.get("#{self.auth_token}").present?
 end
 
 

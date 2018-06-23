@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-gem 'redis', '~>3.2'
+
+gem 'redis'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -21,7 +22,7 @@ gem 'paperclip'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 gem 'hashids'
-
+gem 'redis-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'geocoder'
