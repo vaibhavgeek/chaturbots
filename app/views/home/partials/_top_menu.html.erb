@@ -25,7 +25,7 @@
         console.log("<%= ENV['LINK_PYTHON'] %>");
         console.log("ffg");
         $.ajax({
-        url: "<%= ENV['LINK_PYTHON'] %>/train_prev?id="+"<%= session[:orga_id]%>",
+        url: "<%= notifications_main_path(request.params[:id]) %>" , 
         cache: false,
         type: "get",
         success: function(html){
