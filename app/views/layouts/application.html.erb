@@ -79,7 +79,6 @@
  -->
 <li class="<%= active_helper(home_request_path) %>"> <%= link_to "Request" , home_request_path ,  data: { turbolinks: false } %> </li>
 
-<li class="<%= active_helper(home_features_path) %>"> <%= link_to "Features" , home_features_path %> </li>
   <li class="<%= active_helper(home_pricing_path) %>"><%= link_to "Pricing" , home_pricing_path %></li>
 
 
@@ -88,11 +87,7 @@
 
         <ul id="nav-mobile" class="side-nav">
           <li class="<%= active_helper(root_path) %>"><%= link_to "Home" , root_path %></a></li>
-          <li class="<%= active_helper(root_path) %>">
-            <li> <%= link_to "Features" , home_features_path %> </li>
-
-
-          </li>
+        
   <li><%= link_to "Login" , new_user_session_path %></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="sidenav-trigger button-collapse"><i class="material-icons">menu</i></a>

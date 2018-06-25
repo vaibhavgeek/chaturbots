@@ -1047,7 +1047,21 @@ collection-item:hover:before {
     color: $blue;
   }
 
+}
 
+
+.request-main-form {  
+ position:fixed;
+  top: calc(50vh - 300px);
+  left: calc(50vw - 300px);
+  width: 600px;
+  height:600px;
+  padding: 2em;
+  @extend .card;
+
+  .input-field label {
+    color: $blue;
+  }
 
 }
 

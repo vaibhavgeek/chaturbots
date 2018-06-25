@@ -18,6 +18,9 @@ end
 # general show time routes
     get 'home/index'
     post 'home/send_email'
+    get 'home/privacy'
+    get 'home/terms_of_service'
+    get 'home/refund'
     get 'home/contact_us'
     get 'home/about_us'
     get 'home/pricing'
