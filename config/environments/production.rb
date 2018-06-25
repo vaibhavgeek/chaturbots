@@ -17,7 +17,7 @@ Rails.application.configure do
   config.serve_static_assets = true
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
-    port:                 587,
+    port:                 2525,
     domain:               'gmail.com',
     user_name:            'vaibhavblogger@gmail.com',
     password:             'F1inindia',
