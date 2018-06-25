@@ -22,7 +22,7 @@ function preparehtml(){
 	creatediv("body" , null , "zipi-chatbox");
 	creatediv("#zipi-chatbox" , " " , "chatflow");
 	creatediv("#chatflow" , "frameparent" , "frameparent");
-	prepareFrame("#frameparent" , "https://chaturbots.com/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
+	prepareFrame("#frameparent" , "http://localhost:3000/organisations/" + search_term + "/bot/redirect?url=" + current_link  , "main_chat");
 //	creatediv("#zipi-chatbox" , "popup_wrapper" , "popup_wrapper");
 //	prepareFrame("#popup_wrapper" , "/organisations/"+ search_term +"/bot/redirect?popup=true" , "iframe_popups");
 	divf = creatediv("#zipi-chatbox" , null , "floatbutton");

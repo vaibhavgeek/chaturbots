@@ -25,9 +25,9 @@
         console.log("<%= ENV['LINK_PYTHON'] %>");
         console.log("ffg");
         $.ajax({
-        url: "<%= notifications_main_path(request.params[:id]) %>" , 
+        url: "<%= notifications_train_organisation_path(:id => params[:organisation_id]) %>" , 
         cache: false,
-        type: "get",
+        type: "post",
         success: function(html){
             console.log(html)
          },

@@ -1,14 +1,31 @@
 
-
+<%= javascript_include_tag "//www.google.com/jsapi" %>
 <div class="row container top-margin-20">
 		<div class="col s2 white no-padding">
 				
 				<%= render ("/chatbots/partials/side_menu") %>
 		</div>
 		<div class="col s10 white">
-		
-
-<%= pie_chart Message.where(responder: "agent" , :organisation_id => session[:orga_id]).or(Message.where(responder: "bot" , :organisation_id => session[:orga_id])).group(:responder).count %>
+<div class="row">
+<div class="col s6"><%= pie_chart Message.where(responder: "agent" , :organisation_id => session[:orga_id]).or(Message.where(responder: "bot" , :organisation_id => session[:orga_id])).group(:responder).count %>	
 <h5> <center> Messages automated = <%= @bot_r %> / <%= @bot_r + @agent_r %> => <%= @percent_a %> % </center> </h5>
+
+ </div>
+<div class="col s6">
+<%= column_chart Visitor.group_by_day_of_month(:created_at, format: "%a").count %>
+
+<h5> Number of Visitors : <%= Visitor.group_by_day_of_month(:created_at, format: "%a").count %>  </h5>
+
+ </div>
+<div class="col s9 offset-s2">
+
+<%= geo_chart [['Popularity'], ['Germany', 1], ['United States', 300], ['Brazil', 400], ['Canada', 500], ['France', 600], ['RU', 700]], colors: ["#00356B", "#ffffff"] %> 
+
+</div>
+
+
+</div>
+
+
 	</div>
 </div>

@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
 
 	def train
 		string_m =  ENV['LINK_PYTHON'] + "/train_prev?id=" + params[:id]
-		url = URI.parse('http://www.example.com/index.html')
+		url = URI.parse(string_m)
 		req = Net::HTTP::Get.new(url.to_s)
 		res = Net::HTTP.start(url.host, url.port) {|http|
   			http.request(req)
