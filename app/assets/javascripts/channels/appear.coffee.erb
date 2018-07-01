@@ -48,6 +48,7 @@ App.appearchannel = App.cable.subscriptions.create { channel: "AppearChannel" , 
       $("#"+data["visitor_id"]).remove()
       $("#display_chats" + data["organisation_id"]).html data["left_template"]
       $("#appendnav" + data["organisation_id"]).hide()
+    @perform 'speak' , data: data
 
     
     # Called when there's incoming data on the websocket for this channel

@@ -15,6 +15,10 @@
   <body>
 
   <style type="text/css">
+  input {
+        color: black !important;
+
+  }
 .messages .message.right .text_wrapper
 {
   background-color: <%= @organisation.s_color %>;
@@ -67,6 +71,21 @@
   <% else %>
   background-color: <%= organisation.bg_color %>
   <% end %>
+}
+.fb-chat--bubbles span
+{
+  background-color: <%= @organisation.p_color %> !important;
+}
+
+@keyframes bob {
+  10% {
+    transform: translateY(-10px);
+    background-color: <%= @organisation.p_color %>;
+  }
+  50% {
+    transform: translateY(0);
+  background-color: <%= @organisation.p_f_color %>;
+  }
 }
   </style>
       <%= yield %>

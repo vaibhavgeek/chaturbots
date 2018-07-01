@@ -1,3 +1,66 @@
+
+
+.fb-chat--bubbles {
+  text-align: left;
+}
+.fb-chat--bubbles span {
+  display: inline-block;
+  background-color: #B6B5BA;
+  width: 15px;
+  height: 10px;
+  border-radius: 100%;
+  margin-right: 5px;
+  animation: bob 2s infinite;
+}
+.fb-chat--bubbles span:nth-child(1) {
+  animation-delay: -1s;
+}
+.fb-chat--bubbles span:nth-child(2) {
+  animation-delay: -0.85s;
+}
+.fb-chat--bubbles span:nth-child(3) {
+  animation-delay: -0.7s;
+  margin-right: 0;
+}
+
+@keyframes bob {
+  10% {
+    transform: translateY(-10px);
+    background-color: #9E9DA2;
+  }
+  50% {
+    transform: translateY(0);
+    background-color: #B6B5BA;
+  }
+}
+
+
+
+.overflow_vis
+{
+  max-height: 650px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.relative_badge
+{
+ position:relative;
+  bottom:30px;
+  left: -25px;
+  overflow-x: hidden;
+  background-color:red;
+  border-radius:29px !important;
+  color:white !important;
+
+}
+.relative_badge_cover
+{
+ 
+  width:0px;
+  height:0px;
+}
+
 .panel p.light
 {
   font-size: 16px !important;

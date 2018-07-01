@@ -5,8 +5,8 @@ class ChatbotChannel < ApplicationCable::Channel
       ActionCable.server.broadcast "appearchannel#{params[:oid]}", 
                                 visitor: render_visitor(params[:auth_token]),
                                  organisation_id: params[:oid],
-                                 online: true
-      redis.set("#{params[:auth_token]}" , "1")
+                                 online: true, auth_token: params[:auth_token]
+      #redis.set("#{params[:auth_token]}" , "1")
       end
   end
 
@@ -18,8 +18,9 @@ class ChatbotChannel < ApplicationCable::Channel
                                  visitor_id: visitor.id, 
                                  organisation_id: params[:oid] ,
                                  online: false, 
-                                 left_template: left_conversation(visitor)
-      redis.del("#{auth_token}")
+                                 left_template: left_conversation(visitor),
+                                auth_token: auth_token
+     # redis.del("#{auth_token}")
     end
   end
 
@@ -30,13 +31,13 @@ class ChatbotChannel < ApplicationCable::Channel
     me = Message.create! content: data["message"] , responder: data["responder"]["responder"] , visitor_id: visitor.id , user_id: 1 , payload: data["responder"]["payload"] , organisation_id: visitor.organisation_id , ml: ml_s
 
 # THIS HELPS KEEP COUNT OF NUMBER OF MESSAGES RECIEVED BY THE USER
-    #if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
-    #  counter_v = get_counter_visitor(visitor.id)
-    #  ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
-    # else
-    #  counter_o = get_counter_organisation(visitor.organisation_id)
-    #  ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", message: organisation_notification(data["message"] , auth) , counter: counter_o 
-    # end
+    if data["responder"]["responder"] == "agent" || data["responder"]["responder"] == "bot"
+      counter_v = get_counter_visitor(visitor.id)
+      ActionCable.server.broadcast "notifications_visitor#{auth}" , counter: counter_v , message: data["message"]
+     else
+      counter_o = get_counter_organisation(visitor.organisation_id)
+      ActionCable.server.broadcast "notifications_org#{visitor.organisation_id}", auth: auth , counter: counter_o 
+     end
     # ActionCable.server.broadcast "chatbot" , message: data["message"]
   end
 
@@ -51,7 +52,6 @@ class ChatbotChannel < ApplicationCable::Channel
   end
 
 
-=begin
   def get_counter_visitor(vid)
     counter = redis.get("unreadv_#{vid}")
     if counter
@@ -75,7 +75,8 @@ class ChatbotChannel < ApplicationCable::Channel
     redis.set("unreado_#{oid}" , counter)
     return counter
   end
-=end
+
+
   private
    def render_visitor(auth)
     ApplicationController.renderer.render(partial: 'home/partials/show_active_visitors' , locals: { auth_token: auth })

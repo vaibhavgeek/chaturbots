@@ -8,6 +8,7 @@ else
 org_string = "/"
 if string.indexOf(org_string) != -1
   orga_id = string.split(org_string)[4]
+  home = string.split(org_string)[5]
 else
   orga_id = "not_admin" 
 
@@ -22,6 +23,7 @@ App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_
     received: (data) ->
       messages = $('.messages')
       messages.append data['message']
+      $(".fb-chat--bubbles").hide()
       messages.animate { scrollTop: messages.prop("scrollHeight") },1000
      
 
@@ -39,6 +41,7 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
       App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim() , oid: orga_id
     else 
       App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim() , oid: orga_id
+    $(".fb-chat--bubbles").show()
     event.target.value = ''
     event.preventDefault()
 

@@ -37,15 +37,13 @@ class ChatsController < ApplicationController
 
   end
   def new 
-    puts request.params 
-    puts "\n \n \n \n"
     auth =  params[:auth_token]
     @visitor = Visitor.where(:auth_token => auth).first
   	@messages = Message.where(:visitor_id => @visitor.id).order("created_at ASC").all
   	@organisation = Organisation.find(request.params[:organisation_id])
     ml_on = redis.get(@visitor.id.to_s + "ml")
     automate_on = redis.get(@visitor.id.to_s + "automate")
-
+    redis.del("unreado_#{@visitor.organisation_id}")
     @checked_ml = "checked" if ml_on.to_s == "1"
     @checked_auto = "checked" if automate_on.to_s == "1"
   end

@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 <div class="row container">
 
-    <div class="col s2 blue card" id="panel-visitors">
+    <div class="col s2 blue card overflow_vis" id="panel-visitors">
 
 
       <div id="panel-show-active-members">
@@ -19,7 +19,9 @@
         
             <div id="<%= visitor.id %>" class="visitor-container">
               <%= link_to new_organisation_chat_path(:organisation_id =>  request.params[:id], :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> 
+   <center> <img src="https://maps.googleapis.com/maps/api/staticmap?size=140x140&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> </img>
+ <span class="relative_badge_cover"><span id="notif<%= visitor.auth_token %>" class="badge relative_badge hidden">4</span></span>
+    </center>
               <% end %>
               <span class="hidden">
                  <%= visitor.auth_token %>

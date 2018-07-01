@@ -1,12 +1,13 @@
 
 
+
+
+
 <div class="row container top-margin-20">
-		<div class="col s2 white card no-padding">
-			
+		<div class="col s6 white no-padding">
+	<div class="row">		
 <h5> Unread Messages </h5>
-	<div class="nav">
-				<nav role="navigation">
-<ul>
+	
        <% @vis.each do |visitor| %>
 	
 	<% if  visitor.name %>
@@ -25,12 +26,11 @@
 			<% end %>
 
 <span class="hidden"><%= visitor.auth_token %></span>
-</li>
-</div>
 
-<% end %> </ul> </nav>
 
-			  </div>
+<% end %> </li>
+
+			  </div> </div> <br/>
 
 <h5> Previous Messages </h5>
 				<div class="nav">
@@ -61,8 +61,8 @@
 
 			  </div>	
 		</div>
-		<div class="col s8 card no-paading">
-		<h4> <center> Chat Archives </center></h4>
+		<div class="col s6 white no-paading">
+		<h5> <center> Chat Archives </center></h5>
 
 		<div id="display_chats" class="display_chats">
 	

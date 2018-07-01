@@ -5,6 +5,7 @@ $("#display_chats<%= session[:orga_id] %>").html("<%= j render :partial => '/hom
 $("#display_vinfo<%= session[:orga_id] %>").html("<%= j render :partial => '/home/partials/v_info', :locals => {visitor: @visitor } %>");
 $("img").removeClass("selected_chat");
 $("#img<%= @visitor.id %>").addClass("selected_chat");
+$("#notif<%= @visitor.auth_token %>").hide();
 value = "<%= @visitor.auth_token %>";
 var id, messages;
 id = '#messages' + value.trim();
