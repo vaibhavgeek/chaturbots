@@ -1,3 +1,41 @@
+ <script type="text/javascript">
+       $(document).ready(function() {
+      $(".switch").find("#ai_check").on("change",function() {
+        if($(this).is(":checked").toString() == "true")
+        {
+          curr = "INR";
+         
+        }
+        else {
+          curr = "USD";
+
+        }
+        if(curr == "INR") 
+        {
+         $.ajax({
+        url: "http://free.currencyconverterapi.com/api/v5/convert?q=USD_INR&compact=y",
+        cache: false,
+        type: "get",
+        success: function(html){
+            rate = parseInt(html["USD_INR"]["val"]) * 9;
+            $("#rate").html(rate + " INR");
+
+         }});
+       }
+       else
+       {
+        rate = "9";
+        $("#rate").html(rate + " $");
+       }
+
+
+
+
+
+      });
+    });
+      </script>
+
 <div class="particles-container no-spacing">
 <div id="particles-js" style="height: 700px;"></div>
 </div>
@@ -11,9 +49,19 @@
             <h4 class="center-align">Pricing Method</h4>
 
 <hr/>
-<h1> <center>9 $ / month </center> 
+<div class="switch right-align">
+                    <label class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Change to INR">
+                      USD
+                      <input type="checkbox" id="ai_check">
+                    <span class="lever"></span>
+                    INR
 
-</h1>
+                      
+                    </label>
+                  </div> <center>
+<h1> <span id="rate"> 9 $ </span> / month 
+
+</h1></center> 
 <center>
         <%= link_to "Privacy Statement" , home_privacy_path %> &nbsp;&nbsp;&nbsp;
           <%= link_to "Terms of Services" , home_terms_of_service_path %> &nbsp;&nbsp;&nbsp;
