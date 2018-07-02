@@ -23,9 +23,10 @@ App.chatbot = App.cable.subscriptions.create { channel: "ChatbotChannel" , auth_
     received: (data) ->
       messages = $('.messages')
       messages.append data['message']
-      $(".fb-chat--bubbles").hide()
       messages.animate { scrollTop: messages.prop("scrollHeight") },1000
-     
+      if data["responder"] == "bot" || data["responder"] == "agent"
+        $(".fb-chat--bubbles").hide() 
+      console.log data
 
     speak: (data, responder, payload , organisation_id) ->
       @perform 'speak' , message: data , responder: responder , payload: payload , oid: organisation_id
@@ -39,11 +40,15 @@ $(document).on 'keyup' , '[data-behavior=chatbot_call]' , (event) ->
       else
         payload = "nil"
       App.chatbot.speak event.target.value , responder: "agent" , payload: payload , auth_token: $(this).attr('data-auth').trim() , oid: orga_id
-    else 
+    else
       App.chatbot.speak event.target.value , responder: "user" ,  payload: "nil" , auth_token: auth_token.trim() , oid: orga_id
     $(".fb-chat--bubbles").show()
     event.target.value = ''
     event.preventDefault()
+    setInterval () ->
+      $(".fb-chat--bubbles").hide()
+    ,3000
+
 
 
 $ ->

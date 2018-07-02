@@ -8,7 +8,7 @@ class MessageBroadcastJob < ApplicationJob
     if message.cable != false
             auth_token = message.visitor.auth_token
             oid  = Organisation.find(message.organisation_id)
-            ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message , oid) , auth_token: auth_token
+            ActionCable.server.broadcast "chatbot#{auth_token}" , message: render_text_message(message , oid) , auth_token: auth_token , responder: message.responder
             redis_key = message.visitor.id.to_s + "automate"
             #redis_ml = message.visitor.id.to_s + "ml"
             #ml_true = true if redis.get(redis_ml).to_s == "1"
@@ -31,7 +31,8 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   def api_response(query,oid)
-    url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id="+oid.to_s)
+   # url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id="+oid.to_s)
+    url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id=19") 
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
     response = http.request(request)

@@ -1,6 +1,32 @@
+<div class="particles-container no-spacing">
+<div id="particles-js" style="height: 700px;"></div>
+</div>
 
-<div class="panel white" style="border-radius: 25px; margin-left: 20%;margin-right: 20%; margin-top: 1%; ">
-              <div class="row">
+
+<script type="text/javascript">
+                      $(document).ready(function(){
+    $('select').formSelect();
+  });
+    
+                </script>
+
+<div class="panel login-parent">
+<div class="request-main-form-big" style="overflow-y: auto;">
+
+    <div id="error_explanation" class="white red darken-4 damp-color center" >
+</div>
+
+<% if flash[:notice] %>
+    <div id="notice" class="white yellow darken-4 damp-color center" >
+    <p class="lead"> <%= flash[:notice] %> </p>
+    </div>
+
+<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+
+            <div class="row">
 
         <h4>About ChaturBots-</h4>
                 <hr>
@@ -9,11 +35,19 @@
                 We are just an email away, vaibhav@chaturbots.com
 
 
-                <div class="col s6 col offset-s1">
+                <div class="col s2 col offset-s1">
                     <div class="team-member">
-                      <%= image_tag("Vaibhav_Maheshwari.jpg" ,:height => 230 , :width => 230 , :class => 'img-circle') %>
-                        <h4>Vaibhav Maheshwari </h4>
-                        <p class="lead">founder and web-developer</p>
+                      <%= image_tag("Vaibhav_Maheshwari.jpg" ,:height => 100 , :width => 100 , :class => 'responsive-img circle') %>
+                        
+                    </div>
+                </div>
+                <div class="col s8">
+                    <h5>Vaibhav Maheshwari </h5>
+                        <p class="lead"><b>founder/tech junkie</b></p>
+                        
+                        Vaibhav has been coding since he was 14 years old and enjoys building applications. He currently pursuing his degree from NIT, Surat. You can reach out to him via any of these following networks. 
+                        
+
                         <ul class="list-inline social-buttons">
                             <li><a href="http://www.twitter.com/vaibhavgeek" target="_blank">Twitter</a>
                             </li>
@@ -23,7 +57,10 @@
                             </li>
                            
                         </ul>
-                    </div>
+
+                </div>
+                </div>
+                </div>
                 </div>
                 </div>
                 </div>
