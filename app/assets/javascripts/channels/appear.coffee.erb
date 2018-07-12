@@ -20,10 +20,14 @@ window["nameclick"] = nameclick
 
 string = window.location.href 
 substring = "/bot/"
+home = "/organisations/"
+
 if string.indexOf(substring) != -1
   auth_token = string.split("/").pop()
-else 
-  auth_token = "admin" # this is main admin
+else if string.indexOf(home) != -1
+  auth_token = "admin"
+else
+  auth_token = "not_admin"
 
 
 org_string = "/"

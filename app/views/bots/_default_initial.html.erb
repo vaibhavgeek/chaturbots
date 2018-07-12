@@ -1,5 +1,8 @@
-<% mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email %>
-<% namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name %>
+
+
+
+<% mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email || nil %>
+<% namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name  || nil%>
 
 <% if defined?(admin) %>
 <li class="message left appeared">
@@ -8,9 +11,9 @@
     <div class="text_wrapper">
             <div class="text-header">
 <b> Visitor Information </b>  <br/>
-email: <br/><%= mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email %><br/>
+email: <br/><%= mail_id = Visitor.where(:auth_token => request.params[:auth_token]).first.email || nil %><br/>
  name: <br/> 
-<%= namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name %>
+<%= namev = Visitor.where(:auth_token => request.params[:auth_token]).first.name || nil %>
 </div>
 </div>
 </li>
@@ -61,7 +64,7 @@ email: <br/><%= mail_id = Visitor.where(:auth_token => request.params[:auth_toke
 <b> Contact Information </b> <br/>
           In case we have to reach out to you, do you mind filling the your contact information?  
 <div class="input-field">
-          <input placeholder="Email Address" id="name" type="text" value="<%= namev %>" class="validate">
+          <input placeholder="Name" id="name" type="text" value="<%= namev %>" class="validate">
           <label for="mail">Name </label>
         </div>
 <div class="input-field">

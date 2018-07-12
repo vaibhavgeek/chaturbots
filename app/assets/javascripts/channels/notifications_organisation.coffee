@@ -16,7 +16,6 @@ App.notifications_organisation = App.cable.subscriptions.create { channel: "Noti
     if $("#messages" + data["auth"]).length == 0
       $("#notif" + data["auth"]).show()
       $("#notif" + data["auth"]).html data["counter"] 
-      
     console.log data
     # popup_show data["counter"] , data["message"]
     # Called when there's incoming data on the websocket for this channel

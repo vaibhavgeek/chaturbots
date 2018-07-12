@@ -8,56 +8,50 @@
 	<div class="row">		
 <h5> Unread Messages </h5>
 	
-       <% @vis.each do |visitor| %>
-	
-	<% if  visitor.name %>
-	<% disp = visitor.name %>
-	<% elsif visitor.email %>
-	<% disp = visitor.email %>
-	<% else %>
-	<% disp = visitor.location %>
-<% end %>
-		<div id="<%= visitor.id %>">
-		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
-			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
-
-			<%= truncate(disp, :length => 15) %>
-
-			<% end %>
-
-<span class="hidden"><%= visitor.auth_token %></span>
+       <% @vis_unread.each do |visitor| %>
 
 
-<% end %> </li>
+		<div style="margin:5px;" id="<%= visitor.id %>">
+	<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
+      <div class="col s4"><%= truncate(visitor.name , :length => 25) %></div>
+       <div class="col s4"><%= truncate(visitor.email , :length => 25) %></div>
+      <div class="col s4"><%= truncate(visitor.location , :length => 25) %></div>
+      <span class="hidden"><%= visitor.auth_token %></span>
 
-			  </div> </div> <br/>
+      <% end %>
 
-<h5> Previous Messages </h5>
-				<div class="nav">
-				<nav role="navigation">
-<ul>
-       <% @vis.each do |visitor| %>
-	
-	<% if  visitor.name %>
-	<% disp = visitor.name %>
-	<% elsif visitor.email %>
-	<% disp = visitor.email %>
-	<% else %>
-	<% disp = visitor.location %>
-<% end %>
-		<div id="<%= visitor.id %>">
-		<li class="<%= active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) %>">
-			<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
-
-			<%= truncate(disp, :length => 15) %>
-
-			<% end %>
-
-<span class="hidden"><%= visitor.auth_token %></span>
-</li>
 </div>
 
-<% end %> </ul> </nav>
+
+	<% end %>
+
+
+<h5> Previous Messages </h5>
+			       <% @vis.each do |visitor| %>
+	<!-- 
+       <% if  visitor.name %>
+	<% disp = visitor.name %>
+	<% elsif visitor.email %>
+	<% disp = visitor.email %>
+	<% else %>
+	<% disp = visitor.location %>
+<% end %> -->
+
+		<div style="margin:5px;" id="<%= visitor.id %>">
+	<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
+      <div class="col s4">
+
+
+
+      <%= truncate(visitor.name , :length => 25) %></div>
+       <div class="col s4"><%= truncate(visitor.email , :length => 25) %></div>
+      <div class="col s4"><%= truncate(visitor.location , :length => 25) %></div>
+      <span class="hidden"><%= visitor.auth_token %></span>
+
+      <% end %>
+
+</div>
+<% end %>
 
 			  </div>	
 		</div>

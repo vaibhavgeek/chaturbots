@@ -1,12 +1,10 @@
 class ChatsController < ApplicationController
+    before_action :authenticate_user!, only: [:index]
 
   def index
-    @vis = Visitor.where(:organisation_id => request.params[:organisation_id])
-    @vis.each_with_index do |v,i|
-      if Message.where(:visitor_id => v.id).count == 0
-        #@vis = @vis.delete(v)
-      end
-    end
+    @vis_unread = Visitor.where(:organisation_id => params[:organisation_id]).select(&:unread?)
+    @vis = Visitor.where(:organisation_id => request.params[:organisation_id]).select(&:isempty?)
+  
   end
 
   def show_all
@@ -43,7 +41,7 @@ class ChatsController < ApplicationController
   	@organisation = Organisation.find(request.params[:organisation_id])
     ml_on = redis.get(@visitor.id.to_s + "ml")
     automate_on = redis.get(@visitor.id.to_s + "automate")
-    redis.del("unreado_#{@visitor.organisation_id}")
+    redis.del("unreadv_#{@visitor.id}")
     @checked_ml = "checked" if ml_on.to_s == "1"
     @checked_auto = "checked" if automate_on.to_s == "1"
   end
