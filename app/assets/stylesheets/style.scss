@@ -555,6 +555,19 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size:13px;
 }
+
+.navigation_chats {
+    line-height: 25px;
+    background-color: grey;
+}
+.navgation_chats a {
+      height: auto;
+
+}
+.navigation_chats li:hover 
+{
+  background-color: red !important;
+} 
 .nav a, .nav li {  
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;

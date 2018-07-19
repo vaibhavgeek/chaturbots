@@ -8,10 +8,15 @@
 	<div class="row">		
 <h5> Unread Messages </h5>
 	
+<% if @vis_unread.count == 0 %>
+<CENTER><b> <i> No Unread Messages! </i></b>
+</CENTER>
+<% end %>
+
        <% @vis_unread.each do |visitor| %>
 
 
-		<div style="margin:5px;" id="<%= visitor.id %>">
+		<div class="navigation_chats"> style="margin:5px;" id="<%= visitor.id %>">
 	<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
       <div class="col s4"><%= truncate(visitor.name , :length => 25) %></div>
        <div class="col s4"><%= truncate(visitor.email , :length => 25) %></div>
@@ -37,7 +42,7 @@
 	<% disp = visitor.location %>
 <% end %> -->
 
-		<div style="margin:5px;" id="<%= visitor.id %>">
+		<div class="navigation_chats" style="margin:5px;" id="<%= visitor.id %>">
 	<%= link_to organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id) , :class => active_helper(organisation_chat_path(:organisation_id => request.params[:organisation_id] , :id => visitor.id)) , :remote => "true" do %>
       <div class="col s4">
 

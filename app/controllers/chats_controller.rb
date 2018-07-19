@@ -2,8 +2,8 @@ class ChatsController < ApplicationController
     before_action :authenticate_user!, only: [:index]
 
   def index
-    @vis_unread = Visitor.where(:organisation_id => params[:organisation_id]).select(&:unread?)
-    @vis = Visitor.where(:organisation_id => request.params[:organisation_id]).select(&:isempty?)
+    @vis_unread = Visitor.where(:organisation_id => params[:organisation_id]).order('created_at DESC').select(&:unread?)
+    @vis = Visitor.where(:organisation_id => request.params[:organisation_id]).order('created_at DESC').select(&:isempty?)
   
   end
 
@@ -29,10 +29,11 @@ class ChatsController < ApplicationController
   end
 
   def show
-        @organisation = Organisation.find(request.params[:organisation_id])
-
+    @organisation = Organisation.find(request.params[:organisation_id])
     @messages = Message.where(:visitor_id => params[:id]).order("created_at ASC").all
-
+    if REDIS.get("unreadv_#{params[:id]}")
+      REDIS.del("unreadv_#{params[:id]}")
+    end
   end
   def new 
     auth =  params[:auth_token]

@@ -11,13 +11,14 @@ config.action_dispatch.default_headers = { 'X-Frame-Options' => 'ALLOWALL' }
   config.eager_load = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            'vaibhavblogger@gmail.com',
-    password:             'F1inindia',
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+  :user_name => 'apikey',
+  :password => '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',
+  :domain => 'https://chaturbots.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 2525,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
   # Show full error reports.
   config.consider_all_requests_local = true
 
