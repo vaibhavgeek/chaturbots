@@ -39,8 +39,8 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   def api_response(query,oid)
-    url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id="+oid.to_s)
-    # url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id=19") 
+    #url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id="+oid.to_s)
+    url = URI(ENV['LINK_PYTHON'] + "/respond?q="+query+"&id=19") 
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
     response = http.request(request)

@@ -62,7 +62,7 @@ class ChatbotsController < ApplicationController
 			}
   		end
   		auth_tok = cookies[:auth_token]
-
+  		oid = params[:id]
 		@vis = Visitor.where(auth_token: auth_tok).first
 
 		organisation_id =  params["id"]

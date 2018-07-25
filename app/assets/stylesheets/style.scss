@@ -556,18 +556,25 @@ body {
   font-size:13px;
 }
 
-.navigation_chats {
-    line-height: 25px;
-    background-color: grey;
+ul.navigation_chats {
+list-style-type:none;
+margin:10px;
+padding:0;
+width: 100%;
 }
-.navgation_chats a {
-      height: auto;
 
+ul.navigation_chats li>a {
+  display:table;
+  padding: 5px;
+  width:100%;
 }
-.navigation_chats li:hover 
-{
-  background-color: red !important;
-} 
+
+ul.navigation_chats li>a:hover{
+background-color:#555;
+color:white;
+}
+
+
 .nav a, .nav li {  
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
