@@ -5,5 +5,5 @@ class ApplicationController < ActionController::Base
 end
 
 def razor_pay
-	@rzp = Razorpay.setup('rzp_test_FNFDC2iHFCf4ML', 'CJeHD7kK93aF9LFIyQN0dYM2')
+	@rzp = Razorpay.setup('rzp_test_3fUWG9VF6LL7hP', 'n7uRrF4eeQ0XFEBPlcLpHEdz')
 end
