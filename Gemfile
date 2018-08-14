@@ -12,7 +12,6 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'popper_js'
 gem "chartkick"
-gem 'groupdate'
 gem 'mini_magick'
 gem "browser", require: "browser/browser"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

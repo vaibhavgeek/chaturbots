@@ -25,7 +25,7 @@
       
 
 
-        <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down sidenav">
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , intents_all_organisation_path(:id => session[:orga_id]) %></li>
 <li>   <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="new badge" data-badge-caption="unread">1</span><% end %></li>
@@ -47,18 +47,18 @@
     </nav>
   </div>
 
-  <div class="dialogue-controller"></div>
+  <!-- <div class="dialogue-controller"></div>
 
 <div class="dialogue template">
  <div class="message"></div>
   <div class="close <%=session[:orga_id]%>">✕</div>
   <div style="clear:both"></div>
 </div>
-
+ -->
 
 
        <% else %>
-<div class="navbar-fixed">
+<div class="navbar">
     <nav role="navigation" class="z-depth-0">
       <div class="nav-wrapper">       
 
@@ -69,7 +69,7 @@
       
 
 
-        <ul class="right hide-on-med-and-down page-scroll">
+        <ul class="right hide-on-med-and-down page-scroll sidenav">
   <li  class="<%= active_helper(root_path) %>"><%= link_to "Home" , root_path %></li>
  <!--  
 
@@ -95,6 +95,8 @@
     </nav>
   </div>
 
+
+
        <% end %>
  
 
@@ -103,12 +105,10 @@
 
 
   <script type="text/javascript">
- $( document ).ready(function(){
-$('.button-collapse').sideNav({
-      closeOnClick: true
-    }
-  );
-});
+ $(document).ready(function(){
+    $('.side-nav').sidenav();
+  });
+
 </script>
 
 <%= yield %>
