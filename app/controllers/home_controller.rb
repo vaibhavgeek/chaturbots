@@ -22,6 +22,12 @@ class HomeController < ApplicationController
   end
 
   def main
+    sub_id = current_user.subscription_id
+    Razorpay.setup('rzp_test_3fUWG9VF6LL7hP', 'n7uRrF4eeQ0XFEBPlcLpHEdz')
+    s = Razorpay::Subscription.fetch sub_id
+    current_user.status =  s.attributes["status"]
+    current_user.charge_at = s.attributes["charge_at"]
+    current_user.save
     @organisation_vistors_online = Visitor.where(:organisation_id => session[:orga_id]).select(&:online?)
   	@messages = Message.all  	
     @bool = 0

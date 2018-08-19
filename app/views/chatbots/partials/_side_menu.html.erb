@@ -33,9 +33,7 @@
   <li class="<%= active_helper(bot_vdata_organisation_path(:id => session[:orga_id])) %>">
                 <%= link_to "Visitors Info", bot_vdata_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_vdata_organisation_path(:id => session[:orga_id]))  %>
                 </li>
-     <li class="<%= active_helper(bot_reports_organisation_path(:id => session[:orga_id])) %>">
-                <%= link_to "Reports", bot_reports_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_reports_organisation_path(:id => session[:orga_id]))  %>
-                </li>
+    
  <li class="<%= active_helper(bot_preview_organisation_path(:id => session[:orga_id])) %>">
                <%= link_to  bot_preview_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_preview_organisation_path(:id => session[:orga_id])) , :target => "blank" do %>  Preview Bot <% end %>
                 </li>
