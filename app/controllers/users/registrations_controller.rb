@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  layout "signup"
 
   # GET /resource/sign_up
    def new
@@ -16,15 +17,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     puts request.params
+     
      build_resource(sign_up_params)
-     puts sign_up_params
+     Razorpay.setup('rzp_test_3fUWG9VF6LL7hP', 'n7uRrF4eeQ0XFEBPlcLpHEdz')
+     subscription = Razorpay::Subscription.create plan_id: 'plan_AUjWN5NDBmG4Hn' , start_at: (Time.now + (60 * 60 * 24 * 15)).to_i, total_count: 1
+     resource.subscription_id = subscription.attributes["id"]
+     resource.plan_id = subscription.attributes["plan_id"]
+     resource.status = subscription.attributes["status"]
+     resource.quantity = subscription.attributes["quantity"]
+     resource.start_at = subscription.attributes["start_at"]
+     resource.end_at = subscription.attributes["end_at"]
+     resource.charge_at = subscription.attributes["charge_at"]
      resource.save
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
+
         respond_with resource , location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
@@ -34,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      redirect_to new_user_registration_path(:email => resource.email , :id => crypted_id(resource.organisation_id))
     end
 
    end
@@ -95,7 +105,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   def after_sign_up_path_for(resource)
     session[:orga_id] = resource.organisation_id
-    after_sign_in_path_for(resource)
+    user_steps_path(resource)
   end
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

@@ -1,10 +1,9 @@
 <div class="row no-spacing">
-
 <div class="particles-container no-spacing">
-<div id="particles-js" style="height: 700px;"></div>
+<div id="particles-js"></div>
 </div>
 
-<div class="login-form ">
+<div class="login-form s8 offset-s2">
 <h5 class="center">Sign up </h5> 
 
 <h3 class="center no-spacing">
@@ -47,9 +46,17 @@
 <%= render "devise/shared/links" %>
 </div>
 </div>
+</div>
 <script type="text/javascript">
   particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function() {
   console.log('callback - particles.js config loaded');
 });
 
 </script>
+<style type="text/css">
+   
+    body
+    {
+        background-color: #00356B;
+    }
+ </style>

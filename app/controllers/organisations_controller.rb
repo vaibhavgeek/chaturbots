@@ -4,6 +4,9 @@ class OrganisationsController < ApplicationController
 
   def new
   	@organisation = Organisation.new
+      respond_to do |format|
+        format.html { render :layout => 'signup' } # your-action.html.erb
+    end
   end
 
   def all_organisation_id

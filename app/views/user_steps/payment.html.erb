@@ -1,0 +1,72 @@
+<div class="row no-spacing">
+
+<div class="particles-container no-spacing">
+<div id="particles-js"></div>
+</div>
+
+<div class="login-form ">
+<h5 class="center">Sign up </h5> 
+
+<h3 class="center no-spacing">
+<i class="material-icons medium">looks_one</i>
+<i class="material-icons medium">looks_two</i>
+<i class="material-icons medium prime-color">looks_3</i>
+
+</h3>
+
+<h5 class="center">Click Here and Enter Payment Details </h5> 
+<center>
+<button id="rzp-button1" class="btn btn-large btn-primary">Pay</button> 
+</center> <br/>
+<div class="grey lighten-2 black-text padding-1"> 
+  ChaturBots AI Private Limited, does not store any card information. We use RazorPay as our vendor, that is RBI guidelines complaint. The charges would start incurring when the 15 day trial is over. You can cancel anytime you want or add your card details later on. 
+    </div>
+<center>
+    <%= link_to "skip this step", next_wizard_path %>
+</center> 
+<br/><br/>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_3fUWG9VF6LL7hP",
+    "subscription_id": "<%= current_user.subscription_id %>",
+    "name": "ChaturBots AI Private Limited",
+    "description": "Embed Automated Live Chat for your website!",
+    "image": "<%= asset_path('cb_white_blue.png') %>",
+    "handler": function (response){
+        window.location.replace("<%= root_url %>");
+    },
+    "prefill": {
+        "name": "<%= current_user.name %>",
+        "email": "<%= current_user.email %>"
+    }, 
+    "notes": {
+        "website": "Website Name"
+    },
+    "theme": {
+        "color": "#00356B"
+    }
+};
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+<script type="text/javascript">
+  particlesJS.load('particles-js', '<%= asset_path("particle.json") %>', function() {
+  console.log('callback - particles.js config loaded');
+});
+
+</script>
+<style type="text/css">   
+    body
+    {
+        background-color: #00356B;
+    }
+ </style>

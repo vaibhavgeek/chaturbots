@@ -299,11 +299,22 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
    }
  }
 
- @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 750px) {
    #index-banner .section {
      top: 0;
    }
+   #particles-js
+   {
+   background-color:#00356B;
+    height: 600px !important;
+   }
+   .login-form
+   {
+    height: 600px;
+   }
  }
+
+
 
  .icon-block {
    padding: 0 15px;
@@ -344,6 +355,9 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
    padding: 3em;
  }
 
+.padding-1 {
+   padding: 1em;
+ }
  
 
  #particles-js {

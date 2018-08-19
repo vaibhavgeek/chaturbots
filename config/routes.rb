@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'organisations/show'
   get 'organisations/all_organisation_id'
 
+resources :user_steps
 resource :user, only: [:edit] do
   collection do
     patch 'update_password' , to: 'settings#update_password'

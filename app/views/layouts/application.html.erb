@@ -28,7 +28,7 @@
         <ul class="right hide-on-med-and-down sidenav">
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , intents_all_organisation_path(:id => session[:orga_id]) %></li>
-<li>   <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="new badge" data-badge-caption="unread">1</span><% end %></li>
+<li>   <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="new badge" data-badge-caption="unread">12</span><% end %></li>
 
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li> 
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
@@ -110,7 +110,8 @@
   });
 
 </script>
-
+<% if @message %>
+<div class="red darken-4 white-text "> <center>  <%= @message %> <b><u><%= link_to "Link your card right now" , settings_payment_organisation_path(current_user.organisation_id) , :class => "white-text" %> </u></b> </center> </div> <% end %>
 <%= yield %>
 
  
