@@ -16,7 +16,7 @@
 
    <% if user_signed_in? && session[:orga_id] %>
    <div class="navbar-fixed">
-    <nav role="navigation" class="z-depth-0">
+    <nav class="main" role="navigation" class="z-depth-0">
       <div class="nav-wrapper">
           <%= image_tag "logo_nav.png" , :style => "width:45px; margin-top:10px; margin-right: 10px;" %>
 
@@ -38,7 +38,8 @@
           
 <li><%= link_to "Active Chats" , root_path %></li>
 <li> <%= link_to "Bot" , bot_intent_mapping_organisation_path(:id => session[:orga_id]) %></li>
-<li>  <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives <span class="badge">1</span><% end %></li>
+<li>  <%= link_to organisation_chats_path(:organisation_id => session[:orga_id])  do %> Archives
+<!-- <span class="badge">1</span> --><% end %></li>
 <li><%=link_to "Settings" , settings_account_organisation_path(:id => session[:orga_id]) %></li>
 <li>  <%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         </ul>
@@ -58,8 +59,8 @@
 
 
        <% else %>
-<div class="navbar">
-    <nav role="navigation" class="z-depth-0">
+<div class="navbar-fixed">
+    <nav role="navigation" class="z-depth-0 main">
       <div class="nav-wrapper">       
 
         <%= image_tag "logo_nav.png" , :style => "width:45px; margin-top:10px; margin-right: 10px;" %>
@@ -77,12 +78,15 @@
   <li><a class="page-scroll" href="#features">Features</a></li>
     <% end %>
  -->
-<li class="<%= active_helper(home_request_path) %>"> <%= link_to "Request" , home_request_path ,  data: { turbolinks: false } %> </li>
+  <li class="<%= active_helper(home_demo_path) %>"><%= link_to "Demo" , home_demo_path %></li>
+
 
   <li class="<%= active_helper(home_pricing_path) %>"><%= link_to "Pricing" , home_pricing_path %></li>
 
 
   <li class="<%= active_helper(new_user_session_path) %>"><%= link_to "Login" , new_user_session_path %></li>
+
+  <li class="<%= active_helper(home_request_path) %>"> <%= link_to "Contact" , home_request_path ,  data: { turbolinks: false } %> </li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">

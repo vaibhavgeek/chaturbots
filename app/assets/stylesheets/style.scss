@@ -1,3 +1,8 @@
+.demo .nav nav ul li{
+  width:100% !important;
+}
+
+
  body.home
     {
         background-color: #00356B;
@@ -245,25 +250,25 @@ $easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 .card .card-content, .card-content {
    padding:6px;
 }
- nav ul a,
- nav .brand-logo,
+ nav.main ul a,
+ nav.main .brand-logo,
  .button-collapse {
    color: white;
  }
 
- nav {
+ nav.main {
    background-color: #00356B;
-   position: absolute;
+   position: absolute !important;
    top: 0;
    z-index: 99;
  }
 
- nav>.nav-wrapper {
+ nav.main>.nav-wrapper {
    margin: 0 auto;
    max-width: 90%;
  }
 
- nav>.nav-wrapper li {
+ nav.main>.nav-wrapper li {
    text-transform: uppercase;
  }
 
@@ -599,7 +604,7 @@ li {list-style-type: none;}
 .nav nav ul li {
   position:relative;
   padding: 0 20px;
-    width: 195px !important;
+    width: 195px;
 }
 .nav nav ul li:hover {
   background: #grey;

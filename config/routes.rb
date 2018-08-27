@@ -17,6 +17,12 @@ resource :user, only: [:edit] do
   end
 end
 # general show time routes
+    get  'home/demo'
+    get 'home/demo_automate'
+    get 'home/demo_mc'
+    get 'home/demo_goal'
+    get 'home/spell_checker'
+
     get 'home/index'
     post 'home/send_email'
     get 'home/privacy'
