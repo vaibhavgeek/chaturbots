@@ -72,7 +72,7 @@ class ChatbotsController < ApplicationController
 			else
 				ip_addr = "120.62.192.138"
 			end
-			loc = Net::HTTP.get(URI.parse('http://ip-api.com/json'+ip_addr.to_s))
+			loc = Net::HTTP.get(URI.parse('http://ip-api.com/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
   			location = k["city"] + "," + k["country"]
   			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: "Generic Browser"  , v_count: 1 )
