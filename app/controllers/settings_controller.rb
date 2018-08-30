@@ -23,7 +23,7 @@ class SettingsController < ApplicationController
         format.html { redirect_to settings_theme_organisation_url(@organisation.id) , notice_error: "Updated Theme Sucessfully"}
         format.json { render :show, status: :ok , location: @organisation}
       else
-        format.html { render :edit }
+        format.html { redirect_to settings_theme_organisation_url(@organisation.id) , notice_error: "Some Error has occured" }
         format.json { render json: @organisation.errors, status: unprocessable_entity}
       end
     end

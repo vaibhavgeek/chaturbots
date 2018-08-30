@@ -74,7 +74,7 @@ class ChatbotsController < ApplicationController
 			end
 			loc = Net::HTTP.get(URI.parse('http://ip-api.com/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
-  			location = k["city"] + "," + k["country"]
+  			location = k["city"] + ", " + k["regionName"] + ", " + k["country"]
   			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: "Generic Browser"  , v_count: 1 )
   			redis.set(@vis.id.to_s + "ml" , 1)
   			redis.set(@vis.id.to_s + "automate" , 1)
