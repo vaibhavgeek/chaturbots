@@ -63,7 +63,7 @@ class ChatbotsController < ApplicationController
   		end
   		auth_tok = cookies[:auth_token]
   		oid = params[:id]
-		@vis = Visitor.where(auth_token: auth_tok).first
+		@vis = Visitor.where(auth_token: auth_tok , :organisation_id => oid).first
 
 		organisation_id =  params["id"]
 		if !@vis
@@ -75,7 +75,7 @@ class ChatbotsController < ApplicationController
 			loc = Net::HTTP.get(URI.parse('http://ip-api.com/json/'+ip_addr.to_s))
 			k = JSON.parse(loc)
   			location = k["city"] + ", " + k["regionName"] + ", " + k["country"]
-  			@vis = Visitor.where(auth_token: auth_tok).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: "Generic Browser"  , v_count: 1 )
+  			@vis = Visitor.where(auth_token: auth_tok , organisation_id: oid).first_or_create(ipaddr: ip_addr , location: location , organisation_id: organisation_id, browser_d: "Generic Browser"  , v_count: 1 )
   			redis.set(@vis.id.to_s + "ml" , 1)
   			redis.set(@vis.id.to_s + "automate" , 1)
 		
