@@ -1,3 +1,24 @@
+.btn-primary-inverse {
+  background-color: #fff;
+  color: #00356B;
+  font-weight: bold;
+  font-size:15px;
+}
+.primary-text {
+  color: #00356B !important;
+}
+.btn-primary-inverse i {
+    color: #00356B;
+
+}
+
+.btn-primary-inverse:hover {
+  background-color:#00356B;
+  color:white;
+}
+
+
+
 .demo .nav nav ul li{
   width:100% !important;
 }
