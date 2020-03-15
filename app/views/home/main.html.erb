@@ -12,7 +12,7 @@
 
 
       <div id="panel-show-active-members">
-                 <h4 class="white-text flow-text right">Online Visitors</h4>
+                 <h4 class="white-text flow-text right">Talking to:</h4>
 
           <% if @organisation_vistors_online.count == 0 %>
         <% end %>
@@ -24,7 +24,7 @@
         
             <div id="<%= visitor.id %>" class="visitor-container">
               <%= link_to new_organisation_chat_path(:organisation_id =>  request.params[:id], :auth_token => visitor.auth_token) , :class => "list-group-item" , :remote => "true", :onclick => 'nameclick("'+visitor.auth_token+'")' , :"data-auth_t" => visitor.auth_token do %>
-   <center> <img src="https://maps.googleapis.com/maps/api/staticmap?size=140x140&markers=color:red%7C<%= visitor.location %>&center=<%= visitor.location %>&zoom=5&maptype=roadmap&key=AIzaSyD3ZYIdavY-Ikz1vktl8LzIKumE9BVbU-g" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> </img>
+   <center> <img src="http://localhost:3000/imageo.jpeg" id="img<%= visitor.id %>" alt="" class="circle responsive-img not_selected"> </img>
  <span class="relative_badge_cover"><span id="notif<%= visitor.auth_token %>" class="badge relative_badge hidden">4</span></span>
     </center>
               <% end %>

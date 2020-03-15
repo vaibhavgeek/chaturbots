@@ -15,7 +15,7 @@
     
 
      <li class="<%= active_helper(new_organisation_previous_chat_path(:organisation_id => session[:orga_id])) %>">
-                <%= link_to "Previous Chats" , new_organisation_previous_chat_path(:organisation_id => session[:orga_id])   %>
+                <%= link_to "Stored Intents" , new_organisation_previous_chat_path(:organisation_id => session[:orga_id])   %>
                 </li>
   
 
@@ -27,11 +27,11 @@
 </div>
 
 <div class="nav">
-<h5>Bot Tools</h5>
+<h5>Sessions</h5>
 <nav role="navigation">
   <ul>
   <li class="<%= active_helper(bot_vdata_organisation_path(:id => session[:orga_id])) %>">
-                <%= link_to "Visitors Info", bot_vdata_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_vdata_organisation_path(:id => session[:orga_id]))  %>
+                <%= link_to "Sessions Info", bot_vdata_organisation_path(:id => session[:orga_id]) , :class => active_helper(bot_vdata_organisation_path(:id => session[:orga_id]))  %>
                 </li>
     
  <li class="<%= active_helper(bot_preview_organisation_path(:id => session[:orga_id])) %>">
