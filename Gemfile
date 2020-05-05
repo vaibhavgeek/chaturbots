@@ -23,7 +23,7 @@ gem 'pg', '~> 0.18'
 gem 'hashids'
 gem 'redis-rails'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'geocoder'
 gem 'materialize-sass'
 gem 'rails_db'
