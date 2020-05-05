@@ -311,7 +311,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     shellany (0.0.1)
-    simple_form (4.0.1)
+    simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     spring (2.0.2)
